@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>All Modules — MindSkin Connect</title>
+  <meta name="description" content="Browse all five MindSkin Connect modules on eczema, stress, sleep, self-management, support, and wellness.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.svg">
+  <style>
+    .modules-intro {
+      margin: 2rem 0 1.5rem;
+      line-height: 1.75;
+      max-width: 65ch;
+    }
+
+    .page-heading-plain {
+      font-family: 'Lilita One', cursive;
+      font-weight: 400;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      text-transform: uppercase;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      color: var(--navy);
+      margin: 2rem 0 0;
+    }
+
+    .mod-card {
+      display: block;
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 16px;
+      border-left: 6px solid var(--ac, #1B3068);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .mod-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .mod-card:focus-visible {
+      outline: 2px solid var(--ac, #1B3068);
+      outline-offset: 2px;
+    }
+    .mod-body { flex: 1; }
+    .mod-pill {
+      display: inline-block;
+      background: var(--ac, #1B3068);
+      color: #fff;
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .mod-title {
+      font-family: 'Lilita One', serif;
+      font-weight: 400;
+      font-size: 1.2rem;
+      color: #1B3068;
+      display: block;
+      margin: 0 0 6px;
+      line-height: 1.25;
+    }
+    .mod-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.55;
+    }
+    .mod-arrow {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem;
+      color: var(--ac, #1B3068);
+      flex-shrink: 0;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Site navigation">
+      <a class="site-logo" href="index.html">MindSkin Connect</a>
+      <a href="index.html">Home</a>
+      <a class="nav-active" href="all-modules.html" aria-current="page">All modules</a>
+      <a href="clinician.html">For clinicians</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <div class="page-wrapper">
+
+      <h1 class="page-heading-plain">All Modules</h1>
+
+      <p class="modules-intro">The five modules build on each other, but you can take them in any order.
+      If you're not sure where to start, Module 1a is the foundation.</p>
+
+      <section aria-label="Module list">
+
+        <a class="mod-card" href="module-1a.html" style="--ac: #C2607A">
+          <div class="mod-body">
+            <span class="mod-pill">Module 1a</span>
+            <span class="mod-title">Understanding Your Skin-Mind Connection</span>
+            <span class="mod-desc">How stress and emotions affect eczema, and how dermatology care can help with both.</span>
+          </div>
+          <span class="mod-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="mod-card" href="module-2.html" style="--ac: #2E7D5E">
+          <div class="mod-body">
+            <span class="mod-pill">Module 2</span>
+            <span class="mod-title">Breaking the Itch-Scratch Cycle</span>
+            <span class="mod-desc">Why itch happens, why nighttime is harder, and practical techniques to break the cycle.</span>
+          </div>
+          <span class="mod-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="mod-card" href="module-3a.html" style="--ac: #6B4FA0">
+          <div class="mod-body">
+            <span class="mod-pill">Module 3a</span>
+            <span class="mod-title">Building Your Self-Management Skills &amp; Confidence</span>
+            <span class="mod-desc">Tracking triggers, setting goals, recovering from setbacks, and advocating for your needs.</span>
+          </div>
+          <span class="mod-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="mod-card" href="module-4.html" style="--ac: #3A7D8C">
+          <div class="mod-body">
+            <span class="mod-pill">Module 4</span>
+            <span class="mod-title">Building a Support Network</span>
+            <span class="mod-desc">Knowing when to ask for extra help, finding it, and building a team around you.</span>
+          </div>
+          <span class="mod-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="mod-card" href="module-5.html" style="--ac: #C27C2E">
+          <div class="mod-body">
+            <span class="mod-pill">Module 5</span>
+            <span class="mod-title">Holistic Skin Care and Wellness</span>
+            <span class="mod-desc">Routines that survive stressful weeks, calming techniques under five minutes, nutrition, and movement.</span>
+          </div>
+          <span class="mod-arrow" aria-hidden="true">→</span>
+        </a>
+
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>This site does not collect personal information.</p>
+    <p>Mind Skin Health for Atopic Dermatitis (MSHAD) © 2025 University of Alberta Division of Dermatology. Licensed CC BY-NC-ND 4.0.</p>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="all-modules.html">All modules</a>
+      <a href="clinician.html">For clinicians</a>
+      <a href="mailto:supportg@ualberta.ca">supportg@ualberta.ca</a>
+    </nav>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found — MindSkin Connect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.svg">
+  <style>
+    .error-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem var(--page-h-pad);
+      min-height: 40vh;
+    }
+
+    .error-code {
+      font-family: 'Lilita One', cursive;
+      font-size: clamp(4rem, 15vw, 8rem);
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 1rem;
+      opacity: 0.15;
+    }
+
+    .error-message {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.125rem;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 2rem;
+      max-width: 40ch;
+    }
+
+    .error-home-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 0 1.5rem;
+      background-color: var(--navy);
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+
+    .error-home-link:hover {
+      background-color: #142554;
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .error-home-link:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Site navigation">
+      <a class="site-logo" href="index.html">MindSkin Connect</a>
+      <a href="index.html">Home</a>
+      <a href="all-modules.html">All modules</a>
+      <a href="clinician.html">For clinicians</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <div class="error-page">
+      <div class="error-code" aria-hidden="true">404</div>
+      <p class="error-message">Page not found. Let's start from the home page.</p>
+      <a class="error-home-link" href="index.html">Go to home page</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>This site does not collect personal information.</p>
+    <p>Mind Skin Health for Atopic Dermatitis (MSHAD) © 2025 University of Alberta Division of Dermatology. Licensed CC BY-NC-ND 4.0.</p>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="all-modules.html">All modules</a>
+      <a href="clinician.html">For clinicians</a>
+      <a href="mailto:supportg@ualberta.ca">supportg@ualberta.ca</a>
+    </nav>
+  </footer>
+
+</body>
+</html>

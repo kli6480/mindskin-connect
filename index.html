@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MindSkin Connect</title>
+  <meta name="description" content="A guide to living well with eczema, from the University of Alberta dermatology team.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.svg">
+  <style>
+    /* ── Landing hero ───────────────────────────────────── */
+    .landing-hero {
+      /* SVG circles on top; animated gradient below */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='260' viewBox='0 0 400 260'%3E%3Ccircle cx='360' cy='130' r='55' fill='none' stroke='white' stroke-width='1.5' opacity='0.15'/%3E%3Ccircle cx='360' cy='130' r='90' fill='none' stroke='white' stroke-width='1.5' opacity='0.15'/%3E%3Ccircle cx='360' cy='130' r='125' fill='none' stroke='white' stroke-width='1.5' opacity='0.15'/%3E%3Ccircle cx='360' cy='130' r='160' fill='none' stroke='white' stroke-width='1.5' opacity='0.15'/%3E%3Ccircle cx='360' cy='130' r='200' fill='none' stroke='white' stroke-width='1.5' opacity='0.15'/%3E%3C/svg%3E"), linear-gradient(135deg, #1B3068, #2BBFAA, #1a5c70, #1B3068);
+      background-repeat: no-repeat, no-repeat;
+      background-position: right center, 0% 50%;
+      background-size: auto 100%, 300% 300%;
+      color: var(--white);
+      padding: 48px 24px;
+      text-align: center;
+      margin-left: calc(-1 * var(--page-h-pad));
+      margin-right: calc(-1 * var(--page-h-pad));
+      margin-bottom: 2.5rem;
+    }
+
+    .landing-hero h1 {
+      font-family: 'Lilita One', cursive;
+      font-weight: 400;
+      font-size: clamp(2.25rem, 6vw, 3.75rem);
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .landing-hero .tagline {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.9);
+      max-width: 46ch;
+      margin: 0 auto 1rem;
+      min-height: 1.7em; /* prevent layout shift while typing */
+    }
+
+    .audience-note {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.55;
+      max-width: 46ch;
+      margin: 0 auto;
+    }
+
+    /* ── Typewriter cursor ──────────────────────────────── */
+    .tagline-cursor {
+      display: inline-block;
+      margin-left: 1px;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes cursor-blink {
+        0%, 100% { opacity: 1; }
+        50%       { opacity: 0; }
+      }
+      .tagline-cursor {
+        animation: cursor-blink 0.7s step-end infinite;
+      }
+    }
+
+    /* ── Quiz card ──────────────────────────────────────── */
+    .quiz-card {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+      margin-bottom: 2rem;
+    }
+
+    /* ── Quiz intro ─────────────────────────────────────── */
+    .quiz-intro-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.125rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .quiz-intro-body {
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      margin-bottom: 0.375rem;
+    }
+
+    .quiz-intro-small {
+      font-size: 0.8125rem;
+      color: #666;
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+    }
+
+    .quiz-skip {
+      display: block;
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--teal);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── Scale questions ────────────────────────────────── */
+    .quiz-step { display: none; }
+    .quiz-step.active { display: block; }
+
+    .quiz-prompt-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--navy);
+      margin-bottom: 0.875rem;
+    }
+
+    .quiz-question-text {
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      max-width: 58ch;
+    }
+
+    .scale-legend {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: #777;
+      margin-bottom: 0.5rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .scale-options {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .scale-options label {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.375rem;
+      cursor: pointer;
+    }
+
+    .scale-options input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .scale-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 52px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      background: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color 0.12s, background 0.12s, color 0.12s;
+    }
+
+    .scale-options input[type="radio"]:checked + .scale-btn {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: var(--white);
+    }
+
+    .scale-options label:hover .scale-btn {
+      border-color: var(--teal);
+    }
+
+    .scale-options input[type="radio"]:focus-visible + .scale-btn {
+      outline: 2px solid var(--teal);
+      outline-offset: 2px;
+    }
+
+    /* ── Q6 radio ───────────────────────────────────────── */
+    .radio-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .radio-options label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 14px 16px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      background: var(--white);
+      cursor: pointer;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      transition: border-color 0.12s, background 0.12s;
+    }
+
+    .radio-options input[type="radio"] {
+      accent-color: var(--navy);
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .radio-options label:has(input:checked) {
+      border-color: var(--navy);
+      background: #f0f4fb;
+    }
+
+    .radio-options label:hover {
+      border-color: var(--teal);
+    }
+
+    /* ── Progress dots & navigation ─────────────────────── */
+    .quiz-progress {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-progress-dot {
+      height: 6px;
+      border-radius: 3px;
+      background: #ddd;
+      flex: 1;
+      transition: background 0.2s;
+    }
+
+    .quiz-progress-dot.done   { background: var(--teal); }
+    .quiz-progress-dot.active { background: var(--navy); }
+
+    .quiz-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .quiz-btn-back {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      color: var(--teal);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      min-height: 44px;
+      text-decoration: underline;
+    }
+
+    .quiz-btn-back:hover    { text-decoration: none; }
+    .quiz-btn-back:disabled { opacity: 0; pointer-events: none; }
+
+    .quiz-btn-next {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      color: var(--white);
+      background: var(--navy);
+      border: none;
+      border-radius: 8px;
+      padding: 0 1.5rem;
+      min-height: 48px;
+      cursor: pointer;
+      transition: background 0.12s;
+    }
+
+    .quiz-btn-next:hover    { background: #142554; }
+    .quiz-btn-next:disabled { background: #bbb; cursor: default; }
+
+    .quiz-btn-next:focus-visible,
+    .quiz-btn-back:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* ── Result screen ──────────────────────────────────── */
+    #quiz-result { display: none; }
+
+    .result-emoji {
+      display: block;
+      text-align: center;
+      font-size: 64px;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .result-nudge {
+      background: #f0f4fb;
+      border-left: 4px solid var(--navy);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 1.25rem;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .result-primary-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--navy);
+      margin-bottom: 0.375rem;
+    }
+
+    .result-module-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.375rem;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .result-description {
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      max-width: 58ch;
+    }
+
+    .result-cta {
+      display: inline-flex;
+      align-items: center;
+      min-height: 52px;
+      padding: 0 1.75rem;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+    }
+
+    .result-cta:hover {
+      background: #142554;
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .result-cta:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 2px;
+    }
+
+    .result-secondary-heading {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .result-secondary-card {
+      display: block;
+      background: var(--card-bg);
+      border-radius: 12px;
+      border-left: 4px solid var(--teal);
+      padding: 16px 20px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .result-secondary-card:hover { text-decoration: none; }
+
+    .result-secondary-card strong {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .result-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    .result-links a { color: var(--teal); }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Site navigation">
+      <a class="site-logo" href="index.html">MindSkin Connect</a>
+      <a class="nav-active" href="index.html" aria-current="page">Home</a>
+      <a href="all-modules.html">All modules</a>
+      <a href="clinician.html">For clinicians</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <div class="page-wrapper">
+
+      <div class="landing-hero">
+        <h1>MindSkin Connect</h1>
+        <p class="tagline" id="tagline" data-text="A guide to living well with eczema, from the University of Alberta dermatology team."></p>
+        <p class="audience-note">This platform is for adults and older teens managing their own eczema.
+        If you are a caregiver of a young child, please ask your child's
+        dermatologist for the caregiver materials.</p>
+      </div>
+
+      <!-- Quiz -->
+      <div class="quiz-card fade-in-card" id="quiz-container">
+
+        <div id="quiz-intro">
+          <p class="quiz-intro-title">Let's find the right starting point for you.</p>
+          <p class="quiz-intro-body">Answer 6 quick questions — there are no right or wrong answers.
+          We'll suggest the module that fits what you're dealing with right now.</p>
+          <p class="quiz-intro-small">You can always explore all five modules on your own — this is just a place to start.</p>
+          <a class="quiz-skip" href="all-modules.html">Skip — show me all modules</a>
+          <button class="quiz-btn-next" id="quiz-start-btn" style="display:block;margin:0 auto;">Start the quiz</button>
+        </div>
+
+        <div id="quiz-questions" style="display:none;">
+          <div class="quiz-progress" aria-hidden="true" id="quiz-progress"></div>
+
+          <!-- Q1 -->
+          <div class="quiz-step" data-step="0" id="step-0">
+            <p class="quiz-prompt-label">How much does this sound like you right now?</p>
+            <p class="quiz-question-text">"I find myself wondering why stress or emotions seem to make my eczema worse — I want to understand what's actually happening."</p>
+            <div class="scale-legend">
+              <span>1 = Not at all</span>
+              <span>3 = Somewhat</span>
+              <span>5 = Very much</span>
+            </div>
+            <div class="scale-options" role="radiogroup" aria-label="Question 1 rating">
+              <label><input type="radio" name="q1" value="1"><span class="scale-btn">1</span></label>
+              <label><input type="radio" name="q1" value="2"><span class="scale-btn">2</span></label>
+              <label><input type="radio" name="q1" value="3"><span class="scale-btn">3</span></label>
+              <label><input type="radio" name="q1" value="4"><span class="scale-btn">4</span></label>
+              <label><input type="radio" name="q1" value="5"><span class="scale-btn">5</span></label>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="quiz-step" data-step="1" id="step-1">
+            <p class="quiz-prompt-label">How much does this sound like you right now?</p>
+            <p class="quiz-question-text">"The urge to scratch feels automatic — especially at night, or when I'm tired or distracted."</p>
+            <div class="scale-legend">
+              <span>1 = Not at all</span>
+              <span>3 = Somewhat</span>
+              <span>5 = Very much</span>
+            </div>
+            <div class="scale-options" role="radiogroup" aria-label="Question 2 rating">
+              <label><input type="radio" name="q2" value="1"><span class="scale-btn">1</span></label>
+              <label><input type="radio" name="q2" value="2"><span class="scale-btn">2</span></label>
+              <label><input type="radio" name="q2" value="3"><span class="scale-btn">3</span></label>
+              <label><input type="radio" name="q2" value="4"><span class="scale-btn">4</span></label>
+              <label><input type="radio" name="q2" value="5"><span class="scale-btn">5</span></label>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="quiz-step" data-step="2" id="step-2">
+            <p class="quiz-prompt-label">How much does this sound like you right now?</p>
+            <p class="quiz-question-text">"I know what I should be doing to manage my eczema, but I struggle to stick to it — especially after a bad flare."</p>
+            <div class="scale-legend">
+              <span>1 = Not at all</span>
+              <span>3 = Somewhat</span>
+              <span>5 = Very much</span>
+            </div>
+            <div class="scale-options" role="radiogroup" aria-label="Question 3 rating">
+              <label><input type="radio" name="q3" value="1"><span class="scale-btn">1</span></label>
+              <label><input type="radio" name="q3" value="2"><span class="scale-btn">2</span></label>
+              <label><input type="radio" name="q3" value="3"><span class="scale-btn">3</span></label>
+              <label><input type="radio" name="q3" value="4"><span class="scale-btn">4</span></label>
+              <label><input type="radio" name="q3" value="5"><span class="scale-btn">5</span></label>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="quiz-step" data-step="3" id="step-3">
+            <p class="quiz-prompt-label">How much does this sound like you right now?</p>
+            <p class="quiz-question-text">"I don't talk much about how eczema affects me emotionally — even with people close to me, or my doctor."</p>
+            <div class="scale-legend">
+              <span>1 = Not at all</span>
+              <span>3 = Somewhat</span>
+              <span>5 = Very much</span>
+            </div>
+            <div class="scale-options" role="radiogroup" aria-label="Question 4 rating">
+              <label><input type="radio" name="q4" value="1"><span class="scale-btn">1</span></label>
+              <label><input type="radio" name="q4" value="2"><span class="scale-btn">2</span></label>
+              <label><input type="radio" name="q4" value="3"><span class="scale-btn">3</span></label>
+              <label><input type="radio" name="q4" value="4"><span class="scale-btn">4</span></label>
+              <label><input type="radio" name="q4" value="5"><span class="scale-btn">5</span></label>
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="quiz-step" data-step="4" id="step-4">
+            <p class="quiz-prompt-label">How much does this sound like you right now?</p>
+            <p class="quiz-question-text">"I feel like my lifestyle — sleep, diet, stress, exercise — isn't helping my skin, and I'm not sure where to start."</p>
+            <div class="scale-legend">
+              <span>1 = Not at all</span>
+              <span>3 = Somewhat</span>
+              <span>5 = Very much</span>
+            </div>
+            <div class="scale-options" role="radiogroup" aria-label="Question 5 rating">
+              <label><input type="radio" name="q5" value="1"><span class="scale-btn">1</span></label>
+              <label><input type="radio" name="q5" value="2"><span class="scale-btn">2</span></label>
+              <label><input type="radio" name="q5" value="3"><span class="scale-btn">3</span></label>
+              <label><input type="radio" name="q5" value="4"><span class="scale-btn">4</span></label>
+              <label><input type="radio" name="q5" value="5"><span class="scale-btn">5</span></label>
+            </div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="quiz-step" data-step="5" id="step-5">
+            <p class="quiz-prompt-label">One last question</p>
+            <p class="quiz-question-text">"How long have you been living with eczema?"</p>
+            <div class="radio-options" role="radiogroup" aria-label="Duration of eczema">
+              <label><input type="radio" name="q6" value="new"> Just diagnosed, or within the last year</label>
+              <label><input type="radio" name="q6" value="none"> 1–5 years</label>
+              <label><input type="radio" name="q6" value="long-term"> More than 5 years</label>
+            </div>
+          </div>
+
+          <div class="quiz-nav">
+            <button class="quiz-btn-back" id="quiz-back-btn" disabled>← Back</button>
+            <button class="quiz-btn-next" id="quiz-next-btn" disabled>Next</button>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div id="quiz-result">
+          <div id="result-nudge-box" class="result-nudge" style="display:none;"></div>
+          <span class="result-emoji" id="result-emoji" aria-hidden="true"></span>
+          <p class="result-primary-label">Your suggested starting point</p>
+          <p class="result-module-title" id="result-title"></p>
+          <p class="result-description" id="result-desc"></p>
+          <a class="result-cta" id="result-cta-link" href="#">Start →</a>
+          <p class="result-secondary-heading">You might also find this useful:</p>
+          <a class="result-secondary-card" id="result-secondary-link" href="#">
+            <strong id="result-secondary-title"></strong>
+            <span id="result-secondary-desc"></span>
+          </a>
+          <div class="result-links">
+            <a href="#" id="result-retake-link">Want to try again? Retake the quiz.</a>
+            <a href="all-modules.html">See all modules instead →</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>This site does not collect personal information.</p>
+    <p>Mind Skin Health for Atopic Dermatitis (MSHAD) © 2025 University of Alberta Division of Dermatology. Licensed CC BY-NC-ND 4.0.</p>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="all-modules.html">All modules</a>
+      <a href="clinician.html">For clinicians</a>
+      <a href="mailto:supportg@ualberta.ca">supportg@ualberta.ca</a>
+    </nav>
+  </footer>
+
+  <script>
+    (function () {
+      var MODULES = {
+        '1a': {
+          title: 'Understanding Your Skin-Mind Connection',
+          desc: 'It sounds like you’re looking for answers, not just tips. This module explains the science in plain language and helps you see your skin and your stress as connected.',
+          url: 'module-1a.html',
+          cta: 'Start Module 1a →'
+        },
+        '2': {
+          title: 'Breaking the Itch-Scratch Cycle',
+          desc: 'The itch-scratch cycle is one of the hardest parts of eczema to break — and one of the most treatable. This module gives you practical tools you can try tonight.',
+          url: 'module-2.html',
+          cta: 'Start Module 2 →'
+        },
+        '3a': {
+          title: 'Building Your Self-Management Skills & Confidence',
+          desc: 'Managing eczema long-term isn’t about willpower — it’s about having the right structure. This module helps you build habits that survive bad weeks.',
+          url: 'module-3a.html',
+          cta: 'Start Module 3a →'
+        },
+        '4': {
+          title: 'Building a Support Network',
+          desc: 'You don’t have to carry this alone. This module is for people who are ready to let someone in — or who just need to know it’s okay to ask for help.',
+          url: 'module-4.html',
+          cta: 'Start Module 4 →'
+        },
+        '5': {
+          title: 'Holistic Skin Care and Wellness',
+          desc: 'Treating the skin is one piece of the puzzle. This module helps you look at the bigger picture — and find the parts of your lifestyle that are working against you.',
+          url: 'module-5.html',
+          cta: 'Start Module 5 →'
+        }
+      };
+
+      var MODULE_ACCENTS = {
+        '1a': '#C2607A', '2': '#2E7D5E', '3a': '#6B4FA0', '4': '#3A7D8C', '5': '#C27C2E'
+      };
+
+      var MODULE_EMOJIS = {
+        '1a': '🌱', '2': '🌙', '3a': '⭐', '4': '🤝', '5': '🌿'
+      };
+
+      var ORDER      = ['1a', '2', '3a', '4', '5'];
+      var SLIDE_MS   = 350;
+      var MOTION_OK  = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+
+      var currentStep = 0;
+      var prevStep    = -1;
+      var totalSteps  = 6;
+      var answers     = {};
+
+      var introEl    = document.getElementById('quiz-intro');
+      var questionsEl = document.getElementById('quiz-questions');
+      var resultEl   = document.getElementById('quiz-result');
+      var startBtn   = document.getElementById('quiz-start-btn');
+      var nextBtn    = document.getElementById('quiz-next-btn');
+      var backBtn    = document.getElementById('quiz-back-btn');
+      var progressEl = document.getElementById('quiz-progress');
+      var retakeLink = document.getElementById('result-retake-link');
+
+      /* ── Progress dots ──────────────────────────────── */
+      function buildProgress() {
+        progressEl.innerHTML = '';
+        for (var i = 0; i < totalSteps; i++) {
+          var dot = document.createElement('div');
+          dot.className = 'quiz-progress-dot' +
+            (i < currentStep ? ' done' : (i === currentStep ? ' active' : ''));
+          progressEl.appendChild(dot);
+        }
+      }
+
+      /* ── Step helpers ───────────────────────────────── */
+      function getStepEl(step) {
+        return document.getElementById('step-' + step);
+      }
+
+      function activateStepNow(step) {
+        for (var i = 0; i < totalSteps; i++) {
+          var el = getStepEl(i);
+          if (el) el.classList.toggle('active', i === step);
+        }
+      }
+
+      function clearSlideClasses(el) {
+        el.classList.remove('slide-in-right', 'slide-in-left', 'slide-out-left', 'slide-out-right');
+      }
+
+      /* ── Show step (with optional slide animation) ── */
+      function showStep(step) {
+        var oldStep = prevStep;
+        prevStep = step;
+
+        if (MOTION_OK && oldStep >= 0) {
+          var fwd    = step > oldStep;
+          var outCls = fwd ? 'slide-out-left'  : 'slide-out-right';
+          var inCls  = fwd ? 'slide-in-right'  : 'slide-in-left';
+          var oldEl  = getStepEl(oldStep);
+
+          if (oldEl) {
+            clearSlideClasses(oldEl);
+            oldEl.classList.add(outCls);
+
+            setTimeout(function () {
+              for (var i = 0; i < totalSteps; i++) {
+                var el = getStepEl(i);
+                if (!el) continue;
+                el.classList.remove('active');
+                clearSlideClasses(el);
+                if (i === step) {
+                  el.classList.add('active', inCls);
+                }
+              }
+              setTimeout(function () {
+                var ne = getStepEl(step);
+                if (ne) ne.classList.remove(inCls);
+              }, SLIDE_MS);
+            }, SLIDE_MS);
+          } else {
+            activateStepNow(step);
+          }
+        } else {
+          activateStepNow(step);
+        }
+
+        buildProgress();
+        backBtn.disabled = step === 0;
+        updateNextBtn();
+      }
+
+      function getAnswer(step) {
+        var name    = step < 5 ? 'q' + (step + 1) : 'q6';
+        var checked = document.querySelector('input[name="' + name + '"]:checked');
+        return checked ? checked.value : null;
+      }
+
+      function updateNextBtn() {
+        var ans = getAnswer(currentStep);
+        nextBtn.disabled = !ans;
+        nextBtn.textContent = currentStep === totalSteps - 1 ? 'See my result' : 'Next';
+      }
+
+      /* ── Emoji ──────────────────────────────────────── */
+      function showEmoji(key) {
+        var el = document.getElementById('result-emoji');
+        if (!el) return;
+        el.textContent = MODULE_EMOJIS[key] || '💛';
+        if (MOTION_OK) {
+          el.classList.remove('pop');
+          void el.offsetWidth;
+          el.classList.add('pop');
+        }
+      }
+
+      /* ── Confetti ───────────────────────────────────── */
+      function fireConfetti(accentColor) {
+        if (!MOTION_OK) return;
+        var palette = [accentColor, '#FFFFFF', '#2BBFAA'];
+        for (var i = 0; i < 60; i++) {
+          (function () {
+            var el       = document.createElement('div');
+            var size     = 6 + Math.random() * 6;
+            var color    = palette[Math.floor(Math.random() * palette.length)];
+            var delay    = Math.random() * 0.5;
+            var dur      = 1.5 + Math.random() * 1;
+            var rotation = Math.random() * 360;
+            var round    = Math.random() > 0.5;
+            el.setAttribute('aria-hidden', 'true');
+            el.style.cssText = [
+              'position:fixed',
+              'top:-12px',
+              'left:' + (Math.random() * 100) + 'vw',
+              'width:' + size + 'px',
+              'height:' + size + 'px',
+              'background:' + color,
+              'border-radius:' + (round ? '50%' : '2px'),
+              'transform:rotate(' + rotation + 'deg)',
+              'pointer-events:none',
+              'z-index:9999',
+              'animation:confetti-fall ' + dur + 's ' + delay + 's ease-in forwards'
+            ].join(';');
+            document.body.appendChild(el);
+            setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); },
+              (dur + delay) * 1000 + 100);
+          })();
+        }
+      }
+
+      /* ── Event listeners ────────────────────────────── */
+      questionsEl.addEventListener('change', function (e) {
+        if (e.target.type === 'radio') {
+          answers[e.target.name] = e.target.value;
+          updateNextBtn();
+        }
+      });
+
+      /* Ripple on scale button click */
+      questionsEl.addEventListener('click', function (e) {
+        if (!MOTION_OK) return;
+        var btn = e.target.closest ? e.target.closest('.scale-btn') : null;
+        if (!btn) return;
+        var existing = btn.querySelector('.scale-ripple');
+        if (existing) existing.parentNode.removeChild(existing);
+        var rect   = btn.getBoundingClientRect();
+        var s      = Math.max(btn.offsetWidth, btn.offsetHeight);
+        var ripple = document.createElement('span');
+        ripple.className = 'scale-ripple';
+        ripple.style.cssText = [
+          'width:' + s + 'px',
+          'height:' + s + 'px',
+          'left:' + (e.clientX - rect.left - s / 2) + 'px',
+          'top:' + (e.clientY - rect.top  - s / 2) + 'px'
+        ].join(';');
+        btn.appendChild(ripple);
+        setTimeout(function () { if (ripple.parentNode) ripple.parentNode.removeChild(ripple); }, 500);
+      });
+
+      startBtn.addEventListener('click', function () {
+        introEl.style.display = 'none';
+        questionsEl.style.display = 'block';
+        currentStep = 0;
+        showStep(currentStep);
+      });
+
+      nextBtn.addEventListener('click', function () {
+        if (nextBtn.disabled) return;
+        if (currentStep < totalSteps - 1) {
+          currentStep++;
+          showStep(currentStep);
+        } else {
+          showResult();
+        }
+      });
+
+      backBtn.addEventListener('click', function () {
+        if (currentStep > 0) {
+          currentStep--;
+          showStep(currentStep);
+        }
+      });
+
+      retakeLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        resetQuiz();
+      });
+
+      function resetQuiz() {
+        answers     = {};
+        currentStep = 0;
+        prevStep    = -1;
+        document.querySelectorAll('#quiz-questions input[type="radio"]').forEach(function (r) {
+          r.checked = false;
+        });
+        resultEl.style.display    = 'none';
+        questionsEl.style.display = 'none';
+        introEl.style.display     = 'block';
+      }
+
+      /* ── Routing logic (unchanged) ──────────────────── */
+      function showResult() {
+        questionsEl.style.display = 'none';
+
+        var scores = {
+          '1a': parseInt(answers.q1 || 0, 10),
+          '2':  parseInt(answers.q2 || 0, 10),
+          '3a': parseInt(answers.q3 || 0, 10),
+          '4':  parseInt(answers.q4 || 0, 10),
+          '5':  parseInt(answers.q5 || 0, 10)
+        };
+
+        var q6flag = answers.q6 || 'none';
+
+        var maxScore = 0;
+        ORDER.forEach(function (k) { if (scores[k] > maxScore) maxScore = scores[k]; });
+
+        var allEqual = ORDER.every(function (k) { return scores[k] === scores['1a']; });
+
+        if (allEqual) { showNeutralResult(); return; }
+
+        var topModules = ORDER.filter(function (k) { return scores[k] === maxScore; });
+        var primary    = topModules[0];
+        var secondary;
+
+        if (topModules.length > 1) {
+          secondary = topModules[1];
+        } else {
+          var rest      = ORDER.filter(function (k) { return k !== primary; });
+          var secondMax = 0;
+          rest.forEach(function (k) { if (scores[k] > secondMax) secondMax = scores[k]; });
+          secondary = rest.filter(function (k) { return scores[k] === secondMax; })[0];
+        }
+
+        var nudgeText = null;
+        if (q6flag === 'new') {
+          nudgeText = 'Since you’re newer to managing eczema, Module 1a is a good foundation — even if something else feels more urgent right now.';
+        }
+        if (q6flag === 'long-term' && primary === '1a') {
+          nudgeText = 'Even if you’ve had eczema for years, this one surprises people.';
+        }
+
+        renderResult(primary, secondary, nudgeText);
+      }
+
+      function showNeutralResult() {
+        document.getElementById('result-nudge-box').style.display = 'none';
+        document.getElementById('result-title').textContent = '';
+        document.querySelector('.result-primary-label').textContent = '';
+        document.getElementById('result-desc').textContent =
+          'It looks like everything feels relevant right now — or you’re not sure where to start. That’s completely okay. We suggest working through the modules in order, starting with Module 1a. It’s the foundation the others build on.';
+        var ctaLink = document.getElementById('result-cta-link');
+        ctaLink.textContent = 'Start with Module 1a →';
+        ctaLink.href = 'module-1a.html';
+        document.querySelector('.result-secondary-heading').style.display = 'none';
+        document.getElementById('result-secondary-link').style.display   = 'none';
+
+        showEmoji('neutral');
+        hideBar();
+        fireConfetti('#2BBFAA');
+        resultEl.style.display = 'block';
+      }
+
+      function renderResult(primaryKey, secondaryKey, nudgeText) {
+        var nudgeBox = document.getElementById('result-nudge-box');
+        nudgeBox.style.display = nudgeText ? 'block' : 'none';
+        if (nudgeText) nudgeBox.textContent = nudgeText;
+
+        document.querySelector('.result-primary-label').textContent = 'Your suggested starting point';
+
+        var mod = MODULES[primaryKey];
+        document.getElementById('result-title').textContent = mod.title;
+        document.getElementById('result-desc').textContent  = mod.desc;
+
+        var ctaLink = document.getElementById('result-cta-link');
+        ctaLink.textContent = mod.cta;
+        ctaLink.href        = mod.url;
+
+        document.querySelector('.result-secondary-heading').style.display = '';
+        var secLink = document.getElementById('result-secondary-link');
+        secLink.style.display = '';
+
+        var secMod = MODULES[secondaryKey] || MODULES['1a'];
+        document.getElementById('result-secondary-title').textContent = secMod.title;
+        document.getElementById('result-secondary-desc').textContent  = secMod.desc;
+        secLink.href = secMod.url;
+
+        showEmoji(primaryKey);
+        hideBar();
+        fireConfetti(MODULE_ACCENTS[primaryKey] || '#2BBFAA');
+        resultEl.style.display = 'block';
+      }
+
+    })();
+  </script>
+
+  <!-- Typewriter tagline -->
+  <script>
+    (function () {
+      var el = document.getElementById('tagline');
+      if (!el) return;
+      var text = el.getAttribute('data-text') || '';
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        el.textContent = text;
+        return;
+      }
+      var cursor = document.createElement('span');
+      cursor.className = 'tagline-cursor';
+      cursor.textContent = '|';
+      cursor.setAttribute('aria-hidden', 'true');
+      el.appendChild(cursor);
+      var i = 0;
+      function typeNext() {
+        if (i < text.length) {
+          el.insertBefore(document.createTextNode(text[i++]), cursor);
+          setTimeout(typeNext, 35);
+        } else {
+          if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
+        }
+      }
+      setTimeout(typeNext, 250);
+    })();
+  </script>
+
+  <!-- Scroll fade-in (IntersectionObserver) -->
+  <script>
+    (function () {
+      var cards = document.querySelectorAll('.fade-in-card');
+      if (!cards.length) return;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      cards.forEach(function (card) { observer.observe(card); });
+    })();
+  </script>
+
+</body>
+</html>

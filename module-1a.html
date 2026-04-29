@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Understanding Your Skin-Mind Connection — MindSkin Connect</title>
+  <meta name="description" content="Learn how stress and emotions affect eczema, and how your dermatologist can help with both your skin and your wellbeing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.svg">
+  <style>
+    .gw-card {
+      background: #FAF8F4;
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 680px;
+      margin: 40px auto;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    }
+    .gw-intro {
+      font-family: 'Poppins', sans-serif;
+      color: #2D2D2D;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .gw-section-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      margin-bottom: 20px;
+    }
+    .gw-option {
+      display: block;
+      border-radius: 16px;
+      padding: 28px 32px;
+      text-decoration: none;
+      transition: filter 0.2s, background 0.2s;
+    }
+    .gw-option--read {
+      background: #C2607A;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .gw-option--read:hover { filter: brightness(1.08); }
+    .gw-option-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .gw-option-title {
+      font-family: 'Lilita One', serif;
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 1.2;
+    }
+    .gw-option-arrow {
+      font-family: 'Lilita One', serif;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .gw-option--read .gw-option-title,
+    .gw-option--read .gw-option-arrow { color: #fff; }
+    .gw-option-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+    .gw-option--read .gw-option-desc { color: rgba(255,255,255,0.9); }
+
+    /* Watch toggle card */
+    .watch-card {
+      display: block;
+      background: #fff;
+      border: 2px solid #e8d0d6;
+      border-radius: 16px;
+      padding: 28px 32px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .watch-card:hover { background: #fdf0f2; }
+    .watch-card.open { border-color: #C2607A; }
+    .watch-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .watch-label {
+      font-family: 'Lilita One', serif;
+      color: #C2607A;
+      font-size: 1.4rem;
+    }
+    .watch-arrow {
+      color: #C2607A;
+      font-size: 1.4rem;
+      transition: transform 0.3s ease;
+      line-height: 1;
+    }
+    .watch-card.open .watch-arrow { transform: rotate(90deg); }
+    .watch-desc {
+      font-family: 'Poppins', sans-serif;
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+    .watch-embed { margin-top: 24px; }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .video-fallback {
+      font-size: 0.8rem;
+      color: #999;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      .gw-card { padding: 24px; }
+      .gw-option { padding: 22px 24px; }
+      .watch-card { padding: 22px 24px; }
+    }
+  </style>
+</head>
+<body style="--accent: #C2607A; --accent-light: #e8a0b0; --accent-dark: #8a3a52">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Site navigation">
+      <a class="site-logo" href="index.html">MindSkin Connect</a>
+      <a href="index.html">Home</a>
+      <a href="all-modules.html">All modules</a>
+      <a href="clinician.html">For clinicians</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <div class="page-wrapper">
+
+      <article>
+
+        <div class="hero-banner">
+          <a class="hero-back-btn" href="all-modules.html" aria-label="Back to all modules">←</a>
+          <h1 class="page-heading">Understanding Your Skin-Mind Connection</h1>
+        </div>
+
+        <div class="gw-card">
+
+          <p class="gw-intro">Eczema is more than a skin condition. Stress and emotions can make symptoms worse, and eczema can affect how you feel day to day — your sleep, your mood, and how you show up at work or with people you care about. This module explores that connection.</p>
+
+          <p class="gw-section-label">How would you like to learn?</p>
+
+          <a class="gw-option gw-option--read" href="module-1a-read.html">
+            <div class="gw-option-top">
+              <strong class="gw-option-title">📖 Read this module</strong>
+              <span class="gw-option-arrow">→</span>
+            </div>
+            <p class="gw-option-desc">Work through the module as a scrollable experience — with illustrations, expanded explanations, and five interactive quiz questions. Takes about 10–15 minutes.</p>
+          </a>
+
+          <div class="watch-card" id="watch-toggle" role="button" tabindex="0" aria-expanded="false" aria-controls="watch-embed">
+            <div class="watch-card-header">
+              <span class="watch-label">▶ Watch the video</span>
+              <span class="watch-arrow" aria-hidden="true">→</span>
+            </div>
+            <p class="watch-desc">Prefer to watch? The module video covers the same content. Available on YouTube.</p>
+            <div class="watch-embed" id="watch-embed" hidden>
+              <div class="video-wrapper">
+                <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" loading="lazy" title="Understanding Your Skin-Mind Connection video" frameborder="0" allowfullscreen></iframe>
+              </div>
+              <p class="video-fallback">Video having trouble loading? You can also watch this module directly on YouTube.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>This site does not collect personal information.</p>
+    <p>Mind Skin Health for Atopic Dermatitis (MSHAD) © 2025 University of Alberta Division of Dermatology. Licensed CC BY-NC-ND 4.0.</p>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="all-modules.html">All modules</a>
+      <a href="clinician.html">For clinicians</a>
+      <a href="mailto:supportg@ualberta.ca">supportg@ualberta.ca</a>
+    </nav>
+  </footer>
+
+  <script>
+    var watchToggle = document.getElementById('watch-toggle');
+    var watchEmbed = document.getElementById('watch-embed');
+    function toggleWatch() {
+      var isOpen = watchToggle.classList.toggle('open');
+      watchEmbed.hidden = !isOpen;
+      watchToggle.setAttribute('aria-expanded', isOpen);
+    }
+    watchToggle.addEventListener('click', toggleWatch);
+    watchToggle.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleWatch(); }
+    });
+  </script>
+</body>
+</html>
