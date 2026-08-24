@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quick Stress Relievers — MindSkin Connect</title>
+  <meta name="description" content="Three short stress-relief techniques you can use anywhere — mindful breathing, body scan, and sensory grounding.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.svg">
+  <style>
+    /* ── Stress-relievers page styles ─────────────────── */
+
+    /* Technique card header: badge + title + time */
+    .sr-card-head {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+    .sr-badge {
+      flex: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Lilita One', cursive;
+      font-size: 1.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .sr-title-block { min-width: 0; }
+    .sr-time {
+      display: block;
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 2px;
+    }
+
+    /* Subheadings inside technique cards (How / When) */
+    .sr-h3 {
+      font-weight: 600;
+      font-size: 0.8125rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin: 20px 0 6px;
+    }
+    .sr-h3:first-of-type { margin-top: 0; }
+
+    /* "When to use" inset box */
+    .sr-when {
+      margin-top: 18px;
+      background: var(--accent-tint);
+      border-radius: var(--radius-xl);
+      padding: 16px 18px;
+    }
+    .sr-when .sr-h3 { margin-top: 0; }
+
+    /* ── Timer ─────────────────────────────────────────── */
+    .sr-timer {
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px solid var(--hairline);
+    }
+    .sr-presets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .sr-preset {
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: var(--radius-pill);
+      border: 2px solid var(--accent);
+      background: #fff;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      cursor: pointer;
+    }
+    .sr-preset[aria-pressed="true"] {
+      background: var(--accent);
+      color: #fff;
+    }
+    .sr-timer-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .sr-start {
+      flex: none;
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      cursor: pointer;
+    }
+    .sr-readout {
+      font-family: 'Lilita One', cursive;
+      font-size: 2.5rem;
+      line-height: 1;
+      color: var(--navy);
+      font-variant-numeric: tabular-nums;
+    }
+    .sr-timer-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .sr-start { transition: filter 0.15s ease; }
+      .sr-start:hover { filter: brightness(1.08); }
+    }
+
+    /* ── 5-4-3-2-1 grounding list ──────────────────────── */
+    .sr-ground {
+      list-style: none;
+      margin: 18px 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .sr-ground button {
+      width: 100%;
+      min-height: 52px;
+      text-align: left;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      padding: 10px 16px;
+      border-radius: var(--radius-xl);
+      border: 2px solid var(--accent);
+      background: #fff;
+      cursor: pointer;
+      font-size: 1.0625rem;
+      line-height: 1.4;
+    }
+    .sr-ground .gn {
+      font-family: 'Lilita One', cursive;
+      font-size: 1.25rem;
+      color: var(--accent);
+      min-width: 1.2em;
+      flex: none;
+    }
+    .sr-ground button[aria-pressed="true"] {
+      opacity: 0.4;
+      text-decoration: line-through;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .sr-ground button { transition: opacity 0.2s ease; }
+    }
+
+    /* ── Closing card ──────────────────────────────────── */
+    .sr-closing {
+      background: var(--navy);
+      color: #fff;
+      border-radius: var(--radius-2xl);
+      padding: 26px 24px;
+      text-align: center;
+      font-family: 'Lilita One', cursive;
+      font-size: 1.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      line-height: 1.25;
+      margin-top: 28px;
+    }
+
+    /* ── Print ─────────────────────────────────────────── */
+    @media print {
+      .sr-timer, .sr-timer-actions, .no-print { display: none !important; }
+      .sr-badge { background: #fff; color: #000; border: 1.5pt solid #000; }
+      .sr-time, .sr-h3 { color: #000; }
+      .sr-when { background: #fff; border: 0.75pt solid #666; }
+      .sr-ground button {
+        border: 0.75pt solid #000;
+        min-height: 0;
+        padding: 4pt 8pt;
+        font-size: 11pt;
+      }
+      .sr-ground .gn { color: #000; }
+      .sr-closing {
+        background: #fff;
+        color: #000;
+        border: 1.5pt solid #000;
+        padding: 10pt;
+        font-size: 14pt;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body style="--accent: #5B4E8C; --accent-tint: #EFEDF6">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Site navigation">
+      <a class="site-logo" href="index.html">MindSkin Connect</a>
+      <a href="index.html">Home</a>
+      <a href="all-modules.html">All modules</a>
+      <a href="clinician.html">For clinicians</a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <div class="handout-hero">
+      <div class="wrap">
+        <a class="back-to-module" href="module-5.html"><span aria-hidden="true">←</span> Back to Module 5</a>
+        <h1>Quick Stress Relievers</h1>
+        <p class="handout-subtitle">Short bursts of calm still count. Try these anywhere.</p>
+      </div>
+    </div>
+
+    <div class="wrap handout-toolbar no-print">
+      <button class="btn" type="button" onclick="window.print()">Print this page</button>
+    </div>
+
+    <div class="page-wrapper">
+
+      <!-- Technique 1 — Mindful Breathing -->
+      <section class="handout-card" aria-labelledby="t1-heading">
+        <div class="sr-card-head">
+          <span class="sr-badge" aria-hidden="true">1</span>
+          <div class="sr-title-block">
+            <h2 class="handout-h2" id="t1-heading">Mindful Breathing</h2>
+            <span class="sr-time">1–5 minutes</span>
+          </div>
+        </div>
+        <h3 class="sr-h3">How</h3>
+        <p>Focus on your breath. Notice the air entering and leaving your body. If your mind wanders, gently bring it back.</p>
+        <div class="sr-when">
+          <h3 class="sr-h3">When</h3>
+          <p>During a work or study break, waiting in line, before a stressful meeting, or when you feel itch escalating.</p>
+        </div>
+        <div class="sr-timer no-print" data-timer>
+          <div class="sr-presets" role="group" aria-label="Timer length for mindful breathing">
+            <button class="sr-preset" type="button" data-min="1" aria-pressed="false">1 min</button>
+            <button class="sr-preset" type="button" data-min="3" aria-pressed="true">3 min</button>
+            <button class="sr-preset" type="button" data-min="5" aria-pressed="false">5 min</button>
+          </div>
+          <div class="sr-timer-row">
+            <button class="sr-start" type="button" data-start aria-label="Start mindful breathing timer">Start</button>
+            <span class="sr-readout" data-readout aria-live="polite">3:00</span>
+            <div class="sr-timer-actions">
+              <button class="btn-mini" type="button" data-pause>Pause</button>
+              <button class="btn-mini" type="button" data-reset>Reset</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technique 2 — Quick Body Scan -->
+      <section class="handout-card" aria-labelledby="t2-heading">
+        <div class="sr-card-head">
+          <span class="sr-badge" aria-hidden="true">2</span>
+          <div class="sr-title-block">
+            <h2 class="handout-h2" id="t2-heading">Quick Body Scan</h2>
+            <span class="sr-time">2–5 minutes</span>
+          </div>
+        </div>
+        <h3 class="sr-h3">How</h3>
+        <p>Mentally scan your body from toes to head, noticing any tension without judgment. Consciously try to release it.</p>
+        <div class="sr-when">
+          <h3 class="sr-h3">When</h3>
+          <p>While commuting (if you're not driving), during a lunch break, before sleep.</p>
+        </div>
+        <div class="sr-timer no-print" data-timer>
+          <div class="sr-presets" role="group" aria-label="Timer length for body scan">
+            <button class="sr-preset" type="button" data-min="2" aria-pressed="true">2 min</button>
+            <button class="sr-preset" type="button" data-min="3" aria-pressed="false">3 min</button>
+            <button class="sr-preset" type="button" data-min="5" aria-pressed="false">5 min</button>
+          </div>
+          <div class="sr-timer-row">
+            <button class="sr-start" type="button" data-start aria-label="Start body scan timer">Start</button>
+            <span class="sr-readout" data-readout aria-live="polite">2:00</span>
+            <div class="sr-timer-actions">
+              <button class="btn-mini" type="button" data-pause>Pause</button>
+              <button class="btn-mini" type="button" data-reset>Reset</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technique 3 — 5-4-3-2-1 Grounding -->
+      <section class="handout-card" aria-labelledby="t3-heading">
+        <div class="sr-card-head">
+          <span class="sr-badge" aria-hidden="true">3</span>
+          <div class="sr-title-block">
+            <h2 class="handout-h2" id="t3-heading">Sensory Grounding — 5-4-3-2-1</h2>
+            <span class="sr-time">1–3 minutes</span>
+          </div>
+        </div>
+        <h3 class="sr-h3">How</h3>
+        <p>Engage your senses and name 5 things you can see, 4 things you can touch, 3 things you can hear, 2 things you can smell, and 1 thing you can taste (or one positive thought).</p>
+        <ul class="sr-ground" id="ground" aria-label="Grounding checklist — tap each item when done">
+          <li><button type="button" aria-pressed="false"><span class="gn" aria-hidden="true">5</span> things you can see</button></li>
+          <li><button type="button" aria-pressed="false"><span class="gn" aria-hidden="true">4</span> things you can touch</button></li>
+          <li><button type="button" aria-pressed="false"><span class="gn" aria-hidden="true">3</span> things you can hear</button></li>
+          <li><button type="button" aria-pressed="false"><span class="gn" aria-hidden="true">2</span> things you can smell</button></li>
+          <li><button type="button" aria-pressed="false"><span class="gn" aria-hidden="true">1</span> thing you can taste, or one positive thought</button></li>
+        </ul>
+        <div class="sr-timer-actions no-print" style="margin-top: 14px;">
+          <button class="btn-mini" type="button" id="groundReset">Reset list</button>
+        </div>
+        <div class="sr-when">
+          <h3 class="sr-h3">When</h3>
+          <p>If you're feeling overwhelmed or anxious, to bring yourself back to the present moment.</p>
+        </div>
+        <div class="sr-timer no-print" data-timer>
+          <div class="sr-presets" role="group" aria-label="Timer length for sensory grounding">
+            <button class="sr-preset" type="button" data-min="1" aria-pressed="true">1 min</button>
+            <button class="sr-preset" type="button" data-min="2" aria-pressed="false">2 min</button>
+            <button class="sr-preset" type="button" data-min="3" aria-pressed="false">3 min</button>
+          </div>
+          <div class="sr-timer-row">
+            <button class="sr-start" type="button" data-start aria-label="Start grounding timer">Start</button>
+            <span class="sr-readout" data-readout aria-live="polite">1:00</span>
+            <div class="sr-timer-actions">
+              <button class="btn-mini" type="button" data-pause>Pause</button>
+              <button class="btn-mini" type="button" data-reset>Reset</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <p class="sr-closing">Pick one. Try it three times this week.</p>
+
+    </div><!-- /.page-wrapper -->
+
+  </main>
+
+  <footer class="site-footer">
+    <p>This site does not collect personal information.</p>
+    <p>Mind Skin Health for Atopic Dermatitis (MSHAD) © 2025 University of Alberta Division of Dermatology. Licensed CC BY-NC-ND 4.0.</p>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="all-modules.html">All modules</a>
+      <a href="clinician.html">For clinicians</a>
+      <a href="mailto:supportg@ualberta.ca">supportg@ualberta.ca</a>
+    </nav>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    // ── Countdown timers (one per [data-timer] block) ──
+    document.querySelectorAll('[data-timer]').forEach(function (root) {
+      var readout  = root.querySelector('[data-readout]');
+      var startBtn = root.querySelector('[data-start]');
+      var pauseBtn = root.querySelector('[data-pause]');
+      var resetBtn = root.querySelector('[data-reset]');
+      var presets  = Array.prototype.slice.call(root.querySelectorAll('.sr-preset'));
+
+      var activePreset = presets.find(function (p) {
+        return p.getAttribute('aria-pressed') === 'true';
+      }) || presets[0];
+      var minutes = Number(activePreset.dataset.min);
+      var left = minutes * 60;
+      var tick = null;
+
+      function fmt(s) {
+        return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+      }
+      function paint() { readout.textContent = fmt(left); }
+      function stop() {
+        clearInterval(tick);
+        tick = null;
+        startBtn.textContent = 'Start';
+      }
+      function run() {
+        if (tick) return;
+        startBtn.textContent = 'Running';
+        tick = setInterval(function () {
+          left--;
+          if (left <= 0) { left = 0; stop(); startBtn.textContent = 'Done ✓'; }
+          paint();
+        }, 1000);
+      }
+
+      presets.forEach(function (p) {
+        p.addEventListener('click', function () {
+          presets.forEach(function (o) {
+            o.setAttribute('aria-pressed', String(o === p));
+          });
+          minutes = Number(p.dataset.min);
+          stop();
+          left = minutes * 60;
+          paint();
+        });
+      });
+
+      startBtn.addEventListener('click', run);
+      pauseBtn.addEventListener('click', stop);
+      resetBtn.addEventListener('click', function () {
+        stop();
+        left = minutes * 60;
+        paint();
+      });
+
+      paint();
+    });
+
+    // ── 5-4-3-2-1 grounding list ───────────────────────
+    var ground = document.getElementById('ground');
+    ground.addEventListener('click', function (e) {
+      var btn = e.target.closest('button');
+      if (!btn) return;
+      var pressed = btn.getAttribute('aria-pressed') === 'true';
+      btn.setAttribute('aria-pressed', String(!pressed));
+    });
+    document.getElementById('groundReset').addEventListener('click', function () {
+      ground.querySelectorAll('button').forEach(function (b) {
+        b.setAttribute('aria-pressed', 'false');
+      });
+    });
+
+  })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My SMART Skin Goal — MindSkin Connect</title>
+  <meta name="description" content="A fillable SMART goal worksheet for building small, specific eczema self-management habits.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.svg">
+  <style>
+    /* ── SMART Goal page-specific styles ───────────────────── */
+
+    /* Each SMART row */
+    .smart-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    @media (min-width: 480px) {
+      .smart-row {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 18px;
+        align-items: start;
+      }
+    }
+
+    .smart-label {
+      font-family: 'Lilita One', cursive;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      color: var(--accent);
+      line-height: 1.15;
+      padding-top: 2px;
+    }
+    .smart-first {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .smart-prompt {
+      font-style: italic;
+      font-size: 1rem;
+      color: #5C5C5C;
+      margin: 0 0 3px;
+    }
+    .smart-eg {
+      font-style: italic;
+      font-size: .8125rem;
+      color: #8A8A8A;
+      margin: 0 0 10px;
+      max-width: 52ch;
+    }
+
+    .smart-ta {
+      display: block;
+      width: 100%;
+      border: none;
+      border-bottom: 2px solid #C4C0B8;
+      background: transparent;
+      resize: none;
+      font: inherit;
+      font-size: 1rem;
+      line-height: 1.65;
+      padding: 4px 0 2px;
+      color: #2D2D2D;
+      outline: none;
+      min-height: 2.4em;
+      overflow: hidden;
+    }
+    .smart-ta:focus {
+      border-bottom-color: var(--accent);
+    }
+    .smart-ta:focus-visible {
+      outline: none;
+      border-bottom-color: var(--accent);
+    }
+
+    /* Summary card (teal background) */
+    .smart-summary {
+      background: var(--teal) !important;
+      color: #0F2A44;
+      margin-top: 28px;
+      border-radius: var(--radius-2xl);
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    @media (min-width: 768px) {
+      .smart-summary { padding: 24px 32px; }
+    }
+    .smart-summary-label {
+      font-family: 'Lilita One', cursive;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      color: var(--navy);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .smart-summary-ta {
+      display: block;
+      width: 100%;
+      border: none;
+      border-bottom: 1.5px solid rgba(27,48,104,.55);
+      background: transparent;
+      resize: none;
+      font: inherit;
+      font-size: 1rem;
+      line-height: 1.65;
+      padding: 4px 0 2px;
+      color: #0F2A44;
+      outline: none;
+      min-height: 2em;
+      overflow: hidden;
+    }
+    .smart-summary-ta:focus {
+      outline: 2px solid rgba(27,48,104,.45);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    .smart-date-input {
+      display: block;
+      border: none;
+      border-bottom: 1.5px solid rgba(27,48,104,.55);
+      background: transparent;
+      font: inherit;
+      font-size: 1rem;
+      color: #0F2A44;
+      padding: 4px 0 2px;
+      min-height: 44px;
+      width: 100%;
+      max-width: 260px;
+      outline: none;
+    }
+    .smart-date-input:focus {
+      outline: 2px solid rgba(27,48,104,.45);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    /* Background decoration on summary card */
+    .smart-summary-inner {
+      position: relative;
+    }
+
+    /* Print styles */
+    @media print {
+      .smart-row {
+        display: grid;
+        grid-template-columns: 130px 1fr;
+        gap: 14px;
+        align-items: start;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      .smart-label { color: #000; font-size: 14pt; }
+      .smart-prompt { color: #3C3C3C; }
+      .smart-eg { color: #6E6E6E; }
+      .smart-ta {
+        border: none;
+        border-bottom: 1pt solid #B9B5AC;
+        background: transparent;
+        color: #000;
+        min-height: 0.72in;
+        resize: none;
+        font-size: 10.5pt;
+      }
+      .smart-summary {
+        background: #fff !important;
+        color: #000;
+        border: 1.5pt solid #000 !important;
+        box-shadow: none !important;
+      }
+      .smart-summary-label { color: #000; font-size: 12pt; }
+      .smart-summary-ta {
+        border-bottom: 1pt solid #5C5C5C;
+        color: #000;
+        min-height: 0.3in;
+        font-size: 10.5pt;
+      }
+      .smart-date-input {
+        border-bottom: 1pt solid #5C5C5C;
+        color: #000;
+        font-size: 10.5pt;
+        max-width: none;
+        -webkit-appearance: none;
+      }
+    }
+  </style>
+</head>
+<body style="--accent: #4A7C8C; --accent-tint: #E8F2F5">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Site navigation">
+      <a class="site-logo" href="index.html">MindSkin Connect</a>
+      <a href="index.html">Home</a>
+      <a href="all-modules.html">All modules</a>
+      <a href="clinician.html">For clinicians</a>
+    </nav>
+  </header>
+
+  <div class="handout-hero">
+    <div class="content-col">
+      <a class="back-to-module" href="module-3a.html"><span aria-hidden="true">←</span> Back to Module 3a</a>
+      <h1>My SMART Skin Goal</h1>
+      <p class="handout-subtitle">Small, specific goals work better than big ones. Fill this out for one thing you want to change.</p>
+    </div>
+  </div>
+
+  <main id="main">
+    <div class="page-wrapper">
+
+      <div class="handout-toolbar no-print">
+        <button class="btn" type="button" onclick="window.print()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 9V2h12v7"/><rect x="6" y="14" width="12" height="8" rx="1"/>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+          </svg>
+          Print this page
+        </button>
+      </div>
+
+      <form id="smartForm" aria-label="SMART goal worksheet" onsubmit="return false">
+
+        <!-- S — Specific -->
+        <div class="handout-card smart-row">
+          <div class="smart-label" aria-hidden="true">
+            <span class="smart-first">S</span>pecific
+          </div>
+          <div>
+            <p class="smart-prompt" id="label-s">What exactly will you do?</p>
+            <p class="smart-eg">e.g. "My goal is to moisturize my elbows twice a day"</p>
+            <textarea class="smart-ta" rows="2" aria-labelledby="label-s" placeholder="Write your answer here…" autocomplete="off"></textarea>
+          </div>
+        </div>
+
+        <!-- M — Measurable -->
+        <div class="handout-card smart-row" style="margin-top: 14px">
+          <div class="smart-label" aria-hidden="true">
+            <span class="smart-first">M</span>easurable
+          </div>
+          <div>
+            <p class="smart-prompt" id="label-m">How will you know you did it?</p>
+            <p class="smart-eg">e.g. "I will track this on my phone"</p>
+            <textarea class="smart-ta" rows="2" aria-labelledby="label-m" placeholder="Write your answer here…" autocomplete="off"></textarea>
+          </div>
+        </div>
+
+        <!-- A — Achievable -->
+        <div class="handout-card smart-row" style="margin-top: 14px">
+          <div class="smart-label" aria-hidden="true">
+            <span class="smart-first">A</span>chievable
+          </div>
+          <div>
+            <p class="smart-prompt" id="label-a">What will make this easy to keep up?</p>
+            <p class="smart-eg">e.g. "I will set two reminder alarms"</p>
+            <textarea class="smart-ta" rows="2" aria-labelledby="label-a" placeholder="Write your answer here…" autocomplete="off"></textarea>
+          </div>
+        </div>
+
+        <!-- R — Relevant -->
+        <div class="handout-card smart-row" style="margin-top: 14px">
+          <div class="smart-label" aria-hidden="true">
+            <span class="smart-first">R</span>elevant
+          </div>
+          <div>
+            <p class="smart-prompt" id="label-r">Why does this matter to you?</p>
+            <p class="smart-eg">e.g. "This will heal my skin and reduce itch"</p>
+            <textarea class="smart-ta" rows="2" aria-labelledby="label-r" placeholder="Write your answer here…" autocomplete="off"></textarea>
+          </div>
+        </div>
+
+        <!-- T — Time-bound -->
+        <div class="handout-card smart-row" style="margin-top: 14px">
+          <div class="smart-label" aria-hidden="true">
+            <span class="smart-first">T</span>ime-bound
+          </div>
+          <div>
+            <p class="smart-prompt" id="label-t">When will you start, and for how long?</p>
+            <p class="smart-eg">e.g. "I will do this daily for two weeks, then reassess"</p>
+            <textarea class="smart-ta" rows="2" aria-labelledby="label-t" placeholder="Write your answer here…" autocomplete="off"></textarea>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="smart-summary" role="group" aria-label="Goal summary">
+          <div>
+            <label class="smart-summary-label" for="goal-sentence">My goal, in one sentence:</label>
+            <textarea class="smart-summary-ta" id="goal-sentence" rows="2" placeholder="Write your goal here…" autocomplete="off"></textarea>
+          </div>
+          <div>
+            <label class="smart-summary-label" for="check-date">I will check my progress on (date):</label>
+            <input class="smart-date-input" type="date" id="check-date" autocomplete="off">
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>This site does not collect personal information.</p>
+    <p>Mind Skin Health for Atopic Dermatitis (MSHAD) © 2025 University of Alberta Division of Dermatology. Licensed CC BY-NC-ND 4.0.</p>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="all-modules.html">All modules</a>
+      <a href="clinician.html">For clinicians</a>
+      <a href="mailto:supportg@ualberta.ca">supportg@ualberta.ca</a>
+    </nav>
+  </footer>
+
+  <script>
+    /* Auto-expand textareas as user types */
+    document.querySelectorAll('.smart-ta, .smart-summary-ta').forEach(function (ta) {
+      ta.addEventListener('input', function () {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + 'px';
+      });
+    });
+  </script>
+
+</body>
+</html>

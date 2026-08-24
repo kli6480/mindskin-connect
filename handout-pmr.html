@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Progressive Muscle Relaxation (PMR) — MindSkin Connect</title>
+  <meta name="description" content="A step-by-step guide to progressive muscle relaxation — tense and release each muscle group in turn to reduce stress and ease tension.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.svg">
+  <style>
+    /* ── PMR animated session ─────────────────────────── */
+
+    .pmr-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    @media (min-width: 560px) {
+      .pmr-visual {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 28px;
+      }
+    }
+
+    /* Body map */
+    .pmr-body-wrap {
+      flex: none;
+      display: flex;
+      justify-content: center;
+    }
+    .pmr-body-svg {
+      width: 130px;
+      height: 260px;
+      overflow: visible;
+    }
+    @media (min-width: 560px) {
+      .pmr-body-svg { width: 150px; height: 300px; }
+    }
+    .body-outline {
+      fill: none;
+      stroke: var(--navy);
+      stroke-width: 4;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+    }
+    .body-fill {
+      fill: var(--card-bg);
+      stroke: none;
+    }
+    .body-divider {
+      fill: none;
+      stroke: var(--navy);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      opacity: 0.35;
+    }
+
+    /* Info column */
+    .pmr-info-col {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Status bar */
+    .pmr-status {
+      border-radius: 10px;
+      padding: 10px 16px;
+      color: #fff;
+      background-color: var(--navy);
+      transition: background-color 0.5s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .pmr-phase-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.82;
+    }
+    .pmr-group-label {
+      font-family: 'Lilita One', cursive;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    /* Ring */
+    .pmr-ring-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .pmr-ring-wrap {
+      position: relative;
+      flex: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pmr-ring-svg {
+      display: block;
+      width: 120px;
+      height: 120px;
+    }
+    .pmr-secs-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      pointer-events: none;
+      line-height: 1;
+    }
+    #secsNum {
+      display: block;
+      font-family: 'Lilita One', cursive;
+      font-size: 2rem;
+      color: var(--navy);
+    }
+    .pmr-secs-label {
+      display: block;
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* Instruction text */
+    .pmr-instr {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--text);
+      min-height: 2.8em;
+    }
+
+    /* Controls */
+    .pmr-buttons {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* Jump buttons */
+    .pmr-jumps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .pmr-jump {
+      min-width: 44px;
+      min-height: 44px;
+      border: 1.5px solid #d4cfe8;
+      border-radius: 8px;
+      background: #fff;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1px;
+      padding: 4px 7px;
+      transition: border-color 0.12s, background 0.12s;
+    }
+    .pmr-jump:hover { border-color: var(--accent); }
+    .pmr-jump.active {
+      border-color: var(--accent);
+      background: var(--accent-tint);
+    }
+    .pmr-jump .jn {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .pmr-jump .jl {
+      font-size: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .pmr-jump.active .jn,
+    .pmr-jump.active .jl { color: var(--accent); }
+
+    /* Audio placeholder */
+    .audio-slot {
+      margin-top: 20px;
+      border: 2px dashed #b9b3d0;
+      border-radius: var(--radius-xl);
+      padding: 16px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9375rem;
+    }
+
+    @media print { #session { display: none !important; } }
+  </style>
+</head>
+<body style="--accent: #5B4E8C; --accent-tint: #EFEDF6">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Site navigation">
+      <a class="site-logo" href="index.html">MindSkin Connect</a>
+      <a href="index.html">Home</a>
+      <a href="all-modules.html">All modules</a>
+      <a href="clinician.html">For clinicians</a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <div class="handout-hero">
+      <div class="wrap">
+        <a class="back-to-module" href="module-5.html"><span aria-hidden="true">←</span> Back to Module 5</a>
+        <h1>Progressive Muscle Relaxation (PMR)</h1>
+        <p class="handout-subtitle">Tense, then release — one muscle group at a time.</p>
+      </div>
+    </div>
+
+    <div class="wrap handout-toolbar no-print">
+      <button class="btn" type="button" onclick="window.print()">Print this page</button>
+    </div>
+
+    <div class="page-wrapper">
+
+      <!-- About -->
+      <section class="handout-card handout-card--navy" aria-label="About PMR">
+        <p>Progressive muscle relaxation is a technique where you systematically tense and then relax different muscle groups in your body. It helps you become more aware of physical tension and learn to release it. This can reduce overall stress and may ease muscle tension.</p>
+      </section>
+
+      <!-- How to do it -->
+      <section class="handout-card" aria-labelledby="how-heading">
+        <h2 class="handout-h2" id="how-heading">How to do it</h2>
+        <ol class="handout-steps">
+          <li>
+            <span class="handout-step-num" aria-hidden="true">1</span>
+            <p>Find a comfortable position, sitting or lying down.</p>
+          </li>
+          <li>
+            <span class="handout-step-num" aria-hidden="true">2</span>
+            <p>Start with your feet. Tense the muscles for 5–10 seconds, then release completely for 20–30 seconds, noticing the difference.</p>
+          </li>
+          <li>
+            <span class="handout-step-num" aria-hidden="true">3</span>
+            <p>Move up your body — calves, thighs, buttocks, abdomen, chest, arms, hands, shoulders, neck, face — tensing and relaxing each group.</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Guided session (animated, no-print) -->
+      <section class="handout-card no-print" id="session" aria-labelledby="guided-heading">
+        <h2 class="handout-h2" id="guided-heading">Guided session</h2>
+        <p>About 6 minutes. Tense for 5 seconds, release for 10. You can stop any time.</p>
+
+        <div class="pmr-visual">
+
+          <!-- ── Body map SVG ─────────────────────────────── -->
+          <div class="pmr-body-wrap">
+            <!--
+              viewBox 0 0 200 400.
+              Path data from assets/pmr-body-outline.svg.
+              The body outline path is used twice:
+                1. As a filled + stroked display shape (.body-fill / .body-outline)
+                2. As the #bodyClip clipPath so glow never bleeds outside the silhouette
+            -->
+            <svg class="pmr-body-svg" viewBox="0 0 200 400"
+                 role="img" aria-labelledby="bmap-title">
+              <title id="bmap-title">Body diagram showing the eleven PMR muscle groups from feet to face</title>
+
+              <defs>
+                <!-- Body silhouette clip -->
+                <clipPath id="bodyClip">
+                  <path d="M 100 20 C 120 20,130 35,130 55 C 130 70,120 80,115 85
+                           C 135 85,155 95,165 115 C 175 135,175 165,170 185
+                           C 168 195,152 195,150 185 C 145 160,145 135,140 120
+                           C 135 150,135 190,140 230 C 145 280,145 330,145 350
+                           C 145 365,120 365,120 350 C 120 310,115 260,100 250
+                           C 85 260,80 310,80 350 C 80 365,55 365,55 350
+                           C 55 330,55 280,60 230 C 65 190,65 150,60 120
+                           C 55 135,55 160,50 185 C 48 195,32 195,30 185
+                           C 25 165,25 135,35 115 C 45 95,65 85,85 85
+                           C 80 80,70 70,70 55 C 70 35,80 20,100 20 Z"/>
+                </clipPath>
+
+                <!-- Y-band clips — one per group (index matches GROUPS order) -->
+                <!-- 0 Feet -->
+                <clipPath id="band-0"><rect x="0" y="349" width="200" height="22"/></clipPath>
+                <!-- 1 Calves -->
+                <clipPath id="band-1"><rect x="0" y="289" width="200" height="62"/></clipPath>
+                <!-- 2 Thighs -->
+                <clipPath id="band-2"><rect x="0" y="242" width="200" height="49"/></clipPath>
+                <!-- 3 Buttocks -->
+                <clipPath id="band-3"><rect x="0" y="198" width="200" height="46"/></clipPath>
+                <!-- 4 Abdomen -->
+                <clipPath id="band-4"><rect x="0" y="138" width="200" height="62"/></clipPath>
+                <!-- 5 Chest -->
+                <clipPath id="band-5"><rect x="0" y="108" width="200" height="34"/></clipPath>
+                <!-- 6 Arms -->
+                <clipPath id="band-6"><rect x="0" y="103" width="200" height="74"/></clipPath>
+                <!-- 7 Hands -->
+                <clipPath id="band-7"><rect x="0" y="173" width="200" height="28"/></clipPath>
+                <!-- 8 Shoulders -->
+                <clipPath id="band-8"><rect x="0" y="84"  width="200" height="28"/></clipPath>
+                <!-- 9 Neck -->
+                <clipPath id="band-9"><rect x="0" y="67"  width="200" height="22"/></clipPath>
+                <!-- 10 Face -->
+                <clipPath id="band-10"><rect x="0" y="17" width="200" height="54"/></clipPath>
+
+                <!-- Glow gradients (radial, objectBoundingBox) -->
+                <radialGradient id="glowTense" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%"   stop-color="#9B8EC0" stop-opacity="1"/>
+                  <stop offset="55%"  stop-color="#5B4E8C" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="#3B2E7C" stop-opacity="0.55"/>
+                </radialGradient>
+                <radialGradient id="glowRelease" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%"   stop-color="#7FDED5" stop-opacity="1"/>
+                  <stop offset="55%"  stop-color="#2BBFAA" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="#1B8F7E" stop-opacity="0.55"/>
+                </radialGradient>
+
+                <!-- Soft spread behind glow ellipse -->
+                <filter id="glowBlur" x="-60%" y="-60%" width="220%" height="220%">
+                  <feGaussianBlur stdDeviation="9"/>
+                </filter>
+
+                <!-- Ring gradients (userSpaceOnUse, viewBox 0 0 120 120) -->
+                <linearGradient id="tensGrad" gradientUnits="userSpaceOnUse"
+                                x1="6" y1="60" x2="114" y2="60">
+                  <stop offset="0%"   stop-color="#9B8EC0"/>
+                  <stop offset="100%" stop-color="#4B3E8C"/>
+                </linearGradient>
+                <linearGradient id="relGrad" gradientUnits="userSpaceOnUse"
+                                x1="6" y1="60" x2="114" y2="60">
+                  <stop offset="0%"   stop-color="#5FDFCC"/>
+                  <stop offset="100%" stop-color="#1B9F8E"/>
+                </linearGradient>
+
+                <!-- Glow filter for ring -->
+                <filter id="ringGlow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="3" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+
+              <!-- Body fill (warm off-white) -->
+              <path class="body-fill" d="M 100 20 C 120 20,130 35,130 55 C 130 70,120 80,115 85
+                   C 135 85,155 95,165 115 C 175 135,175 165,170 185
+                   C 168 195,152 195,150 185 C 145 160,145 135,140 120
+                   C 135 150,135 190,140 230 C 145 280,145 330,145 350
+                   C 145 365,120 365,120 350 C 120 310,115 260,100 250
+                   C 85 260,80 310,80 350 C 80 365,55 365,55 350
+                   C 55 330,55 280,60 230 C 65 190,65 150,60 120
+                   C 55 135,55 160,50 185 C 48 195,32 195,30 185
+                   C 25 165,25 135,35 115 C 45 95,65 85,85 85
+                   C 80 80,70 70,70 55 C 70 35,80 20,100 20 Z"/>
+
+              <!-- Animated glow: clipped to body silhouette, then to group y-band -->
+              <g clip-path="url(#bodyClip)">
+                <g id="glowBand" clip-path="url(#band-0)">
+                  <!-- Blurred spread (behind) -->
+                  <ellipse id="glowBlurEl"
+                           cx="100" cy="358" rx="32" ry="10"
+                           fill="url(#glowTense)"
+                           opacity="0"
+                           filter="url(#glowBlur)"/>
+                  <!-- Main glow -->
+                  <ellipse id="glowEl"
+                           cx="100" cy="358" rx="32" ry="10"
+                           fill="url(#glowTense)"
+                           opacity="0"/>
+                </g>
+              </g>
+
+              <!-- Body outline (drawn on top so glow appears inside) -->
+              <path class="body-outline" d="M 100 20 C 120 20,130 35,130 55 C 130 70,120 80,115 85
+                   C 135 85,155 95,165 115 C 175 135,175 165,170 185
+                   C 168 195,152 195,150 185 C 145 160,145 135,140 120
+                   C 135 150,135 190,140 230 C 145 280,145 330,145 350
+                   C 145 365,120 365,120 350 C 120 310,115 260,100 250
+                   C 85 260,80 310,80 350 C 80 365,55 365,55 350
+                   C 55 330,55 280,60 230 C 65 190,65 150,60 120
+                   C 55 135,55 160,50 185 C 48 195,32 195,30 185
+                   C 25 165,25 135,35 115 C 45 95,65 85,85 85
+                   C 80 80,70 70,70 55 C 70 35,80 20,100 20 Z"/>
+
+              <!-- Segment dividers (solid navy, low opacity) -->
+              <g class="body-divider">
+                <path d="M 85 85 Q 100 95 115 85"/>
+                <path d="M 62 140 Q 100 150 138 140"/>
+                <path d="M 62 200 Q 100 210 138 200"/>
+                <line x1="65"  y1="95"  x2="40"  y2="105"/>
+                <line x1="135" y1="95"  x2="160" y2="105"/>
+                <line x1="33"  y1="140" x2="47"  y2="140"/>
+                <line x1="153" y1="140" x2="167" y2="140"/>
+                <line x1="28"  y1="175" x2="48"  y2="175"/>
+                <line x1="152" y1="175" x2="172" y2="175"/>
+                <line x1="60"  y1="230" x2="98"  y2="245"/>
+                <line x1="140" y1="230" x2="102" y2="245"/>
+                <line x1="58"  y1="290" x2="82"  y2="290"/>
+                <line x1="118" y1="290" x2="142" y2="290"/>
+                <line x1="55"  y1="350" x2="80"  y2="350"/>
+                <line x1="120" y1="350" x2="145" y2="350"/>
+              </g>
+            </svg>
+          </div><!-- .pmr-body-wrap -->
+
+          <!-- ── Info column ──────────────────────────────── -->
+          <div class="pmr-info-col">
+
+            <!-- Status bar -->
+            <div id="statusBar" class="pmr-status">
+              <span id="phaseLabel" class="pmr-phase-label">Ready</span>
+              <span id="groupLabel" class="pmr-group-label">Feet</span>
+            </div>
+
+            <!-- Ring + seconds -->
+            <div class="pmr-ring-row">
+              <div class="pmr-ring-wrap">
+                <svg class="pmr-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+                  <circle class="ring-track" cx="60" cy="60" r="54"
+                          fill="none" stroke="#e3dff0" stroke-width="10"/>
+                  <g transform="rotate(-90 60 60)">
+                    <circle id="ringGlowEl" cx="60" cy="60" r="54"
+                            fill="none" stroke="url(#tensGrad)" stroke-width="14"
+                            stroke-linecap="round"
+                            stroke-dasharray="339.3" stroke-dashoffset="339.3"
+                            opacity="0.4" filter="url(#ringGlow)"/>
+                    <circle id="ringEl" cx="60" cy="60" r="54"
+                            fill="none" stroke="url(#tensGrad)" stroke-width="10"
+                            stroke-linecap="round"
+                            stroke-dasharray="339.3" stroke-dashoffset="339.3"/>
+                  </g>
+                </svg>
+                <div class="pmr-secs-overlay">
+                  <span id="secsNum">5</span>
+                  <span class="pmr-secs-label">Seconds</span>
+                </div>
+              </div>
+
+              <!-- Instruction text beside ring on wider layouts -->
+              <p id="instrText" class="pmr-instr">Press <strong>Start</strong> to begin the session.</p>
+            </div>
+
+            <!-- Play/pause button -->
+            <div class="pmr-buttons">
+              <button id="playBtn" class="btn" type="button">&#9654; Start</button>
+            </div>
+
+            <!-- Jump buttons (generated by JS) -->
+            <div id="jumpContainer" class="pmr-jumps"
+                 role="group" aria-label="Jump to muscle group"></div>
+
+          </div><!-- .pmr-info-col -->
+
+        </div><!-- .pmr-visual -->
+
+        <!-- Audio placeholder -->
+        <div class="audio-slot">Guided PMR audio track — coming soon</div>
+
+      </section><!-- #session -->
+
+      <!-- Tips -->
+      <section class="handout-card handout-card--tint" aria-labelledby="tips-heading">
+        <h2 class="handout-h2" id="tips-heading">Tips</h2>
+        <ul class="handout-tips">
+          <li>Tense firmly, but never to the point of pain.</li>
+          <li>Breathe out as you release.</li>
+          <li>10–15 minutes is plenty. You don't have to do the whole body every time.</li>
+          <li>If a muscle group is sore or injured, skip it.</li>
+        </ul>
+      </section>
+
+    </div><!-- /.page-wrapper -->
+
+  </main>
+
+  <footer class="site-footer">
+    <p>This site does not collect personal information.</p>
+    <p>Mind Skin Health for Atopic Dermatitis (MSHAD) © 2025 University of Alberta Division of Dermatology. Licensed CC BY-NC-ND 4.0.</p>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="all-modules.html">All modules</a>
+      <a href="clinician.html">For clinicians</a>
+      <a href="mailto:supportg@ualberta.ca">supportg@ualberta.ca</a>
+    </nav>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var TENSE_DUR   = 5000;   // ms
+    var RELEASE_DUR = 10000;  // ms
+    var CIRC        = 339.3;  // 2π × 54
+
+    var GROUPS = [
+      { name: 'Feet',      cx: 100, cy: 358, rx: 32, ry: 10,
+        tense:   'Curl your toes downward, tight.',
+        release: 'Let your feet go loose and heavy.' },
+      { name: 'Calves',    cx: 100, cy: 320, rx: 30, ry: 27,
+        tense:   'Pull your toes up toward your shins, hard.',
+        release: 'Let your calves go soft and heavy.' },
+      { name: 'Thighs',    cx: 100, cy: 263, rx: 33, ry: 24,
+        tense:   'Press your thighs together firmly.',
+        release: 'Let your thighs drop and spread apart.' },
+      { name: 'Buttocks',  cx: 100, cy: 218, rx: 38, ry: 14,
+        tense:   'Clench your glutes as hard as you can.',
+        release: 'Release — let them go completely flat.' },
+      { name: 'Abdomen',   cx: 100, cy: 170, rx: 36, ry: 27,
+        tense:   'Draw your belly in tight to your spine.',
+        release: 'Let your belly soften and expand freely.' },
+      { name: 'Chest',     cx: 100, cy: 124, rx: 35, ry: 14,
+        tense:   'Take a deep breath and hold it in.',
+        release: 'Breathe out slowly — let your chest drop.' },
+      { name: 'Arms',      cx: 100, cy: 140, rx: 72, ry: 24,
+        tense:   'Straighten both arms and make tight fists.',
+        release: 'Drop your arms loose, open your hands wide.' },
+      { name: 'Hands',     cx: 100, cy: 186, rx: 76, ry: 12,
+        tense:   'Squeeze both hands into tight fists.',
+        release: 'Open your fingers wide, then let them rest.' },
+      { name: 'Shoulders', cx: 100, cy:  98, rx: 57, ry: 13,
+        tense:   'Shrug your shoulders up toward your ears.',
+        release: 'Drop your shoulders down and back.' },
+      { name: 'Neck',      cx: 100, cy:  78, rx: 15, ry:  9,
+        tense:   'Gently press your head back without straining.',
+        release: 'Let your neck go long and easy.' },
+      { name: 'Face',      cx: 100, cy:  48, rx: 26, ry: 30,
+        tense:   'Scrunch your face — eyes, nose, jaw, all of it.',
+        release: 'Let everything in your face go smooth.' }
+    ];
+
+    // ── DOM refs ───────────────────────────────────────────
+    var glowBand    = document.getElementById('glowBand');
+    var glowBlurEl  = document.getElementById('glowBlurEl');
+    var glowEl      = document.getElementById('glowEl');
+    var ringEl      = document.getElementById('ringEl');
+    var ringGlowEl  = document.getElementById('ringGlowEl');
+    var statusBar   = document.getElementById('statusBar');
+    var phaseLabel  = document.getElementById('phaseLabel');
+    var groupLabel  = document.getElementById('groupLabel');
+    var secsNumEl   = document.getElementById('secsNum');
+    var instrEl     = document.getElementById('instrText');
+    var playBtn     = document.getElementById('playBtn');
+    var jumpCon     = document.getElementById('jumpContainer');
+
+    // ── Build jump buttons ─────────────────────────────────
+    var jumpBtns = [];
+    GROUPS.forEach(function (g, n) {
+      var btn = document.createElement('button');
+      btn.className = 'pmr-jump';
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'Jump to ' + g.name);
+      btn.innerHTML = '<span class="jn">' + (n + 1) + '</span><span class="jl">' + g.name + '</span>';
+      btn.addEventListener('click', function () { jumpTo(n); });
+      jumpCon.appendChild(btn);
+      jumpBtns.push(btn);
+    });
+
+    // ── State ──────────────────────────────────────────────
+    var playing       = false;
+    var gi            = 0;
+    var phase         = 'tense';
+    var phaseStart    = 0;
+    var elapsedAtPause= 0;
+    var rafId         = null;
+    var done          = false;
+
+    // ── Helpers ────────────────────────────────────────────
+
+    function setGlowGroup(g, idx) {
+      glowEl.setAttribute('cx', g.cx);
+      glowEl.setAttribute('cy', g.cy);
+      glowEl.setAttribute('rx', g.rx);
+      glowEl.setAttribute('ry', g.ry);
+      glowBlurEl.setAttribute('cx', g.cx);
+      glowBlurEl.setAttribute('cy', g.cy);
+      glowBlurEl.setAttribute('rx', g.rx);
+      glowBlurEl.setAttribute('ry', g.ry);
+      glowBand.setAttribute('clip-path', 'url(#band-' + idx + ')');
+      groupLabel.textContent = g.name;
+      jumpBtns.forEach(function (b, n) {
+        b.classList.toggle('active', n === idx);
+      });
+    }
+
+    function setPhaseStyle(isTense) {
+      var gradId = isTense ? 'glowTense' : 'glowRelease';
+      var ringGradId = isTense ? 'tensGrad' : 'relGrad';
+      glowEl.setAttribute('fill', 'url(#' + gradId + ')');
+      glowBlurEl.setAttribute('fill', 'url(#' + gradId + ')');
+      ringEl.setAttribute('stroke', 'url(#' + ringGradId + ')');
+      ringGlowEl.setAttribute('stroke', 'url(#' + ringGradId + ')');
+      statusBar.style.backgroundColor = isTense ? '#5B4E8C' : '#2BBFAA';
+      phaseLabel.textContent = isTense ? 'Tense' : 'Release';
+      instrEl.textContent = isTense ? GROUPS[gi].tense : GROUPS[gi].release;
+      secsNumEl.textContent = isTense ? '5' : '10';
+    }
+
+    function showGlow() {
+      glowEl.setAttribute('opacity', '0.9');
+      glowBlurEl.setAttribute('opacity', '0.35');
+    }
+
+    function hideGlow() {
+      glowEl.setAttribute('opacity', '0');
+      glowBlurEl.setAttribute('opacity', '0');
+    }
+
+    function advancePhase(ts) {
+      if (phase === 'tense') {
+        phase = 'release';
+      } else {
+        gi++;
+        if (gi >= GROUPS.length) { finish(); return; }
+        phase = 'tense';
+        setGlowGroup(GROUPS[gi], gi);
+      }
+      phaseStart = ts;
+      elapsedAtPause = 0;
+      setPhaseStyle(phase === 'tense');
+    }
+
+    function finish() {
+      playing = false;
+      done = true;
+      cancelAnimationFrame(rafId);
+      rafId = null;
+      hideGlow();
+      phaseLabel.textContent = 'Done';
+      groupLabel.textContent = 'Session complete';
+      instrEl.textContent = 'Great work. Take a moment to notice how your body feels.';
+      ringEl.setAttribute('stroke-dashoffset', CIRC);
+      ringGlowEl.setAttribute('stroke-dashoffset', CIRC);
+      secsNumEl.textContent = '✓';
+      playBtn.textContent = '↺ Start over';
+      statusBar.style.backgroundColor = '#2BBFAA';
+      jumpBtns.forEach(function (b) { b.classList.remove('active'); });
+    }
+
+    // ── Render frame ───────────────────────────────────────
+
+    function render(t, ts) {
+      var isTense = phase === 'tense';
+
+      if (!reducedMotion) {
+        // Base scale: tense contracts inward, release expands outward
+        var scale;
+        if (isTense) {
+          scale = 1.45 - t * (1.45 - 0.90);   // 1.45 → 0.90
+        } else {
+          scale = 0.85 + t * (1.45 - 0.85);   // 0.85 → 1.45
+        }
+
+        // Micro-pulse layered on top of base scale
+        var freq = isTense ? 3.0 : 1.2;
+        var amp  = isTense ? 0.035 : 0.018;
+        scale += Math.sin(ts * freq * 0.006283) * amp;
+
+        var g = GROUPS[gi];
+        var xf = 'translate(' + g.cx + ' ' + g.cy + ') scale(' + scale + ') translate(' + (-g.cx) + ' ' + (-g.cy) + ')';
+        glowEl.setAttribute('transform', xf);
+        glowBlurEl.setAttribute('transform', xf);
+
+        // Opacity: tense rises, release falls
+        var opacity = isTense ? (0.6 + t * 0.35) : (0.95 - t * 0.45);
+        glowEl.setAttribute('opacity', opacity);
+        glowBlurEl.setAttribute('opacity', opacity * 0.38);
+      }
+
+      // Ring drains: dashoffset 0 (full) → CIRC (empty)
+      var dashOffset = CIRC * t;
+      ringEl.setAttribute('stroke-dashoffset', dashOffset);
+      ringGlowEl.setAttribute('stroke-dashoffset', dashOffset);
+
+      // Whole-number seconds remaining
+      var dur = isTense ? TENSE_DUR : RELEASE_DUR;
+      secsNumEl.textContent = Math.ceil((1 - t) * dur / 1000);
+    }
+
+    // ── rAF loop ───────────────────────────────────────────
+
+    function loop(ts) {
+      rafId = requestAnimationFrame(loop);
+      if (!playing) return;
+
+      var dur = phase === 'tense' ? TENSE_DUR : RELEASE_DUR;
+      var t = Math.min((ts - phaseStart) / dur, 1);
+
+      if (t >= 1) {
+        render(1, ts);
+        advancePhase(ts);
+        return;
+      }
+
+      render(t, ts);
+    }
+
+    // ── Session control ────────────────────────────────────
+
+    function startSession() {
+      done = false;
+      gi = 0;
+      phase = 'tense';
+      elapsedAtPause = 0;
+      setGlowGroup(GROUPS[0], 0);
+      setPhaseStyle(true);
+      showGlow();
+      // Ring starts full, will drain
+      ringEl.setAttribute('stroke-dashoffset', '0');
+      ringGlowEl.setAttribute('stroke-dashoffset', '0');
+    }
+
+    function togglePlay() {
+      if (done) {
+        startSession();
+        playing = true;
+        phaseStart = performance.now();
+        playBtn.innerHTML = '&#9646;&#9646; Pause';
+        if (!rafId) rafId = requestAnimationFrame(loop);
+        return;
+      }
+
+      if (!rafId) {
+        // First press
+        startSession();
+        playing = true;
+        phaseStart = performance.now();
+        playBtn.innerHTML = '&#9646;&#9646; Pause';
+        rafId = requestAnimationFrame(loop);
+        return;
+      }
+
+      if (playing) {
+        // Pause
+        elapsedAtPause = performance.now() - phaseStart;
+        playing = false;
+        playBtn.innerHTML = '&#9654; Resume';
+      } else {
+        // Resume
+        phaseStart = performance.now() - elapsedAtPause;
+        playing = true;
+        playBtn.innerHTML = '&#9646;&#9646; Pause';
+      }
+    }
+
+    function jumpTo(n) {
+      gi = n;
+      phase = 'tense';
+      elapsedAtPause = 0;
+      setGlowGroup(GROUPS[gi], gi);
+      setPhaseStyle(true);
+      showGlow();
+      ringEl.setAttribute('stroke-dashoffset', '0');
+      ringGlowEl.setAttribute('stroke-dashoffset', '0');
+
+      if (!rafId) {
+        playing = true;
+        phaseStart = performance.now();
+        playBtn.innerHTML = '&#9646;&#9646; Pause';
+        rafId = requestAnimationFrame(loop);
+      } else {
+        // Resume playing from new group
+        playing = true;
+        phaseStart = performance.now();
+        done = false;
+        playBtn.innerHTML = '&#9646;&#9646; Pause';
+      }
+    }
+
+    playBtn.addEventListener('click', togglePlay);
+
+  })();
+  </script>
+
+</body>
+</html>

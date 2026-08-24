@@ -426,3 +426,209 @@ Secondary link: "Or browse all modules →" → all-modules.html
   module card (second highest score, or Module 1a if neutral)
 - Retake link: "Want to try again? Retake the quiz."
 - Browse link: "See all modules instead →" → all-modules.html
+
+---
+
+## module-3a.html — Practice tool link (handout)
+
+Section label: Practice tool
+Link label: Open the PMR handout →
+Link target: handout-pmr.html
+
+---
+
+## handout-pmr.html — Progressive Muscle Relaxation (PMR)
+Accent: #5B4E8C
+Accent-tint: #EFEDF6
+Linked from: module-3a.html
+
+Page title: Progressive Muscle Relaxation (PMR) — MindSkin Connect
+Meta description: A step-by-step guide to progressive muscle relaxation —
+tense and release each muscle group in turn to reduce stress and ease tension.
+
+Hero subtitle: Tense, then release — one muscle group at a time.
+
+Intro (navy card):
+Progressive muscle relaxation is a technique where you systematically tense
+and then relax different muscle groups in your body. It helps you become more
+aware of physical tension and learn to release it. This can reduce overall
+stress and may ease muscle tension.
+
+How to do it:
+1. Find a comfortable position, sitting or lying down.
+2. Start with your feet. Tense the muscles for 5–10 seconds, then release
+   completely for 20–30 seconds, noticing the difference.
+3. Move up your body — calves, thighs, buttocks, abdomen, chest, arms, hands,
+   shoulders, neck, face — tensing and relaxing each group.
+
+The 11 muscle groups (in order):
+1. Feet · 2. Calves · 3. Thighs · 4. Buttocks · 5. Abdomen · 6. Chest
+7. Arms · 8. Hands · 9. Shoulders · 10. Neck · 11. Face
+
+Guided session description:
+About 6 minutes. Tense for 7 seconds, release for 25. You can stop any time.
+
+Audio placeholder: Guided PMR audio track — coming soon
+
+Tips:
+- Tense firmly, but never to the point of pain.
+- Breathe out as you release.
+- 10–15 minutes is plenty. You don't have to do the whole body every time.
+- If a muscle group is sore or injured, skip it.
+
+Note: The body copy reads somewhat segmented/abstract. Connective language
+between steps should be smoothed before final publication. Layout unchanged.
+
+---
+
+## handout-stress-relievers.html — Quick Stress Relievers
+Accent: #5B4E8C
+Accent-tint: #EFEDF6
+Linked from: module-3a.html
+
+Page title: Quick Stress Relievers — MindSkin Connect
+Meta description: Three short stress-relief techniques you can use anywhere —
+mindful breathing, body scan, and sensory grounding.
+
+Hero subtitle: Short bursts of calm still count. Try these anywhere.
+
+Technique 1 — Mindful Breathing (1–5 minutes)
+How: Focus on your breath. Notice the air entering and leaving your body.
+If your mind wanders, gently bring it back.
+When: During a work or study break, waiting in line, before a stressful
+meeting, or when you feel itch escalating.
+Timer presets: 1 min · 3 min (default) · 5 min
+
+Technique 2 — Quick Body Scan (2–5 minutes)
+How: Mentally scan your body from toes to head, noticing any tension without
+judgment. Consciously try to release it.
+When: While commuting (if you're not driving), during a lunch break, before sleep.
+Timer presets: 2 min (default) · 3 min · 5 min
+
+Technique 3 — Sensory Grounding — 5-4-3-2-1 (1–3 minutes)
+How: Engage your senses and name 5 things you can see, 4 things you can touch,
+3 things you can hear, 2 things you can smell, and 1 thing you can taste
+(or one positive thought).
+Grounding checklist:
+- 5 things you can see
+- 4 things you can touch
+- 3 things you can hear
+- 2 things you can smell
+- 1 thing you can taste, or one positive thought
+When: If you're feeling overwhelmed or anxious, to bring yourself back to
+the present moment.
+Timer presets: 1 min (default) · 2 min · 3 min
+
+Closing card: Pick one. Try it three times this week.
+
+Practice tool link label (for module-3a.html): Open the Quick Stress Relievers handout →
+
+---
+
+## handout-wet-wrap.html
+
+<!-- accent: #4A9B6E  tint: #EAF4EE  linked from: module-4.html -->
+
+### Page meta
+- Title: "Wet Wrap Therapy — MindSkin Connect"
+- Description: "Step-by-step guide to wet wrap therapy for eczema flares, with a printable checklist."
+- Back link: "← Back to Module 4" → module-4.html
+
+### Hero
+- h1: "Wet Wrap Therapy"
+- Subtitle: "Fast relief during an eczema flare — for both children and adults."
+
+### Doctor alert
+"Talk to your doctor before starting wet wrap therapy at home."
+
+### Steps
+
+1. **Bathe and apply**
+   Apply your prescribed cream or moisturizer right after the bath.
+
+2. **Wet layer**
+   Wrap the affected areas in a layer of clean, damp cotton (long-sleeved pyjamas, gauze, or bandages).
+
+3. **Dry layer**
+   Cover with a second dry layer on top, such as dry pyjamas or clothing.
+
+4. **Leave and finish**
+   Leave the wraps on for 2 hours or overnight, then remove, pat dry, and apply moisturizer.
+
+### What to watch for
+
+- Stop and call your clinic if the skin looks infected — oozing, yellow crust, or spreading redness.
+- Keep the room warm so you don't get chilled.
+- Wet wraps are for short-term flares, not everyday use.
+
+---
+
+## handout-smart-goal.html
+
+<!-- accent: #4A7C8C  tint: #E8F2F5  linked from: module-5.html -->
+
+### Page meta
+- Title: "My SMART Skin Goal — MindSkin Connect"
+- Description: "A fillable SMART goal worksheet for building small, specific eczema self-management habits."
+- Back link: "← Back to Module 5" → module-5.html
+
+### Hero
+- h1: "My SMART Skin Goal"
+- Subtitle: "Small, specific goals work better than big ones. Fill this out for one thing you want to change."
+
+### About SMART goals (intro card)
+Small, specific goals work better than big ones. Fill this out for one thing you want to change.
+
+### SMART rows
+
+| Letter | Word       | Prompt                              | Example                                                  |
+|--------|------------|-------------------------------------|----------------------------------------------------------|
+| S      | Specific   | What exactly will you do?           | "My goal is to moisturize my elbows twice a day"         |
+| M      | Measurable | How will you know you did it?       | "I will track this on my phone"                          |
+| A      | Achievable | What will make this easy to keep up?| "I will set two reminder alarms"                         |
+| R      | Relevant   | Why does this matter to you?        | "This will heal my skin and reduce itch"                 |
+| T      | Time-bound | When will you start, and for how long? | "I will do this daily for two weeks, then reassess"   |
+
+### Summary box
+- "My goal, in one sentence:" + write-in field
+- "I will check my progress on (date):" + date field
+
+---
+
+## handout-symptom-diary.html
+
+<!-- accent: #4A7C8C  tint: #E8F2F5  linked from: module-2.html -->
+
+### Page meta
+- Title: "My Symptom & Trigger Diary — MindSkin Connect"
+- Description: "A 7-day eczema symptom and trigger diary to track itch, stress, foods, products, sleep, and weather."
+- Back link: "← Back to Module 2" → module-2.html
+
+### Hero
+- h1: "My Symptom & Trigger Diary"
+- Subtitle: "Fill this in each evening for 2–4 weeks. Don't worry about perfect notes. After a few weeks, look back for patterns."
+
+### Week header
+- "Week of:" + date input
+
+### Diary columns (Mon–Sun each day)
+- Day / date
+- Itch (0–10) — selectable scale
+- Skin today — Better / Same / Worse (radio)
+- New foods
+- New products used
+- Stress (0–10) — selectable scale
+- Sleep (hrs)
+- Weather / other
+
+### Reflection section — "Look for Patterns"
+Shown after 2–4 weeks of tracking.
+
+Prompts:
+- "Which days were worst?"
+- "What did those days have in common?"
+- "One thing I want to ask my doctor about:"
+
+App tip: "Prefer a phone app? EczemaWise (from the National Eczema Association) and Eczema Care+ do the same thing digitally."
+
+Closing note: "Bring this to your next appointment — it gives your dermatologist real information about how your skin has actually been, not just how it looks today."

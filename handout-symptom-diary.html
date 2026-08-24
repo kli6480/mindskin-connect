@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Symptom &amp; Trigger Diary — MindSkin Connect</title>
+  <meta name="description" content="A 7-day eczema symptom and trigger diary to track itch, stress, foods, products, sleep, and weather.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.svg">
+  <style>
+    /* ── Symptom Diary page-specific styles ────────────────── */
+
+    /* "Week of" row + print button */
+    .diary-topbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .diary-week-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      color: var(--navy);
+      font-size: 1rem;
+    }
+    .diary-week-input {
+      border: none;
+      border-bottom: 1.5px solid #C4C0B8;
+      background: transparent;
+      font: inherit;
+      font-size: .9375rem;
+      min-height: 36px;
+      padding: 2px 4px;
+      color: #2D2D2D;
+      width: 190px;
+      outline: none;
+    }
+    .diary-week-input:focus-visible {
+      outline: 2px solid var(--teal);
+      border-radius: 2px;
+    }
+
+    /* 7-day card grid */
+    .diary-week {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    @media (min-width: 600px) {
+      .diary-week {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+    }
+
+    /* Individual day card */
+    .diary-card {
+      border: 1px solid #E0DCD3;
+      border-radius: var(--radius-xl);
+      padding: 14px 16px;
+      box-shadow: var(--shadow-card);
+    }
+    .diary-card:nth-child(odd)  { background: var(--card-bg); }
+    .diary-card:nth-child(even) { background: #fff; }
+
+    .diary-day-hd {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2.5px solid var(--accent);
+    }
+    .diary-day-name {
+      font-family: 'Lilita One', cursive;
+      font-size: 1.35rem;
+      color: var(--navy);
+      line-height: 1;
+      flex: none;
+    }
+    .diary-date-in {
+      border: none;
+      border-bottom: 1px solid #C4C0B8;
+      background: transparent;
+      font: inherit;
+      font-size: .875rem;
+      padding: 2px 2px;
+      min-height: 34px;
+      flex: 1;
+      max-width: 160px;
+      color: #2D2D2D;
+      outline: none;
+    }
+    .diary-date-in:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    /* Field wrapper */
+    .diary-field { margin-bottom: 10px; }
+    .diary-field:last-child { margin-bottom: 0; }
+    .diary-field-label {
+      display: block;
+      font-weight: 600;
+      font-size: .75rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 4px;
+    }
+    label.diary-field-label { cursor: default; }
+
+    /* 0–10 rating scale */
+    .diary-scale {
+      border: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+    }
+    .diary-scale label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
+      cursor: pointer;
+    }
+    .diary-scale input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .diary-scale label span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border: 2px solid #C8C4BC;
+      border-radius: 50%;
+      font-size: .8125rem;
+      font-weight: 600;
+      color: #888;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .diary-scale label span {
+        transition: background .1s, border-color .1s, color .1s;
+      }
+    }
+    .diary-scale input[type="radio"]:checked + span {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .diary-scale label:hover span { border-color: var(--accent); color: var(--accent); }
+    .diary-scale input[type="radio"]:focus-visible + span {
+      outline: 3px solid var(--teal);
+      outline-offset: 2px;
+    }
+
+    /* Skin today — pill options */
+    .diary-skin label {
+      min-width: 0;
+    }
+    .diary-skin label span {
+      width: auto;
+      min-width: 62px;
+      padding: 0 10px;
+      border-radius: var(--radius-pill);
+      font-size: .8125rem;
+      height: 32px;
+    }
+
+    /* Text / number inputs */
+    .diary-text {
+      display: block;
+      width: 100%;
+      border: none;
+      border-bottom: 1.5px solid #C8C4BC;
+      background: transparent;
+      font: inherit;
+      font-size: .9375rem;
+      padding: 4px 0 2px;
+      min-height: 34px;
+      color: #2D2D2D;
+      outline: none;
+    }
+    .diary-text:focus-visible { border-bottom-color: var(--accent); }
+    .diary-text::placeholder { color: #bbb; font-style: italic; }
+
+    .diary-num {
+      border: none;
+      border-bottom: 1.5px solid #C8C4BC;
+      background: transparent;
+      font: inherit;
+      font-size: .9375rem;
+      padding: 4px 0 2px;
+      min-height: 34px;
+      width: 68px;
+      text-align: center;
+      color: #2D2D2D;
+      outline: none;
+    }
+    .diary-num:focus-visible { border-bottom-color: var(--accent); }
+
+    .diary-row {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .diary-row-grow { flex: 1; }
+
+    /* ── Reflection section ─────────────────────────────── */
+    .diary-reflection {
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 3px solid var(--teal);
+    }
+    .diary-reflection-head {
+      margin-bottom: 6px;
+      font-size: .8125rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .diary-reflection h2 {
+      font-family: 'Lilita One', cursive;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: var(--navy);
+      font-size: 1.6rem;
+      margin: 0 0 6px;
+      line-height: 1.15;
+    }
+    .diary-reflection-intro {
+      color: #555;
+      font-size: .9375rem;
+      margin: 0 0 18px;
+      max-width: 56ch;
+    }
+    .diary-reflect-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    @media (min-width: 600px) {
+      .diary-reflect-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+      }
+    }
+    .diary-reflect-card {
+      background: var(--card-bg);
+      border: 1px solid #E0DCD3;
+      border-radius: var(--radius-xl);
+      padding: 16px 18px;
+      box-shadow: var(--shadow-card);
+    }
+    .diary-reflect-label {
+      display: block;
+      font-family: 'Lilita One', cursive;
+      font-size: 1rem;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .diary-reflect-ta {
+      display: block;
+      width: 100%;
+      border: none;
+      border-bottom: 1.5px solid #C8C4BC;
+      background: transparent;
+      resize: none;
+      font: inherit;
+      font-size: .9375rem;
+      line-height: 1.65;
+      padding: 4px 0 2px;
+      min-height: 2.8em;
+      color: #2D2D2D;
+      outline: none;
+      overflow: hidden;
+    }
+    .diary-reflect-ta:focus-visible { border-bottom-color: var(--accent); }
+    .diary-reflect-ta::placeholder { color: #bbb; font-style: italic; }
+
+    .diary-app-tip {
+      margin-top: 18px;
+      border-left: 4px solid var(--teal);
+      border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+      background: var(--card-bg);
+      padding: 14px 18px;
+      box-shadow: var(--shadow-card);
+    }
+    .diary-app-tip strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+    .diary-app-tip p { margin: 0; font-size: .9375rem; max-width: 52ch; }
+
+    .diary-closing {
+      margin-top: 16px;
+      font-size: .9375rem;
+      color: #555;
+      max-width: 58ch;
+    }
+
+    /* ── Print ─────────────────────────────────────────────── */
+    @media print {
+      @page { size: letter landscape; margin: .42in .45in; }
+
+      .diary-topbar { flex-wrap: nowrap; }
+      .diary-week-input { font-size: 9pt; min-height: 0; }
+
+      /* 7-column day grid */
+      .diary-week {
+        display: grid !important;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5pt;
+        margin-top: 8pt;
+        font-size: 7.5pt;
+      }
+
+      .diary-card {
+        border: 1pt solid #E0DCD3;
+        border-radius: 5pt;
+        padding: 5pt 5pt;
+        box-shadow: none;
+        break-inside: avoid;
+      }
+      .diary-card:nth-child(odd) { background: #FAF8F4; }
+
+      .diary-day-hd {
+        margin-bottom: 4pt;
+        padding-bottom: 4pt;
+        border-bottom-width: 1.5pt;
+        gap: 5pt;
+      }
+      .diary-day-name { font-size: 10pt; }
+      .diary-date-in {
+        font-size: 6.5pt;
+        min-height: 0;
+        max-width: 100%;
+        border-bottom-width: 0.75pt;
+        -webkit-appearance: none;
+        width: auto;
+        flex: 1;
+      }
+
+      .diary-field { margin-bottom: 3pt; }
+      .diary-field-label {
+        font-size: 5.5pt;
+        margin-bottom: 1.5pt;
+        letter-spacing: .03em;
+      }
+
+      /* Scale circles — small for print */
+      .diary-scale { gap: 1pt; }
+      .diary-scale label {
+        min-width: 0 !important;
+        min-height: 0 !important;
+        width: 13px;
+        height: 13px;
+      }
+      .diary-scale label span {
+        width: 12px;
+        height: 12px;
+        border-width: 1px;
+        border-color: #9AA3B8;
+        font-size: 5.5pt;
+        font-weight: 400;
+        color: #6E6E6E;
+      }
+      .diary-scale input[type="radio"]:checked + span {
+        background: #000 !important;
+        border-color: #000 !important;
+        color: #fff !important;
+      }
+
+      /* Skin pills */
+      .diary-skin label span {
+        min-width: 0;
+        padding: 0 3pt;
+        font-size: 5.5pt;
+        height: 11px;
+      }
+
+      .diary-text {
+        font-size: 7pt;
+        min-height: 0;
+        height: 14pt;
+        border-bottom-width: 0.75pt;
+      }
+      .diary-num {
+        font-size: 7pt;
+        min-height: 0;
+        height: 14pt;
+        width: 28pt;
+        border-bottom-width: 0.75pt;
+      }
+      .diary-row { gap: 4pt; }
+
+      /* Reflection — page 2 */
+      .diary-reflection {
+        page-break-before: always;
+        break-before: always;
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+      }
+      .diary-reflect-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10pt;
+      }
+      .diary-reflect-card {
+        border: 1pt solid #E6E2DA;
+        border-radius: 8pt;
+        padding: 8pt 10pt;
+        box-shadow: none;
+        break-inside: avoid;
+      }
+      .diary-reflect-label { font-size: 10pt; color: #3A7D8C; }
+      .diary-reflect-ta {
+        border-bottom: 1pt solid #B9B5AC;
+        font-size: 9pt;
+        min-height: 0;
+        height: 0.7in;
+        color: #000;
+      }
+      .diary-app-tip {
+        margin-top: 10pt;
+        border-left-width: 3pt;
+        padding: 8pt 10pt;
+        box-shadow: none;
+        break-inside: avoid;
+      }
+      .diary-app-tip strong { font-size: 9pt; color: #000; }
+      .diary-app-tip p { font-size: 9pt; color: #2D2D2D; }
+      .diary-closing { font-size: 9pt; color: #3C3C3C; margin-top: 10pt; }
+    }
+  </style>
+</head>
+<body style="--accent: #4A7C8C; --accent-tint: #E8F2F5">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Site navigation">
+      <a class="site-logo" href="index.html">MindSkin Connect</a>
+      <a href="index.html">Home</a>
+      <a href="all-modules.html">All modules</a>
+      <a href="clinician.html">For clinicians</a>
+    </nav>
+  </header>
+
+  <div class="handout-hero">
+    <div class="content-col">
+      <a class="back-to-module" href="module-3a.html"><span aria-hidden="true">←</span> Back to Module 3a</a>
+      <h1>My Symptom &amp; Trigger Diary</h1>
+      <p class="handout-subtitle">Fill this in each evening for 2–4 weeks. Don't worry about perfect notes. After a few weeks, look back for patterns.</p>
+    </div>
+  </div>
+
+  <main id="main">
+    <div class="page-wrapper">
+
+      <div class="diary-topbar">
+        <label class="diary-week-label">
+          Week of:
+          <input type="date" class="diary-week-input" aria-label="Week start date">
+        </label>
+        <button class="btn no-print" type="button" onclick="window.print()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 9V2h12v7"/><rect x="6" y="14" width="12" height="8" rx="1"/>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+          </svg>
+          Print this page
+        </button>
+      </div>
+
+      <div class="diary-week" id="diary-week" aria-label="7-day diary"></div>
+
+      <!-- Reflection section -->
+      <section class="diary-reflection" aria-labelledby="patterns-heading">
+        <p class="diary-reflection-head">After 2–4 weeks of tracking</p>
+        <h2 id="patterns-heading">Look for Patterns</h2>
+        <p class="diary-reflection-intro">Look back at your diary and answer these questions. Then bring it to your next appointment.</p>
+
+        <div class="diary-reflect-grid">
+          <div class="diary-reflect-card">
+            <label class="diary-reflect-label" for="worst-days">Which days were worst?</label>
+            <textarea class="diary-reflect-ta" id="worst-days" rows="3" placeholder="e.g. Tuesdays and Saturdays…" autocomplete="off"></textarea>
+          </div>
+          <div class="diary-reflect-card">
+            <label class="diary-reflect-label" for="common-factors">What did those days have in common?</label>
+            <textarea class="diary-reflect-ta" id="common-factors" rows="3" placeholder="e.g. High stress, new detergent…" autocomplete="off"></textarea>
+          </div>
+          <div class="diary-reflect-card" style="grid-column: 1 / -1">
+            <label class="diary-reflect-label" for="doctor-question">One thing I want to ask my doctor about:</label>
+            <textarea class="diary-reflect-ta" id="doctor-question" rows="2" placeholder="Write your question here…" autocomplete="off"></textarea>
+          </div>
+        </div>
+
+        <div class="diary-app-tip" role="note">
+          <strong>Prefer a phone app?</strong>
+          <p>EczemaWise (from the National Eczema Association) and Eczema Care+ do the same thing digitally.</p>
+        </div>
+
+        <p class="diary-closing">Bring this to your next appointment — it gives your dermatologist real information about how your skin has actually been, not just how it looks today.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>This site does not collect personal information.</p>
+    <p>Mind Skin Health for Atopic Dermatitis (MSHAD) © 2025 University of Alberta Division of Dermatology. Licensed CC BY-NC-ND 4.0.</p>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="all-modules.html">All modules</a>
+      <a href="clinician.html">For clinicians</a>
+      <a href="mailto:supportg@ualberta.ca">supportg@ualberta.ca</a>
+    </nav>
+  </footer>
+
+  <script>
+    (function () {
+      var DAYS = [
+        { short: 'Mon', long: 'Monday',    pfx: 'mon' },
+        { short: 'Tue', long: 'Tuesday',   pfx: 'tue' },
+        { short: 'Wed', long: 'Wednesday', pfx: 'wed' },
+        { short: 'Thu', long: 'Thursday',  pfx: 'thu' },
+        { short: 'Fri', long: 'Friday',    pfx: 'fri' },
+        { short: 'Sat', long: 'Saturday',  pfx: 'sat' },
+        { short: 'Sun', long: 'Sunday',    pfx: 'sun' }
+      ];
+
+      function scale(pfx, field, label) {
+        var name = pfx + '-' + field;
+        var html = '<fieldset class="diary-scale"><legend class="sr-only">' + label + ' (0 to 10)</legend>';
+        for (var n = 0; n <= 10; n++) {
+          html += '<label><input type="radio" name="' + name + '" value="' + n + '"><span>' + n + '</span></label>';
+        }
+        return html + '</fieldset>';
+      }
+
+      function skinScale(pfx) {
+        var name = pfx + '-skin';
+        var opts = ['Better', 'Same', 'Worse'];
+        var html = '<fieldset class="diary-scale diary-skin"><legend class="sr-only">Skin today</legend>';
+        opts.forEach(function (o) {
+          html += '<label><input type="radio" name="' + name + '" value="' + o.toLowerCase() + '"><span>' + o + '</span></label>';
+        });
+        return html + '</fieldset>';
+      }
+
+      var week = document.getElementById('diary-week');
+
+      DAYS.forEach(function (day) {
+        var p = day.pfx;
+        var card = document.createElement('div');
+        card.className = 'diary-card';
+        card.innerHTML =
+          '<div class="diary-day-hd">'
+          + '<span class="diary-day-name">' + day.short + '</span>'
+          + '<input type="date" class="diary-date-in" aria-label="' + day.long + ' date" autocomplete="off">'
+          + '</div>'
+
+          + '<div class="diary-field"><div class="diary-field-label">Itch (0–10)</div>'
+          + scale(p, 'itch', day.long + ' itch level')
+          + '</div>'
+
+          + '<div class="diary-field"><div class="diary-field-label">Skin today</div>'
+          + skinScale(p)
+          + '</div>'
+
+          + '<div class="diary-field"><label class="diary-field-label" for="' + p + '-foods">New foods</label>'
+          + '<input type="text" id="' + p + '-foods" class="diary-text" autocomplete="off" placeholder="Any new foods?">'
+          + '</div>'
+
+          + '<div class="diary-field"><label class="diary-field-label" for="' + p + '-products">New products</label>'
+          + '<input type="text" id="' + p + '-products" class="diary-text" autocomplete="off" placeholder="Any new skincare products?">'
+          + '</div>'
+
+          + '<div class="diary-field"><div class="diary-field-label">Stress (0–10)</div>'
+          + scale(p, 'stress', day.long + ' stress level')
+          + '</div>'
+
+          + '<div class="diary-field diary-row">'
+          + '<div><label class="diary-field-label" for="' + p + '-sleep">Sleep (hrs)</label>'
+          + '<input type="number" id="' + p + '-sleep" class="diary-num" min="0" max="24" step="0.5" placeholder="—" autocomplete="off"></div>'
+          + '<div class="diary-row-grow"><label class="diary-field-label" for="' + p + '-weather">Weather / other</label>'
+          + '<input type="text" id="' + p + '-weather" class="diary-text" autocomplete="off" placeholder="e.g. hot, humid"></div>'
+          + '</div>';
+
+        week.appendChild(card);
+      });
+
+      /* Auto-expand reflection textareas */
+      document.querySelectorAll('.diary-reflect-ta').forEach(function (ta) {
+        ta.addEventListener('input', function () {
+          this.style.height = 'auto';
+          this.style.height = this.scrollHeight + 'px';
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

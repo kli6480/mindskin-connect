@@ -9,6 +9,145 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.svg">
+  <style>
+    .gw-card {
+      background: #FAF8F4;
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 680px;
+      margin: 40px auto;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    }
+    .gw-intro {
+      font-family: 'Poppins', sans-serif;
+      color: #2D2D2D;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .gw-section-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      margin-bottom: 20px;
+    }
+    .gw-option {
+      display: block;
+      border-radius: 16px;
+      padding: 28px 32px;
+      text-decoration: none;
+      transition: filter 0.2s, background 0.2s;
+    }
+    .gw-option--tool {
+      background: #fff;
+      border: 2px solid #c4e0d4;
+      color: inherit;
+      margin-top: 16px;
+    }
+    .gw-option--tool:hover { background: #f0f8f4; border-color: #4A9B6E; }
+    .gw-option--tool .gw-option-title { color: #4A9B6E; }
+    .gw-option--tool .gw-option-arrow { color: #4A9B6E; }
+    .gw-option--tool .gw-option-desc { color: #666; }
+    .gw-option--read {
+      background: #2E7D5E;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .gw-option--read:hover { filter: brightness(1.08); }
+    .gw-option-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .gw-option-title {
+      font-family: 'Lilita One', serif;
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 1.2;
+    }
+    .gw-option-arrow {
+      font-family: 'Lilita One', serif;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .gw-option--read .gw-option-title,
+    .gw-option--read .gw-option-arrow { color: #fff; }
+    .gw-option-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+    .gw-option--read .gw-option-desc { color: rgba(255,255,255,0.9); }
+
+    /* Watch toggle card */
+    .watch-card {
+      display: block;
+      background: #fff;
+      border: 2px solid #cce0d8;
+      border-radius: 16px;
+      padding: 28px 32px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .watch-card:hover { background: #f0f8f4; }
+    .watch-card.open { border-color: #2E7D5E; }
+    .watch-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .watch-label {
+      font-family: 'Lilita One', serif;
+      color: #2E7D5E;
+      font-size: 1.4rem;
+    }
+    .watch-arrow {
+      color: #2E7D5E;
+      font-size: 1.4rem;
+      transition: transform 0.3s ease;
+      line-height: 1;
+    }
+    .watch-card.open .watch-arrow { transform: rotate(90deg); }
+    .watch-desc {
+      font-family: 'Poppins', sans-serif;
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+    .watch-embed { margin-top: 24px; }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .video-fallback {
+      font-size: 0.8rem;
+      color: #999;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      .gw-card { padding: 24px; }
+      .gw-option { padding: 22px 24px; }
+      .watch-card { padding: 22px 24px; }
+    }
+  </style>
 </head>
 <body style="--accent: #2E7D5E; --accent-light: #5ab898; --accent-dark: #1a4d3a">
 
@@ -33,72 +172,45 @@
           <h1 class="page-heading">Breaking the Itch-Scratch Cycle</h1>
         </div>
 
-        <section class="module-section fade-in-card" aria-labelledby="about-heading">
-          <h2 id="about-heading" class="section-bar">About this module</h2>
-          <div class="section-content">
-            <p>For many people with eczema, the itch is the hardest part. It disrupts sleep,
-            ruins concentration, and feeds a cycle that keeps the skin damaged. This module
-            covers why the itch happens, why it gets worse at night, and practical ways to
-            break the scratching habit — including techniques you can start using today.</p>
-          </div>
-        </section>
+        <div class="gw-card">
 
-        <section class="module-section fade-in-card" aria-labelledby="watch-heading">
-          <h2 id="watch-heading" class="section-bar">Watch</h2>
-          <div class="section-content">
-            <div class="video-container">
-              <iframe
-                src="https://www.youtube-nocookie.com/embed/VIDEO_ID"
-                title="Breaking the Itch-Scratch Cycle video"
-                loading="lazy"
-                allowfullscreen
-              ></iframe>
+          <p class="gw-intro">For many people with eczema, the itch is the hardest part. It disrupts sleep, ruins concentration, and feeds a cycle that keeps the skin damaged. This module covers why the itch happens, why it gets worse at night, and practical ways to break the scratching habit — including techniques you can start using today.</p>
+
+          <p class="gw-section-label">How would you like to learn?</p>
+
+          <a class="gw-option gw-option--read" href="module-2-read.html">
+            <div class="gw-option-top">
+              <strong class="gw-option-title">📖 Read this module</strong>
+              <span class="gw-option-arrow">→</span>
             </div>
-            <p class="video-fallback">Video having trouble loading? You can also watch this module directly on YouTube.</p>
-          </div>
-        </section>
+            <p class="gw-option-desc">Work through the module as a scrollable experience — with illustrations, expanded explanations, and four interactive quiz questions. Takes about 10–15 minutes.</p>
+          </a>
 
-        <section class="module-section fade-in-card" aria-labelledby="keypoints-heading">
-          <h2 id="keypoints-heading" class="section-bar">Key points</h2>
-          <div class="section-content">
-            <details class="key-points">
-              <summary>
-                <span class="label-closed">Read the key points</span>
-                <span class="label-open">Hide the key points</span>
-              </summary>
-              <ul class="key-points-list">
-                <li>Itch leads to scratching. Scratching damages the skin. Damaged skin itches more. This is the itch-scratch cycle.</li>
-                <li>Emotional triggers like stress, tiredness, and worry can make itch feel worse.</li>
-                <li>Physical triggers include heat, sweat, rough fabrics, fragrances, and dust.</li>
-                <li>Itch often gets worse at night because there are fewer distractions and your skin becomes more sensitive.</li>
-                <li>Habit Reversal Therapy (HRT) teaches your hands a different response to the urge to scratch — like making a fist or applying firm pressure.</li>
-                <li>The "Soak and Seal" method: warm (not hot) bath for 5–10 minutes, pat skin damp, apply thick moisturizer within 3 minutes.</li>
-                <li>Lotions are often too watery for eczema. Thick creams or ointments work better.</li>
-                <li>Wet wrap therapy can help during severe flares. Ask your doctor before trying it at home.</li>
-                <li>Keeping nails short and wearing soft cotton gloves at night can reduce damage from sleep scratching.</li>
-              </ul>
-            </details>
-          </div>
-        </section>
+          <a class="gw-option gw-option--tool" href="handout-wet-wrap.html">
+            <div class="gw-option-top">
+              <strong class="gw-option-title">Practice tool: Wet Wrap Therapy</strong>
+              <span class="gw-option-arrow">→</span>
+            </div>
+            <p class="gw-option-desc">Step-by-step guide to wet wrap therapy for flare relief — with an interactive checklist you can print.</p>
+          </a>
 
-        <section class="module-section fade-in-card" aria-labelledby="appointment-heading">
-          <h2 id="appointment-heading" class="section-bar">Bring this to your appointment</h2>
-          <div class="appointment-box">
-            <ul>
-              <li>"Night-time itching is affecting my sleep — what can we do?"</li>
-              <li>"I'd like to try Habit Reversal Therapy. Can you walk me through it or refer me?"</li>
-              <li>"Would wet wrap therapy be appropriate for my flares?"</li>
-              <li>"I think a specific trigger is making my itch worse — can we talk about it?"</li>
-            </ul>
+          <div class="watch-card" id="watch-toggle" role="button" tabindex="0" aria-expanded="false" aria-controls="watch-embed">
+            <div class="watch-card-header">
+              <span class="watch-label">▶ Watch the video</span>
+              <span class="watch-arrow" aria-hidden="true">→</span>
+            </div>
+            <p class="watch-desc">Prefer to watch? The module video covers the same content. Available on YouTube.</p>
+            <div class="watch-embed" id="watch-embed" hidden>
+              <div class="video-wrapper">
+                <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" loading="lazy" title="Breaking the Itch-Scratch Cycle video" frameborder="0" allowfullscreen></iframe>
+              </div>
+              <p class="video-fallback">Video having trouble loading? You can also watch this module directly on YouTube.</p>
+            </div>
           </div>
-        </section>
+
+        </div>
 
       </article>
-
-      <div class="module-end">
-        <p class="module-end-text">You've reached the end of this module.</p>
-        <a class="module-end-btn" href="all-modules.html">← Back to all modules</a>
-      </div>
 
     </div>
   </main>
@@ -114,19 +226,17 @@
   </footer>
 
   <script>
-    (function () {
-      var cards = document.querySelectorAll('.fade-in-card');
-      if (!cards.length) return;
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.08 });
-      cards.forEach(function (card) { observer.observe(card); });
-    })();
+    var watchToggle = document.getElementById('watch-toggle');
+    var watchEmbed = document.getElementById('watch-embed');
+    function toggleWatch() {
+      var isOpen = watchToggle.classList.toggle('open');
+      watchEmbed.hidden = !isOpen;
+      watchToggle.setAttribute('aria-expanded', isOpen);
+    }
+    watchToggle.addEventListener('click', toggleWatch);
+    watchToggle.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleWatch(); }
+    });
   </script>
 </body>
 </html>

@@ -14,6 +14,16 @@
   --accent:     #1B3068; /* overridden per page via <body style="--accent: …"> */
   --card-bg:    #FAF8F4;
   --page-h-pad: 24px;    /* synced with .page-wrapper padding; used for banner breakout */
+
+  /* Shared with handout pages */
+  --navy-dark:   #142554;
+  --muted:       #666;
+  --hairline:    #f0e8e8;
+  --radius-xl:   12px;
+  --radius-2xl:  16px;
+  --radius-pill: 999px;
+  --shadow-card: 0 2px 10px rgba(0,0,0,.06),0 1px 3px rgba(0,0,0,.04);
+  --accent-tint: transparent; /* overridden per handout page via <body style> */
 }
 
 /* ── Reset ────────────────────────────────────────────── */
@@ -52,6 +62,11 @@ main {
 img {
   max-width: 100%;
   display: block;
+}
+
+button {
+  font: inherit;
+  color: inherit;
 }
 
 /* ── Skip link ────────────────────────────────────────── */
@@ -156,6 +171,16 @@ a:focus-visible {
   outline: 2px solid var(--teal);
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+/* ── Content column — used inside handout hero & toolbar ─ */
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+@media (min-width: 768px) {
+  .wrap { padding: 0 32px; }
 }
 
 /* ── Page wrapper ─────────────────────────────────────── */
@@ -957,4 +982,227 @@ a:focus-visible {
     animation: heroShimmer 5s ease-in-out infinite;
   }
 
+}
+
+/* ═══════════════════════════════════════════════════════
+   Handout pages (handout-pmr.html etc.)
+   Shared components — page-specific CSS stays inline.
+═══════════════════════════════════════════════════════ */
+
+/* ── Hero (full-width, solid accent, concentric circles) ── */
+.handout-hero {
+  background: var(--accent);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  padding: 20px 0 34px;
+}
+.handout-hero::after {
+  content: "";
+  position: absolute;
+  right: -60px;
+  top: -70px;
+  width: 260px;
+  height: 260px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='white' stroke-width='2'%3E%3Ccircle cx='100' cy='100' r='30'/%3E%3Ccircle cx='100' cy='100' r='55'/%3E%3Ccircle cx='100' cy='100' r='80'/%3E%3Ccircle cx='100' cy='100' r='98'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+  opacity: .15;
+  pointer-events: none;
+}
+.handout-hero h1 {
+  font-family: 'Lilita One', cursive;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.15;
+  letter-spacing: .02em;
+  font-size: clamp(1.85rem, 6.2vw, 2.85rem);
+  margin: .2em 0 .1em;
+  color: #fff;
+}
+.handout-subtitle {
+  margin: 0;
+  font-size: 1.0625rem;
+  opacity: .95;
+  max-width: 40ch;
+}
+
+/* ── Back link inside hero ─────────────────────────────── */
+.back-to-module {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: #fff;
+  font-weight: 600;
+  font-size: .9375rem;
+  text-decoration: none;
+}
+.back-to-module:hover,
+.back-to-module:focus-visible {
+  text-decoration: underline;
+  color: #fff;
+}
+
+/* ── Print / toolbar row ───────────────────────────────── */
+.handout-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 18px;
+}
+
+/* ── Pill button (Print, Start, etc.) ─────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 20px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--navy);
+  color: #fff;
+  font-weight: 600;
+  font-size: .9375rem;
+  cursor: pointer;
+}
+.btn-mini {
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--navy);
+  background: #fff;
+  color: var(--navy);
+  font-weight: 600;
+  font-size: .875rem;
+  cursor: pointer;
+}
+.btn-mini:hover { background: #f2f4fa; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: background .15s, transform .15s, box-shadow .15s; }
+  .btn:hover {
+    background: var(--navy-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,.18);
+  }
+}
+
+/* ── Cards ─────────────────────────────────────────────── */
+.handout-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-card);
+  padding: 24px;
+  margin-top: 28px;
+}
+@media (min-width: 768px) {
+  .handout-card { padding: 32px; }
+}
+.handout-card p { max-width: 65ch; }
+.handout-card--navy {
+  background: var(--navy);
+  color: #fff;
+}
+.handout-card--tint {
+  background: var(--accent-tint);
+}
+
+/* ── Section headings ──────────────────────────────────── */
+.handout-h2 {
+  font-family: 'Lilita One', cursive;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  line-height: 1.15;
+  font-size: 1.4rem;
+  color: var(--navy);
+  margin: 0 0 14px;
+}
+
+/* ── Numbered steps list ───────────────────────────────── */
+.handout-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.handout-steps li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.handout-step-num {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'Lilita One', cursive;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.handout-steps p { margin: 6px 0 0; }
+
+/* ── Bulleted tips list ─────────────────────────────────── */
+.handout-tips {
+  margin: 0;
+  padding-left: 1.15em;
+}
+.handout-tips li { margin-bottom: 10px; }
+
+/* ═══════════════════════════════════════════════════════
+   Handout print styles
+═══════════════════════════════════════════════════════ */
+@media print {
+  @page { size: letter portrait; margin: .6in; }
+
+  .site-header,
+  .no-print { display: none !important; }
+
+  .handout-hero {
+    background: #fff !important;
+    color: #000;
+    padding: 0 0 6pt;
+  }
+  .handout-hero::after,
+  .back-to-module { display: none; }
+  .handout-hero h1 { font-size: 22pt; color: #000; margin: 0; }
+
+  .wrap,
+  .page-wrapper { padding: 0; max-width: none; }
+
+  .handout-card {
+    background: #fff;
+    box-shadow: none;
+    border: 1pt solid #000;
+    padding: 10pt;
+    margin-top: 9pt;
+    break-inside: avoid;
+  }
+  .handout-card--navy { background: #fff !important; color: #000; }
+  .handout-card--tint { background: #fff; }
+
+  .handout-h2 { color: #000; font-size: 14pt; margin-bottom: 8pt; }
+
+  .handout-step-num {
+    background: #fff;
+    color: #000;
+    border: 1.25pt solid #000;
+    width: 26px;
+    height: 26px;
+    font-size: 11pt;
+  }
+
+  .site-footer {
+    background: #fff !important;
+    color: #000;
+    border-top: .75pt solid #000;
+    padding-top: 8pt;
+  }
+  .site-footer .footer-links a { color: #000; }
 }
