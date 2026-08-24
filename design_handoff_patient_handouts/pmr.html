@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Progressive Muscle Relaxation (PMR) — MindSkin Connect</title>
+<link rel="icon" href="assets/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1B3068; --navy-dark:#142554; --teal:#2BBFAA; --text:#2D2D2D; --muted:#666;
+  --card:#FAF8F4; --hairline:#f0e8e8; --accent:#5B4E8C; --accent-tint:#EFEDF6;
+  --font-display:'Lilita One',cursive; --font-body:'Poppins',system-ui,sans-serif;
+  --radius-xl:12px; --radius-2xl:16px; --radius-pill:999px;
+  --shadow-card:0 2px 10px rgba(0,0,0,.06),0 1px 3px rgba(0,0,0,.04);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font-body);color:var(--text);background:#fff;
+  font-size:17px;line-height:1.65}
+p{max-width:65ch}
+a{color:var(--teal);text-decoration:none}
+a:hover,a:focus-visible{text-decoration:underline}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:4px}
+button{font:inherit;color:inherit}
+.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+@media(min-width:768px){.wrap{padding:0 32px}}
+
+.site-header{position:sticky;top:0;z-index:20;background:var(--navy);color:#fff}
+.site-header .wrap{display:flex;align-items:center;min-height:56px}
+.wordmark{font-weight:600;color:#fff}
+.wordmark:hover{text-decoration:underline}
+
+.hero{background:var(--accent);color:#fff;position:relative;overflow:hidden;padding:20px 0 34px}
+.hero::after{content:"";position:absolute;right:-60px;top:-70px;width:260px;height:260px;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><g fill='none' stroke='white' stroke-width='2'><circle cx='100' cy='100' r='30'/><circle cx='100' cy='100' r='55'/><circle cx='100' cy='100' r='80'/><circle cx='100' cy='100' r='98'/></g></svg>") no-repeat center/contain;
+  opacity:.15;pointer-events:none}
+.back{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#fff;font-weight:600;font-size:.9375rem}
+h1{font-family:var(--font-display);font-weight:400;text-transform:uppercase;line-height:1.15;
+  letter-spacing:.02em;font-size:clamp(1.85rem,6.2vw,2.85rem);margin:.2em 0 .1em}
+.subtitle{margin:0;font-size:1.0625rem;opacity:.95;max-width:40ch}
+
+.toolbar{display:flex;justify-content:flex-end;padding-top:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;
+  padding:0 20px;border:none;border-radius:var(--radius-pill);background:var(--navy);color:#fff;
+  font-weight:600;font-size:.9375rem;cursor:pointer;transition:background .15s,transform .15s,box-shadow .15s}
+.btn:hover{background:var(--navy-dark);transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.mini{min-height:44px;padding:0 16px;border-radius:var(--radius-pill);border:2px solid var(--navy);
+  background:#fff;color:var(--navy);font-weight:600;font-size:.875rem;cursor:pointer}
+.mini:hover{background:#f2f4fa}
+
+main{padding-bottom:48px}
+.card{background:var(--card);border-radius:var(--radius-2xl);box-shadow:var(--shadow-card);
+  padding:24px;margin-top:28px}
+@media(min-width:768px){.card{padding:32px}}
+.card--navy{background:var(--navy);color:#fff}
+.card--navy p{margin:0}
+.card--tint{background:var(--accent-tint)}
+h2{font-family:var(--font-display);font-weight:400;text-transform:uppercase;letter-spacing:.02em;
+  line-height:1.15;font-size:1.4rem;color:var(--navy);margin:0 0 14px}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px}
+.steps li{display:flex;gap:16px;align-items:flex-start}
+.num{flex:none;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;
+  font-family:var(--font-display);font-size:1.2rem;display:flex;align-items:center;justify-content:center}
+.steps p{margin:6px 0 0}
+.tips{margin:0;padding-left:1.15em}
+.tips li{margin-bottom:10px}
+
+/* guided session */
+.session{display:grid;gap:22px;align-items:center}
+@media(min-width:640px){.session{grid-template-columns:1fr 200px}}
+.ring-wrap{display:flex;flex-direction:column;align-items:center;gap:10px}
+.ring{width:170px;height:170px}
+.ring circle{fill:none;stroke-width:12}
+.ring .track{stroke:#e3e0ee}
+.ring .prog{stroke:var(--accent);stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%;
+  transition:stroke-dashoffset .25s linear}
+.phase{font-family:var(--font-display);font-size:1.6rem;text-transform:uppercase;color:var(--accent);
+  letter-spacing:.04em;line-height:1}
+.group-name{font-family:var(--font-display);font-size:2rem;text-transform:uppercase;color:var(--navy);
+  line-height:1.1;margin:0}
+.counter{font-weight:600;font-size:.875rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+
+.body-map{display:flex;justify-content:center;margin-top:8px}
+.body-map svg{width:100%;max-width:360px;height:auto}
+.dot{fill:#fff;stroke:var(--navy);stroke-width:2}
+.dot.active{fill:var(--accent);stroke:var(--accent)}
+.maplabel{font-family:'Poppins',sans-serif;font-size:9px;fill:#2D2D2D}
+
+.audio-slot{margin-top:16px;border:2px dashed #b9b3d0;border-radius:var(--radius-xl);
+  padding:18px;text-align:center;color:var(--muted);font-size:.9375rem}
+
+.site-footer{border-top:1px solid var(--hairline);margin-top:8px;padding:24px 0}
+.site-footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.logo-slot{display:flex;align-items:center;gap:10px;font-size:.8125rem;color:var(--muted)}
+.logo-box{width:52px;height:52px;border:1px dashed #c9c9c9;border-radius:6px;display:flex;
+  align-items:center;justify-content:center;font-size:.625rem;color:#999}
+.copyright{font-size:.8125rem;color:var(--muted)}
+
+@media print{
+  @page{size:letter portrait;margin:.6in}
+  body{font-size:10.5pt;line-height:1.4;color:#000}
+  .site-header,.toolbar,.no-print,#session{display:none !important}
+  .hero{background:#fff !important;color:#000;padding:0 0 6pt}
+  .hero::after,.back{display:none}
+  h1{font-size:22pt;margin:0}
+  .wrap{padding:0;max-width:none}
+  .card{background:#fff;box-shadow:none;border:1pt solid #000;padding:10pt;margin-top:9pt;
+    page-break-inside:avoid;break-inside:avoid}
+  .card--navy{background:#fff !important;color:#000}
+  .card--tint{background:#fff}
+  h2{color:#000;font-size:14pt;margin-bottom:8pt}
+  .num{background:#fff;color:#000;border:1.25pt solid #000;width:26px;height:26px;font-size:11pt}
+  .dot{fill:#fff;stroke:#000}
+  .maplabel{fill:#000;font-size:8.5px}
+  .audio-slot{display:none}
+  .site-footer{border-top:.75pt solid #000;padding-top:8pt}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap"><a class="wordmark" href="index.html">MindSkin Connect</a></div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="module-3a.html"><span aria-hidden="true">←</span> Back to Module 3a</a>
+    <h1>Progressive Muscle Relaxation (PMR)</h1>
+    <p class="subtitle">Tense, then release — one muscle group at a time.</p>
+  </div>
+</div>
+
+<div class="wrap toolbar no-print">
+  <button class="btn" type="button" onclick="window.print()">Print this page</button>
+</div>
+
+<main class="wrap">
+  <section class="card card--navy">
+    <p>Progressive muscle relaxation is a technique where you systematically tense and then relax different muscle groups in your body. It helps you become more aware of physical tension and learn to release it. This can reduce overall stress and may ease muscle tension.</p>
+  </section>
+
+  <section class="card" aria-labelledby="how">
+    <h2 id="how">How to do it</h2>
+    <ol class="steps">
+      <li><span class="num" aria-hidden="true">1</span><p>Find a comfortable position, sitting or lying down.</p></li>
+      <li><span class="num" aria-hidden="true">2</span><p>Start with your feet. Tense the muscles for 5–10 seconds, then release completely for 20–30 seconds, noticing the difference.</p></li>
+      <li><span class="num" aria-hidden="true">3</span><p>Move up your body — calves, thighs, buttocks, abdomen, chest, arms, hands, shoulders, neck, face — tensing and relaxing each group.</p></li>
+    </ol>
+  </section>
+
+  <section class="card" aria-labelledby="map">
+    <h2 id="map">The 11 muscle groups</h2>
+    <div class="body-map">
+      <svg viewBox="0 0 300 430" role="img" aria-label="Body outline with the eleven muscle groups marked in order from feet to face">
+        <g fill="#FAF8F4" stroke="#1B3068" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M150 74 C130 74 116 80 108 88 C100 96 98 106 99 118
+                   L104 168 C107 196 108 222 110 246
+                   C130 254 170 254 190 246 C192 222 193 196 196 168
+                   L201 118 C202 106 200 96 192 88 C184 80 170 74 150 74 Z"/>
+          <path d="M110 248 C112 284 116 312 120 338 C123 360 123 380 121 398
+                   C120 404 123 408 130 408 L142 408 C148 408 151 404 151 398
+                   C150 342 148 292 146 252 C134 254 120 252 110 248 Z"/>
+          <path d="M190 248 C188 284 184 312 180 338 C177 360 177 380 179 398
+                   C180 404 177 408 170 408 L158 408 C152 408 149 404 149 398
+                   C150 342 152 292 154 252 C166 254 180 252 190 248 Z"/>
+          <path fill="none" d="M106 96 C90 122 84 154 83 184"/>
+          <path fill="none" d="M194 96 C210 122 216 154 217 184"/>
+          <path fill="none" d="M144 68 C144 74 141 78 136 81 M156 68 C156 74 159 78 164 81"/>
+          <ellipse cx="150" cy="40" rx="25" ry="28"/>
+          <circle cx="83" cy="194" r="9"/>
+          <circle cx="217" cy="194" r="9"/>
+        </g>
+        <g stroke="#cfcadd" stroke-width="1.25">
+          <path d="M131 396 H98"/><path d="M127 352 H98"/><path d="M125 292 H98"/>
+          <path d="M87 140 H72"/><path d="M73 203 H64"/>
+          <path d="M172 240 H210"/><path d="M152 205 H210"/><path d="M152 150 H210"/>
+          <path d="M176 92 H210"/><path d="M164 70 H210"/><path d="M172 32 H210"/>
+        </g>
+        <g>
+          <circle class="dot" data-dot="0" cx="131" cy="396" r="8"/><text class="maplabel" text-anchor="end" x="92" y="399">1 Feet</text>
+          <circle class="dot" data-dot="1" cx="127" cy="352" r="8"/><text class="maplabel" text-anchor="end" x="92" y="355">2 Calves</text>
+          <circle class="dot" data-dot="2" cx="125" cy="292" r="8"/><text class="maplabel" text-anchor="end" x="92" y="295">3 Thighs</text>
+          <circle class="dot" data-dot="3" cx="172" cy="240" r="8"/><text class="maplabel" x="216" y="243">4 Buttocks</text>
+          <circle class="dot" data-dot="4" cx="152" cy="205" r="8"/><text class="maplabel" x="216" y="208">5 Abdomen</text>
+          <circle class="dot" data-dot="5" cx="152" cy="150" r="8"/><text class="maplabel" x="216" y="153">6 Chest</text>
+          <circle class="dot" data-dot="6" cx="87" cy="140" r="8"/><text class="maplabel" text-anchor="end" x="68" y="143">7 Arms</text>
+          <circle class="dot" data-dot="7" cx="83" cy="203" r="7"/><text class="maplabel" text-anchor="end" x="58" y="206">8 Hands</text>
+          <circle class="dot" data-dot="8" cx="176" cy="92" r="8"/><text class="maplabel" x="216" y="95">9 Shoulders</text>
+          <circle class="dot" data-dot="9" cx="164" cy="70" r="7"/><text class="maplabel" x="216" y="73">10 Neck</text>
+          <circle class="dot" data-dot="10" cx="172" cy="32" r="8"/><text class="maplabel" x="216" y="35">11 Face</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="card no-print" id="session" aria-labelledby="guided">
+    <h2 id="guided">Guided session</h2>
+    <p>About 6 minutes. Tense for 7 seconds, release for 25. You can stop any time.</p>
+    <div class="session">
+      <div>
+        <p class="counter" id="counter" aria-live="polite">Group 1 of 11</p>
+        <p class="group-name" id="groupName">Feet</p>
+        <p class="phase" id="phase">Ready</p>
+        <div class="controls">
+          <button class="btn" type="button" id="startBtn">Start</button>
+          <button class="mini" type="button" id="pauseBtn">Pause</button>
+          <button class="mini" type="button" id="skipBtn">Skip</button>
+          <button class="mini" type="button" id="exitBtn">Exit</button>
+        </div>
+      </div>
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="track" cx="60" cy="60" r="52"></circle>
+          <circle class="prog" id="prog" cx="60" cy="60" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"></circle>
+        </svg>
+        <span class="counter" id="secs">0s</span>
+      </div>
+    </div>
+    <!-- TODO: replace with the real linked PMR audio track when available -->
+    <div class="audio-slot" id="audioSlot">Guided PMR audio track — coming soon</div>
+  </section>
+
+  <section class="card card--tint" aria-labelledby="tips">
+    <h2 id="tips">Tips</h2>
+    <ul class="tips">
+      <li>Tense firmly, but never to the point of pain.</li>
+      <li>Breathe out as you release.</li>
+      <li>10–15 minutes is plenty. You don't have to do the whole body every time.</li>
+      <li>If a muscle group is sore or injured, skip it.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span class="logo-slot"><span class="logo-box">LOGO</span> University of Alberta Dermatology</span>
+    <span class="copyright">© 2025 University of Alberta</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var GROUPS = ['Feet','Calves','Thighs','Buttocks','Abdomen','Chest','Arms','Hands','Shoulders','Neck','Face'];
+  var TENSE = 7, RELEASE = 25, CIRC = 326.7;
+  var i = 0, phase = 'tense', left = TENSE, tick = null, running = false;
+
+  var counter = document.getElementById('counter'),
+      nameEl = document.getElementById('groupName'),
+      phaseEl = document.getElementById('phase'),
+      secs = document.getElementById('secs'),
+      prog = document.getElementById('prog'),
+      startBtn = document.getElementById('startBtn'),
+      dots = document.querySelectorAll('.dot');
+
+  function paint() {
+    counter.textContent = 'Group ' + (i + 1) + ' of ' + GROUPS.length;
+    nameEl.textContent = GROUPS[i];
+    phaseEl.textContent = running ? (phase === 'tense' ? 'Tense' : 'Release') : 'Ready';
+    secs.textContent = left + 's';
+    var total = phase === 'tense' ? TENSE : RELEASE;
+    prog.setAttribute('stroke-dashoffset', String(CIRC * (left / total)));
+    dots.forEach(function (d, n) { d.classList.toggle('active', running && n === i); });
+  }
+  function nextPhase() {
+    if (phase === 'tense') { phase = 'release'; left = RELEASE; return; }
+    phase = 'tense'; left = TENSE; i++;
+    if (i >= GROUPS.length) { finish(); }
+  }
+  function finish() {
+    stop(); i = 0; phase = 'tense'; left = TENSE; paint();
+    phaseEl.textContent = 'Session complete';
+  }
+  function stop() {
+    clearInterval(tick); tick = null; running = false; startBtn.textContent = 'Start';
+    dots.forEach(function (d) { d.classList.remove('active'); });
+  }
+  function start() {
+    if (running) return;
+    running = true; startBtn.textContent = 'Running';
+    tick = setInterval(function () {
+      left--;
+      if (left <= 0) nextPhase();
+      paint();
+    }, 1000);
+    paint();
+  }
+  startBtn.addEventListener('click', start);
+  document.getElementById('pauseBtn').addEventListener('click', function () { stop(); paint(); });
+  document.getElementById('skipBtn').addEventListener('click', function () {
+    phase = 'tense'; left = TENSE; i = (i + 1) % GROUPS.length; paint();
+  });
+  document.getElementById('exitBtn').addEventListener('click', function () {
+    stop(); i = 0; phase = 'tense'; left = TENSE; paint();
+  });
+  paint();
+})();
+</script>
+</body>
+</html>
