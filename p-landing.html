@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MSH-P — MindSkin Connect</title>
+  <meta name="description" content="Design preview: MSH-P patient education program for psoriasis. Placeholder content — not for patient use.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.svg">
+  <style>
+    .preview-banner {
+      background: #fef3c7;
+      color: #92400e;
+      text-align: center;
+      padding: 10px 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      border-bottom: 1px solid #fde68a;
+    }
+
+    /* Bring hero back button up to 44px tap target */
+    .hero-back-btn { width: 44px; height: 44px; }
+
+    .hero-subtitle {
+      color: rgba(255,255,255,0.9);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.0625rem;
+      margin-top: 0.5rem;
+      max-width: 42ch;
+    }
+
+    /* Disabled quiz card */
+    .quiz-cta-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.04);
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+    .quiz-cta-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.125rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .quiz-cta-body {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9375rem;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+      max-width: 52ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .quiz-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 28px;
+      background: #d1d5db;
+      color: #9ca3af;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      border: none;
+      border-radius: 999px;
+      cursor: not-allowed;
+      min-height: 44px;
+    }
+    .quiz-cta-note {
+      display: block;
+      margin-top: 10px;
+      font-size: 0.8rem;
+      color: #aaa;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Module cards */
+    .modules-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #888;
+      margin-bottom: 1rem;
+    }
+
+    .mod-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 22px 24px;
+      margin-bottom: 14px;
+      border-left: 6px solid var(--ac, #1B3068);
+      box-shadow: 0 2px 10px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.04);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--text);
+    }
+    a.mod-card:hover {
+      text-decoration: none;
+      color: var(--text);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      a.mod-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+      a.mod-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0,0,0,.1), 0 2px 6px rgba(0,0,0,.06);
+      }
+    }
+    a.mod-card:focus-visible {
+      outline: 2px solid var(--ac, #1B3068);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+    div.mod-card {
+      cursor: default;
+      opacity: 0.55;
+    }
+    .mod-body { flex: 1; }
+    .mod-pill {
+      display: inline-block;
+      background: var(--ac, #1B3068);
+      color: #fff;
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .mod-title {
+      font-family: 'Lilita One', serif;
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: var(--navy);
+      display: block;
+      margin: 0 0 5px;
+      line-height: 1.25;
+    }
+    .mod-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      color: #666;
+      line-height: 1.5;
+    }
+    .mod-coming {
+      display: inline-block;
+      margin-top: 6px;
+      background: #f0f0f0;
+      color: #999;
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: 0.7rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+    .mod-arrow {
+      font-size: 1.3rem;
+      color: var(--ac, #1B3068);
+      flex-shrink: 0;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body style="--accent: #4472B0; --accent-light: #7aa3d4; --accent-dark: #2d5089">
+
+  <div class="preview-banner" role="alert">
+    Design preview — MSH-P content and modules are placeholders, not final copy.
+  </div>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Site navigation">
+      <a class="site-logo" href="hub.html">MindSkin Connect</a>
+      <a href="hub.html">Home</a>
+      <a href="clinician.html">For clinicians</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <div class="page-wrapper">
+
+      <div class="hero-banner">
+        <a class="hero-back-btn" href="hub.html" aria-label="Back to MindSkin Connect home">←</a>
+        <h1 class="page-heading">MSH-P</h1>
+        <p class="hero-subtitle">[Psoriasis patient education program]</p>
+      </div>
+
+      <!-- Disabled quiz CTA -->
+      <div class="quiz-cta-card">
+        <p class="quiz-cta-label">Find your starting point</p>
+        <p class="quiz-cta-body">[A short quiz will match you to the right module for where you are right now. Coming soon when the program launches.]</p>
+        <button class="quiz-cta-btn" disabled aria-disabled="true">Start the quiz — coming soon</button>
+        <span class="quiz-cta-note">This feature will be available when the MSH-P program launches.</span>
+      </div>
+
+      <!-- Module list -->
+      <p class="modules-label">Program modules</p>
+
+      <section aria-label="MSH-P module list">
+
+        <a class="mod-card" href="p-module-1.html" style="--ac: #4472B0">
+          <div class="mod-body">
+            <span class="mod-pill">Module 1</span>
+            <span class="mod-title">[Understanding Your Skin-Mind Connection]</span>
+            <span class="mod-desc">[How stress and emotions affect psoriasis, and how your care team can help with both.]</span>
+          </div>
+          <span class="mod-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <div class="mod-card" style="--ac: #4472B0" aria-label="Module 2 — coming soon">
+          <div class="mod-body">
+            <span class="mod-pill">Module 2</span>
+            <span class="mod-title">[Managing Flares and Triggers]</span>
+            <span class="mod-desc">[Identifying personal triggers, managing flare-ups, and building a consistent care routine.]</span>
+            <span class="mod-coming">Coming soon</span>
+          </div>
+          <span class="mod-arrow" aria-hidden="true">→</span>
+        </div>
+
+        <div class="mod-card" style="--ac: #4472B0" aria-label="Module 3 — coming soon">
+          <div class="mod-body">
+            <span class="mod-pill">Module 3</span>
+            <span class="mod-title">[Building Self-Management Skills]</span>
+            <span class="mod-desc">[Setting goals, tracking symptoms, and staying on course through difficult weeks.]</span>
+            <span class="mod-coming">Coming soon</span>
+          </div>
+          <span class="mod-arrow" aria-hidden="true">→</span>
+        </div>
+
+        <div class="mod-card" style="--ac: #4472B0" aria-label="Module 4 — coming soon">
+          <div class="mod-body">
+            <span class="mod-pill">Module 4</span>
+            <span class="mod-title">[Building a Support Network]</span>
+            <span class="mod-desc">[Knowing when and how to ask for help, and building a team around you.]</span>
+            <span class="mod-coming">Coming soon</span>
+          </div>
+          <span class="mod-arrow" aria-hidden="true">→</span>
+        </div>
+
+        <div class="mod-card" style="--ac: #4472B0" aria-label="Module 5 — coming soon">
+          <div class="mod-body">
+            <span class="mod-pill">Module 5</span>
+            <span class="mod-title">[Holistic Skin Health and Wellness]</span>
+            <span class="mod-desc">[Routines, sleep, stress management, and lifestyle strategies for living well with psoriasis.]</span>
+            <span class="mod-coming">Coming soon</span>
+          </div>
+          <span class="mod-arrow" aria-hidden="true">→</span>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>This site does not collect personal information.</p>
+    <p>MindSkin Connect © 2025 University of Alberta Division of Dermatology. Licensed CC BY-NC-ND 4.0.</p>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="hub.html">All programs</a>
+      <a href="clinician.html">For clinicians</a>
+      <a href="mailto:supportg@ualberta.ca">supportg@ualberta.ca</a>
+    </nav>
+  </footer>
+
+</body>
+</html>
