@@ -861,6 +861,23 @@
       .s3-note { width: min(80vw, 280px); }
       .qz2-char { display: none; }
     }
+    /* ── Bounded proportions: keep slide type/art in a comfortable range ── */
+    .s1-title { font-size: clamp(1.8rem, 3.4vw, 2.9rem) !important; }
+    .s2-h     { font-size: clamp(1.6rem, 3.1vw, 2.5rem) !important; }
+    .s3-h     { font-size: clamp(1.55rem, 2.9vw, 2.3rem) !important; }
+    .s3-journey { font-size: clamp(1.85rem, 3.6vw, 2.8rem) !important; }
+    .qz2-title  { font-size: clamp(1.6rem, 3.1vw, 2.4rem) !important; }
+    .char-circle, .s1-circle { width: min(62%, 300px) !important; }
+    .char-graphic > img, .s1-brain { width: min(76%, 340px) !important; }
+    .char-graphic, .s1-graphic { min-height: 260px !important; }
+    @media (max-width: 880px) {
+      .s1-title { font-size: clamp(1.55rem, 6vw, 2.15rem) !important; }
+      .s2-h, .s3-h, .qz2-title { font-size: clamp(1.45rem, 5.4vw, 2rem) !important; }
+      .s3-journey { font-size: clamp(1.7rem, 6.4vw, 2.25rem) !important; }
+      .char-graphic, .s1-graphic { min-height: 190px !important; }
+      .char-circle, .s1-circle { width: min(50vw, 250px) !important; }
+      .char-graphic > img, .s1-brain { width: min(58vw, 290px) !important; }
+    }
   </style>
 </head>
 <body>
