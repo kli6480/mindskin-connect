@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editors / IDEs
+.idea/
+*.swp
+*.swo
+*~
+
+# Claude Code local (machine-specific) settings
+.claude/settings.local.json
+
+# Node (in case tooling is added later; the site itself uses none)
+node_modules/
