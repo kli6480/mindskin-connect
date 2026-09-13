@@ -27,12 +27,23 @@
       margin: 2rem 0 0;
     }
 
+    /* Responsive card grid: reflows from 1 column (mobile) to 2 (tablet+) */
+    .mod-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 768px) {
+      .mod-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+    }
+
     .mod-card {
       display: block;
       background: #fff;
       border-radius: 16px;
       padding: 24px 28px;
-      margin-bottom: 16px;
       border-left: 6px solid var(--ac, #1B3068);
       box-shadow: 0 2px 10px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
       text-decoration: none;
@@ -83,6 +94,44 @@
       flex-shrink: 0;
       line-height: 1;
     }
+    /* Module card with nested links (no-anchor variant) */
+    div.mod-card {
+      display: block;
+      cursor: default;
+    }
+    .mod-card-main {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .mod-card-main:hover .mod-title { text-decoration: underline; text-underline-offset: 2px; }
+    .mod-card-main:focus-visible {
+      outline: 2px solid var(--ac, #1B3068);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+    .mod-tool-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--ac, #1B3068);
+      text-decoration: none;
+    }
+    .mod-tool-link:hover { text-decoration: underline; }
+    .res-library-row { margin-top: 32px; }
+    .res-library-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #999;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
@@ -91,8 +140,8 @@
 
   <header class="site-header">
     <nav class="site-nav" aria-label="Site navigation">
-      <a class="site-logo" href="index.html">MindSkin Connect</a>
-      <a href="index.html">Home</a>
+      <a class="site-logo" href="hub.html">MindSkin Connect</a>
+      <a href="hub.html">Home</a>
       <a class="nav-active" href="all-modules.html" aria-current="page">All modules</a>
       <a href="clinician.html">For clinicians</a>
     </nav>
@@ -106,7 +155,7 @@
       <p class="modules-intro">The five modules build on each other, but you can take them in any order.
       If you're not sure where to start, Module 1a is the foundation.</p>
 
-      <section aria-label="Module list">
+      <section class="mod-grid" aria-label="Module list">
 
         <a class="mod-card" href="module-1a.html" style="--ac: #C2607A">
           <div class="mod-body">
@@ -117,16 +166,19 @@
           <span class="mod-arrow" aria-hidden="true">→</span>
         </a>
 
-        <a class="mod-card" href="module-2.html" style="--ac: #2E7D5E">
-          <div class="mod-body">
-            <span class="mod-pill">Module 2</span>
-            <span class="mod-title">Breaking the Itch-Scratch Cycle</span>
-            <span class="mod-desc">Why itch happens, why nighttime is harder, and practical techniques to break the cycle.</span>
-          </div>
-          <span class="mod-arrow" aria-hidden="true">→</span>
-        </a>
+        <div class="mod-card" style="--ac: #2E7D5E">
+          <a class="mod-card-main" href="module-2.html">
+            <div class="mod-body">
+              <span class="mod-pill">Module 2</span>
+              <span class="mod-title">Breaking the Itch-Scratch Cycle</span>
+              <span class="mod-desc">Why itch happens, why nighttime is harder, and practical techniques to break the cycle.</span>
+            </div>
+            <span class="mod-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="mod-tool-link" href="handout-habit-reversal.html">Habit reversal worksheet ›</a>
+        </div>
 
-        <a class="mod-card" href="module-3a.html" style="--ac: #6B4FA0">
+        <a class="mod-card" href="module-3a.html" style="--ac: #40788b">
           <div class="mod-body">
             <span class="mod-pill">Module 3a</span>
             <span class="mod-title">Building Your Self-Management Skills &amp; Confidence</span>
@@ -135,7 +187,7 @@
           <span class="mod-arrow" aria-hidden="true">→</span>
         </a>
 
-        <a class="mod-card" href="module-4.html" style="--ac: #3A7D8C">
+        <a class="mod-card" href="module-4.html" style="--ac: #cc6a05">
           <div class="mod-body">
             <span class="mod-pill">Module 4</span>
             <span class="mod-title">Building a Support Network</span>
@@ -144,7 +196,7 @@
           <span class="mod-arrow" aria-hidden="true">→</span>
         </a>
 
-        <a class="mod-card" href="module-5.html" style="--ac: #C27C2E">
+        <a class="mod-card" href="module-5.html" style="--ac: #5e548e">
           <div class="mod-body">
             <span class="mod-pill">Module 5</span>
             <span class="mod-title">Holistic Skin Care and Wellness</span>
@@ -154,6 +206,18 @@
         </a>
 
       </section>
+
+      <div class="res-library-row">
+        <p class="res-library-label">Also available</p>
+        <a class="mod-card" href="resources.html" style="--ac: #2BBFAA">
+          <div class="mod-body">
+            <span class="mod-pill">Handouts &amp; worksheets</span>
+            <span class="mod-title">Resource Library</span>
+            <span class="mod-desc">Six printable resources to accompany the modules — worksheets, trackers, and step-by-step guides.</span>
+          </div>
+          <span class="mod-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
 
     </div>
   </main>

@@ -14,6 +14,7 @@
   --accent:     #1B3068; /* overridden per page via <body style="--accent: …"> */
   --card-bg:    #FAF8F4;
   --page-h-pad: 24px;    /* synced with .page-wrapper padding; used for banner breakout */
+  --page-max:   720px;   /* max content width; widens on large screens (see media queries) */
 
   /* Shared with handout pages */
   --navy-dark:   #142554;
@@ -101,7 +102,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  max-width: 720px;
+  max-width: var(--page-max);
   margin: 0 auto;
   padding: 16px 24px;
   gap: 0.125rem;
@@ -175,7 +176,7 @@ a:focus-visible {
 
 /* ── Content column — used inside handout hero & toolbar ─ */
 .wrap {
-  max-width: 720px;
+  max-width: var(--page-max);
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -185,7 +186,7 @@ a:focus-visible {
 
 /* ── Page wrapper ─────────────────────────────────────── */
 .page-wrapper {
-  max-width: 720px;
+  max-width: var(--page-max);
   margin: 0 auto;
   padding: 0 var(--page-h-pad) 4rem;
 }
@@ -221,20 +222,20 @@ a:focus-visible {
   background-position: 0% 50%;
   color: var(--white);
   text-align: center;
-  padding: 48px 24px;
+  padding: 28px 24px;
   border-radius: 12px;
-  min-height: 200px;
+  min-height: 140px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
 }
 
 .page-heading {
   font-family: 'Lilita One', cursive;
   font-weight: 400;
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(1.6rem, 4.5vw, 2.75rem);
   text-transform: uppercase;
   line-height: 1.15;
   letter-spacing: 0.02em;
@@ -454,7 +455,7 @@ a:focus-visible {
 }
 
 .site-footer p {
-  max-width: 720px;
+  max-width: var(--page-max);
   margin: 0 auto;
 }
 
@@ -467,7 +468,7 @@ a:focus-visible {
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.25rem 1.25rem;
-  max-width: 720px;
+  max-width: var(--page-max);
   margin: 0.875rem auto 0;
 }
 
@@ -754,6 +755,7 @@ a:focus-visible {
 @media (min-width: 1024px) {
   :root {
     --page-h-pad: 40px;
+    --page-max:   900px;
   }
 
   .site-nav {
@@ -762,6 +764,13 @@ a:focus-visible {
 
   .site-footer {
     padding: 32px 40px;
+  }
+}
+
+/* ── Media: large / maximized ≥ 1440 px ───────────────── */
+@media (min-width: 1440px) {
+  :root {
+    --page-max: 1040px;
   }
 }
 
