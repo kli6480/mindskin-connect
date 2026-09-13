@@ -145,6 +145,134 @@
       text-align: center;
       line-height: 1.6;
     }
+
+    /* Search bar */
+    .hub-controls {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 1.25rem;
+    }
+    .hub-section-label { flex: 1 1 auto; }
+
+    .hub-search-wrap {
+      position: relative;
+      flex: 0 0 auto;
+    }
+    .hub-search-wrap > svg {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: #888;
+    }
+    .hub-search {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      padding: 8px 12px 8px 34px;
+      border: 1.5px solid #ddd;
+      border-radius: 999px;
+      outline: none;
+      width: 220px;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.15s;
+    }
+    .hub-search::placeholder { color: #aaa; }
+    .hub-search:focus { border-color: var(--teal); }
+
+    /* Search dropdown */
+    .hub-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      width: 360px;
+      max-width: calc(100vw - 32px);
+      background: var(--white);
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.12), 0 2px 8px rgba(0,0,0,.06);
+      z-index: 100;
+      overflow: hidden;
+    }
+    .hub-dropdown[hidden] { display: none; }
+
+    .hub-result {
+      display: block;
+      padding: 12px 16px;
+      text-decoration: none;
+      color: var(--text);
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.1s;
+    }
+    .hub-result:last-child { border-bottom: none; }
+    .hub-result:hover,
+    .hub-result:focus,
+    .hub-result.focused {
+      background: #f5faf9;
+      outline: none;
+    }
+    .hub-result-meta {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--teal);
+      margin-bottom: 2px;
+    }
+    .hub-result-title {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+    .hub-result-desc {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8125rem;
+      color: #666;
+      line-height: 1.45;
+    }
+    .hub-result-empty {
+      padding: 20px 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      color: #888;
+      text-align: center;
+    }
+
+    /* Program filter chips */
+    .hub-filters {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .hub-filter-btn {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 999px;
+      border: 1.5px solid #ddd;
+      background: var(--white);
+      color: #555;
+      cursor: pointer;
+      min-height: 32px;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .hub-filter-btn:hover { border-color: var(--teal); color: var(--teal); }
+    .hub-filter-btn.active {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: var(--white);
+    }
   </style>
 </head>
 <body>
@@ -167,7 +295,32 @@
         <p class="hub-subtitle">Mind-body patient education from the University of Alberta Division of Dermatology. Choose your program below.</p>
       </div>
 
-      <p class="hub-section-label">Select your condition</p>
+      <div class="hub-controls">
+        <h2 class="hub-section-label">Select your condition</h2>
+        <div class="hub-search-wrap" role="search">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 6.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0ZM9.2 10.26a5 5 0 1 1 1.06-1.06l2.77 2.76a.75.75 0 1 1-1.06 1.06L9.2 10.26Z" fill="currentColor"/>
+          </svg>
+          <input
+            class="hub-search"
+            id="hub-search"
+            type="search"
+            placeholder="Search modules…"
+            aria-label="Search modules"
+            aria-controls="hub-dropdown"
+            aria-expanded="false"
+            autocomplete="off"
+          >
+          <div class="hub-dropdown" id="hub-dropdown" hidden></div>
+        </div>
+      </div>
+
+      <div class="hub-filters" role="group" aria-label="Filter search by program">
+        <button class="hub-filter-btn active" data-filter="all">All programs</button>
+        <button class="hub-filter-btn" data-filter="mshad">MSHAD</button>
+        <button class="hub-filter-btn" data-filter="msh-hs">MSH-HS</button>
+        <button class="hub-filter-btn" data-filter="msh-p">MSH-P</button>
+      </div>
 
       <div class="condition-grid">
 
@@ -211,5 +364,169 @@
     </nav>
   </footer>
 
+  <script>
+    (function () {
+      var INDEX = [
+        /* ── MSHAD modules ── */
+        { program: 'mshad', label: 'Module 1a · MSHAD', type: 'Module',
+          title: 'Understanding Your Skin-Mind Connection',
+          desc:  'How stress and emotions affect eczema, and how dermatology care can help with both.',
+          href:  'module-1a.html',
+          keys:  'stress emotion skin mind connection dermatology sleep mood eczema atopic dermatitis' },
+        { program: 'mshad', label: 'Module 2 · MSHAD', type: 'Module',
+          title: 'Breaking the Itch-Scratch Cycle',
+          desc:  'Why itch happens, why nighttime is harder, and practical techniques to break the cycle.',
+          href:  'module-2.html',
+          keys:  'itch scratch cycle nighttime sleep habit eczema atopic dermatitis scratching' },
+        { program: 'mshad', label: 'Module 3a · MSHAD', type: 'Module',
+          title: 'Building Your Self-Management Skills & Confidence',
+          desc:  'Tracking triggers, setting goals, recovering from setbacks, and advocating for your needs.',
+          href:  'module-3a.html',
+          keys:  'self management triggers goals setbacks advocacy confidence eczema atopic dermatitis' },
+        { program: 'mshad', label: 'Module 4 · MSHAD', type: 'Module',
+          title: 'Building a Support Network',
+          desc:  'Knowing when to ask for extra help, finding it, and building a team around you.',
+          href:  'module-4.html',
+          keys:  'support network help resources mental health eczema team community atopic dermatitis' },
+        { program: 'mshad', label: 'Module 5 · MSHAD', type: 'Module',
+          title: 'Holistic Skin Care and Wellness',
+          desc:  'Routines that survive stressful weeks, calming techniques under five minutes, nutrition, and movement.',
+          href:  'module-5.html',
+          keys:  'holistic wellness routine stress nutrition movement exercise sleep eczema atopic dermatitis' },
+        /* ── MSHAD handouts ── */
+        { program: 'mshad', label: 'Handout · Module 2', type: 'Handout',
+          title: 'Habit Reversal Therapy Worksheet',
+          desc:  'Notice the urge to scratch and swap it for something else.',
+          href:  'handout-habit-reversal.html',
+          keys:  'habit reversal scratch itch worksheet eczema atopic dermatitis' },
+        { program: 'mshad', label: 'Handout · Module 2', type: 'Handout',
+          title: 'Wet Wrap Therapy',
+          desc:  'Step-by-step guide to wet wrapping during an eczema flare.',
+          href:  'handout-wet-wrap.html',
+          keys:  'wet wrap flare eczema atopic dermatitis guide' },
+        { program: 'mshad', label: 'Handout · Module 3a', type: 'Handout',
+          title: 'My SMART Skin Goal',
+          desc:  'Build a small, specific goal for one habit you want to change.',
+          href:  'handout-smart-goal.html',
+          keys:  'smart goal habit change self management eczema' },
+        { program: 'mshad', label: 'Handout · Module 3a', type: 'Handout',
+          title: 'Symptom & Trigger Diary',
+          desc:  'Track itch, triggers, and stress over 7 days to find your patterns.',
+          href:  'handout-symptom-diary.html',
+          keys:  'symptom trigger diary stress tracking eczema atopic dermatitis' },
+        { program: 'mshad', label: 'Handout · Module 5', type: 'Handout',
+          title: 'Progressive Muscle Relaxation (PMR)',
+          desc:  'Tense and release each muscle group to lower stress and ease tension.',
+          href:  'handout-pmr.html',
+          keys:  'PMR progressive muscle relaxation stress tension anxiety eczema' },
+        { program: 'mshad', label: 'Handout · Module 5', type: 'Handout',
+          title: 'Quick Stress Relievers',
+          desc:  'Three techniques — breathing, body scan, grounding — under five minutes.',
+          href:  'handout-stress-relievers.html',
+          keys:  'stress breathing body scan grounding calm anxiety eczema mindfulness' },
+        { program: 'mshad', label: 'Handout · Module 3a', type: 'Handout',
+          title: 'My Eczema Action Plan',
+          desc:  'Know what to do at every stage — green, amber, and red zone — before a flare gets worse.',
+          href:  'handout-eczema-action-plan.html',
+          keys:  'eczema action plan flare zone green amber red self management atopic dermatitis' },
+        /* ── MSH-HS (placeholder) ── */
+        { program: 'msh-hs', label: 'Program · MSH-HS', type: 'Program',
+          title: 'Hidradenitis Suppurativa Program',
+          desc:  'Patient education for people living with HS. Modules coming soon.',
+          href:  'hs-landing.html',
+          keys:  'hidradenitis suppurativa hs skin' },
+        /* ── MSH-P (placeholder) ── */
+        { program: 'msh-p', label: 'Program · MSH-P', type: 'Program',
+          title: 'Psoriasis Program',
+          desc:  'Patient education for people living with psoriasis. Modules coming soon.',
+          href:  'p-landing.html',
+          keys:  'psoriasis skin plaques' }
+      ];
+
+      var input      = document.getElementById('hub-search');
+      var dropdown   = document.getElementById('hub-dropdown');
+      var filterBtns = document.querySelectorAll('.hub-filter-btn');
+      var activeFilter = 'all';
+      var focusedIndex = -1;
+
+      function getResults(query) {
+        var q = query.toLowerCase();
+        return INDEX.filter(function (item) {
+          var matchesProgram = activeFilter === 'all' || item.program === activeFilter;
+          var matchesQuery   = item.title.toLowerCase().indexOf(q) !== -1 ||
+                               item.keys.toLowerCase().indexOf(q) !== -1 ||
+                               item.desc.toLowerCase().indexOf(q) !== -1;
+          return matchesProgram && matchesQuery;
+        });
+      }
+
+      function renderResults(results) {
+        dropdown.innerHTML = '';
+        focusedIndex = -1;
+        if (results.length === 0) {
+          dropdown.innerHTML = '<p class="hub-result-empty">No modules found.</p>';
+        } else {
+          results.forEach(function (item) {
+            var a = document.createElement('a');
+            a.className = 'hub-result';
+            a.href = item.href;
+            a.innerHTML =
+              '<span class="hub-result-meta">' + item.label + '</span>' +
+              '<span class="hub-result-title">' + item.title + '</span>' +
+              '<span class="hub-result-desc">' + item.desc + '</span>';
+            dropdown.appendChild(a);
+          });
+        }
+      }
+
+      function openDropdown() {
+        dropdown.removeAttribute('hidden');
+        input.setAttribute('aria-expanded', 'true');
+      }
+      function closeDropdown() {
+        dropdown.setAttribute('hidden', '');
+        input.setAttribute('aria-expanded', 'false');
+        focusedIndex = -1;
+      }
+
+      function updateFocus(dir) {
+        var items = dropdown.querySelectorAll('.hub-result');
+        if (!items.length) return;
+        items[focusedIndex] && items[focusedIndex].classList.remove('focused');
+        focusedIndex = Math.max(0, Math.min(items.length - 1, focusedIndex + dir));
+        items[focusedIndex].classList.add('focused');
+        items[focusedIndex].focus();
+      }
+
+      input.addEventListener('input', function () {
+        var q = this.value.trim();
+        if (!q) { closeDropdown(); return; }
+        renderResults(getResults(q));
+        openDropdown();
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (!dropdown.hasAttribute('hidden')) {
+          if (e.key === 'ArrowDown') { e.preventDefault(); updateFocus(1); }
+          if (e.key === 'ArrowUp')   { e.preventDefault(); updateFocus(-1); }
+          if (e.key === 'Escape')    { closeDropdown(); input.focus(); }
+        }
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!input.contains(e.target) && !dropdown.contains(e.target)) closeDropdown();
+      });
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          filterBtns.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          activeFilter = btn.dataset.filter;
+          var q = input.value.trim();
+          if (q) { renderResults(getResults(q)); openDropdown(); }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

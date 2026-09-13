@@ -207,7 +207,7 @@
     @media print { #session { display: none !important; } }
   </style>
 </head>
-<body style="--accent: #5B4E8C; --accent-tint: #EFEDF6">
+<body style="--accent: #5e548e; --accent-tint: #EDEAF5">
 
   <a class="skip-link" href="#main">Skip to main content</a>
 
@@ -322,7 +322,7 @@
                 <!-- Glow gradients (radial, objectBoundingBox) -->
                 <radialGradient id="glowTense" cx="50%" cy="50%" r="50%">
                   <stop offset="0%"   stop-color="#9B8EC0" stop-opacity="1"/>
-                  <stop offset="55%"  stop-color="#5B4E8C" stop-opacity="0.9"/>
+                  <stop offset="55%"  stop-color="#5e548e" stop-opacity="0.9"/>
                   <stop offset="100%" stop-color="#3B2E7C" stop-opacity="0.55"/>
                 </radialGradient>
                 <radialGradient id="glowRelease" cx="50%" cy="50%" r="50%">
@@ -607,7 +607,7 @@
       glowBlurEl.setAttribute('fill', 'url(#' + gradId + ')');
       ringEl.setAttribute('stroke', 'url(#' + ringGradId + ')');
       ringGlowEl.setAttribute('stroke', 'url(#' + ringGradId + ')');
-      statusBar.style.backgroundColor = isTense ? '#5B4E8C' : '#2BBFAA';
+      statusBar.style.backgroundColor = isTense ? '#5e548e' : '#2BBFAA';
       phaseLabel.textContent = isTense ? 'Tense' : 'Release';
       instrEl.textContent = isTense ? GROUPS[gi].tense : GROUPS[gi].release;
       secsNumEl.textContent = isTense ? '5' : '10';
