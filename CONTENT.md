@@ -632,3 +632,101 @@ Prompts:
 App tip: "Prefer a phone app? EczemaWise (from the National Eczema Association) and Eczema Care+ do the same thing digitally."
 
 Closing note: "Bring this to your next appointment — it gives your dermatologist real information about how your skin has actually been, not just how it looks today."
+
+---
+
+## handout-habit-reversal.html — Habit Reversal Therapy Worksheet
+
+<!-- accent: #3A7D8C  tint: #EAF1F4  linked from: module-2.html -->
+
+### Page meta
+- Title: "Habit Reversal Therapy Worksheet — MindSkin Connect"
+- Description: "A printable Habit Reversal Therapy worksheet — notice your scratch pattern, choose a competing response, and track your daily practice."
+- Back link: "← Back to Module 2" → module-2.html
+
+### Hero
+- Eyebrow: "Module 2 · Eczema self-management"
+- h1: "Habit Reversal Therapy Worksheet"
+- Subtitle: "A gentle, structured way to notice the urge to scratch or pick — and swap it for something else before it starts. It won't feel automatic right away. That's expected."
+
+### Section 1 — Notice your pattern (Page 1)
+
+Section intro: "Before you can change a habit, you have to catch it happening. For the next few days, jot down what's going on right before you scratch or pick — even after the fact is useful."
+
+Fill-in fields:
+- "Where / when does it happen most?"
+- "What do you feel right before?" with hint: (tingling, itch, tension)
+- "Which body area?"
+
+### Section 2 — Choose your competing response (Page 1)
+
+Section intro: "A competing response is something physically incompatible with scratching — something you do with the same hand or area instead, held for 30–60 seconds until the urge passes."
+
+Ideas callout header: "Ideas to try"
+- Clench your fist for a slow count of 30
+- Press your palm flat against your leg
+- Cross your arms and squeeze
+- Apply moisturizer instead
+- Hold a stress ball or fidget object
+
+Practice table (3 rows):
+Column headers: "When I notice the urge to…" | "…I will instead"
+
+### Section 3 — Daily practice log (Page 2)
+
+Section heading right-aligned subtext: "Track for 1–2 weeks"
+Section intro: "Every time you catch an urge — whether or not you used your competing response — write it down. Progress isn't zero slip-ups. It's noticing more often."
+
+Table headers: Date | Situation / trigger | Urge intensity (0–10) | Used competing response? | Notes
+Column 4 cells contain: Yes □ / No □ checkboxes
+10 rows
+
+### Bring this to your appointment (Page 2)
+
+- "I've been using habit reversal therapy for my scratching and picking."
+- "Here's what I noticed triggers it most — can we go over my log together?"
+- "I'd like to talk about whether this is helping my skin heal."
+
+### Module 2 practice tool links (module-2.html "Practice tools" section)
+- "Open the Wet Wrap Therapy guide →" → handout-wet-wrap.html
+- "Open the Habit Reversal Worksheet →" → handout-habit-reversal.html
+
+### Secondary link (all-modules.html Module 2 card)
+- "Habit reversal worksheet ›" → handout-habit-reversal.html
+
+---
+
+## resources.html — Resource Library
+
+<!-- All six files listed here already exist in the repository -->
+
+### Page meta
+- Title: "Resource Library — MindSkin Connect"
+- Description: "Printable handouts and interactive worksheets to support your eczema self-management, from the MindSkin Connect program."
+
+### Hero
+- Kicker: "MindSkin Connect · University of Alberta Dermatology"
+- h1: "Resource Library"
+- Intro: "Printable handouts and interactive worksheets to support your eczema self-management."
+- Back link: "← Back to home" → index.html
+
+### Resource cards (01–06)
+
+| # | Title | Tag | Description | File |
+|---|-------|-----|-------------|------|
+| 01 | My SMART Skin Goal | Module 5 · Goal setting | Build a small, specific goal for one habit you want to change. | handout-smart-goal.html |
+| 02 | Symptom & Trigger Diary | Eczema self-management | Track itch, triggers, and stress over 7 days to find your patterns. | handout-symptom-diary.html |
+| 03 | Habit Reversal Therapy Worksheet | Module 2 · Eczema self-management | Notice the urge to scratch and swap it for something else. | handout-habit-reversal.html |
+| 04 | Progressive Muscle Relaxation (PMR) | Module 3a · Stress & skin | Tense and release each muscle group to lower stress and ease tension. | handout-pmr.html |
+| 05 | Quick Stress Relievers | Module 3a · Stress & skin | Three techniques — breathing, body scan, grounding — under five minutes. | handout-stress-relievers.html |
+| 06 | Wet Wrap Therapy | Module 5 · Skin care | Step-by-step guide to wet wrapping during an eczema flare. | handout-wet-wrap.html |
+
+### Card CTA label
+"Open resource →"
+
+### Link points
+- index.html landing hero: "Browse the Resource Library →" → resources.html
+- all-modules.html secondary row label: "Also available"
+- all-modules.html secondary row pill: "Handouts & worksheets"
+- all-modules.html secondary row title: "Resource Library"
+- all-modules.html secondary row description: "Six printable resources to accompany the modules — worksheets, trackers, and step-by-step guides."

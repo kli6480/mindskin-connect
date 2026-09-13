@@ -9,8 +9,192 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.svg">
+  <style>
+    .gw-card {
+      background: #FAF8F4;
+      border-radius: 20px;
+      padding: 24px;
+      max-width: 680px;
+      margin: 8px auto 24px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    }
+    .gw-intro {
+      font-family: 'Poppins', sans-serif;
+      color: #2D2D2D;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .gw-section-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      margin-bottom: 12px;
+    }
+    .gw-option {
+      display: block;
+      border-radius: 16px;
+      padding: 18px 22px;
+      text-decoration: none;
+      transition: filter 0.2s, background 0.2s;
+    }
+    .gw-option--read {
+      background: #5e548e;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .gw-option--read:hover { filter: brightness(1.08); }
+    .gw-option-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .gw-option-title {
+      font-family: 'Lilita One', serif;
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 1.2;
+    }
+    .gw-option-arrow {
+      font-family: 'Lilita One', serif;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .gw-option--read .gw-option-title,
+    .gw-option--read .gw-option-arrow { color: #fff; }
+    .gw-option-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+    .gw-option--read .gw-option-desc { color: rgba(255,255,255,0.9); }
+
+    .watch-card {
+      display: block;
+      background: #fff;
+      border: 2px solid #bbb0d4;
+      border-radius: 16px;
+      padding: 18px 22px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .watch-card:hover { background: #fff2d7; }
+    .watch-card.open { border-color: #5e548e; }
+    .watch-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .watch-label {
+      font-family: 'Lilita One', serif;
+      color: #5e548e;
+      font-size: 1.4rem;
+    }
+    .watch-arrow {
+      color: #5e548e;
+      font-size: 1.4rem;
+      transition: transform 0.3s ease;
+      line-height: 1;
+    }
+    .watch-card.open .watch-arrow { transform: rotate(90deg); }
+    .watch-desc {
+      font-family: 'Poppins', sans-serif;
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+    .watch-embed { margin-top: 24px; }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .video-fallback {
+      font-size: 0.8rem;
+      color: #999;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      .gw-card { padding: 16px; }
+      .gw-option { padding: 14px 16px; }
+      .watch-card { padding: 14px 16px; }
+    }
+
+    /* ── Practice tool cards ──────────────────────────── */
+    .tool-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      background: #fff;
+      border-radius: 16px;
+      border-left: 4px solid var(--accent, #2BBFAA);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      text-decoration: none;
+      color: inherit;
+      margin-bottom: 12px;
+      transition: box-shadow 0.18s, transform 0.18s;
+    }
+    .tool-card:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
+    }
+    .tool-card:focus-visible {
+      outline: 2px solid var(--accent, #2BBFAA);
+      outline-offset: 3px;
+    }
+    .tool-card:last-child { margin-bottom: 0; }
+    .tool-card-body { flex: 1; }
+    .tool-card-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent, #2BBFAA);
+      margin: 0 0 3px;
+    }
+    .tool-card-title {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #1B3068;
+      margin: 0 0 4px;
+    }
+    .tool-card-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      color: #666;
+      line-height: 1.55;
+      margin: 0;
+    }
+    .tool-card-arrow {
+      font-family: 'Lilita One', serif;
+      font-size: 1.4rem;
+      color: var(--accent, #2BBFAA);
+      flex-shrink: 0;
+    }
+  </style>
 </head>
-<body style="--accent: #C27C2E; --accent-light: #e8aa60; --accent-dark: #8a5010">
+<body style="--accent: #5e548e; --accent-light: #c4b8d8; --accent-dark: #231942">
 
   <a class="skip-link" href="#main">Skip to main content</a>
 
@@ -33,81 +217,59 @@
           <h1 class="page-heading">Holistic Skin Care and Wellness</h1>
         </div>
 
-        <section class="module-section fade-in-card" aria-labelledby="about-heading">
-          <h2 id="about-heading" class="section-bar">About this module</h2>
-          <div class="section-content">
-            <p>Managing eczema well means more than treating flares. What you eat, how you
-            move, how you sleep, and how you handle stress all affect your skin. This
-            module brings those pieces together — with practical strategies you can start
-            using this week, even on your busiest days.</p>
-          </div>
-        </section>
+        <div class="gw-card">
 
-        <section class="module-section fade-in-card" aria-labelledby="watch-heading">
-          <h2 id="watch-heading" class="section-bar">Watch</h2>
-          <div class="section-content">
-            <div class="video-container">
-              <iframe
-                src="https://www.youtube-nocookie.com/embed/VIDEO_ID"
-                title="Holistic Skin Care and Wellness video"
-                loading="lazy"
-                allowfullscreen
-              ></iframe>
+          <p class="gw-intro">Managing eczema well means more than treating flares. What you eat, how you move, how you sleep, and how you handle stress all affect your skin. This module brings those pieces together — with practical strategies you can start using this week, even on your busiest days.</p>
+
+          <p class="gw-section-label">How would you like to learn?</p>
+
+          <a class="gw-option gw-option--read" href="module-5-read.html">
+            <div class="gw-option-top">
+              <strong class="gw-option-title">📖 Read this module</strong>
+              <span class="gw-option-arrow">→</span>
             </div>
-            <p class="video-fallback">Video having trouble loading? You can also watch this module directly on YouTube.</p>
-          </div>
-        </section>
+            <p class="gw-option-desc">Work through the module as a scrollable experience — with illustrations, expanded explanations, and four interactive quiz questions. Takes about 10–15 minutes.</p>
+          </a>
 
-        <section class="module-section fade-in-card" aria-labelledby="keypoints-heading">
-          <h2 id="keypoints-heading" class="section-bar">Key points</h2>
+          <div class="watch-card" id="watch-toggle" role="button" tabindex="0" aria-expanded="false" aria-controls="watch-embed">
+            <div class="watch-card-header">
+              <span class="watch-label">▶ Watch the video</span>
+              <span class="watch-arrow" aria-hidden="true">→</span>
+            </div>
+            <p class="watch-desc">Prefer to watch? The module video covers the same content. Available on YouTube.</p>
+            <div class="watch-embed" id="watch-embed" hidden>
+              <div class="video-wrapper">
+                <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" loading="lazy" title="Holistic Skin Care and Wellness video" frameborder="0" allowfullscreen></iframe>
+              </div>
+              <p class="video-fallback">Video having trouble loading? You can also watch this module directly on YouTube.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <section class="module-section" aria-labelledby="tools-heading-5">
+          <h2 id="tools-heading-5" class="section-bar">Practice tools</h2>
           <div class="section-content">
-            <details class="key-points">
-              <summary>
-                <span class="label-closed">Read the key points</span>
-                <span class="label-open">Hide the key points</span>
-              </summary>
-              <ul class="key-points-list">
-                <li>A "good enough" routine beats a perfect routine you can't keep up. Simplify during stressful weeks rather than stopping entirely.</li>
-                <li>Flare prevention starts with knowing your early warning signs and having a plan ready before a flare fully develops.</li>
-                <li>Mindfulness means paying attention to the present moment without judgment. Even five minutes a day can reduce stress and scratch urges.</li>
-                <li>Progressive Muscle Relaxation (PMR) — tensing and releasing muscle groups one at a time — can lower stress and help you sleep.</li>
-                <li>Cognitive Behavioural Therapy (CBT) has been shown to reduce itch intensity, sleep problems, anxiety, and depression in people with eczema.</li>
-                <li>A skin-friendly diet is an anti-inflammatory diet: more fruits, vegetables, and whole grains; less processed food and added sugar.</li>
-                <li>No single food causes eczema. Talk to your doctor before cutting out any food group.</li>
-                <li>Regular moderate exercise lowers cortisol, improves sleep, and supports mood.</li>
-                <li>During flares, choose lower-sweat activities and shower with lukewarm water afterward.</li>
-                <li>Alberta-based resources: MindShift CBT app, BounceBack Alberta, AHS Mental Health Helpline (1-877-303-2642), and your family doctor for referrals.</li>
-              </ul>
-            </details>
-          </div>
-        </section>
-
-        <section class="module-section fade-in-card" aria-labelledby="appointment-heading">
-          <h2 id="appointment-heading" class="section-bar">Bring this to your appointment</h2>
-          <div class="appointment-box">
-            <ul>
-              <li>"I'd like help building a 'good enough' routine for stressful weeks."</li>
-              <li>"Could CBT help with my itch and sleep, and how would I access it here?"</li>
-              <li>"I want to add more movement to my week — what works with active eczema?"</li>
-              <li>"Can we talk about how stress and my skin are connected for me specifically?"</li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="module-section fade-in-card" aria-labelledby="handout-heading-5">
-          <h2 id="handout-heading-5" class="section-bar">Practice tools</h2>
-          <div class="section-content">
-            <p><a href="handout-pmr.html">Open the PMR handout →</a></p>
-            <p><a href="handout-stress-relievers.html">Open the Quick Stress Relievers handout →</a></p>
+            <a class="tool-card" href="handout-pmr.html">
+              <div class="tool-card-body">
+                <p class="tool-card-label">Step-by-step guide</p>
+                <strong class="tool-card-title">Progressive Muscle Relaxation (PMR)</strong>
+                <p class="tool-card-desc">Tense and release each muscle group in turn to lower stress and ease tension.</p>
+              </div>
+              <span class="tool-card-arrow">→</span>
+            </a>
+            <a class="tool-card" href="handout-stress-relievers.html">
+              <div class="tool-card-body">
+                <p class="tool-card-label">Interactive handout</p>
+                <strong class="tool-card-title">Quick Stress Relievers</strong>
+                <p class="tool-card-desc">Three techniques under five minutes — breathing, body scan, and sensory grounding.</p>
+              </div>
+              <span class="tool-card-arrow">→</span>
+            </a>
           </div>
         </section>
 
       </article>
-
-      <div class="module-end">
-        <p class="module-end-text">You've reached the end of this module.</p>
-        <a class="module-end-btn" href="all-modules.html">← Back to all modules</a>
-      </div>
 
     </div>
   </main>
@@ -123,19 +285,17 @@
   </footer>
 
   <script>
-    (function () {
-      var cards = document.querySelectorAll('.fade-in-card');
-      if (!cards.length) return;
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.08 });
-      cards.forEach(function (card) { observer.observe(card); });
-    })();
+    var watchToggle = document.getElementById('watch-toggle');
+    var watchEmbed = document.getElementById('watch-embed');
+    function toggleWatch() {
+      var isOpen = watchToggle.classList.toggle('open');
+      watchEmbed.hidden = !isOpen;
+      watchToggle.setAttribute('aria-expanded', isOpen);
+    }
+    watchToggle.addEventListener('click', toggleWatch);
+    watchToggle.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleWatch(); }
+    });
   </script>
 </body>
 </html>

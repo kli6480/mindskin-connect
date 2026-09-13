@@ -68,7 +68,16 @@ If a field is missing or ambiguous, stop and ask before proceeding.
 - [ ] favicon.svg
 - [ ] README.md
 - [ ] .gitignore
-- [ ] module-1a-read.html — scrollable slide-deck experience, in progress
+- [x] module-1a-read.html
+- [ ] module-2-read.html
+- [ ] module-3a-read.html
+- [ ] module-4-read.html
+- [ ] module-5-read.html
+- [ ] flare-tracker.html
+- [ ] habit-reversal-therapy.html
+- [ ] wet-wrap-therapy.html
+- [ ] interactive appointment section on all five module pages
+- [ ] real YouTube video IDs
 
 ---
 

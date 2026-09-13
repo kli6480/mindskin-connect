@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Habit Reversal Therapy Worksheet — MindSkin Connect</title>
+  <meta name="description" content="A printable Habit Reversal Therapy worksheet — notice your scratch pattern, choose a competing response, and track your daily practice.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.svg">
+  <style>
+    /* ── HRT Worksheet page-specific styles ─────────────── */
+
+    .hrt-eyebrow {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: .8125rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: rgba(255,255,255,.85);
+      margin-bottom: 4px;
+    }
+
+    /* Section number + heading pairing */
+    .hrt-section-hd {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .hrt-section-num {
+      font-family: 'Lilita One', cursive;
+      font-size: 2rem;
+      color: var(--accent);
+      line-height: 1;
+      flex: none;
+    }
+    .hrt-section-intro {
+      font-size: .9375rem;
+      color: #5C5C5C;
+      line-height: 1.6;
+      margin: 0 0 16px;
+      max-width: 66ch;
+    }
+
+    /* Fill-in table (Section 1) */
+    .hrt-fill-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 6px;
+      font-size: .9375rem;
+    }
+    .hrt-fill-table td:first-child {
+      width: 34%;
+      vertical-align: top;
+      padding: 8px 12px;
+      font-weight: 600;
+      color: var(--navy);
+      background: var(--card-bg);
+      border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+      line-height: 1.45;
+    }
+    .hrt-fill-table td:first-child .hrt-hint {
+      font-weight: 400;
+      color: #8A8580;
+      font-size: .875rem;
+    }
+    .hrt-fill-table td:last-child {
+      vertical-align: middle;
+      background: var(--card-bg);
+      border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+      padding: 4px 12px 4px 4px;
+    }
+    .hrt-fill-input {
+      display: block;
+      width: 100%;
+      border: none;
+      border-bottom: 1.5px solid #C4C0B8;
+      background: transparent;
+      font: inherit;
+      font-size: .9375rem;
+      padding: 6px 4px 4px;
+      min-height: 40px;
+      color: #2D2D2D;
+      outline: none;
+    }
+    .hrt-fill-input:focus { border-bottom-color: var(--accent); }
+
+    /* Ideas callout (Section 2) */
+    .hrt-ideas {
+      background: #E8F4EE;
+      border-radius: var(--radius-xl);
+      padding: 12px 16px;
+      margin-bottom: 14px;
+    }
+    .hrt-ideas-label {
+      font-weight: 600;
+      font-size: .8125rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .hrt-ideas-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: .9375rem;
+      color: #2D2D2D;
+    }
+    .hrt-ideas-list li::before {
+      content: "· ";
+      color: var(--accent);
+    }
+
+    /* Competing response table (Section 2, 3 rows) */
+    .hrt-practice-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      table-layout: fixed;
+      font-size: .9375rem;
+    }
+    .hrt-practice-table th {
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: .8125rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    .hrt-practice-table th:first-child { border-radius: var(--radius-xl) 0 0 var(--radius-xl); width: 44%; }
+    .hrt-practice-table th:last-child  { border-radius: 0 var(--radius-xl) var(--radius-xl) 0; }
+    .hrt-practice-table td {
+      height: 52px;
+      vertical-align: middle;
+      background: var(--card-bg);
+      border-bottom: 1.5px solid #E0DCD3;
+      padding: 8px 12px;
+    }
+    .hrt-practice-table tr:last-child td { border-bottom: none; }
+    .hrt-practice-table td input[type="text"] {
+      display: block;
+      width: 100%;
+      border: none;
+      border-bottom: 1.5px solid #C4C0B8;
+      background: transparent;
+      font: inherit;
+      font-size: .9375rem;
+      padding: 2px 0;
+      color: #2D2D2D;
+      outline: none;
+      min-height: 30px;
+    }
+    .hrt-practice-table td input[type="text"]:focus { border-bottom-color: var(--accent); }
+
+    /* Page 2 page-break anchor */
+    .hrt-page-2 { margin-top: 0; }
+
+    /* Log table header row with right-aligned subtext */
+    .hrt-log-hd {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--accent);
+      margin-bottom: 14px;
+    }
+    .hrt-log-hd-sub {
+      font-size: .875rem;
+      color: #5C5C5C;
+      white-space: nowrap;
+    }
+
+    /* Practice log table (10 rows) */
+    .hrt-log-wrap { overflow-x: auto; }
+    .hrt-log-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      table-layout: fixed;
+      min-width: 520px;
+      font-size: .875rem;
+    }
+    .hrt-log-table th {
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: .75rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      padding: 8px 10px;
+      text-align: left;
+    }
+    .hrt-log-table thead tr th:first-child { border-radius: var(--radius-xl) 0 0 var(--radius-xl); width: 11%; }
+    .hrt-log-table thead tr th:last-child  { border-radius: 0 var(--radius-xl) var(--radius-xl) 0; }
+    .hrt-log-table td {
+      height: 40px;
+      vertical-align: middle;
+      background: var(--card-bg);
+      border-bottom: 1px solid #E0DCD3;
+      padding: 6px 10px;
+    }
+    .hrt-log-table tr:last-child td { border-bottom: none; }
+    .hrt-log-table td input[type="text"] {
+      display: block;
+      width: 100%;
+      border: none;
+      background: transparent;
+      font: inherit;
+      font-size: .875rem;
+      color: #2D2D2D;
+      outline: none;
+      min-height: 28px;
+    }
+
+    /* Y / N checkboxes in log column 4 */
+    .hrt-yn {
+      display: flex;
+      gap: 10px;
+      font-size: .8125rem;
+      color: #5C5C5C;
+    }
+    .hrt-yn label {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      min-height: 28px;
+    }
+    .hrt-yn input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      border: 1.5px solid #9AA3B8;
+      border-radius: 3px;
+      accent-color: var(--accent);
+      flex: none;
+    }
+
+    /* Appointment callout */
+    .hrt-appt {
+      background: #E8F4EE;
+      border-radius: var(--radius-2xl);
+      padding: 24px;
+      margin-top: 28px;
+    }
+    @media (min-width: 768px) {
+      .hrt-appt { padding: 28px 32px; }
+    }
+    .hrt-appt-heading {
+      font-family: 'Lilita One', cursive;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+    .hrt-appt ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .hrt-appt li {
+      font-size: .9375rem;
+      color: #2D2D2D;
+      padding-left: 1.4em;
+      position: relative;
+    }
+    .hrt-appt li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ── Print ────────────────────────────────────────────── */
+    @media print {
+      @page { size: letter portrait; margin: .6in .65in .5in; }
+
+      .no-print { display: none !important; }
+
+      .handout-hero {
+        background: #fff !important;
+        color: #000;
+        padding: 0 0 10pt;
+        border-bottom: 3pt solid #2E7D5E;
+        margin-bottom: 10pt;
+      }
+      .handout-hero::after,
+      .back-to-module { display: none; }
+      .handout-hero h1 { font-size: 26pt; color: #1B3068; margin: 0; }
+      .hrt-eyebrow { color: #2E7D5E; font-size: 7pt; letter-spacing: .14em; }
+      .handout-subtitle { color: #2D2D2D; font-size: 10.5pt; line-height: 1.55; max-width: 64ch; }
+
+      .wrap,
+      .page-wrapper { padding: 0; max-width: none; }
+
+      .handout-card {
+        background: #fff;
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        margin-top: 14pt;
+        break-inside: avoid;
+      }
+
+      .hrt-section-num { color: #2E7D5E; font-size: 14pt; }
+      .hrt-section-hd { margin-bottom: 5pt; gap: 8pt; }
+      .handout-h2 { color: #1B3068; font-size: 13pt; margin-bottom: 0; }
+      .hrt-section-intro { font-size: 9.5pt; color: #5C5C5C; margin-bottom: 8pt; }
+
+      /* Page 2 */
+      .hrt-page-2 { page-break-before: always; break-before: always; }
+
+      /* Fill table */
+      .hrt-fill-table { font-size: 9.5pt; border-spacing: 0 4pt; }
+      .hrt-fill-table td:first-child { font-size: 9pt; padding: 5pt 8pt; }
+      .hrt-fill-input {
+        border-bottom: 1pt solid #C4C0B8;
+        min-height: 0.3in;
+        font-size: 9pt;
+        color: #000;
+        padding: 2pt 2pt;
+      }
+
+      /* Ideas callout */
+      .hrt-ideas { padding: 8pt 12pt; margin-bottom: 8pt; border-radius: 8pt; }
+      .hrt-ideas-label { font-size: 7.5pt; margin-bottom: 5pt; }
+      .hrt-ideas-list { font-size: 8.5pt; gap: 3pt 14pt; }
+
+      /* Competing response table */
+      .hrt-practice-table { font-size: 8.5pt; }
+      .hrt-practice-table th { font-size: 7.5pt; padding: 5pt 8pt; }
+      .hrt-practice-table td { height: 0.42in; padding: 5pt 8pt; }
+      .hrt-practice-table tr { break-inside: avoid; page-break-inside: avoid; }
+      .hrt-practice-table td input[type="text"] { font-size: 8.5pt; }
+
+      /* Log section header */
+      .hrt-log-hd { border-bottom-width: 2pt; margin-bottom: 8pt; padding-bottom: 6pt; }
+      .handout-h2.hrt-log-heading { font-size: 16pt; color: #1B3068; }
+      .hrt-log-hd-sub { font-size: 9pt; }
+      .hrt-section-intro { font-size: 9.5pt; }
+
+      /* Log table */
+      .hrt-log-wrap { overflow: visible; }
+      .hrt-log-table { min-width: 0; font-size: 8pt; }
+      .hrt-log-table th { font-size: 7pt; padding: 5pt 6pt; }
+      .hrt-log-table td { height: 0.36in; padding: 4pt 6pt; }
+      .hrt-log-table tr { break-inside: avoid; page-break-inside: avoid; }
+      .hrt-log-table td input[type="text"] { font-size: 7.5pt; }
+      .hrt-yn { gap: 8pt; font-size: 7.5pt; }
+      .hrt-yn input[type="checkbox"] { width: 10px; height: 10px; }
+
+      /* Appointment callout */
+      .hrt-appt {
+        background: #E8F4EE !important;
+        margin-top: 10pt;
+        padding: 10pt 12pt;
+        break-inside: avoid;
+        border-radius: 8pt;
+      }
+      .hrt-appt-heading { font-size: 11pt; color: #1B3068; margin-bottom: 8pt; }
+      .hrt-appt li { font-size: 8.5pt; color: #2D2D2D; }
+      .hrt-appt li::before { color: #2E7D5E; }
+
+      .site-footer {
+        background: #fff !important;
+        color: #000;
+        border-top: .75pt solid #000;
+        padding-top: 6pt;
+        font-size: 7pt;
+      }
+      .site-footer .footer-links a { color: #000; }
+    }
+  </style>
+</head>
+<body style="--accent: #2E7D5E; --accent-tint: #E8F4EE">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Site navigation">
+      <a class="site-logo" href="index.html">MindSkin Connect</a>
+      <a href="index.html">Home</a>
+      <a href="all-modules.html">All modules</a>
+      <a href="clinician.html">For clinicians</a>
+    </nav>
+  </header>
+
+  <div class="handout-hero">
+    <div class="wrap">
+      <a class="back-to-module" href="module-2.html"><span aria-hidden="true">←</span> Back to Module 2</a>
+      <p class="hrt-eyebrow" aria-hidden="true">Module 2 · Eczema self-management</p>
+      <h1>Habit Reversal Therapy Worksheet</h1>
+      <p class="handout-subtitle">A gentle, structured way to notice the urge to scratch or pick — and swap it for something else before it starts. It won't feel automatic right away. That's expected.</p>
+    </div>
+  </div>
+
+  <main id="main">
+    <div class="page-wrapper">
+
+      <div class="handout-toolbar no-print">
+        <button class="btn" type="button" onclick="window.print()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 9V2h12v7"/><rect x="6" y="14" width="12" height="8" rx="1"/>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+          </svg>
+          Print this page
+        </button>
+      </div>
+
+      <!-- ── PAGE 1 ───────────────────────────────────────── -->
+
+      <!-- Section 1: Notice your pattern -->
+      <div class="handout-card">
+        <div class="hrt-section-hd">
+          <span class="hrt-section-num" aria-hidden="true">1</span>
+          <h2 class="handout-h2" id="pattern-heading">Notice your pattern</h2>
+        </div>
+        <p class="hrt-section-intro">Before you can change a habit, you have to catch it happening. For the next few days, jot down what's going on right before you scratch or pick — even after the fact is useful.</p>
+
+        <table class="hrt-fill-table" aria-labelledby="pattern-heading">
+          <tbody>
+            <tr>
+              <td><label for="pattern-when">Where / when does it happen most?</label></td>
+              <td><input type="text" id="pattern-when" class="hrt-fill-input" autocomplete="off" placeholder="Write here…"></td>
+            </tr>
+            <tr>
+              <td><label for="pattern-sensation">What do you feel right before? <span class="hrt-hint">(tingling, itch, tension)</span></label></td>
+              <td><input type="text" id="pattern-sensation" class="hrt-fill-input" autocomplete="off" placeholder="Write here…"></td>
+            </tr>
+            <tr>
+              <td><label for="pattern-area">Which body area?</label></td>
+              <td><input type="text" id="pattern-area" class="hrt-fill-input" autocomplete="off" placeholder="Write here…"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Section 2: Choose your competing response -->
+      <div class="handout-card">
+        <div class="hrt-section-hd">
+          <span class="hrt-section-num" aria-hidden="true">2</span>
+          <h2 class="handout-h2" id="response-heading">Choose your competing response</h2>
+        </div>
+        <p class="hrt-section-intro">A competing response is something physically incompatible with scratching — something you do with the same hand or area instead, held for 30–60 seconds until the urge passes.</p>
+
+        <div class="hrt-ideas" role="note">
+          <p class="hrt-ideas-label">Ideas to try</p>
+          <ul class="hrt-ideas-list">
+            <li>Clench your fist for a slow count of 30</li>
+            <li>Press your palm flat against your leg</li>
+            <li>Cross your arms and squeeze</li>
+            <li>Apply moisturizer instead</li>
+            <li>Hold a stress ball or fidget object</li>
+          </ul>
+        </div>
+
+        <table class="hrt-practice-table" aria-labelledby="response-heading">
+          <thead>
+            <tr>
+              <th scope="col">When I notice the urge to…</th>
+              <th scope="col">…I will instead</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" aria-label="Urge situation 1" autocomplete="off"></td>
+              <td><input type="text" aria-label="Competing response 1" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td><input type="text" aria-label="Urge situation 2" autocomplete="off"></td>
+              <td><input type="text" aria-label="Competing response 2" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td><input type="text" aria-label="Urge situation 3" autocomplete="off"></td>
+              <td><input type="text" aria-label="Competing response 3" autocomplete="off"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ── PAGE 2 ───────────────────────────────────────── -->
+      <div class="hrt-page-2">
+
+        <!-- Section 3: Daily practice log -->
+        <div class="handout-card">
+          <div class="hrt-log-hd">
+            <h2 class="handout-h2 hrt-log-heading" id="log-heading">3. Daily practice log</h2>
+            <span class="hrt-log-hd-sub">Track for 1–2 weeks</span>
+          </div>
+          <p class="hrt-section-intro">Every time you catch an urge — whether or not you used your competing response — write it down. Progress isn't zero slip-ups. It's noticing more often.</p>
+
+          <div class="hrt-log-wrap">
+            <table class="hrt-log-table" aria-label="Daily practice log">
+              <thead>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Situation / trigger</th>
+                  <th scope="col">Urge intensity (0–10)</th>
+                  <th scope="col">Used competing response?</th>
+                  <th scope="col">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="text" aria-label="Date row 1" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Situation row 1" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Urge intensity row 1" autocomplete="off"></td>
+                  <td><div class="hrt-yn"><label><input type="checkbox" aria-label="Yes row 1"> Yes</label><label><input type="checkbox" aria-label="No row 1"> No</label></div></td>
+                  <td><input type="text" aria-label="Notes row 1" autocomplete="off"></td>
+                </tr>
+                <tr>
+                  <td><input type="text" aria-label="Date row 2" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Situation row 2" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Urge intensity row 2" autocomplete="off"></td>
+                  <td><div class="hrt-yn"><label><input type="checkbox" aria-label="Yes row 2"> Yes</label><label><input type="checkbox" aria-label="No row 2"> No</label></div></td>
+                  <td><input type="text" aria-label="Notes row 2" autocomplete="off"></td>
+                </tr>
+                <tr>
+                  <td><input type="text" aria-label="Date row 3" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Situation row 3" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Urge intensity row 3" autocomplete="off"></td>
+                  <td><div class="hrt-yn"><label><input type="checkbox" aria-label="Yes row 3"> Yes</label><label><input type="checkbox" aria-label="No row 3"> No</label></div></td>
+                  <td><input type="text" aria-label="Notes row 3" autocomplete="off"></td>
+                </tr>
+                <tr>
+                  <td><input type="text" aria-label="Date row 4" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Situation row 4" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Urge intensity row 4" autocomplete="off"></td>
+                  <td><div class="hrt-yn"><label><input type="checkbox" aria-label="Yes row 4"> Yes</label><label><input type="checkbox" aria-label="No row 4"> No</label></div></td>
+                  <td><input type="text" aria-label="Notes row 4" autocomplete="off"></td>
+                </tr>
+                <tr>
+                  <td><input type="text" aria-label="Date row 5" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Situation row 5" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Urge intensity row 5" autocomplete="off"></td>
+                  <td><div class="hrt-yn"><label><input type="checkbox" aria-label="Yes row 5"> Yes</label><label><input type="checkbox" aria-label="No row 5"> No</label></div></td>
+                  <td><input type="text" aria-label="Notes row 5" autocomplete="off"></td>
+                </tr>
+                <tr>
+                  <td><input type="text" aria-label="Date row 6" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Situation row 6" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Urge intensity row 6" autocomplete="off"></td>
+                  <td><div class="hrt-yn"><label><input type="checkbox" aria-label="Yes row 6"> Yes</label><label><input type="checkbox" aria-label="No row 6"> No</label></div></td>
+                  <td><input type="text" aria-label="Notes row 6" autocomplete="off"></td>
+                </tr>
+                <tr>
+                  <td><input type="text" aria-label="Date row 7" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Situation row 7" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Urge intensity row 7" autocomplete="off"></td>
+                  <td><div class="hrt-yn"><label><input type="checkbox" aria-label="Yes row 7"> Yes</label><label><input type="checkbox" aria-label="No row 7"> No</label></div></td>
+                  <td><input type="text" aria-label="Notes row 7" autocomplete="off"></td>
+                </tr>
+                <tr>
+                  <td><input type="text" aria-label="Date row 8" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Situation row 8" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Urge intensity row 8" autocomplete="off"></td>
+                  <td><div class="hrt-yn"><label><input type="checkbox" aria-label="Yes row 8"> Yes</label><label><input type="checkbox" aria-label="No row 8"> No</label></div></td>
+                  <td><input type="text" aria-label="Notes row 8" autocomplete="off"></td>
+                </tr>
+                <tr>
+                  <td><input type="text" aria-label="Date row 9" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Situation row 9" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Urge intensity row 9" autocomplete="off"></td>
+                  <td><div class="hrt-yn"><label><input type="checkbox" aria-label="Yes row 9"> Yes</label><label><input type="checkbox" aria-label="No row 9"> No</label></div></td>
+                  <td><input type="text" aria-label="Notes row 9" autocomplete="off"></td>
+                </tr>
+                <tr>
+                  <td><input type="text" aria-label="Date row 10" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Situation row 10" autocomplete="off"></td>
+                  <td><input type="text" aria-label="Urge intensity row 10" autocomplete="off"></td>
+                  <td><div class="hrt-yn"><label><input type="checkbox" aria-label="Yes row 10"> Yes</label><label><input type="checkbox" aria-label="No row 10"> No</label></div></td>
+                  <td><input type="text" aria-label="Notes row 10" autocomplete="off"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Appointment callout -->
+        <div class="hrt-appt" role="note">
+          <h2 class="hrt-appt-heading">Bring this to your appointment</h2>
+          <ul>
+            <li>"I've been using habit reversal therapy for my scratching and picking."</li>
+            <li>"Here's what I noticed triggers it most — can we go over my log together?"</li>
+            <li>"I'd like to talk about whether this is helping my skin heal."</li>
+          </ul>
+        </div>
+
+      </div><!-- /.hrt-page-2 -->
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>This site does not collect personal information.</p>
+    <p>Mind Skin Health for Atopic Dermatitis (MSHAD) © 2025 University of Alberta Division of Dermatology. Licensed CC BY-NC-ND 4.0.</p>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="all-modules.html">All modules</a>
+      <a href="clinician.html">For clinicians</a>
+      <a href="mailto:supportg@ualberta.ca">supportg@ualberta.ca</a>
+    </nav>
+  </footer>
+
+</body>
+</html>

@@ -13,17 +13,17 @@
     .gw-card {
       background: #FAF8F4;
       border-radius: 20px;
-      padding: 40px;
+      padding: 24px;
       max-width: 680px;
-      margin: 40px auto;
+      margin: 8px auto 24px;
       box-shadow: 0 2px 16px rgba(0,0,0,0.07);
     }
     .gw-intro {
       font-family: 'Poppins', sans-serif;
       color: #2D2D2D;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       line-height: 1.7;
-      margin-bottom: 32px;
+      margin-bottom: 16px;
     }
     .gw-section-label {
       font-family: 'Poppins', sans-serif;
@@ -32,25 +32,15 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       font-size: 0.8rem;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
     }
     .gw-option {
       display: block;
       border-radius: 16px;
-      padding: 28px 32px;
+      padding: 18px 22px;
       text-decoration: none;
       transition: filter 0.2s, background 0.2s;
     }
-    .gw-option--tool {
-      background: #fff;
-      border: 2px solid #c4e0d4;
-      color: inherit;
-      margin-top: 16px;
-    }
-    .gw-option--tool:hover { background: #f0f8f4; border-color: #4A9B6E; }
-    .gw-option--tool .gw-option-title { color: #4A9B6E; }
-    .gw-option--tool .gw-option-arrow { color: #4A9B6E; }
-    .gw-option--tool .gw-option-desc { color: #666; }
     .gw-option--read {
       background: #2E7D5E;
       color: #fff;
@@ -90,7 +80,7 @@
       background: #fff;
       border: 2px solid #cce0d8;
       border-radius: 16px;
-      padding: 28px 32px;
+      padding: 18px 22px;
       cursor: pointer;
       transition: all 0.3s ease;
     }
@@ -143,9 +133,65 @@
     }
 
     @media (max-width: 480px) {
-      .gw-card { padding: 24px; }
-      .gw-option { padding: 22px 24px; }
-      .watch-card { padding: 22px 24px; }
+      .gw-card { padding: 16px; }
+      .gw-option { padding: 14px 16px; }
+      .watch-card { padding: 14px 16px; }
+    }
+
+    /* ── Practice tool cards ──────────────────────────── */
+    .tool-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      background: #fff;
+      border-radius: 16px;
+      border-left: 4px solid var(--accent, #2BBFAA);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      text-decoration: none;
+      color: inherit;
+      margin-bottom: 12px;
+      transition: box-shadow 0.18s, transform 0.18s;
+    }
+    .tool-card:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
+    }
+    .tool-card:focus-visible {
+      outline: 2px solid var(--accent, #2BBFAA);
+      outline-offset: 3px;
+    }
+    .tool-card:last-child { margin-bottom: 0; }
+    .tool-card-body { flex: 1; }
+    .tool-card-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent, #2BBFAA);
+      margin: 0 0 3px;
+    }
+    .tool-card-title {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #1B3068;
+      margin: 0 0 4px;
+    }
+    .tool-card-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      color: #666;
+      line-height: 1.55;
+      margin: 0;
+    }
+    .tool-card-arrow {
+      font-family: 'Lilita One', serif;
+      font-size: 1.4rem;
+      color: var(--accent, #2BBFAA);
+      flex-shrink: 0;
     }
   </style>
 </head>
@@ -186,14 +232,6 @@
             <p class="gw-option-desc">Work through the module as a scrollable experience — with illustrations, expanded explanations, and four interactive quiz questions. Takes about 10–15 minutes.</p>
           </a>
 
-          <a class="gw-option gw-option--tool" href="handout-wet-wrap.html">
-            <div class="gw-option-top">
-              <strong class="gw-option-title">Practice tool: Wet Wrap Therapy</strong>
-              <span class="gw-option-arrow">→</span>
-            </div>
-            <p class="gw-option-desc">Step-by-step guide to wet wrap therapy for flare relief — with an interactive checklist you can print.</p>
-          </a>
-
           <div class="watch-card" id="watch-toggle" role="button" tabindex="0" aria-expanded="false" aria-controls="watch-embed">
             <div class="watch-card-header">
               <span class="watch-label">▶ Watch the video</span>
@@ -209,6 +247,28 @@
           </div>
 
         </div>
+
+        <section class="module-section" aria-labelledby="tools-heading-2">
+          <h2 id="tools-heading-2" class="section-bar">Practice tools</h2>
+          <div class="section-content">
+            <a class="tool-card" href="handout-habit-reversal.html">
+              <div class="tool-card-body">
+                <p class="tool-card-label">Worksheet</p>
+                <strong class="tool-card-title">Habit Reversal Therapy</strong>
+                <p class="tool-card-desc">Notice the urge to scratch and swap it for something else. Track your pattern over 1–2 weeks.</p>
+              </div>
+              <span class="tool-card-arrow">→</span>
+            </a>
+            <a class="tool-card" href="handout-wet-wrap.html">
+              <div class="tool-card-body">
+                <p class="tool-card-label">Step-by-step guide</p>
+                <strong class="tool-card-title">Wet Wrap Therapy</strong>
+                <p class="tool-card-desc">Fast relief during a flare — a printable checklist to walk you through each step.</p>
+              </div>
+              <span class="tool-card-arrow">→</span>
+            </a>
+          </div>
+        </section>
 
       </article>
 
