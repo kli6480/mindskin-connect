@@ -19,3 +19,6 @@ Desktop.ini
 
 # Node (in case tooling is added later; the site itself uses none)
 node_modules/
+
+# Reference PDFs (not part of the site)
+Module PDFs/
