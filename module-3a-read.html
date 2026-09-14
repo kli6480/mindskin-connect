@@ -643,6 +643,16 @@
       flex-shrink: 0;
       font-family: 'Lilita One', serif;
     }
+    /* Light variant — for CTAs on cream/light slides (legible dark text) */
+    .handout-cta--light {
+      background: rgba(12,55,77,0.06);
+      border-left-color: #0C374D;
+    }
+    .handout-cta--light:hover { background: rgba(12,55,77,0.12); }
+    .handout-cta--light .handout-cta-label { color: #40788B; }
+    .handout-cta--light .handout-cta-title { color: #0C374D; }
+    .handout-cta--light .handout-cta-desc { color: rgba(12,55,77,0.72); }
+    .handout-cta--light .handout-cta-arrow { color: #40788B; }
 
     /* ── Responsive ─────────────────────────────────────── */
     @media (max-width: 768px) {
@@ -1037,7 +1047,7 @@
           </div>
         </div>
 
-        <a class="handout-cta anim" href="handout-eczema-action-plan.html" data-delay="350">
+        <a class="handout-cta handout-cta--light anim" href="handout-eczema-action-plan.html" data-delay="350">
           <div class="handout-cta-inner">
             <p class="handout-cta-label">Fillable plan</p>
             <p class="handout-cta-title">My Eczema Action Plan</p>
