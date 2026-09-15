@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Building Your Self-Management Skills &amp; Confidence — Read — MindSkin Connect</title>
   <meta name="description" content="A scrollable slide-deck experience for Module 3a: learn how to track triggers, build lasting habits, set SMART goals, and recover from setbacks.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MindSkin Connect">
+  <meta property="og:title" content="Building Your Self-Management Skills &amp; Confidence — Read — MindSkin Connect">
+  <meta property="og:description" content="A scrollable slide-deck experience for Module 3a: learn how to track triggers, build lasting habits, set SMART goals, and recover from setbacks.">
+  <meta property="og:url" content="https://connect.mindskinhealth.ca/module-3a-read.html">
+  <meta property="og:image" content="https://connect.mindskinhealth.ca/assets/social/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Building Your Self-Management Skills &amp; Confidence — Read — MindSkin Connect">
+  <meta name="twitter:description" content="A scrollable slide-deck experience for Module 3a: learn how to track triggers, build lasting habits, set SMART goals, and recover from setbacks.">
+  <meta name="twitter:image" content="https://connect.mindskinhealth.ca/assets/social/og-image.png">
+  <link rel="canonical" href="https://connect.mindskinhealth.ca/module-3a-read.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="style.css">
@@ -643,6 +656,16 @@
       flex-shrink: 0;
       font-family: 'Lilita One', serif;
     }
+    /* Light variant — for CTAs on cream/light slides (legible dark text) */
+    .handout-cta--light {
+      background: rgba(12,55,77,0.06);
+      border-left-color: #0C374D;
+    }
+    .handout-cta--light:hover { background: rgba(12,55,77,0.12); }
+    .handout-cta--light .handout-cta-label { color: #40788B; }
+    .handout-cta--light .handout-cta-title { color: #0C374D; }
+    .handout-cta--light .handout-cta-desc { color: rgba(12,55,77,0.72); }
+    .handout-cta--light .handout-cta-arrow { color: #40788B; }
 
     /* ── Responsive ─────────────────────────────────────── */
     @media (max-width: 768px) {
@@ -650,6 +673,103 @@
       .obj-grid         { grid-template-columns: 1fr; }
       .trigger-grid     { grid-template-columns: 1fr; }
       .slide-content    { padding: 40px 20px; }
+    }
+    /* ═══ PDF-faithful components (Module 3a — teal) ═══════ */
+    :root {
+      --rose: #40788B; --plum: #0C374D; --cream: #FBF6DC;
+      --pink-lt: #6FA294; --rose-card: #4E8A93;
+    }
+    .pdf-slide { height: auto; min-height: 100vh; }
+    .pdf-wrap { position: relative; z-index: 1; width: 100%; max-width: 1120px; margin: 0 auto; padding: 92px 44px 48px; display: grid; gap: 36px; align-items: center; }
+    @media (min-width: 880px) {
+      .pdf-2col { grid-template-columns: 1.05fr 0.95fr; }
+      .pdf-2col--journey { grid-template-columns: 1fr 1fr; gap: 0; }
+      .s3 .s3-note { border-radius: 50%; aspect-ratio: 1/1; max-width: none; width: min(42vw,430px); padding: 16%; display: flex; align-items: center; justify-content: center; font-size: clamp(.68rem,.8vw,.8rem); line-height: 1.48; }
+    }
+    .s1 { background: var(--rose); }
+    .s1-badge { display: inline-block; background: #E7EBD5; color: var(--plum); font-family: 'Poppins',sans-serif; font-weight: 600; font-size: .95rem; padding: 9px 24px; border-radius: 999px; box-shadow: 0 5px 0 rgba(12,55,77,.2); margin-bottom: 22px; }
+    .s1-title { font-family: 'Lilita One',serif; color: #F5EFCF; text-transform: uppercase; font-size: clamp(2.1rem,5.4vw,3.5rem); line-height: 1.06; letter-spacing: .01em; margin: 0 0 24px; }
+    .s1-credits { font-family: 'Poppins',sans-serif; color: rgba(255,255,255,.85); font-size: .88rem; line-height: 1.65; margin: 0; }
+    .char-graphic, .s1-graphic { position: relative; display: flex; align-items: center; justify-content: center; min-height: 300px; }
+    .char-circle, .s1-circle { position: absolute; width: min(82%,370px); aspect-ratio: 1/1; background: #F5EFCF; border-radius: 50%; }
+    .char-graphic > img, .s1-brain { position: relative; width: min(94%,430px); height: auto; }
+    .s2 { background: var(--cream); }
+    .s2-h { font-family: 'Lilita One',serif; color: var(--plum); text-transform: uppercase; font-size: clamp(1.9rem,4.6vw,3rem); line-height: 1.05; margin: 0 0 16px; }
+    .s2-sub { font-family: 'Poppins',sans-serif; color: var(--plum); font-size: clamp(1rem,1.8vw,1.15rem); line-height: 1.6; margin: 0; }
+    .obj2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .obj2 { border-radius: 22px; padding: 22px 20px; color: #fff; font-family: 'Poppins',sans-serif; font-size: .92rem; line-height: 1.5; text-align: center; display: flex; flex-direction: column; gap: 12px; min-height: 200px; justify-content: center; }
+    .obj2 b { font-family: 'Lilita One',serif; font-weight: 400; font-size: 1.05rem; letter-spacing: .02em; text-transform: uppercase; }
+    .obj2--1 { background: var(--rose-card); } .obj2--2 { background: var(--pink-lt); }
+    .obj2--3 { background: var(--plum); } .obj2--4 { background: var(--pink-lt); }
+    .s3 { background: var(--rose); }
+    .s3-bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+    .s3 .pdf-wrap { position: relative; z-index: 1; align-items: center; }
+    .s3-h { font-family: 'Poppins',sans-serif; font-weight: 700; color: var(--plum); font-size: clamp(1.9rem,4.4vw,3rem); margin: 0 0 18px; letter-spacing: -.01em; }
+    .s3-list { list-style: none; margin: 0; }
+    .s3-item { display: flex; gap: 18px; padding: 7px 0; align-items: baseline; }
+    .s3-num { font-family: 'Poppins',sans-serif; font-weight: 700; color: #6FA294; font-size: 1.5rem; min-width: 42px; flex-shrink: 0; }
+    .s3-label { font-family: 'Poppins',sans-serif; font-weight: 700; color: var(--plum); font-size: 1.02rem; line-height: 1.3; }
+    .s3-sub { font-family: 'Poppins',sans-serif; color: #4a6470; font-size: .88rem; margin-left: 60px; padding: 2px 0; }
+    .s3-right { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 30px; }
+    .s3-journey { font-family: 'Lilita One',serif; color: #F5EFCF; text-transform: uppercase; font-size: clamp(2.2rem,5vw,3.4rem); line-height: 1; margin: 0; }
+    .s3-note { background: var(--plum); color: #fff; border-radius: 26px; max-width: 440px; padding: 26px 30px; text-align: center; font-family: 'Poppins',sans-serif; font-size: .92rem; line-height: 1.55; }
+    .s3-note strong { font-weight: 700; }
+    .cream-card { background: #F5EFCF; border-radius: 18px; padding: 24px 26px; font-family: 'Poppins',sans-serif; color: var(--plum); font-size: clamp(.98rem,1.7vw,1.1rem); line-height: 1.65; }
+    .mini-callout { background: #F5EFCF; border-radius: 16px; padding: 20px 22px; font-family: 'Poppins',sans-serif; color: var(--plum); font-size: clamp(.92rem,1.5vw,1rem); line-height: 1.6; }
+    .mini-callout .bulb, .cream-card .bulb { font-size: 1.4rem; display: block; margin-bottom: 6px; }
+    .derm-list { list-style: none; margin: 8px 0 0; display: flex; flex-direction: column; gap: 14px; }
+    .derm-list li { font-family: 'Poppins',sans-serif; color: #fff; font-size: clamp(.95rem,1.6vw,1.05rem); line-height: 1.5; padding-left: 26px; position: relative; }
+    .derm-list li::before { content: "•"; position: absolute; left: 4px; color: #fff; font-size: 1.3rem; line-height: 1; }
+    .derm-list strong { display: block; }
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+    .step2 { display: flex; gap: 16px; align-items: flex-start; font-family: 'Poppins',sans-serif; }
+    .step2-n { width: 46px; height: 46px; border-radius: 50%; background: var(--rose); color: #fff; font-family: 'Lilita One',serif; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.15rem; }
+    .step2 h4 { font-weight: 700; font-size: 1rem; margin-bottom: 2px; }
+    .step2 p { font-size: .92rem; line-height: 1.5; }
+    .smart2 { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    .smart2-row { display: grid; grid-template-columns: 130px 1fr; gap: 0; border-radius: 10px; overflow: hidden; }
+    .smart2-k { font-family: 'Poppins',sans-serif; font-weight: 700; color: var(--plum); padding: 12px 16px; display: flex; align-items: center; }
+    .smart2-v { font-family: 'Poppins',sans-serif; color: var(--plum); font-style: italic; padding: 12px 16px; font-size: .95rem; display: flex; align-items: center; }
+    .smart2-row:nth-child(1) .smart2-k, .smart2-row:nth-child(1) .smart2-v { background: #4E8A93; color: #fff; }
+    .smart2-row:nth-child(2) .smart2-k, .smart2-row:nth-child(2) .smart2-v { background: #6FA294; }
+    .smart2-row:nth-child(3) .smart2-k, .smart2-row:nth-child(3) .smart2-v { background: #A7C3AE; }
+    .smart2-row:nth-child(4) .smart2-k, .smart2-row:nth-child(4) .smart2-v { background: #D5E0C7; }
+    .smart2-row:nth-child(5) .smart2-k, .smart2-row:nth-child(5) .smart2-v { background: #EDEFCB; }
+    .qz2 { background: var(--cream); }
+    .qz2-title { font-family: 'Lilita One',serif; color: var(--plum); text-transform: uppercase; font-size: clamp(1.9rem,4.4vw,2.9rem); margin: 0 0 14px; }
+    .qz2-badge { display: inline-block; background: #DCE4D2; color: var(--plum); border-radius: 999px; padding: 6px 20px; font-family: 'Poppins',sans-serif; font-weight: 600; font-size: .82rem; margin-bottom: 16px; box-shadow: 0 4px 0 rgba(12,55,77,.15); }
+    .qz2-card { background: #DCE4D2; border-radius: 20px; padding: 26px 28px; max-width: 760px; }
+    .qz2-scn { font-family: 'Poppins',sans-serif; color: var(--plum); font-size: clamp(1rem,1.9vw,1.12rem); line-height: 1.7; margin-bottom: 18px; }
+    .qz2 .qz-options { gap: 10px; }
+    .qz2 .quiz-option { background: #FBF8EC; color: var(--plum); border: none; border-radius: 999px; text-align: center; font-size: .98rem; }
+    .qz2 .quiz-option.correct { background: #6FA294 !important; color: #fff !important; }
+    .qz2 .quiz-option.wrong { background: #FBF8EC !important; color: rgba(12,55,77,.4) !important; text-decoration: none; }
+    .qz2-fb { display: none; background: #6FA294; color: #fff; border-radius: 20px; padding: 18px 22px; margin-top: 16px; font-family: 'Poppins',sans-serif; font-size: clamp(.92rem,1.6vw,1rem); line-height: 1.55; }
+    .qz2-fb.qz-visible { display: block; }
+    .qz2-char { position: absolute; right: 2%; bottom: 0; width: min(26%,240px); z-index: 0; }
+    /* Bounded proportions */
+    .s1-title { font-size: clamp(1.8rem,3.4vw,2.9rem) !important; }
+    .s2-h { font-size: clamp(1.6rem,3.1vw,2.5rem) !important; }
+    .s3-h { font-size: clamp(1.55rem,2.9vw,2.3rem) !important; }
+    .s3-journey { font-size: clamp(1.85rem,3.6vw,2.8rem) !important; }
+    .qz2-title { font-size: clamp(1.6rem,3.1vw,2.4rem) !important; }
+    .char-circle, .s1-circle { width: min(62%,300px) !important; }
+    .char-graphic > img, .s1-brain { width: min(76%,340px) !important; }
+    .char-graphic, .s1-graphic { min-height: 260px !important; }
+    @media (max-width: 880px) {
+      .pdf-wrap { padding: 78px 18px 36px; gap: 26px; }
+      .obj2 { min-height: 150px; padding: 18px 14px; }
+      .s3 { background: var(--cream); } .s3-bg { display: none; }
+      .s3-right { background: var(--rose); border-radius: 24px; padding: 36px 24px; margin-top: 4px; }
+      .s3-note { width: min(80vw,280px); }
+      .qz2-char { display: none; }
+      .smart2-row { grid-template-columns: 96px 1fr; }
+      .s1-title { font-size: clamp(1.55rem,6vw,2.15rem) !important; }
+      .s2-h, .s3-h, .qz2-title { font-size: clamp(1.45rem,5.4vw,2rem) !important; }
+      .s3-journey { font-size: clamp(1.7rem,6.4vw,2.25rem) !important; }
+      .char-graphic, .s1-graphic { min-height: 190px !important; }
+      .char-circle, .s1-circle { width: min(50vw,250px) !important; }
+      .char-graphic > img, .s1-brain { width: min(58vw,290px) !important; }
     }
   </style>
 </head>
@@ -667,303 +787,230 @@
 
   <main id="main">
 
-    <!-- ══ SLIDE 1 — Hero ══════════════════════════════════ -->
-    <section class="slide" id="slide-1" data-bg="#40788b" data-theme="dark" aria-label="Module introduction">
-      <img class="deco deco-char" src="Module%203%20svgs/Module%203a%20(Adults)%20%20(1).svg" aria-hidden="true"
-           style="right:0; top:50%; transform:translateY(-50%); opacity:0.9;">
-      <img class="deco" src="Module%203%20svgs/Module%203a%20(Adults)%20.svg" aria-hidden="true"
-           style="bottom:-8%; left:-6%; width:32%; opacity:0.13;">
+    <!-- ══ SLIDE 1 — Title (PDF-faithful) ══════════════════ -->
+    <section class="slide pdf-slide s1" id="slide-1" data-bg="#40788B" data-theme="dark" aria-label="Module introduction">
+      <img class="deco" src="assets/modules/module-3a-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:34%; opacity:0.45;">
+      <img class="deco" src="assets/modules/module-3a-blob-cream.svg" aria-hidden="true"
+           style="bottom:-8%; left:-5%; width:24%; opacity:0.4;">
 
-      <div class="slide-content" style="max-width:580px; margin-left:5%; margin-right:auto;">
-        <div class="anim" data-delay="0">
-          <span class="hero-badge">Module 3a</span>
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <span class="s1-badge anim" data-delay="0">Module 3a</span>
+          <h1 class="s1-title anim" data-delay="100">Building Your Self-Management Skills &amp; Confidence</h1>
+          <p class="s1-credits anim" data-delay="200">Credits: Kevin Li BSc MSPH, Aakankshya Kharel BSc<br>
+            Dr. Marlene Dytoc MD PhD FRCPC<br>
+            Designed by: Danting Zheng BSc Undergraduate</p>
+          <span class="scroll-cue anim" data-delay="300" style="display:inline-block; margin-top:20px; color:rgba(255,255,255,.85);">↓ Scroll to begin</span>
         </div>
-        <h1 class="h1-white anim" data-delay="100">Building Your Self-Management Skills &amp; Confidence</h1>
-        <p class="sub-white anim" data-delay="200">Learn how to track your triggers, build habits that stick, and develop the confidence to manage your eczema.</p>
-        <div class="anim" data-delay="300">
-          <span class="scroll-cue">↓ Scroll to begin</span>
-        </div>
-        <p class="hero-orient anim" data-delay="400">Work through this module at your own pace. Tap the quiz questions when they appear — there are no wrong answers.</p>
-      </div>
-    </section>
-
-    <!-- ══ SLIDE 2 — Objectives ════════════════════════════ -->
-    <section class="slide" id="slide-2" data-bg="#fffae1" data-theme="light" aria-label="Learning objectives">
-      <img class="deco" src="Module%203%20svgs/Module%203a%20(Adults)%20%20(7).svg" aria-hidden="true"
-           style="top:-5%; right:-5%; width:28%; opacity:0.12;">
-      <img class="deco" src="Module%203%20svgs/Module%203a%20(Adults)%20.svg" aria-hidden="true"
-           style="bottom:-6%; left:-5%; width:24%; opacity:0.08;">
-
-      <div class="slide-content">
-        <h2 class="h2-navy anim" data-delay="0">What We'll Explore Together</h2>
-        <p class="sub-navy anim" data-delay="100">By the end of this module, you'll be able to:</p>
-
-        <div class="obj-grid">
-          <div class="obj-card anim" data-delay="150">
-            <strong>Self-Efficacy</strong>
-            Understand what self-efficacy means and why believing in your ability to manage eczema actually improves outcomes.
-          </div>
-          <div class="obj-card anim" data-delay="225">
-            <strong>Tracking &amp; Patterns</strong>
-            Know what to track and how to spot your personal triggers over time — using tools that fit your life.
-          </div>
-          <div class="obj-card anim" data-delay="300">
-            <strong>Building Habits</strong>
-            Apply habit-stacking and the "start small" approach to build a routine that survives stressful weeks.
-          </div>
-          <div class="obj-card anim" data-delay="375">
-            <strong>Goals &amp; Setbacks</strong>
-            Set SMART goals, respond to setbacks without self-blame, and use your inner voice as a tool.
-          </div>
+        <div class="char-graphic anim" data-delay="200">
+          <div class="char-circle"></div>
+          <img src="assets/modules/module-3a-char-confident.webp" alt="A confident young person with a determined expression">
         </div>
       </div>
     </section>
 
-    <!-- ══ SLIDE 3 — Journey ═══════════════════════════════ -->
-    <section class="slide" id="slide-3" data-bg="#0c374d" data-theme="dark" aria-label="Module overview">
-      <img class="deco" src="Module%203%20svgs/Module%203a%20(Adults)%20%20(8).svg" aria-hidden="true"
-           style="bottom:-6%; right:-4%; width:26%; opacity:0.12;">
-      <img class="deco" src="Module%203%20svgs/Module%203a%20(Adults)%20.svg" aria-hidden="true"
-           style="top:-5%; left:-4%; width:22%; opacity:0.1;">
+    <!-- ══ SLIDE 2 — Objectives (PDF-faithful) ═════════════ -->
+    <section class="slide pdf-slide s2" id="slide-2" data-bg="#FBF6DC" data-theme="light" aria-label="Learning objectives">
+      <img class="deco" src="assets/modules/module-3a-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; left:-4%; width:26%; opacity:0.3;">
+      <img class="deco" src="assets/modules/module-3a-blob-sage.svg" aria-hidden="true"
+           style="bottom:-9%; right:-5%; width:28%; opacity:0.35;">
 
-      <div class="slide-content">
-        <h2 class="h2-white anim" data-delay="0">Our Journey Today</h2>
-
-        <ol class="journey-list anim" data-delay="100">
-          <li class="journey-item">
-            <span class="journey-num">01</span>
-            <span class="journey-label">What is Self-Efficacy?</span>
-          </li>
-          <li class="journey-item">
-            <span class="journey-num">02</span>
-            <span class="journey-label">Tracking Your Symptoms &amp; Triggers</span>
-          </li>
-          <li class="journey-item">
-            <span class="journey-num">03</span>
-            <span class="journey-label">Building Small, Consistent Habits</span>
-          </li>
-          <li class="journey-item">
-            <span class="journey-num">04</span>
-            <span class="journey-label">Setting SMART Goals</span>
-          </li>
-          <li class="journey-item">
-            <span class="journey-num">05</span>
-            <span class="journey-label">Dealing with Setbacks</span>
-          </li>
-          <li class="journey-item">
-            <span class="journey-num">06</span>
-            <span class="journey-label">Your Eczema Action Plan</span>
-          </li>
-          <li class="journey-item">
-            <span class="journey-num">07</span>
-            <span class="journey-label">Key Takeaways</span>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ══ SLIDE 4 — Self-Efficacy ══════════════════════════ -->
-    <section class="slide" id="slide-4" data-bg="#cfd6c7" data-theme="light" aria-label="What is self-efficacy">
-      <img class="deco" src="Module%203%20svgs/Module%203a%20(Adults)%20%20(2).svg" aria-hidden="true"
-           style="top:-5%; right:-4%; width:24%; opacity:0.12;">
-      <img class="deco" src="Module%203%20svgs/Module%203a%20(Adults)%20.svg" aria-hidden="true"
-           style="bottom:-6%; left:-5%; width:22%; opacity:0.08;">
-
-      <div class="slide-content" style="max-width:760px;">
-        <h2 class="h2-navy anim" data-delay="0">What is Self-Efficacy?</h2>
-        <p class="sub-navy anim" data-delay="80">Believing you can manage eczema is the first step to actually managing it.</p>
-
-        <div class="statement--navy anim" data-delay="150">
-          Self-efficacy means believing in your ability to carry out the actions needed to manage your condition. Research shows that people with higher self-efficacy take more consistent action, stick to routines longer, and recover from setbacks faster.
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s2-h anim" data-delay="0">What You'll Achieve in This Module</h2>
+          <p class="s2-sub anim" data-delay="100">By the end of this module, you'll be able to:</p>
         </div>
-        <div class="statement--navy anim" data-delay="250">
-          Self-efficacy in eczema care isn't about being perfect. It's about trusting that your actions make a difference — even small ones, even imperfect ones, even on hard days.
-        </div>
-        <div class="statement--navy anim" data-delay="350">
-          Self-efficacy is built gradually. Through small successes, through support from your care team, and through learning — over and over — that setbacks are a normal part of the process, not a sign that you've failed.
+        <div class="obj2-grid">
+          <div class="obj2 obj2--1 anim" data-delay="150"><b>Objective #1</b>Understand what self-efficacy means and why believing in your ability to manage eczema improves outcomes.</div>
+          <div class="obj2 obj2--2 anim" data-delay="225"><b>Objective #2</b>Know what to track and how to spot your personal triggers over time.</div>
+          <div class="obj2 obj2--3 anim" data-delay="300"><b>Objective #3</b>Apply habit-stacking and the "start small" approach to build a routine that lasts.</div>
+          <div class="obj2 obj2--4 anim" data-delay="375"><b>Objective #4</b>Set SMART goals, respond to setbacks without self-blame, and use your inner voice as a tool.</div>
         </div>
       </div>
     </section>
 
-    <!-- ══ SLIDE 5 — Tracking ════════════════════════════════ -->
-    <section class="slide" id="slide-5" data-bg="#40788b" data-theme="dark" aria-label="Tracking your symptoms and triggers">
-      <img class="deco deco-char" src="Module%203%20svgs/Module%203a%20(Adults)%20%20(5).svg" aria-hidden="true"
-           style="right:0; top:50%; transform:translateY(-50%); opacity:0.85;">
-      <img class="deco" src="Module%203%20svgs/Module%203a%20(Adults)%20%20(3).svg" aria-hidden="true"
-           style="bottom:-5%; left:-4%; width:24%; opacity:0.1;">
+    <!-- ══ SLIDE 3 — Module outline (PDF-faithful) ═════════ -->
+    <section class="slide pdf-slide s3" id="slide-3" data-bg="#40788B" data-theme="light" aria-label="Module overview">
+      <svg class="s3-bg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+        <path d="M -80,-80 L 760,-80 C 880,80 1000,200 970,340 C 945,455 815,480 885,610 C 950,730 770,800 690,980 L -80,980 Z" fill="#FBF6DC"/>
+        <path d="M -80,650 C 120,590 255,655 300,785 C 348,905 150,980 -80,980 Z" fill="#40788B"/>
+        <path d="M 1680,700 C 1560,685 1470,790 1525,980 L 1680,980 Z" fill="#FBF6DC"/>
+        <g fill="none" stroke="#F5EFCF" stroke-width="3" opacity="0.30"><circle cx="1500" cy="130" r="55"/><circle cx="1500" cy="130" r="115"/><circle cx="1500" cy="130" r="175"/><circle cx="1500" cy="130" r="235"/><circle cx="1500" cy="130" r="295"/></g>
+        <g fill="none" stroke="#F5EFCF" stroke-width="3" opacity="0.22"><circle cx="1585" cy="560" r="45"/><circle cx="1585" cy="560" r="100"/><circle cx="1585" cy="560" r="155"/><circle cx="1585" cy="560" r="210"/></g>
+        <g fill="none" stroke="#F5EFCF" stroke-width="3" opacity="0.28"><circle cx="1470" cy="885" r="55"/><circle cx="1470" cy="885" r="115"/><circle cx="1470" cy="885" r="175"/><circle cx="1470" cy="885" r="235"/></g>
+        <g fill="none" stroke="#0C374D" stroke-width="3" opacity="0.08"><circle cx="35" cy="120" r="48"/><circle cx="35" cy="120" r="95"/><circle cx="35" cy="120" r="142"/></g>
+        <circle cx="1592" cy="695" r="40" fill="#0C374D"/>
+        <circle cx="1290" cy="150" r="26" fill="#0C374D" opacity="0.9"/>
+      </svg>
 
-      <div class="slide-content" style="max-width:560px; margin-left:5%; margin-right:auto;">
-        <h2 class="h2-white anim" data-delay="0">Tracking Your Symptoms &amp; Triggers</h2>
-        <p class="sub-white anim" data-delay="80">Patterns aren't obvious until you start writing things down.</p>
-
-        <div class="trigger-grid">
-          <div class="trigger-card anim" data-delay="150">
-            <strong>Symptoms</strong>
-            <p>Rate your itch (0–10) daily. Note affected areas and whether skin looks better, same, or worse.</p>
-          </div>
-          <div class="trigger-card anim" data-delay="200">
-            <strong>Foods &amp; Products</strong>
-            <p>Log any new foods or skincare products. Patterns from these often take two to four weeks to emerge.</p>
-          </div>
-          <div class="trigger-card anim" data-delay="250">
-            <strong>Stress</strong>
-            <p>Rate your stress daily (0–10). For many people, flares appear one to three days after a high-stress period.</p>
-          </div>
-          <div class="trigger-card anim" data-delay="300">
-            <strong>Sleep &amp; Activity</strong>
-            <p>Track sleep hours and physical activity. Both affect the skin through their impact on cortisol and immune function.</p>
-          </div>
+      <div class="pdf-wrap pdf-2col pdf-2col--journey">
+        <div class="s3-left">
+          <h2 class="s3-h anim" data-delay="0">Module outline</h2>
+          <ol class="s3-list">
+            <li class="s3-item anim" data-delay="80"><span class="s3-num">01</span><span class="s3-label">Understanding Self-Efficacy: Believing in Your Ability</span></li>
+            <li class="s3-item anim" data-delay="130"><span class="s3-num">02</span><span class="s3-label">Know Your Triggers: Awareness is Power</span></li>
+            <li class="s3-item anim" data-delay="180"><span class="s3-num">03</span><span class="s3-label">Small Habits, Big Wins: Building Routines &amp; Confidence</span></li>
+            <li class="s3-sub anim" data-delay="205">a) Making SMART Goals</li>
+            <li class="s3-item anim" data-delay="240"><span class="s3-num">04</span><span class="s3-label">Progress Isn't a Straight Line: Learning from Setbacks</span></li>
+            <li class="s3-sub anim" data-delay="265">a) Smart Strategies: Positive Self-Talk</li>
+            <li class="s3-item anim" data-delay="300"><span class="s3-num">05</span><span class="s3-label">You Deserve Relief: Advocating for Your Needs</span></li>
+            <li class="s3-item anim" data-delay="350"><span class="s3-num">06</span><span class="s3-label">Your Eczema Action Plan</span></li>
+            <li class="s3-item anim" data-delay="400"><span class="s3-num">07</span><span class="s3-label">Takeaways: You're the Expert on You</span></li>
+          </ol>
         </div>
-
-        <div class="app-tip anim" data-delay="370">
-          💡 <strong style="color:#fff;">App tip:</strong> EczemaWise (from the National Eczema Association) lets you track all of this on your phone and shows you trends over time.
+        <div class="s3-right anim" data-delay="150">
+          <h2 class="s3-journey">Our Itch-Busting Plan</h2>
+          <p class="s3-note">When you've completed this module, <strong>please click the link on the &lsquo;Congratulations&rsquo; slide</strong> at the end of this presentation <strong>to confirm your completion!</strong></p>
         </div>
-
-        <a class="handout-cta anim" href="handout-symptom-diary.html" data-delay="440">
-          <div class="handout-cta-inner">
-            <p class="handout-cta-label">7-day tracker</p>
-            <p class="handout-cta-title">Symptom &amp; Trigger Diary</p>
-            <p class="handout-cta-desc">Fill this in each evening. After 2–4 weeks, look back to spot your personal patterns.</p>
-          </div>
-          <span class="handout-cta-arrow">→</span>
-        </a>
       </div>
     </section>
 
-    <!-- ══ SLIDE 6 — Building Habits ════════════════════════ -->
-    <section class="slide" id="slide-6" data-bg="#fffae1" data-theme="light" aria-label="Building small consistent habits">
-      <img class="deco" src="Module%203%20svgs/Module%203a%20(Adults)%20%20(4).svg" aria-hidden="true"
-           style="top:-4%; right:-4%; width:26%; opacity:0.12;">
-      <img class="deco" src="Module%203%20svgs/Module%203a%20(Adults)%20.svg" aria-hidden="true"
-           style="bottom:-6%; left:-5%; width:22%; opacity:0.07;">
+    <!-- ══ SLIDE 4 — Self-Efficacy (PDF-faithful) ══════════ -->
+    <section class="slide pdf-slide s1" id="slide-4" data-bg="#40788B" data-theme="dark" aria-label="What is self-efficacy">
+      <img class="deco" src="assets/modules/module-3a-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:28%; opacity:0.4;">
 
-      <div class="slide-content" style="max-width:760px;">
-        <h2 class="h2-navy anim" data-delay="0">Building Small, Consistent Habits</h2>
-        <p class="sub-navy anim" data-delay="80">Small consistent habits beat big perfect plans every time.</p>
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.6rem,3.6vw,2.5rem); margin-bottom:20px;">You're in Charge: Introduction to Self-Efficacy</h2>
+          <p class="anim" data-delay="120" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(1rem,1.9vw,1.12rem); line-height:1.7; margin:0 0 16px;">When it comes to eczema, self-efficacy means <strong>feeling confident</strong> that you can <strong>manage your skin, navigate challenges, and make informed decisions about your care.</strong></p>
+          <p class="anim" data-delay="200" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(1rem,1.9vw,1.12rem); line-height:1.7; margin:0;">You can't always control every flare-up, but you can <strong>control your approach, your knowledge, and your actions.</strong> Building self-efficacy helps you do just that.</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:18px; align-items:center;">
+          <div class="mini-callout anim" data-delay="150" style="font-style:italic; text-align:center;">
+            <strong>Self-efficacy</strong> is a cornerstone of behavior change. <strong>Believing you can succeed</strong> makes you more likely to try, persist, and achieve your health goal!
+          </div>
+          <img class="anim" data-delay="220" src="assets/modules/module-3a-char-confident.webp" alt="A confident person" style="width:min(50%,170px); height:auto;">
+        </div>
+      </div>
+    </section>
 
-        <div class="anim" data-delay="150">
-          <div class="step-card--white">
-            <div class="step-num--blue">1</div>
-            <div class="step-body--navy">
-              <strong>Start with one thing</strong>
-              <p>Choose a single specific habit for one week. Don't try to change everything at once. One habit done consistently is worth more than five habits you give up on by Thursday.</p>
+    <!-- ══ SLIDE 5 — Know Your Triggers (PDF-faithful) ═════ -->
+    <section class="slide pdf-slide s1" id="slide-5" data-bg="#40788B" data-theme="dark" aria-label="Tracking your symptoms and triggers">
+      <img class="deco" src="assets/modules/module-3a-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; left:-4%; width:26%; opacity:0.4;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.6rem,3.6vw,2.5rem); margin-bottom:14px;">Know Your Triggers: Awareness is Power</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.98rem,1.7vw,1.08rem); line-height:1.6; margin:0 0 12px;">Identifying your personal triggers helps you <strong>understand and prevent flare-ups</strong>. Using a Symptom &amp; Trigger Diary, note down daily:</p>
+          <ul class="derm-list">
+            <li class="anim" data-delay="150">Your skin's <strong>condition</strong> (itch level, redness, new patches).</li>
+            <li class="anim" data-delay="200"><strong>Foods</strong> eaten (especially new or suspected ones).</li>
+            <li class="anim" data-delay="250"><strong>Products</strong> used (skincare, laundry, cleaning).</li>
+            <li class="anim" data-delay="300"><strong>Activities, stress levels, and weather.</strong></li>
+          </ul>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:18px;">
+          <div class="mini-callout anim" data-delay="150" style="text-align:center;">
+            <span class="bulb">&#128161;</span>
+            If you want a digital tracker, apps like <strong>EczemaWise</strong> (from the NEA) or <strong>Eczema Care+</strong> can be helpful!
+          </div>
+          <a class="handout-cta anim" href="handout-symptom-diary.html" data-delay="220">
+            <div class="handout-cta-inner">
+              <p class="handout-cta-label">7-day tracker</p>
+              <p class="handout-cta-title">Symptom &amp; Trigger Diary</p>
+              <p class="handout-cta-desc">Fill this in each evening. After 2–4 weeks, look back to spot your personal patterns.</p>
             </div>
+            <span class="handout-cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 6 — Small Habits, Big Wins (PDF-faithful) ═ -->
+    <section class="slide pdf-slide s2" id="slide-6" data-bg="#FBF6DC" data-theme="light" aria-label="Building small consistent habits">
+      <img class="deco" src="assets/modules/module-3a-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; right:-4%; width:22%; opacity:0.3;">
+
+      <div class="pdf-wrap" style="max-width:1020px;">
+        <div style="text-align:center;">
+          <h2 class="s2-h anim" data-delay="0" style="margin-bottom:10px;">Small Habits, Big Wins</h2>
+          <p class="s2-sub anim" data-delay="80"><strong>Tiny, consistent steps</strong> can lead to <strong>mighty results</strong> in managing eczema and building your confidence.</p>
+        </div>
+        <div class="pdf-2col" style="display:grid; gap:24px; align-items:stretch;">
+          <div class="anim" data-delay="150" style="background:var(--plum); color:#fff; border-radius:20px; padding:26px;">
+            <h3 style="font-family:'Lilita One',serif; text-transform:uppercase; color:#8FB9AE; font-size:1.2rem; margin:0 0 14px;">Key Daily Habits</h3>
+            <ul style="margin:0; padding-left:20px; display:flex; flex-direction:column; gap:11px; font-family:'Poppins',sans-serif; font-size:.95rem; line-height:1.5;">
+              <li><strong>Consistent moisturizing</strong> — at least twice daily with a thick, fragrance-free emollient.</li>
+              <li><strong>Gentle cleansing</strong> — lukewarm water and mild, non-soap cleansers.</li>
+              <li>Opt for <strong>fragrance-free, hypoallergenic products</strong> where possible.</li>
+              <li>Even 5–10 minutes of a <strong>calming activity</strong> can help. (More in Module 5)</li>
+            </ul>
           </div>
-          <div class="step-card--white">
-            <div class="step-num--blue">2</div>
-            <div class="step-body--navy">
-              <strong>Habit stacking</strong>
-              <p>Link your new habit to something you already do reliably. Moisturizing right after brushing your teeth means you never have to remember separately — the existing habit triggers the new one automatically.</p>
-            </div>
-          </div>
-          <div class="step-card--white">
-            <div class="step-num--blue">3</div>
-            <div class="step-body--navy">
-              <strong>Build gradually</strong>
-              <p>Once one habit is stable, add the next. This builds routines that survive bad weeks instead of falling apart the moment life gets complicated.</p>
-            </div>
+          <div class="anim" data-delay="220" style="background:var(--pink-lt); color:var(--plum); border-radius:20px; padding:26px;">
+            <h3 style="font-family:'Lilita One',serif; text-transform:uppercase; color:var(--plum); font-size:1.2rem; margin:0 0 14px;">Building the Habit</h3>
+            <ul style="margin:0; padding-left:20px; display:flex; flex-direction:column; gap:11px; font-family:'Poppins',sans-serif; font-size:.95rem; line-height:1.5;">
+              <li><strong>Start small:</strong> pick one small habit to focus on for a week.</li>
+              <li><strong>Link to existing routines (Habit Stack!):</strong> apply moisturizer right after brushing your teeth.</li>
+              <li><strong>Make it easy:</strong> keep moisturizer visible where you need it (bathroom, bedside).</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ══ SLIDE 7 — SMART Goals ════════════════════════════ -->
-    <section class="slide" id="slide-7" data-bg="#0c374d" data-theme="dark" aria-label="Setting SMART goals">
-      <img class="deco" src="Module%203%20svgs/Module%203a%20(Adults)%20%20(6).svg" aria-hidden="true"
-           style="top:-5%; right:-4%; width:26%; opacity:0.1;">
-      <img class="deco" src="Module%203%20svgs/Module%203a%20(Adults)%20.svg" aria-hidden="true"
-           style="bottom:-6%; left:-5%; width:24%; opacity:0.1;">
+    <!-- ══ SLIDE 7 — Making SMART Goals (PDF-faithful) ═════ -->
+    <section class="slide pdf-slide s2" id="slide-7" data-bg="#FBF6DC" data-theme="light" aria-label="Setting SMART goals">
+      <img class="deco" src="assets/modules/module-3a-rings-faint.svg" aria-hidden="true"
+           style="top:-6%; right:-4%; width:22%; opacity:0.3;">
 
-      <div class="slide-content" style="max-width:800px;">
-        <h2 class="h2-white anim" data-delay="0">Setting SMART Goals</h2>
-        <p class="sub-white anim" data-delay="80">Goals you'll actually keep — because they're specific enough to follow.</p>
-
-        <div class="smart-list anim" data-delay="150">
-          <div class="smart-row">
-            <div class="smart-letter">S</div>
-            <div class="smart-body">
-              <strong>Specific</strong>
-              <p>Name exactly what you will do. "Moisturize my arms and legs" beats "take better care of my skin."</p>
-            </div>
-          </div>
-          <div class="smart-row">
-            <div class="smart-letter">M</div>
-            <div class="smart-body">
-              <strong>Measurable</strong>
-              <p>How will you know you did it? "Once daily at bedtime" is measurable. "More regularly" is not.</p>
-            </div>
-          </div>
-          <div class="smart-row">
-            <div class="smart-letter">A</div>
-            <div class="smart-body">
-              <strong>Achievable</strong>
-              <p>Set a goal you can realistically reach this week, not in six months. Small and doable beats ambitious and abandoned.</p>
-            </div>
-          </div>
-          <div class="smart-row">
-            <div class="smart-letter">R</div>
-            <div class="smart-body">
-              <strong>Relevant</strong>
-              <p>Connect it to something that matters to you. Why does this goal improve your life right now?</p>
-            </div>
-          </div>
-          <div class="smart-row">
-            <div class="smart-letter">T</div>
-            <div class="smart-body">
-              <strong>Time-bound</strong>
-              <p>Set a clear start and end point. "For the next two weeks" gives you a natural moment to review and adjust.</p>
-            </div>
+      <div class="pdf-wrap" style="max-width:900px;">
+        <div class="cream-card anim" data-delay="0" style="background:#fff;">
+          <h2 style="font-family:'Lilita One',serif; color:var(--plum); text-transform:uppercase; font-size:clamp(1.5rem,3.4vw,2.3rem); text-align:center; margin:0 0 14px;">Making SMART Goals</h2>
+          <p style="margin:0 0 18px;">Set yourself up for success by <strong>setting the right goals!</strong> Make sure they're:</p>
+          <div class="smart2">
+            <div class="smart2-row"><div class="smart2-k">Specific</div><div class="smart2-v">e.g. My goal is to moisturize my elbows twice a day.</div></div>
+            <div class="smart2-row"><div class="smart2-k">Measurable</div><div class="smart2-v">e.g. I will measure this goal by keeping track on my phone.</div></div>
+            <div class="smart2-row"><div class="smart2-k">Achievable</div><div class="smart2-v">e.g. I will achieve this by setting two reminder alarms on my phone.</div></div>
+            <div class="smart2-row"><div class="smart2-k">Relevant</div><div class="smart2-v">e.g. This goal is relevant because it will heal my skin and prevent itch.</div></div>
+            <div class="smart2-row"><div class="smart2-k">Time-bound</div><div class="smart2-v">e.g. I will do this daily for two weeks and reassess my progress then.</div></div>
           </div>
         </div>
-
-        <a class="handout-cta anim" href="handout-smart-goal.html" data-delay="400">
+        <a class="handout-cta handout-cta--light anim" href="handout-smart-goal.html" data-delay="220" style="margin-top:16px;">
           <div class="handout-cta-inner">
             <p class="handout-cta-label">Goal-setting worksheet</p>
             <p class="handout-cta-title">My SMART Skin Goal</p>
-            <p class="handout-cta-desc">Fill in one habit you want to build — specific, measurable, and time-bound. Takes about 5 minutes.</p>
+            <p class="handout-cta-desc">Try using the provided SMART goal handout to make your own — takes about 5 minutes.</p>
           </div>
           <span class="handout-cta-arrow">→</span>
         </a>
       </div>
     </section>
 
-    <!-- ══ SLIDE 8 — Setbacks ═══════════════════════════════ -->
-    <section class="slide" id="slide-8" data-bg="#cfd6c7" data-theme="light" aria-label="Dealing with setbacks">
-      <img class="deco deco-char" src="Module%203%20svgs/Module%203a%20(Adults)%20%20(12).svg" aria-hidden="true"
-           style="right:-3%; top:50%; transform:translateY(-50%); opacity:0.8;">
-      <img class="deco" src="Module%203%20svgs/Module%203a%20(Adults)%20.svg" aria-hidden="true"
-           style="bottom:-6%; left:-5%; width:22%; opacity:0.07;">
+    <!-- ══ SLIDE 8 — Setbacks (PDF-faithful) ═══════════════ -->
+    <section class="slide pdf-slide s1" id="slide-8" data-bg="#40788B" data-theme="dark" aria-label="Dealing with setbacks">
+      <img class="deco" src="assets/modules/module-3a-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:26%; opacity:0.4;">
 
-      <div class="slide-content" style="max-width:580px; margin-left:5%; margin-right:auto;">
-        <h2 class="h2-navy anim" data-delay="0">Dealing with Setbacks</h2>
-        <p class="sub-navy anim" data-delay="80">A flare is not a failure. It's information.</p>
-
-        <div class="statement--navy anim" data-delay="150">
-          Setbacks are a normal, expected part of managing a chronic condition. They don't mean your routine isn't working — they often mean it's being tested by something new.
+      <div class="pdf-wrap pdf-2col">
+        <div class="char-graphic anim" data-delay="120">
+          <div class="char-circle"></div>
+          <img src="assets/modules/module-3a-char-determined.webp" alt="A person with a determined expression and fists raised">
         </div>
-        <div class="statement--navy anim" data-delay="250">
-          When a setback happens, the most useful response is curiosity, not judgement. What was different that week? Was it stress, travel, a new product, less sleep, a change in weather?
-        </div>
-        <div class="statement--navy anim" data-delay="350">
-          Treat setbacks as data, not failure. Each one teaches you something that makes your next plan more accurate and more realistic.
-        </div>
-
-        <div class="blue-callout anim" data-delay="450">
-          💡 The question after a setback isn't "Why did I fail?" It's "What did I learn — and what will I do differently?"
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.55rem,3.5vw,2.4rem); margin-bottom:8px;">Progress Isn't a Straight Line: Normalizing Setbacks</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.98rem,1.7vw,1.08rem); line-height:1.6; margin:0 0 14px;">Managing eczema is a journey with ups and downs. <strong>Flare-ups will happen.</strong></p>
+          <ul class="derm-list">
+            <li class="anim" data-delay="150"><strong>Reframe the setback:</strong> instead of "I messed up," try "This is a learning opportunity."</li>
+            <li class="anim" data-delay="210"><strong>Reflect, don't blame:</strong> use setbacks as data. What might have triggered this? What helped in the past?</li>
+            <li class="anim" data-delay="270"><strong>Return to your routine:</strong> gently pick one thing to restart today. Don't wait for the "perfect" moment.</li>
+            <li class="anim" data-delay="330"><strong>Be kind to yourself:</strong> progress includes patience and self-compassion, not just persistence.</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- ══ SLIDE 9 — Self-Talk ══════════════════════════════ -->
-    <section class="slide" id="slide-9" data-bg="#40788b" data-theme="dark" aria-label="The way you talk to yourself">
-      <img class="deco" src="Module%203%20svgs/Module%203a%20(Adults)%20%20(9).svg" aria-hidden="true"
-           style="top:-5%; right:-4%; width:26%; opacity:0.12;">
-      <img class="deco" src="Module%203%20svgs/Module%203a%20(Adults)%20.svg" aria-hidden="true"
-           style="bottom:-6%; left:-5%; width:24%; opacity:0.1;">
+    <!-- ══ SLIDE 9 — Self-Talk (PDF-faithful) ══════════════ -->
+    <section class="slide pdf-slide s1" id="slide-9" data-bg="#40788B" data-theme="dark" aria-label="The way you talk to yourself">
+      <img class="deco" src="assets/modules/module-3a-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:26%; opacity:0.4;">
 
-      <div class="slide-content" style="max-width:720px;">
-        <h2 class="h2-white anim" data-delay="0">The Way You Talk to Yourself Matters</h2>
-        <p class="sub-white anim" data-delay="80">Your inner voice shapes how you respond — to flares, to setbacks, and to your care.</p>
+      <div class="pdf-wrap" style="max-width:860px;">
+        <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.6rem,3.6vw,2.5rem); margin-bottom:6px;">Smart Strategies: Positive Self-Talk</h2>
+        <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:rgba(255,255,255,.9); font-size:clamp(.98rem,1.7vw,1.08rem); line-height:1.6; margin:0 0 8px;">Your inner voice shapes how you respond — to flares, to setbacks, and to your care.</p>
 
         <div class="talk-list anim" data-delay="150">
           <div class="talk-card">
@@ -985,16 +1032,14 @@
       </div>
     </section>
 
-    <!-- ══ SLIDE 10 — Eczema Action Plan ════════════════════ -->
-    <section class="slide" id="slide-10" data-bg="#fffae1" data-theme="light" aria-label="Your eczema action plan">
-      <img class="deco" src="Module%203%20svgs/Module%203a%20(Adults)%20%20(10).svg" aria-hidden="true"
-           style="top:-5%; right:-4%; width:26%; opacity:0.1;">
-      <img class="deco" src="Module%203%20svgs/Module%203a%20(Adults)%20.svg" aria-hidden="true"
-           style="bottom:-6%; left:-5%; width:22%; opacity:0.07;">
+    <!-- ══ SLIDE 10 — Eczema Action Plan (PDF-faithful) ════ -->
+    <section class="slide pdf-slide s2" id="slide-10" data-bg="#FBF6DC" data-theme="light" aria-label="Your eczema action plan">
+      <img class="deco" src="assets/modules/module-3a-rings-faint.svg" aria-hidden="true"
+           style="top:-6%; right:-4%; width:22%; opacity:0.3;">
 
-      <div class="slide-content" style="max-width:760px;">
-        <h2 class="h2-navy anim" data-delay="0">Your Eczema Action Plan</h2>
-        <p class="sub-navy anim" data-delay="80">Written with your doctor — tailored to your triggers, your treatments, your life.</p>
+      <div class="pdf-wrap" style="max-width:820px;">
+        <h2 class="s2-h anim" data-delay="0">Your Eczema Action Plan</h2>
+        <p class="s2-sub anim" data-delay="80">Written with your doctor — tailored to your triggers, your treatments, your life.</p>
 
         <div class="action-list anim" data-delay="150">
           <div class="action-card">
@@ -1015,7 +1060,7 @@
           </div>
         </div>
 
-        <a class="handout-cta anim" href="handout-eczema-action-plan.html" data-delay="350">
+        <a class="handout-cta handout-cta--light anim" href="handout-eczema-action-plan.html" data-delay="350">
           <div class="handout-cta-inner">
             <p class="handout-cta-label">Fillable plan</p>
             <p class="handout-cta-title">My Eczema Action Plan</p>
@@ -1027,16 +1072,16 @@
     </section>
 
     <!-- ══ SLIDE 11 — Quiz Q1 ══════════════════════════════ -->
-    <section class="slide" id="slide-11" data-bg="#1B3068" data-theme="dark" aria-label="Quiz question 1">
-      <img class="deco deco-char" src="Module%203%20svgs/Module%203a%20(Adults)%20%20(15).svg" aria-hidden="true"
-           style="right:16px; bottom:16px; width:200px; opacity:0.5;">
+    <section class="slide pdf-slide qz2" id="slide-11" data-bg="#FBF6DC" data-theme="light" aria-label="Quiz question 1">
+      <img class="deco" src="assets/modules/module-3a-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.3;">
+      <img class="qz2-char" src="assets/modules/module-3a-char-magnifier.webp" aria-hidden="true">
 
-      <div class="slide-content" style="max-width:720px;">
-        <h2 class="h2-white anim" data-delay="0">Thinking it Through</h2>
-        <span class="qz-num-badge anim" data-delay="50">Question 1 of 4</span>
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Thinking it Through</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 1 of 4</span>
 
-        <div class="qz-block" id="qz1">
-          <div class="qz-scenario anim" data-delay="100">
+        <div class="qz-block qz2-card anim" id="qz1">
+          <div class="qz2-scn anim" data-delay="100">
             You've been managing your eczema carefully for two weeks, feeling confident and in control. Then a tough week at work causes your routine to fall apart. Your skin flares. You feel defeated and think "I knew I couldn't keep this up." According to what we know about self-efficacy:
           </div>
           <div class="qz-options anim" data-delay="200">
@@ -1045,7 +1090,7 @@
             <button class="quiz-option" data-qz="qz1" data-correct="true">C) Self-efficacy means believing your actions matter even when a setback happens. Rebuilding after a setback is itself part of developing self-efficacy.</button>
             <button class="quiz-option" data-qz="qz1" data-correct="false">D) You should lower your expectations so future setbacks feel less disappointing.</button>
           </div>
-          <div class="qz-feedback" id="qz1-feedback">
+          <div class="qz2-fb" id="qz1-feedback">
             Exactly. Self-efficacy isn't the belief that things will always go perfectly — it's the belief that your efforts make a difference even when they don't. Rebuilding after a setback is one of the most powerful ways self-efficacy grows over time.
           </div>
         </div>
@@ -1053,16 +1098,16 @@
     </section>
 
     <!-- ══ SLIDE 12 — Quiz Q2 ══════════════════════════════ -->
-    <section class="slide" id="slide-12" data-bg="#1B3068" data-theme="dark" aria-label="Quiz question 2">
-      <img class="deco deco-char" src="Module%203%20svgs/Module%203a%20(Adults)%20%20(15).svg" aria-hidden="true"
-           style="right:16px; bottom:16px; width:200px; opacity:0.5;">
+    <section class="slide pdf-slide qz2" id="slide-12" data-bg="#FBF6DC" data-theme="light" aria-label="Quiz question 2">
+      <img class="deco" src="assets/modules/module-3a-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.3;">
+      <img class="qz2-char" src="assets/modules/module-3a-char-magnifier.webp" aria-hidden="true">
 
-      <div class="slide-content" style="max-width:720px;">
-        <h2 class="h2-white anim" data-delay="0">Thinking it Through</h2>
-        <span class="qz-num-badge anim" data-delay="50">Question 2 of 4</span>
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Thinking it Through</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 2 of 4</span>
 
-        <div class="qz-block" id="qz2">
-          <div class="qz-scenario anim" data-delay="100">
+        <div class="qz-block qz2-card anim" id="qz2">
+          <div class="qz2-scn anim" data-delay="100">
             You've been tracking your symptoms for three weeks and notice that your eczema consistently flares two days after stressful workdays. You bring this observation to your next appointment. What's the most useful thing to do with this information?
           </div>
           <div class="qz-options anim" data-delay="200">
@@ -1071,7 +1116,7 @@
             <button class="quiz-option" data-qz="qz2" data-correct="true">C) Discuss the pattern with your dermatologist and work together to adjust your care plan around it.</button>
             <button class="quiz-option" data-qz="qz2" data-correct="false">D) Change your moisturizer since stress is harder to control than products.</button>
           </div>
-          <div class="qz-feedback" id="qz2-feedback">
+          <div class="qz2-fb" id="qz2-feedback">
             That's it. Tracking gives you data — and data is most powerful when it's shared with your care team. Knowing that stress is a consistent trigger opens up a conversation about stress management strategies, preventative care, and how to time your treatments around high-stress periods.
           </div>
         </div>
@@ -1079,16 +1124,16 @@
     </section>
 
     <!-- ══ SLIDE 13 — Quiz Q3 ══════════════════════════════ -->
-    <section class="slide" id="slide-13" data-bg="#1B3068" data-theme="dark" aria-label="Quiz question 3">
-      <img class="deco deco-char" src="Module%203%20svgs/Module%203a%20(Adults)%20%20(15).svg" aria-hidden="true"
-           style="right:16px; bottom:16px; width:200px; opacity:0.5;">
+    <section class="slide pdf-slide qz2" id="slide-13" data-bg="#FBF6DC" data-theme="light" aria-label="Quiz question 3">
+      <img class="deco" src="assets/modules/module-3a-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.3;">
+      <img class="qz2-char" src="assets/modules/module-3a-char-magnifier.webp" aria-hidden="true">
 
-      <div class="slide-content" style="max-width:720px;">
-        <h2 class="h2-white anim" data-delay="0">Thinking it Through</h2>
-        <span class="qz-num-badge anim" data-delay="50">Question 3 of 4</span>
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Thinking it Through</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 3 of 4</span>
 
-        <div class="qz-block" id="qz3">
-          <div class="qz-scenario anim" data-delay="100">
+        <div class="qz-block qz2-card anim" id="qz3">
+          <div class="qz2-scn anim" data-delay="100">
             You want to moisturize twice daily but keep forgetting the evening application. Your dermatologist suggests "habit stacking." Which of the following is the best example of this technique?
           </div>
           <div class="qz-options anim" data-delay="200">
@@ -1097,7 +1142,7 @@
             <button class="quiz-option" data-qz="qz3" data-correct="false">C) Leave your moisturizer somewhere visible during the day to remind yourself about the evening application.</button>
             <button class="quiz-option" data-qz="qz3" data-correct="false">D) Only moisturize when you notice your skin feels dry, which will remind you naturally.</button>
           </div>
-          <div class="qz-feedback" id="qz3-feedback">
+          <div class="qz2-fb" id="qz3-feedback">
             Correct. Habit stacking links a new habit to an existing one — so the existing habit becomes the automatic trigger. Brushing your teeth is already reliable; moisturizing right after means you don't need a separate reminder. Over time, it becomes as automatic as the tooth-brushing itself.
           </div>
         </div>
@@ -1105,16 +1150,16 @@
     </section>
 
     <!-- ══ SLIDE 14 — Quiz Q4 ══════════════════════════════ -->
-    <section class="slide" id="slide-14" data-bg="#1B3068" data-theme="dark" aria-label="Quiz question 4">
-      <img class="deco deco-char" src="Module%203%20svgs/Module%203a%20(Adults)%20%20(15).svg" aria-hidden="true"
-           style="right:16px; bottom:16px; width:200px; opacity:0.5;">
+    <section class="slide pdf-slide qz2" id="slide-14" data-bg="#FBF6DC" data-theme="light" aria-label="Quiz question 4">
+      <img class="deco" src="assets/modules/module-3a-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.3;">
+      <img class="qz2-char" src="assets/modules/module-3a-char-magnifier.webp" aria-hidden="true">
 
-      <div class="slide-content" style="max-width:720px;">
-        <h2 class="h2-white anim" data-delay="0">Thinking it Through</h2>
-        <span class="qz-num-badge anim" data-delay="50">Question 4 of 4</span>
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Thinking it Through</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 4 of 4</span>
 
-        <div class="qz-block" id="qz4">
-          <div class="qz-scenario anim" data-delay="100">
+        <div class="qz-block qz2-card anim" id="qz4">
+          <div class="qz2-scn anim" data-delay="100">
             You want to improve your eczema management and your dermatologist asks about your goal. Which of the following is the best SMART goal?
           </div>
           <div class="qz-options anim" data-delay="200">
@@ -1123,21 +1168,21 @@
             <button class="quiz-option" data-qz="qz4" data-correct="true">C) "I will apply my moisturizer to my arms and legs every evening after my shower for the next two weeks."</button>
             <button class="quiz-option" data-qz="qz4" data-correct="false">D) "I will eliminate all triggers from my environment within the next month."</button>
           </div>
-          <div class="qz-feedback" id="qz4-feedback">
+          <div class="qz2-fb" id="qz4-feedback">
             That's the right idea. A SMART goal is specific about what, when, and for how long. "Every evening after my shower" is specific, measurable, achievable, directly relevant to your skin, and time-bound to two weeks. Goals like "manage better" or "try to moisturize more" give you nothing concrete to follow or measure.
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ══ SLIDE 15 — Key Takeaways ════════════════════════ -->
-    <section class="slide" id="slide-15" data-bg="#40788b" data-theme="dark" aria-label="Key takeaways">
-      <img class="deco deco-char" src="Module%203%20svgs/Module%203a%20(Adults)%20%20(16).svg" aria-hidden="true"
-           style="left:0; top:50%; transform:translateY(-50%); opacity:0.75;">
-      <img class="deco" src="Module%203%20svgs/Module%203a%20(Adults)%20.svg" aria-hidden="true"
-           style="top:-5%; right:-4%; width:28%; opacity:0.12;">
+    <!-- ══ SLIDE 15 — Key Takeaways (PDF-faithful) ═════════ -->
+    <section class="slide pdf-slide s1" id="slide-15" data-bg="#40788B" data-theme="dark" aria-label="Key takeaways">
+      <img class="deco deco-char" src="assets/modules/module-3a-char-celebrate.webp" aria-hidden="true"
+           style="right:-1%; bottom:4%; width:min(30%,260px); opacity:0.95;">
+      <img class="deco" src="assets/modules/module-3a-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; right:-4%; width:26%; opacity:0.35;">
 
-      <div class="slide-content" style="max-width:560px; margin-left:auto; margin-right:5%;">
+      <div class="slide-content" style="max-width:600px; margin-left:0; margin-right:auto;">
         <h2 class="h2-white anim" data-delay="0">Let's Recap! Key Takeaways</h2>
 
         <ul class="takeaway-list">
@@ -1167,6 +1212,7 @@
           </li>
         </ul>
 
+        <p class="read-disclaimer anim" data-delay="450" style="font-family:'Poppins',sans-serif; font-size:0.8rem; line-height:1.55; color:rgba(255,255,255,0.68); margin:18px 0 0; border-top:1px solid rgba(255,255,255,0.16); padding-top:14px;">This module is for general education and is not a substitute for medical advice from your doctor or dermatologist. In a crisis or if you are thinking about harming yourself, call 911, or the AHS Mental Health Helpline at <a href="tel:18773032642" style="color:#fff; font-weight:600; text-decoration:underline; text-underline-offset:2px;">1-877-303-2642</a>.</p>
         <details class="sources-details anim" data-delay="550">
           <summary>Sources</summary>
           <ol>

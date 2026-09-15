@@ -4,7 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Holistic Skin Care and Wellness — Read — MindSkin Connect</title>
-  <meta name="description" content="A scrollable slide-deck experience for Module 5: build routines that survive stressful weeks, use calming techniques, and understand how nutrition and movement affect your skin.">
+  <meta name="description" content="A scrollable slide-deck experience for Module 5: prevent flares under stress, calm your system with mindfulness, PMR and CBT, and support skin health through nutrition and movement.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MindSkin Connect">
+  <meta property="og:title" content="Holistic Skin Care and Wellness — Read — MindSkin Connect">
+  <meta property="og:description" content="A scrollable slide-deck experience for Module 5: prevent flares under stress, calm your system with mindfulness, PMR and CBT, and support skin health through nutrition and movement.">
+  <meta property="og:url" content="https://connect.mindskinhealth.ca/module-5-read.html">
+  <meta property="og:image" content="https://connect.mindskinhealth.ca/assets/social/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Holistic Skin Care and Wellness — Read — MindSkin Connect">
+  <meta name="twitter:description" content="A scrollable slide-deck experience for Module 5: prevent flares under stress, calm your system with mindfulness, PMR and CBT, and support skin health through nutrition and movement.">
+  <meta name="twitter:image" content="https://connect.mindskinhealth.ca/assets/social/og-image.png">
+  <link rel="canonical" href="https://connect.mindskinhealth.ca/module-5-read.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="style.css">
@@ -12,10 +25,10 @@
   <style>
     /* ── Variables ──────────────────────────────────────── */
     :root {
-      --nav-h:    56px;
-      --bar-h:    4px;
-      --purple:   #5e548e;
-      --purple-dk:#231942;
+      --nav-h: 56px;
+      --bar-h: 4px;
+      --blue:  #5e548e;
+      --blue-dk: #231942;
     }
 
     /* ── Scroll snap ────────────────────────────────────── */
@@ -25,7 +38,7 @@
       scroll-padding-top: calc(var(--nav-h) + var(--bar-h));
     }
 
-    body { background-color: var(--purple); }
+    body { background-color: var(--blue); }
 
     main { padding-top: 0; }
 
@@ -155,6 +168,14 @@
     .sub-white { color: rgba(255,255,255,0.92); }
     .sub-navy  { color: #1B3068; }
 
+    .body-navy {
+      font-family: 'Poppins', sans-serif;
+      color: #2D2D2D;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
     /* ── Slide 1 — hero ─────────────────────────────────── */
     .hero-badge {
       display: inline-block;
@@ -195,7 +216,7 @@
       background: #fff;
       border-radius: 16px;
       padding: 16px;
-      border-top: 4px solid var(--purple);
+      border-top: 4px solid var(--blue);
       box-shadow: 0 2px 12px rgba(0,0,0,0.07);
       font-family: 'Poppins', sans-serif;
       font-size: 0.95rem;
@@ -247,7 +268,7 @@
     }
     .statement:last-child { margin-bottom: 0; }
     .statement--navy {
-      border-left: 4px solid var(--purple);
+      border-left: 4px solid var(--blue);
       padding-left: 20px;
       margin-bottom: 24px;
       font-family: 'Poppins', sans-serif;
@@ -257,7 +278,46 @@
     }
     .statement--navy:last-child { margin-bottom: 0; }
 
-    /* ── Step cards dark ────────────────────────────────── */
+    /* ── Trigger grid (tracking slide) ─────────────────── */
+    .trigger-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .trigger-card {
+      background: rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 20px 22px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .trigger-card strong {
+      display: block;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .trigger-card p {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+
+    /* ── App tip callout ────────────────────────────────── */
+    .app-tip {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.92);
+      border-left: 4px solid #2BBFAA;
+    }
+
+    /* ── Step cards (habit building) ───────────────────── */
     .step-card {
       background: rgba(255,255,255,0.12);
       border-radius: 16px;
@@ -302,10 +362,10 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.07);
     }
     .step-card--white:last-child { margin-bottom: 0; }
-    .step-num--purple {
+    .step-num--blue {
       font-family: 'Lilita One', serif;
       font-size: 2.25rem;
-      color: var(--purple);
+      color: var(--blue);
       flex-shrink: 0;
       line-height: 1;
       min-width: 36px;
@@ -325,57 +385,113 @@
       line-height: 1.6;
     }
 
-    /* ── Food grid (nutrition slide) ────────────────────── */
-    .food-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 24px;
+    /* ── SMART letter cards ─────────────────────────────── */
+    .smart-list { margin-top: 20px; }
+    .smart-row {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
     }
-    .food-card {
-      background: #fff;
-      border-radius: 14px;
-      padding: 20px 22px;
-      border-top: 3px solid var(--purple);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      font-family: 'Poppins', sans-serif;
+    .smart-row:last-child { border-bottom: none; }
+    .smart-letter {
+      font-family: 'Lilita One', serif;
+      font-size: 2.5rem;
+      color: #2BBFAA;
+      flex-shrink: 0;
+      min-width: 48px;
+      line-height: 1;
     }
-    .food-card strong {
+    .smart-body { flex: 1; }
+    .smart-body strong {
       display: block;
-      color: #1B3068;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
       font-weight: 600;
-      font-size: 0.9rem;
-      margin-bottom: 6px;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
     }
-    .food-card p {
-      color: #555;
+    .smart-body p {
+      font-family: 'Poppins', sans-serif;
+      color: rgba(255,255,255,0.82);
       font-size: 0.875rem;
       line-height: 1.55;
     }
 
-    /* ── Purple callout (light slides) ─────────────────── */
-    .purple-callout {
-      background: var(--purple);
+    /* ── Blue callout (on light slides) ────────────────── */
+    .blue-callout {
+      background: var(--blue);
       color: #fff;
       border-radius: 12px;
       padding: 20px 24px;
       margin-top: 20px;
       font-family: 'Poppins', sans-serif;
-      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+      font-size: clamp(1rem, 2vw, 1.1rem);
       line-height: 1.75;
     }
 
-    /* ── Resource tip (dark slides) ─────────────────────── */
-    .res-tip {
+    /* ── Self-talk comparison ───────────────────────────── */
+    .talk-list {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .talk-card {
       background: rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin-top: 16px;
+      border-radius: 14px;
+      padding: 18px 22px;
       font-family: 'Poppins', sans-serif;
+    }
+    .talk-before {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.875rem;
+      line-height: 1.5;
+      text-decoration: line-through;
+      margin-bottom: 8px;
+    }
+    .talk-after {
+      color: #fff;
+      font-size: 1rem;
+      line-height: 1.6;
+      font-weight: 600;
+    }
+    .talk-arrow {
+      color: #2BBFAA;
       font-size: 0.9rem;
-      line-height: 1.65;
-      color: rgba(255,255,255,0.92);
-      border-left: 4px solid #2BBFAA;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    /* ── Action cards (light slides) ───────────────────── */
+    .action-list {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .action-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 14px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .action-emoji { font-size: 1.4rem; flex-shrink: 0; line-height: 1.35; }
+    .action-card p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #2D2D2D;
+    }
+    .action-card strong {
+      display: block;
+      color: #1B3068;
+      font-weight: 600;
+      margin-bottom: 2px;
     }
 
     /* ── Quiz slides ────────────────────────────────────── */
@@ -394,7 +510,7 @@
       background: #fff;
       border-radius: 12px;
       padding: 20px;
-      border-left: 4px solid var(--purple);
+      border-left: 4px solid var(--blue);
       font-family: 'Poppins', sans-serif;
       font-size: clamp(1rem, 2vw, 1.15rem);
       line-height: 1.75;
@@ -408,9 +524,9 @@
       border: 1.5px solid rgba(255,255,255,0.3);
     }
     .quiz-option.correct {
-      background: var(--purple) !important;
+      background: var(--blue) !important;
       color: #fff !important;
-      border-color: var(--purple) !important;
+      border-color: var(--blue) !important;
     }
     .quiz-option.wrong {
       background: transparent !important;
@@ -429,7 +545,7 @@
       line-height: 1.6;
       background: rgba(255,255,255,0.1);
       color: #fff;
-      border-left: 4px solid var(--purple);
+      border-left: 4px solid var(--blue);
     }
     .qz-feedback.qz-visible { display: block; }
     @media (prefers-reduced-motion: no-preference) {
@@ -479,7 +595,7 @@
     }
     .back-pill {
       display: inline-block;
-      background: var(--purple);
+      background: var(--blue);
       color: #fff;
       border-radius: 999px;
       padding: 14px 32px;
@@ -540,22 +656,153 @@
       flex-shrink: 0;
       font-family: 'Lilita One', serif;
     }
+    /* Light variant — for CTAs on cream/light slides (legible dark text) */
     .handout-cta--light {
-      background: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      background: rgba(12,55,77,0.06);
+      border-left-color: #231942;
     }
-    .handout-cta--light:hover { background: #f5f5f5; }
-    .handout-cta--light .handout-cta-title { color: #1B3068; }
-    .handout-cta--light .handout-cta-desc  { color: #555; }
-    .handout-cta--light .handout-cta-arrow { color: #5e548e; }
+    .handout-cta--light:hover { background: rgba(12,55,77,0.12); }
+    .handout-cta--light .handout-cta-label { color: #5E548E; }
+    .handout-cta--light .handout-cta-title { color: #231942; }
+    .handout-cta--light .handout-cta-desc { color: rgba(12,55,77,0.72); }
+    .handout-cta--light .handout-cta-arrow { color: #5E548E; }
 
     /* ── Responsive ─────────────────────────────────────── */
     @media (max-width: 768px) {
-      .deco-char     { display: none; }
-      .obj-grid      { grid-template-columns: 1fr; }
-      .food-grid     { grid-template-columns: 1fr; }
-      .slide-content { padding: 24px 16px; }
+      .deco-char        { display: none; }
+      .obj-grid         { grid-template-columns: 1fr; }
+      .trigger-grid     { grid-template-columns: 1fr; }
+      .slide-content    { padding: 40px 20px; }
     }
+    /* ═══ PDF-faithful components (Module 5 — purple) ═══════ */
+    :root {
+      --rose: #5E548E; --plum: #231942; --cream: #FBEFD0;
+      --pink-lt: #B79BC9; --rose-card: #7A6A9C;
+    }
+    .pdf-slide { height: auto; min-height: 100vh; }
+    .pdf-wrap { position: relative; z-index: 1; width: 100%; max-width: 1120px; margin: 0 auto; padding: 92px 44px 48px; display: grid; gap: 36px; align-items: center; }
+    @media (min-width: 880px) {
+      .pdf-2col { grid-template-columns: 1.05fr 0.95fr; }
+      .pdf-2col--journey { grid-template-columns: 1fr 1fr; gap: 0; }
+      .s3 .s3-note { border-radius: 50%; aspect-ratio: 1/1; max-width: none; width: min(42vw,430px); padding: 16%; display: flex; align-items: center; justify-content: center; font-size: clamp(.68rem,.8vw,.8rem); line-height: 1.48; }
+    }
+    .s1 { background: var(--rose); }
+    .s1-badge { display: inline-block; background: #EAD9F0; color: var(--plum); font-family: 'Poppins',sans-serif; font-weight: 600; font-size: .95rem; padding: 9px 24px; border-radius: 999px; box-shadow: 0 5px 0 rgba(12,55,77,.2); margin-bottom: 22px; }
+    .s1-title { font-family: 'Lilita One',serif; color: #F6E9C8; text-transform: uppercase; font-size: clamp(2.1rem,5.4vw,3.5rem); line-height: 1.06; letter-spacing: .01em; margin: 0 0 24px; }
+    .s1-credits { font-family: 'Poppins',sans-serif; color: rgba(255,255,255,.85); font-size: .88rem; line-height: 1.65; margin: 0; }
+    .char-graphic, .s1-graphic { position: relative; display: flex; align-items: center; justify-content: center; min-height: 300px; }
+    .char-circle, .s1-circle { position: absolute; width: min(82%,370px); aspect-ratio: 1/1; background: #F6E9C8; border-radius: 50%; }
+    .char-graphic > img, .s1-brain { position: relative; width: min(94%,430px); height: auto; }
+    .s2 { background: var(--cream); }
+    .s2-h { font-family: 'Lilita One',serif; color: var(--plum); text-transform: uppercase; font-size: clamp(1.9rem,4.6vw,3rem); line-height: 1.05; margin: 0 0 16px; }
+    .s2-sub { font-family: 'Poppins',sans-serif; color: var(--plum); font-size: clamp(1rem,1.8vw,1.15rem); line-height: 1.6; margin: 0; }
+    .obj2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .obj2 { border-radius: 22px; padding: 22px 20px; color: #fff; font-family: 'Poppins',sans-serif; font-size: .92rem; line-height: 1.5; text-align: center; display: flex; flex-direction: column; gap: 12px; min-height: 200px; justify-content: center; }
+    .obj2 b { font-family: 'Lilita One',serif; font-weight: 400; font-size: 1.05rem; letter-spacing: .02em; text-transform: uppercase; }
+    .obj2--1 { background: var(--rose-card); } .obj2--2 { background: var(--pink-lt); }
+    .obj2--3 { background: var(--plum); } .obj2--4 { background: var(--pink-lt); }
+    .s3 { background: var(--rose); }
+    .s3-bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+    .s3 .pdf-wrap { position: relative; z-index: 1; align-items: center; }
+    .s3-h { font-family: 'Poppins',sans-serif; font-weight: 700; color: var(--plum); font-size: clamp(1.9rem,4.4vw,3rem); margin: 0 0 18px; letter-spacing: -.01em; }
+    .s3-list { list-style: none; margin: 0; }
+    .s3-item { display: flex; gap: 18px; padding: 7px 0; align-items: baseline; }
+    .s3-num { font-family: 'Poppins',sans-serif; font-weight: 700; color: #B79BC9; font-size: 1.5rem; min-width: 42px; flex-shrink: 0; }
+    .s3-label { font-family: 'Poppins',sans-serif; font-weight: 700; color: var(--plum); font-size: 1.02rem; line-height: 1.3; }
+    .s3-sub { font-family: 'Poppins',sans-serif; color: #6a5a7a; font-size: .88rem; margin-left: 60px; padding: 2px 0; }
+    .s3-right { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 30px; }
+    .s3-journey { font-family: 'Lilita One',serif; color: #F6E9C8; text-transform: uppercase; font-size: clamp(2.2rem,5vw,3.4rem); line-height: 1; margin: 0; }
+    .s3-note { background: var(--plum); color: #fff; border-radius: 26px; max-width: 440px; padding: 26px 30px; text-align: center; font-family: 'Poppins',sans-serif; font-size: .92rem; line-height: 1.55; }
+    .s3-note strong { font-weight: 700; }
+    .cream-card { background: #F6E9C8; border-radius: 18px; padding: 24px 26px; font-family: 'Poppins',sans-serif; color: var(--plum); font-size: clamp(.98rem,1.7vw,1.1rem); line-height: 1.65; }
+    .mini-callout { background: #F6E9C8; border-radius: 16px; padding: 20px 22px; font-family: 'Poppins',sans-serif; color: var(--plum); font-size: clamp(.92rem,1.5vw,1rem); line-height: 1.6; }
+    .mini-callout .bulb, .cream-card .bulb { font-size: 1.4rem; display: block; margin-bottom: 6px; }
+    .derm-list { list-style: none; margin: 8px 0 0; display: flex; flex-direction: column; gap: 14px; }
+    .derm-list li { font-family: 'Poppins',sans-serif; color: #fff; font-size: clamp(.95rem,1.6vw,1.05rem); line-height: 1.5; padding-left: 26px; position: relative; }
+    .derm-list li::before { content: "•"; position: absolute; left: 4px; color: #fff; font-size: 1.3rem; line-height: 1; }
+    .derm-list strong { display: block; }
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+    .step2 { display: flex; gap: 16px; align-items: flex-start; font-family: 'Poppins',sans-serif; }
+    .step2-n { width: 46px; height: 46px; border-radius: 50%; background: var(--rose); color: #fff; font-family: 'Lilita One',serif; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.15rem; }
+    .step2 h4 { font-weight: 700; font-size: 1rem; margin-bottom: 2px; }
+    .step2 p { font-size: .92rem; line-height: 1.5; }
+    .smart2 { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    .smart2-row { display: grid; grid-template-columns: 130px 1fr; gap: 0; border-radius: 10px; overflow: hidden; }
+    .smart2-k { font-family: 'Poppins',sans-serif; font-weight: 700; color: var(--plum); padding: 12px 16px; display: flex; align-items: center; }
+    .smart2-v { font-family: 'Poppins',sans-serif; color: var(--plum); font-style: italic; padding: 12px 16px; font-size: .95rem; display: flex; align-items: center; }
+    .smart2-row:nth-child(1) .smart2-k, .smart2-row:nth-child(1) .smart2-v { background: #7A6A9C; color: #fff; }
+    .smart2-row:nth-child(2) .smart2-k, .smart2-row:nth-child(2) .smart2-v { background: #B79BC9; }
+    .smart2-row:nth-child(3) .smart2-k, .smart2-row:nth-child(3) .smart2-v { background: #C9B3D8; }
+    .smart2-row:nth-child(4) .smart2-k, .smart2-row:nth-child(4) .smart2-v { background: #E3D4EC; }
+    .smart2-row:nth-child(5) .smart2-k, .smart2-row:nth-child(5) .smart2-v { background: #F0E6D0; }
+    .qz2 { background: var(--cream); }
+    .qz2-title { font-family: 'Lilita One',serif; color: var(--plum); text-transform: uppercase; font-size: clamp(1.9rem,4.4vw,2.9rem); margin: 0 0 14px; }
+    .qz2-badge { display: inline-block; background: #E8DDF0; color: var(--plum); border-radius: 999px; padding: 6px 20px; font-family: 'Poppins',sans-serif; font-weight: 600; font-size: .82rem; margin-bottom: 16px; box-shadow: 0 4px 0 rgba(12,55,77,.15); }
+    .qz2-card { background: #E8DDF0; border-radius: 20px; padding: 26px 28px; max-width: 760px; }
+    .qz2-scn { font-family: 'Poppins',sans-serif; color: var(--plum); font-size: clamp(1rem,1.9vw,1.12rem); line-height: 1.7; margin-bottom: 18px; }
+    .qz2 .qz-options { gap: 10px; }
+    .qz2 .quiz-option { background: #FCF6EA; color: var(--plum); border: none; border-radius: 999px; text-align: center; font-size: .98rem; }
+    .qz2 .quiz-option.correct { background: #B79BC9 !important; color: #fff !important; }
+    .qz2 .quiz-option.wrong { background: #FCF6EA !important; color: rgba(12,55,77,.4) !important; text-decoration: none; }
+    .qz2-fb { display: none; background: #B79BC9; color: #fff; border-radius: 20px; padding: 18px 22px; margin-top: 16px; font-family: 'Poppins',sans-serif; font-size: clamp(.92rem,1.6vw,1rem); line-height: 1.55; }
+    .qz2-fb.qz-visible { display: block; }
+    .qz2-char { position: absolute; right: 2%; bottom: 0; width: min(26%,240px); z-index: 0; }
+    /* Bounded proportions */
+    .s1-title { font-size: clamp(1.8rem,3.4vw,2.9rem) !important; }
+    .s2-h { font-size: clamp(1.6rem,3.1vw,2.5rem) !important; }
+    .s3-h { font-size: clamp(1.55rem,2.9vw,2.3rem) !important; }
+    .s3-journey { font-size: clamp(1.85rem,3.6vw,2.8rem) !important; }
+    .qz2-title { font-size: clamp(1.6rem,3.1vw,2.4rem) !important; }
+    .char-circle, .s1-circle { width: min(62%,300px) !important; }
+    .char-graphic > img, .s1-brain { width: min(76%,340px) !important; }
+    .char-graphic, .s1-graphic { min-height: 260px !important; }
+    @media (max-width: 880px) {
+      .pdf-wrap { padding: 78px 18px 36px; gap: 26px; }
+      .obj2 { min-height: 150px; padding: 18px 14px; }
+      .s3 { background: var(--cream); } .s3-bg { display: none; }
+      .s3-right { background: var(--rose); border-radius: 24px; padding: 36px 24px; margin-top: 4px; }
+      .s3-note { width: min(80vw,280px); }
+      .qz2-char { display: none; }
+      .smart2-row { grid-template-columns: 96px 1fr; }
+      .s1-title { font-size: clamp(1.55rem,6vw,2.15rem) !important; }
+      .s2-h, .s3-h, .qz2-title { font-size: clamp(1.45rem,5.4vw,2rem) !important; }
+      .s3-journey { font-size: clamp(1.7rem,6.4vw,2.25rem) !important; }
+      .char-graphic, .s1-graphic { min-height: 190px !important; }
+      .char-circle, .s1-circle { width: min(50vw,250px) !important; }
+      .char-graphic > img, .s1-brain { width: min(58vw,290px) !important; }
+    }
+
+    /* ── Module 5 additions ─────────────────────────────── */
+    .obj2-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .dark-list { list-style:none; margin:6px 0 0; display:flex; flex-direction:column; gap:11px; }
+    .dark-list li { font-family:'Poppins',sans-serif; color:var(--plum); font-size:clamp(.9rem,1.5vw,1rem); line-height:1.5; padding-left:22px; position:relative; }
+    .dark-list li::before { content:"\2022"; position:absolute; left:3px; color:var(--rose); font-size:1.2rem; line-height:1; }
+    .dlink { color:var(--rose); text-decoration:underline; text-underline-offset:2px; font-weight:600; }
+    .rlink { color:#fff; text-decoration:underline; text-underline-offset:2px; font-weight:600; }
+    .rlink:hover { color:#F6E9C8; }
+    /* Quick stress-reliever cards */
+    .relief-grid { display:grid; grid-template-columns:1fr; gap:16px; }
+    @media (min-width:820px){ .relief-grid{ grid-template-columns:repeat(3,1fr);} }
+    .relief-card { background:#fff; border-radius:18px; padding:20px 22px; box-shadow:0 3px 12px rgba(35,25,66,.08); border-top:5px solid var(--rose); }
+    .relief-card h3 { font-family:'Lilita One',serif; color:var(--plum); font-size:1.1rem; margin:0 0 10px; display:flex; justify-content:space-between; align-items:baseline; gap:8px; }
+    .relief-card h3 span { font-family:'Poppins',sans-serif; font-weight:700; font-size:.72rem; color:#fff; background:var(--rose); border-radius:999px; padding:3px 10px; white-space:nowrap; }
+    .relief-card p { font-family:'Poppins',sans-serif; color:#3A2E4A; font-size:.86rem; line-height:1.5; margin:0 0 8px; }
+    .relief-card p:last-child { margin-bottom:0; }
+    /* Nutrition pillars */
+    .nutri-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    @media (min-width:900px){ .nutri-grid{ grid-template-columns:repeat(4,1fr);} }
+    .nutri-card { background:#fff; border-radius:16px; padding:18px 18px; box-shadow:0 3px 12px rgba(35,25,66,.08); text-align:center; }
+    .nutri-card h3 { font-family:'Poppins',sans-serif; font-weight:700; color:var(--rose); font-size:.98rem; margin:0 0 8px; }
+    .nutri-card p { font-family:'Poppins',sans-serif; color:#3A2E4A; font-size:.84rem; line-height:1.5; margin:0; }
+    /* AHS Mental Health Helpline callout — visually distinct */
+    .helpline { display:flex; gap:16px; align-items:center; background:#fff; border:3px solid var(--rose);
+      border-radius:18px; padding:18px 24px; margin-top:20px; box-shadow:0 6px 0 rgba(35,25,66,.15); }
+    .helpline-icon { font-size:2.1rem; line-height:1; flex-shrink:0; }
+    .helpline-label { font-family:'Poppins',sans-serif; font-weight:600; color:var(--plum); font-size:.9rem; margin:0 0 2px; }
+    .helpline-num { font-family:'Lilita One',serif; color:var(--rose); font-size:clamp(1.5rem,3.2vw,2.1rem); letter-spacing:.02em; margin:0 0 3px; }
+    .helpline-num a { color:inherit; text-decoration:none; }
+    .helpline-num a:hover { text-decoration:underline; }
+    .helpline-sub { font-family:'Poppins',sans-serif; color:#6a5a7a; font-size:.8rem; line-height:1.4; margin:0; }
   </style>
 </head>
 <body>
@@ -572,516 +819,459 @@
 
   <main id="main">
 
-    <!-- ══ SLIDE 1 — Hero ══════════════════════════════════ -->
-    <section class="slide" id="slide-1" data-bg="#5e548e" data-theme="dark" aria-label="Module introduction">
-      <img class="deco deco-char" src="Module%205/Copy%20of%20Module%205%20(1).svg" aria-hidden="true"
-           style="right:0; top:50%; transform:translateY(-50%); opacity:0.9;">
-      <img class="deco" src="Module%205/Copy%20of%20Module%205.svg" aria-hidden="true"
-           style="bottom:-8%; left:-6%; width:32%; opacity:0.13;">
+    <!-- ══ SLIDE 1 — Title (PDF-faithful) ══════════════════ -->
+    <section class="slide pdf-slide s1" id="slide-1" data-bg="#5E548E" data-theme="dark" aria-label="Module introduction">
+      <img class="deco" src="assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:34%; opacity:0.4;">
+      <img class="deco" src="assets/modules/module-5-blob-cream.svg" aria-hidden="true"
+           style="bottom:-8%; left:-5%; width:24%; opacity:0.35;">
 
-      <div class="slide-content" style="max-width:580px; margin-left:5%; margin-right:auto;">
-        <div class="anim" data-delay="0">
-          <span class="hero-badge">Module 5</span>
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <span class="s1-badge anim" data-delay="0">Module 5</span>
+          <h1 class="s1-title anim" data-delay="100">Holistic Skin Care and Wellness</h1>
+          <p class="s1-credits anim" data-delay="200">Credits: Jia Qi Adam Bai BSc, Serena Dienes BSc, Kevin Li BSc MSPH, Sofia Maruschak-Love BHSc<br>
+            Dr. Marlene Dytoc MD PhD FRCPC<br>
+            Designed by: Danting Zheng BSc Undergraduate</p>
+          <span class="scroll-cue anim" data-delay="300" style="display:inline-block; margin-top:20px; color:rgba(255,255,255,.9);">↓ Scroll to begin</span>
         </div>
-        <h1 class="h1-white anim" data-delay="100">Holistic Skin Care and Wellness</h1>
-        <p class="sub-white anim" data-delay="200">Build routines that survive stressful weeks, use calming techniques that take under five minutes, and learn how nutrition and movement affect your skin.</p>
-        <div class="anim" data-delay="300">
-          <span class="scroll-cue">↓ Scroll to begin</span>
-        </div>
-        <p class="hero-orient anim" data-delay="400">Work through this module at your own pace. Tap the quiz questions when they appear — there are no wrong answers.</p>
-      </div>
-    </section>
-
-    <!-- ══ SLIDE 2 — Objectives ════════════════════════════ -->
-    <section class="slide" id="slide-2" data-bg="#fff2d7" data-theme="light" aria-label="Learning objectives">
-      <img class="deco" src="Module%205/Copy%20of%20Module%205%20(2).svg" aria-hidden="true"
-           style="top:-5%; right:-5%; width:28%; opacity:0.14;">
-      <img class="deco" src="Module%205/Copy%20of%20Module%205.svg" aria-hidden="true"
-           style="bottom:-6%; left:-5%; width:24%; opacity:0.08;">
-
-      <div class="slide-content">
-        <h2 class="h2-navy anim" data-delay="0">What We'll Explore Together</h2>
-        <p class="sub-navy anim" data-delay="100">By the end of this module, you'll be able to:</p>
-
-        <div class="obj-grid">
-          <div class="obj-card anim" data-delay="150">
-            <strong>Routines &amp; Flare Prevention</strong>
-            Build a 'good enough' routine that holds together during stressful weeks — and know how to act before a flare fully develops.
-          </div>
-          <div class="obj-card anim" data-delay="225">
-            <strong>Calming Techniques</strong>
-            Use mindfulness, Progressive Muscle Relaxation, and CBT principles to reduce stress and scratch urges in under five minutes.
-          </div>
-          <div class="obj-card anim" data-delay="300">
-            <strong>Food &amp; Skin Health</strong>
-            Understand the relationship between diet and eczema — and know what the evidence actually says about food triggers.
-          </div>
-          <div class="obj-card anim" data-delay="375">
-            <strong>Movement &amp; Exercise</strong>
-            Find movement that supports your skin and mood — even during flares — and learn how to recover well afterward.
-          </div>
+        <div class="char-graphic anim" data-delay="200">
+          <div class="char-circle"></div>
+          <img src="assets/modules/module-5-hero-selfcare.svg" alt="A person embracing a heart, representing self-care and wellness">
         </div>
       </div>
     </section>
 
-    <!-- ══ SLIDE 3 — Journey ═══════════════════════════════ -->
-    <section class="slide" id="slide-3" data-bg="#231942" data-theme="dark" aria-label="Module overview">
-      <img class="deco" src="Module%205/Copy%20of%20Module%205%20(3).svg" aria-hidden="true"
-           style="bottom:-6%; right:-4%; width:26%; opacity:0.12;">
-      <img class="deco" src="Module%205/Copy%20of%20Module%205.svg" aria-hidden="true"
-           style="top:-5%; left:-4%; width:22%; opacity:0.1;">
+    <!-- ══ SLIDE 2 — Objectives (PDF-faithful) ═════════════ -->
+    <section class="slide pdf-slide s2" id="slide-2" data-bg="#FBEFD0" data-theme="light" aria-label="Learning objectives">
+      <img class="deco" src="assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; left:-4%; width:26%; opacity:0.25;">
+      <img class="deco" src="assets/modules/module-5-blob-lavender.svg" aria-hidden="true"
+           style="bottom:-9%; right:-5%; width:26%; opacity:0.3;">
 
-      <div class="slide-content">
-        <h2 class="h2-white anim" data-delay="0">Our Journey Today</h2>
-
-        <ol class="journey-list anim" data-delay="100">
-          <li class="journey-item">
-            <span class="journey-num">01</span>
-            <span class="journey-label">Building a Good-Enough Routine</span>
-          </li>
-          <li class="journey-item">
-            <span class="journey-num">02</span>
-            <span class="journey-label">Flare Prevention Planning</span>
-          </li>
-          <li class="journey-item">
-            <span class="journey-num">03</span>
-            <span class="journey-label">Mindfulness &amp; Relaxation</span>
-          </li>
-          <li class="journey-item">
-            <span class="journey-num">04</span>
-            <span class="journey-label">PMR and CBT</span>
-          </li>
-          <li class="journey-item">
-            <span class="journey-num">05</span>
-            <span class="journey-label">Food, Nutrition, and Skin</span>
-          </li>
-          <li class="journey-item">
-            <span class="journey-num">06</span>
-            <span class="journey-label">Exercise During and After Flares</span>
-          </li>
-          <li class="journey-item">
-            <span class="journey-num">07</span>
-            <span class="journey-label">Key Takeaways</span>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ══ SLIDE 4 — Good Enough Routine ════════════════════ -->
-    <section class="slide" id="slide-4" data-bg="#fff2d7" data-theme="light" aria-label="Building a good-enough routine">
-      <img class="deco deco-char" src="Module%205/Copy%20of%20Module%205%20(4).svg" aria-hidden="true"
-           style="right:0; top:50%; transform:translateY(-50%); opacity:0.85;">
-      <img class="deco" src="Module%205/Copy%20of%20Module%205.svg" aria-hidden="true"
-           style="bottom:-6%; left:-5%; width:24%; opacity:0.08;">
-
-      <div class="slide-content" style="max-width:600px; margin-left:5%; margin-right:auto;">
-        <h2 class="h2-navy anim" data-delay="0">Building a Good-Enough Routine</h2>
-        <p class="sub-navy anim" data-delay="80">A simplified routine you can actually keep beats a perfect one you abandon.</p>
-
-        <div class="statement--navy anim" data-delay="150">
-          A 'good enough' routine means having a scaled-back version ready for stressful weeks — not zero care, just less. Three steps instead of seven. One moisturizer instead of three products.
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s2-h anim" data-delay="0">Our Wellness Blueprint: What You'll Gain</h2>
+          <p class="s2-sub anim" data-delay="100">By the end of this module, you'll be equipped to:</p>
         </div>
-        <div class="statement--navy anim" data-delay="250">
-          When stress peaks, stopping entirely removes the protection your skin needs most. Keeping even two or three anchor habits going is far better than starting from scratch.
-        </div>
-        <div class="statement--navy anim" data-delay="350">
-          Plan your 'good enough' version in advance. What are the two or three things you will always do, no matter what? Those are your anchor habits — the ones you protect first.
+        <div class="obj2-grid">
+          <div class="obj2 anim" data-delay="150" style="background:#5E548E;"><b>Objective #1</b>Implement proactive strategies to help prevent eczema flares, especially during stressful periods.</div>
+          <div class="obj2 anim" data-delay="225" style="background:#9B85AE;"><b>Objective #2</b>Incorporate practical stress and anxiety reduction techniques — including mindfulness and progressive muscle relaxation — into daily life.</div>
+          <div class="obj2 anim" data-delay="300" style="background:#D3AECB; color:#3A2A45;"><b style="color:#3A2A45;">Objective #3</b>Use tools like mental-health diaries to track and reflect on your skin-mind connection.</div>
+          <div class="obj2 anim" data-delay="375" style="background:#231942;"><b>Objective #4</b>Make informed lifestyle choices around nutrition and exercise to support your skin health and overall well-being.</div>
         </div>
       </div>
     </section>
 
-    <!-- ══ SLIDE 5 — Flare Prevention ═══════════════════════ -->
-    <section class="slide" id="slide-5" data-bg="#5e548e" data-theme="dark" aria-label="Flare prevention planning">
-      <img class="deco deco-char" src="Module%205/Copy%20of%20Module%205%20(5).svg" aria-hidden="true"
-           style="right:0; top:50%; transform:translateY(-50%); opacity:0.85;">
-      <img class="deco" src="Module%205/Copy%20of%20Module%205.svg" aria-hidden="true"
-           style="bottom:-6%; left:-5%; width:26%; opacity:0.12;">
+    <!-- ══ SLIDE 3 — Module outline (PDF-faithful) ═════════ -->
+    <section class="slide pdf-slide s3" id="slide-3" data-bg="#5E548E" data-theme="light" aria-label="Module overview">
+      <svg class="s3-bg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+        <path d="M -80,-80 L 760,-80 C 880,80 1000,200 970,340 C 945,455 815,480 885,610 C 950,730 770,800 690,980 L -80,980 Z" fill="#FBEFD0"/>
+        <path d="M -80,650 C 120,590 255,655 300,785 C 348,905 150,980 -80,980 Z" fill="#5E548E"/>
+        <path d="M 1680,700 C 1560,685 1470,790 1525,980 L 1680,980 Z" fill="#FBEFD0"/>
+        <g fill="none" stroke="#F6E9C8" stroke-width="3" opacity="0.30"><circle cx="1500" cy="130" r="55"/><circle cx="1500" cy="130" r="115"/><circle cx="1500" cy="130" r="175"/><circle cx="1500" cy="130" r="235"/><circle cx="1500" cy="130" r="295"/></g>
+        <g fill="none" stroke="#F6E9C8" stroke-width="3" opacity="0.22"><circle cx="1585" cy="560" r="45"/><circle cx="1585" cy="560" r="100"/><circle cx="1585" cy="560" r="155"/><circle cx="1585" cy="560" r="210"/></g>
+        <g fill="none" stroke="#F6E9C8" stroke-width="3" opacity="0.28"><circle cx="1470" cy="885" r="55"/><circle cx="1470" cy="885" r="115"/><circle cx="1470" cy="885" r="175"/><circle cx="1470" cy="885" r="235"/></g>
+        <g fill="none" stroke="#231942" stroke-width="3" opacity="0.08"><circle cx="35" cy="120" r="48"/><circle cx="35" cy="120" r="95"/><circle cx="35" cy="120" r="142"/></g>
+        <circle cx="1592" cy="695" r="40" fill="#231942"/>
+        <circle cx="1290" cy="150" r="26" fill="#231942" opacity="0.9"/>
+      </svg>
 
-      <div class="slide-content" style="max-width:600px; margin-left:5%; margin-right:auto;">
-        <h2 class="h2-white anim" data-delay="0">Your Flare Prevention Plan</h2>
-        <p class="sub-white anim" data-delay="80">Acting early — before a flare fully develops — usually means a milder flare.</p>
+      <div class="pdf-wrap pdf-2col pdf-2col--journey">
+        <div class="s3-left">
+          <h2 class="s3-h anim" data-delay="0">Module outline</h2>
+          <ol class="s3-list">
+            <li class="s3-item anim" data-delay="80"><span class="s3-num">01</span><span class="s3-label">Flare Prevention 101: Staying Ahead During Stressful Times</span></li>
+            <li class="s3-item anim" data-delay="130"><span class="s3-num">02</span><span class="s3-label">Calming Your System: Stress &amp; Anxiety Reduction</span></li>
+            <li class="s3-sub anim" data-delay="150">a) Mindfulness in Action: Meditation &amp; Audio Guides</li>
+            <li class="s3-sub anim" data-delay="168">b) Quick Stress Relieving Techniques in Under 5 Minutes</li>
+            <li class="s3-sub anim" data-delay="186">c) Deep Relaxation: Progressive Muscle Relaxation (PMR)</li>
+            <li class="s3-sub anim" data-delay="204">d) Cognitive Behavioural Therapy (CBT)</li>
+            <li class="s3-item anim" data-delay="240"><span class="s3-num">03</span><span class="s3-label">Tracking Your Journey: Mental Health &amp; Symptom Diaries</span></li>
+            <li class="s3-item anim" data-delay="290"><span class="s3-num">04</span><span class="s3-label">Nourishing Your Skin &amp; Mind: The Role of Nutrition</span></li>
+            <li class="s3-item anim" data-delay="340"><span class="s3-num">05</span><span class="s3-label">Movement for Well-being: Exercise as a Holistic Tool</span></li>
+            <li class="s3-item anim" data-delay="390"><span class="s3-num">06</span><span class="s3-label">Key Takeaways: Building Sustainable Wellness Habits</span></li>
+          </ol>
+        </div>
+        <div class="s3-right anim" data-delay="150">
+          <h2 class="s3-journey">Charting Your Wellness Course</h2>
+          <p class="s3-note">When you've completed this module, <strong>please click the link on the &lsquo;Congratulations&rsquo; slide</strong> at the end of this presentation <strong>to confirm your completion!</strong></p>
+        </div>
+      </div>
+    </section>
 
-        <div class="anim" data-delay="150">
-          <div class="step-card">
-            <div class="step-num">1</div>
-            <div class="step-body">
-              <strong>Know your early warning signs</strong>
-              <p>The signs specific to you that a flare is starting — increased itch at a usual spot, redness at the elbow creases, skin feeling tight. Write these down and keep them in your Eczema Action Plan.</p>
-            </div>
+    <!-- ══ SLIDE 4 — Flare Prevention 101 ══════════════════ -->
+    <section class="slide pdf-slide s1" id="slide-4" data-bg="#5E548E" data-theme="dark" aria-label="Flare prevention during stressful times">
+      <img class="deco" src="assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:26%; opacity:0.4;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.5rem,3.4vw,2.3rem); margin-bottom:12px;">Flare Prevention 101: Staying Ahead During Stressful Times</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.95rem,1.6vw,1.05rem); line-height:1.6; margin:0 0 14px;">Stress is a major eczema trigger. During demanding periods — a new school year, deadlines, personal challenges — your skin may be more vulnerable.</p>
+          <ul class="derm-list">
+            <li class="anim" data-delay="150"><strong>The Skin-Mind Connection:</strong> stress hormones can weaken your skin barrier and heighten itch perception.</li>
+            <li class="anim" data-delay="210"><strong>Adjust Expectations:</strong> perfect skincare routines can be hard when stressed. Focus on consistency with the core elements.</li>
+          </ul>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:18px; align-items:center;">
+          <div class="char-graphic anim" data-delay="150" style="min-height:200px;">
+            <div class="char-circle"></div>
+            <img src="assets/modules/module-5-stressed.webp" alt="A person feeling stressed during a demanding period">
           </div>
-          <div class="step-card">
-            <div class="step-num">2</div>
-            <div class="step-body">
-              <strong>Have a step-up plan ready</strong>
-              <p>Know in advance what you'll do when those signs appear. Acting before a flare takes hold takes far less effort than treating a full flare.</p>
-            </div>
-          </div>
-          <div class="step-card">
-            <div class="step-num">3</div>
-            <div class="step-body">
-              <strong>Check in after stressful periods</strong>
-              <p>A flare often appears one to three days after a high-stress period. Increase moisturizing proactively after a tough week — don't wait for symptoms to appear.</p>
-            </div>
+          <div class="mini-callout anim" data-delay="220" style="text-align:center; font-style:italic;">
+            The key to flare prevention is <strong>adjusting expectations</strong> — &ldquo;good enough&rdquo; is better than not at all!
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ══ SLIDE 6 — Mindfulness ══════════════════════════════ -->
-    <section class="slide" id="slide-6" data-bg="#231942" data-theme="dark" aria-label="Calming techniques under five minutes">
-      <img class="deco" src="Module%205/Copy%20of%20Module%205%20(6).svg" aria-hidden="true"
-           style="top:-5%; right:-4%; width:28%; opacity:0.12;">
-      <img class="deco" src="Module%205/Copy%20of%20Module%205.svg" aria-hidden="true"
-           style="bottom:-6%; left:-5%; width:24%; opacity:0.1;">
+    <!-- ══ SLIDE 5 — Quiz Q1 ═══════════════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-5" data-bg="#FBEFD0" data-theme="light" aria-label="Quiz question 1">
+      <img class="deco" src="assets/modules/module-5-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.25;">
+      <img class="qz2-char" src="assets/modules/module-5-magnifier.webp" aria-hidden="true">
 
-      <div class="slide-content" style="max-width:720px;">
-        <h2 class="h2-white anim" data-delay="0">Calming Techniques Under Five Minutes</h2>
-        <p class="sub-white anim" data-delay="80">Mindfulness means paying attention to the present moment without judgment. Even five minutes a day can reduce stress hormones and scratch urges.</p>
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Thinking it Through</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 1 of 5</span>
 
-        <div class="anim" data-delay="150">
-          <div class="step-card">
-            <div class="step-num">1</div>
-            <div class="step-body">
-              <strong>Mindful Breathing (1–5 min)</strong>
-              <p>Focus on your breath. Notice the air entering and leaving. When your mind wanders, gently bring it back — no judgment. This lowers cortisol and helps interrupt the itch-tension cycle.</p>
-            </div>
-          </div>
-          <div class="step-card">
-            <div class="step-num">2</div>
-            <div class="step-body">
-              <strong>Quick Body Scan (2–5 min)</strong>
-              <p>Mentally scan from toes to head, noticing any tension without judgment. Consciously release it as you go. Works especially well before sleep when itch often peaks.</p>
-            </div>
-          </div>
-          <div class="step-card">
-            <div class="step-num">3</div>
-            <div class="step-body">
-              <strong>5-4-3-2-1 Grounding (1–3 min)</strong>
-              <p>Name 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, 1 you can taste or one positive thought. Brings you back to the present when stress or itch escalates.</p>
-            </div>
-          </div>
-        </div>
-
-        <a class="handout-cta anim" href="handout-stress-relievers.html" data-delay="400">
-          <div class="handout-cta-inner">
-            <p class="handout-cta-label">Interactive handout</p>
-            <p class="handout-cta-title">Quick Stress Relievers</p>
-            <p class="handout-cta-desc">Try all three techniques with built-in timers — breathing, body scan, and 5-4-3-2-1 grounding.</p>
-          </div>
-          <span class="handout-cta-arrow">→</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- ══ SLIDE 7 — PMR & CBT ═══════════════════════════════ -->
-    <section class="slide" id="slide-7" data-bg="#fff2d7" data-theme="light" aria-label="PMR and CBT">
-      <img class="deco deco-char" src="Module%205/Copy%20of%20Module%205%20(7).svg" aria-hidden="true"
-           style="right:0; top:50%; transform:translateY(-50%); opacity:0.85;">
-      <img class="deco" src="Module%205/Copy%20of%20Module%205.svg" aria-hidden="true"
-           style="bottom:-6%; left:-5%; width:22%; opacity:0.08;">
-
-      <div class="slide-content" style="max-width:600px; margin-left:5%; margin-right:auto;">
-        <h2 class="h2-navy anim" data-delay="0">PMR and CBT — Two Tools Worth Knowing</h2>
-        <p class="sub-navy anim" data-delay="80">Evidence-based techniques that directly reduce itch, anxiety, and sleep problems.</p>
-
-        <div class="anim" data-delay="150">
-          <div class="step-card--white">
-            <div class="step-num--purple">1</div>
-            <div class="step-body--navy">
-              <strong>Progressive Muscle Relaxation (PMR)</strong>
-              <p>Systematically tense and release muscle groups from feet to face. This can lower stress and help you sleep. Use our PMR guide (linked from this module) to try it tonight.</p>
-            </div>
-          </div>
-          <div class="step-card--white">
-            <div class="step-num--purple">2</div>
-            <div class="step-body--navy">
-              <strong>Cognitive Behavioural Therapy (CBT)</strong>
-              <p>CBT has been shown to reduce itch intensity, sleep problems, anxiety, and depression in people with eczema. It works by changing the thought patterns and behaviours that make symptoms worse.</p>
-            </div>
-          </div>
-          <div class="step-card--white">
-            <div class="step-num--purple">3</div>
-            <div class="step-body--navy">
-              <strong>Accessing CBT in Alberta</strong>
-              <p>MindShift CBT (free app), BounceBack Alberta (free telephone coaching program), or ask your doctor for a referral to a therapist who works with chronic conditions.</p>
-            </div>
-          </div>
-        </div>
-
-        <a class="handout-cta handout-cta--light anim" href="handout-pmr.html" data-delay="300">
-          <div class="handout-cta-inner">
-            <p class="handout-cta-label">Step-by-step guide</p>
-            <p class="handout-cta-title">Progressive Muscle Relaxation (PMR)</p>
-            <p class="handout-cta-desc">Tense and release each muscle group in turn — try it tonight with the guided sequence.</p>
-          </div>
-          <span class="handout-cta-arrow">→</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- ══ SLIDE 8 — Quiz Q1 ══════════════════════════════════ -->
-    <section class="slide" id="slide-8" data-bg="#1B3068" data-theme="dark" aria-label="Quiz question 1">
-      <img class="deco deco-char" src="Module%205/Copy%20of%20Module%205%20(14).svg" aria-hidden="true"
-           style="right:16px; bottom:16px; width:200px; opacity:0.5;">
-
-      <div class="slide-content" style="max-width:720px;">
-        <h2 class="h2-white anim" data-delay="0">Thinking it Through</h2>
-        <span class="qz-num-badge anim" data-delay="50">Question 1 of 4</span>
-
-        <div class="qz-block" id="qz1">
-          <div class="qz-scenario anim" data-delay="100">
-            It's been a brutal week at work — you're exhausted, stressed, and your usual 7-step skincare routine feels completely overwhelming. According to what we know about routines and eczema:
+        <div class="qz-block qz2-card anim" id="qz1">
+          <div class="qz2-scn anim" data-delay="100">
+            During a very hectic week with multiple deadlines, you worry you won't have enough time to apply your usual body cream after your morning shower. Instead of skipping moisturizing entirely, you do a quick once-over with a Vaseline spray because it's fast to apply. This approach is a good example of:
           </div>
           <div class="qz-options anim" data-delay="200">
-            <button class="quiz-option" data-qz="qz1" data-correct="false">A) Skip the routine entirely until things calm down — rest is more important right now.</button>
-            <button class="quiz-option" data-qz="qz1" data-correct="false">B) Force yourself to do all 7 steps no matter what — consistency is everything.</button>
-            <button class="quiz-option" data-qz="qz1" data-correct="true">C) Scale back to your 2–3 anchor habits. A simplified routine done consistently is better than a perfect routine abandoned.</button>
-            <button class="quiz-option" data-qz="qz1" data-correct="false">D) Substitute all steps with a single over-the-counter lotion and start fresh next week.</button>
+            <button class="quiz-option" data-qz="qz1" data-correct="true">A) Prioritizing &ldquo;good enough&rdquo; consistent care over perfection during stressful times.</button>
+            <button class="quiz-option" data-qz="qz1" data-correct="false">B) Giving up on effective eczema management.</button>
+            <button class="quiz-option" data-qz="qz1" data-correct="false">C) A sign that your usual routine is too complicated.</button>
+            <button class="quiz-option" data-qz="qz1" data-correct="false">D) A method that will likely make your eczema worse in the long run.</button>
           </div>
-          <div class="qz-feedback" id="qz1-feedback">
-            A 'good enough' routine is one you actually do. During high-stress periods, your skin needs protection most — but so does your mental energy. Deciding in advance what your minimum anchor habits are means you never have to choose between all-or-nothing.
+          <div class="qz2-fb" id="qz1-feedback">
+            Exactly! When life gets demanding, adapting your routine to ensure core care still happens is a smart strategy. Consistency, even if simplified, is often more beneficial than an all-or-nothing approach.
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ══ SLIDE 9 — Nutrition ════════════════════════════════ -->
-    <section class="slide" id="slide-9" data-bg="#5e548e" data-theme="dark" aria-label="Food and your skin">
-      <img class="deco deco-char" src="Module%205/Copy%20of%20Module%205%20(8).svg" aria-hidden="true"
-           style="right:0; top:50%; transform:translateY(-50%); opacity:0.85;">
-      <img class="deco" src="Module%205/Copy%20of%20Module%205.svg" aria-hidden="true"
-           style="bottom:-8%; left:-5%; width:26%; opacity:0.12;">
+    <!-- ══ SLIDE 6 — Mindfulness & Meditation ══════════════ -->
+    <section class="slide pdf-slide s1" id="slide-6" data-bg="#5E548E" data-theme="dark" aria-label="Calming your system with mindfulness and meditation">
+      <img class="deco" src="assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; left:-4%; width:24%; opacity:0.4;">
 
-      <div class="slide-content" style="max-width:580px; margin-left:5%; margin-right:auto;">
-        <h2 class="h2-white anim" data-delay="0">Food and Your Skin</h2>
-        <p class="sub-white anim" data-delay="80">What you eat doesn't cause eczema — but it can influence inflammation.</p>
-
-        <div class="statement anim" data-delay="150">
-          A skin-friendly diet is an anti-inflammatory diet: more fruits, vegetables, and whole grains; less processed food and added sugar.
+      <div class="pdf-wrap pdf-2col">
+        <div class="char-graphic anim" data-delay="120">
+          <div class="char-circle"></div>
+          <img src="assets/modules/module-5-meditating.webp" alt="A person meditating calmly">
         </div>
-        <div class="statement anim" data-delay="250">
-          No single food causes eczema. The idea that one food is 'the culprit' is rarely supported by evidence — and removing entire food groups without guidance can cause nutritional harm.
-        </div>
-        <div class="statement anim" data-delay="350">
-          Talk to your doctor before cutting out any food group. If a food allergy is contributing to your eczema, a proper allergy test or food challenge is the right way to find it.
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.5rem,3.4vw,2.3rem); margin-bottom:12px;">Calming Your System: Mindfulness &amp; Meditation</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.95rem,1.6vw,1.05rem); line-height:1.6; margin:0 0 12px;"><strong>What is mindfulness?</strong> Intentionally paying attention to the present moment — thoughts, feelings, bodily sensations — without judgment. It creates space between a trigger (like itch or a stressful thought) and your reaction, helping you cope.</p>
+          <div class="mini-callout anim" data-delay="180" style="background:rgba(255,255,255,0.12); color:#fff;">
+            <span class="bulb">🎧</span> <strong>Audio-guided relaxation:</strong> try short 5-minute breathing exercises, or longer 15–20 minute sessions on body awareness and managing itch. Find a quiet space, listen, and allow yourself to relax and observe. (See your Resource Folder.)
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ══ SLIDE 10 — Food Details ════════════════════════════ -->
-    <section class="slide" id="slide-10" data-bg="#fff2d7" data-theme="light" aria-label="What the evidence shows about food and eczema">
-      <img class="deco" src="Module%205/Copy%20of%20Module%205%20(9).svg" aria-hidden="true"
-           style="top:-5%; right:-5%; width:28%; opacity:0.12;">
-      <img class="deco" src="Module%205/Copy%20of%20Module%205.svg" aria-hidden="true"
-           style="bottom:-6%; left:-5%; width:22%; opacity:0.08;">
+    <!-- ══ SLIDE 7 — Quick Stress Relievers (3 cards) ══════ -->
+    <section class="slide pdf-slide s2" id="slide-7" data-bg="#FBEFD0" data-theme="light" aria-label="Quick stress relieving techniques">
+      <img class="deco" src="assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; right:-4%; width:22%; opacity:0.25;">
 
-      <div class="slide-content" style="max-width:760px;">
-        <h2 class="h2-navy anim" data-delay="0">What the Evidence Actually Shows</h2>
-        <p class="sub-navy anim" data-delay="80">Some useful food guidance — without the myths.</p>
-
-        <div class="food-grid">
-          <div class="food-card anim" data-delay="150">
-            <strong>Omega-3s</strong>
-            <p>Fatty fish, flaxseed, and walnuts have anti-inflammatory properties. Some people with eczema find these helpful as part of a balanced diet.</p>
-          </div>
-          <div class="food-card anim" data-delay="200">
-            <strong>Probiotics</strong>
-            <p>Foods like yogurt and fermented vegetables may support gut health, which is linked to skin health. The evidence is still emerging — they won't hurt.</p>
-          </div>
-          <div class="food-card anim" data-delay="250">
-            <strong>Hydration</strong>
-            <p>Well-hydrated skin is more resilient. Aim for 6–8 glasses of water per day — and more during flares when your skin barrier is most compromised.</p>
-          </div>
-          <div class="food-card anim" data-delay="300">
-            <strong>Food Allergies</strong>
-            <p>If you suspect a food trigger, talk to your doctor about a proper evaluation. A supervised food challenge or allergy test gives you real, actionable information.</p>
-          </div>
+      <div class="pdf-wrap" style="max-width:1060px;">
+        <div style="text-align:center;">
+          <h2 class="s2-h anim" data-delay="0" style="margin-bottom:6px;">Quick Stress Relievers — Under 5 Minutes</h2>
+          <p class="s2-sub anim" data-delay="80">Even short bursts of relaxation can make a difference. Try these anywhere:</p>
         </div>
-
-        <div class="purple-callout anim" data-delay="370">
-          Removing foods without medical guidance can lead to nutritional deficiencies and an unnecessarily restricted diet. Your doctor or a registered dietitian is your best guide.
+        <div class="relief-grid">
+          <div class="relief-card anim" data-delay="150">
+            <h3>Mindful Breathing<span>1–5 min</span></h3>
+            <p><strong>How:</strong> Focus on your breath. Notice the air entering and leaving your body. If your mind wanders, gently bring it back.</p>
+            <p><strong>When:</strong> During a work/study break, waiting in line, before a stressful meeting, or when itch escalates.</p>
+          </div>
+          <div class="relief-card anim" data-delay="220">
+            <h3>Quick Body Scan<span>2–5 min</span></h3>
+            <p><strong>How:</strong> Mentally scan your body from toes to head, noticing any tension without judgment. Consciously try to release it.</p>
+            <p><strong>When:</strong> While commuting (if not driving!), during a lunch break, or before sleep.</p>
+          </div>
+          <div class="relief-card anim" data-delay="290">
+            <h3>Sensory Grounding<span>5-4-3-2-1</span></h3>
+            <p><strong>How:</strong> Name 5 things you see, 4 you can touch, 3 you hear, 2 you smell, and 1 you can taste (or a positive thought).</p>
+            <p><strong>When:</strong> If feeling overwhelmed or anxious, to bring yourself to the present moment.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ══ SLIDE 11 — Quiz Q2 ════════════════════════════════ -->
-    <section class="slide" id="slide-11" data-bg="#1B3068" data-theme="dark" aria-label="Quiz question 2">
-      <img class="deco deco-char" src="Module%205/Copy%20of%20Module%205%20(14).svg" aria-hidden="true"
-           style="right:16px; bottom:16px; width:200px; opacity:0.5;">
+    <!-- ══ SLIDE 8 — PMR ═══════════════════════════════════ -->
+    <section class="slide pdf-slide s1" id="slide-8" data-bg="#5E548E" data-theme="dark" aria-label="Deep relaxation with progressive muscle relaxation">
+      <img class="deco" src="assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:26%; opacity:0.4;">
 
-      <div class="slide-content" style="max-width:720px;">
-        <h2 class="h2-white anim" data-delay="0">Thinking it Through</h2>
-        <span class="qz-num-badge anim" data-delay="50">Question 2 of 4</span>
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.5rem,3.4vw,2.3rem); margin-bottom:12px;">Deep Relaxation: Progressive Muscle Relaxation (PMR)</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.95rem,1.6vw,1.05rem); line-height:1.6; margin:0 0 12px;"><strong>What is PMR?</strong> A technique where you systematically tense and then relax different muscle groups. It helps you become aware of physical tension and learn to release it — reducing overall stress and easing muscle tension.</p>
+          <ul class="derm-list">
+            <li class="anim" data-delay="150"><strong>1.</strong> Find a comfortable position (sitting or lying down).</li>
+            <li class="anim" data-delay="200"><strong>2.</strong> Start with your feet: tense for 5–10 seconds, then release completely for 20–30 seconds, noticing the difference.</li>
+            <li class="anim" data-delay="250"><strong>3.</strong> Move up the body — calves, thighs, abdomen, chest, arms, hands, shoulders, neck, face — tensing and relaxing each group.</li>
+          </ul>
+          <p class="anim" data-delay="310" style="font-family:'Poppins',sans-serif; color:rgba(255,255,255,.8); font-size:.85rem; margin:12px 0 0; font-style:italic;">Please refer to the linked PMR audio tracks in your Resource Folder.</p>
+        </div>
+        <div class="char-graphic anim" data-delay="150">
+          <div class="char-circle"></div>
+          <img src="assets/modules/module-5-relaxing.webp" alt="A person in a deep state of relaxation">
+        </div>
+      </div>
+    </section>
 
-        <div class="qz-block" id="qz2">
-          <div class="qz-scenario anim" data-delay="100">
-            A friend tells you to cut out dairy, gluten, and all added sugar because they read it cures eczema. Based on what this module covers:
+    <!-- ══ SLIDE 9 — CBT ═══════════════════════════════════ -->
+    <section class="slide pdf-slide s1" id="slide-9" data-bg="#5E548E" data-theme="dark" aria-label="Cognitive behavioural therapy">
+      <img class="deco" src="assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; left:-4%; width:24%; opacity:0.4;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div class="char-graphic anim" data-delay="120">
+          <div class="char-circle"></div>
+          <img src="assets/modules/module-5-calm.webp" alt="A calm, reflective person">
+        </div>
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.5rem,3.4vw,2.3rem); margin-bottom:12px;">Calming Your System: CBT</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.95rem,1.6vw,1.05rem); line-height:1.6; margin:0 0 12px;"><strong>What is cognitive behavioural therapy (CBT)?</strong> A structured, time-limited psychotherapy that helps identify and modify negative thought patterns and behaviours.</p>
+          <ul class="derm-list">
+            <li class="anim" data-delay="150">Shown to <strong>reduce AD symptoms</strong> — including itch intensity and sleep problems — and to ease stress, anxiety, and depression associated with eczema.</li>
+            <li class="anim" data-delay="210">Internet-delivered CBT can lead to significant improvements. <strong>Both self-guided and clinician-guided CBT are effective.</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 10 — CBT Tools & Resources (+ Helpline) ═══ -->
+    <section class="slide pdf-slide s2" id="slide-10" data-bg="#FBEFD0" data-theme="light" aria-label="Practical CBT tools and resources in Alberta">
+      <img class="deco" src="assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; right:-4%; width:22%; opacity:0.25;">
+
+      <div class="pdf-wrap" style="max-width:1020px;">
+        <div style="text-align:center;">
+          <h2 class="s2-h anim" data-delay="0" style="margin-bottom:4px;">Practical CBT Tools &amp; Resources in Alberta</h2>
+        </div>
+        <div class="pdf-2col" style="display:grid; gap:20px; align-items:stretch;">
+          <div class="anim" data-delay="120" style="background:#fff; border-radius:20px; padding:22px 24px; box-shadow:0 3px 12px rgba(35,25,66,.08);">
+            <h3 style="font-family:'Lilita One',serif; text-transform:uppercase; color:var(--rose); font-size:1.1rem; margin:0 0 12px;">Self-Guided Tools</h3>
+            <ul class="dark-list">
+              <li><strong>MindShift CBT</strong> — free app from Anxiety Canada (thought journals, relaxation). <a href="https://www.anxietycanada.com/resources/mindshift-cbt/" target="_blank" rel="noopener noreferrer" class="dlink">anxietycanada.com</a></li>
+              <li><strong>MoodGYM</strong> — interactive, evidence-based CBT modules. <a href="https://moodgym.com.au" target="_blank" rel="noopener noreferrer" class="dlink">moodgym.com.au</a></li>
+            </ul>
+          </div>
+          <div class="anim" data-delay="190" style="background:#fff; border-radius:20px; padding:22px 24px; box-shadow:0 3px 12px rgba(35,25,66,.08);">
+            <h3 style="font-family:'Lilita One',serif; text-transform:uppercase; color:var(--rose); font-size:1.1rem; margin:0 0 12px;">Alberta-Based Resources</h3>
+            <ul class="dark-list">
+              <li><strong>BounceBack Alberta</strong> — free, guided CBT self-help. <a href="https://bouncebackalberta.ca" target="_blank" rel="noopener noreferrer" class="dlink">bouncebackalberta.ca</a></li>
+              <li><strong>Primary Care Networks (PCNs)</strong> — stress-management workshops. <a href="https://albertafindadoctor.ca" target="_blank" rel="noopener noreferrer" class="dlink">albertafindadoctor.ca</a></li>
+              <li><strong>Speak to your family doctor</strong> — they can refer you to a psychologist, social worker, or psychiatrist covered by AHS.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="helpline anim" data-delay="260" role="note" aria-label="AHS Mental Health Helpline">
+          <span class="helpline-icon" aria-hidden="true">☎</span>
+          <div>
+            <p class="helpline-label">Alberta Health Services (AHS) Mental Health Helpline</p>
+            <p class="helpline-num"><a href="tel:18773032642">1-877-303-2642</a></p>
+            <p class="helpline-sub">24/7 support and information on mental-health services.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 11 — Quiz Q2 ══════════════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-11" data-bg="#FBEFD0" data-theme="light" aria-label="Quiz question 2">
+      <img class="deco" src="assets/modules/module-5-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.25;">
+      <img class="qz2-char" src="assets/modules/module-5-magnifier.webp" aria-hidden="true">
+
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Thinking it Through</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 2 of 5</span>
+
+        <div class="qz-block qz2-card anim" id="qz2">
+          <div class="qz2-scn anim" data-delay="100">
+            You're feeling overwhelmed by an itchy flare-up and the stress of an upcoming presentation. You decide to take a 10-minute break, put on headphones, and listen to a guided audio meditation focused on body awareness and calmly observing sensations. This practice is an example of:
           </div>
           <div class="qz-options anim" data-delay="200">
-            <button class="quiz-option" data-qz="qz2" data-correct="true">A) Talk to your doctor before eliminating any food group. No single food causes eczema, and broad elimination without guidance can cause nutritional harm.</button>
-            <button class="quiz-option" data-qz="qz2" data-correct="false">B) Try all three eliminations for two weeks to see if your skin improves.</button>
-            <button class="quiz-option" data-qz="qz2" data-correct="false">C) Only eliminate gluten — it's the most commonly reported trigger.</button>
-            <button class="quiz-option" data-qz="qz2" data-correct="false">D) Ignore diet entirely — only topical treatments affect eczema.</button>
+            <button class="quiz-option" data-qz="qz2" data-correct="false">A) Avoiding the problem by distracting yourself.</button>
+            <button class="quiz-option" data-qz="qz2" data-correct="true">B) Using a mindfulness technique (audio-guided meditation) to manage stress and your reaction to itch.</button>
+            <button class="quiz-option" data-qz="qz2" data-correct="false">C) A quick fix that will make your eczema disappear immediately.</button>
+            <button class="quiz-option" data-qz="qz2" data-correct="false">D) A technique that is only effective if you have hours to dedicate to it.</button>
           </div>
-          <div class="qz-feedback" id="qz2-feedback">
-            Right. Food relationships with eczema are complex. A supervised food challenge or allergy test is the appropriate way to identify a food trigger — not an unguided elimination diet that may cause nutritional deficiency or a difficult long-term relationship with food.
+          <div class="qz2-fb" id="qz2-feedback">
+            That's exactly right! Guided meditations are a great way to practice mindfulness, which can help you reduce stress, become less reactive to itch, and cultivate a sense of calm even during challenging times.
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ══ SLIDE 12 — Exercise ════════════════════════════════ -->
-    <section class="slide" id="slide-12" data-bg="#5e548e" data-theme="dark" aria-label="Movement and exercise">
-      <img class="deco" src="Module%205/Copy%20of%20Module%205%20(10).svg" aria-hidden="true"
-           style="top:-5%; right:-4%; width:26%; opacity:0.12;">
-      <img class="deco" src="Module%205/Copy%20of%20Module%205.svg" aria-hidden="true"
-           style="bottom:-6%; left:-5%; width:24%; opacity:0.1;">
+    <!-- ══ SLIDE 12 — Nutrition ════════════════════════════ -->
+    <section class="slide pdf-slide s2" id="slide-12" data-bg="#FBEFD0" data-theme="light" aria-label="Nourishing your skin and mind through nutrition">
+      <img class="deco" src="assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; left:-4%; width:22%; opacity:0.25;">
 
-      <div class="slide-content" style="max-width:760px;">
-        <h2 class="h2-white anim" data-delay="0">Moving Your Body, Protecting Your Skin</h2>
-        <p class="sub-white anim" data-delay="80">Regular moderate exercise lowers cortisol, improves sleep, and supports mood.</p>
-
-        <div class="anim" data-delay="150">
-          <div class="step-card">
-            <div class="step-num">1</div>
-            <div class="step-body">
-              <strong>During flares: choose lower-sweat activities</strong>
-              <p>Swimming, gentle yoga, walking, and stretching reduce heat and sweat — both of which can irritate inflamed skin and intensify itch.</p>
-            </div>
-          </div>
-          <div class="step-card">
-            <div class="step-num">2</div>
-            <div class="step-body">
-              <strong>After exercise: the 3-minute window</strong>
-              <p>Shower with lukewarm (not hot) water as soon as possible. Pat dry gently and apply moisturizer within 3 minutes — the same Soak and Seal principle from Module 2.</p>
-            </div>
-          </div>
-          <div class="step-card">
-            <div class="step-num">3</div>
-            <div class="step-body">
-              <strong>Dress and environment smart</strong>
-              <p>Wear breathable, loose, natural-fiber clothing. Air-conditioned spaces help. If you swim in a chlorinated pool, rinse off immediately and moisturize.</p>
-            </div>
-          </div>
+      <div class="pdf-wrap" style="max-width:1060px;">
+        <div style="text-align:center;">
+          <h2 class="s2-h anim" data-delay="0" style="margin-bottom:6px;">Nourishing Your Skin &amp; Mind: The Role of Nutrition</h2>
+          <p class="s2-sub anim" data-delay="80">While diet isn't a cure for eczema, good nutrition supports overall health — which can benefit your skin and how you feel!</p>
         </div>
-
-        <div class="res-tip anim" data-delay="400">
-          💡 Even during a flare, you don't have to stop moving. Adjust your activity — don't abandon it.
+        <div class="nutri-grid">
+          <div class="nutri-card anim" data-delay="150"><h3>Anti-inflammatory foods</h3><p>Prioritize leafy greens, berries, turmeric, and omega-3-rich fish.</p></div>
+          <div class="nutri-card anim" data-delay="210"><h3>Hydration</h3><p>Water helps maintain skin moisture and flush out toxins.</p></div>
+          <div class="nutri-card anim" data-delay="270"><h3>Gut-skin connection</h3><p>Probiotics (e.g. yogurt, kimchi) can help support your immune system.</p></div>
+          <div class="nutri-card anim" data-delay="330"><h3>Avoid triggers</h3><p>Monitor processed foods, dairy, or gluten if sensitivities are suspected.</p></div>
+        </div>
+        <div class="mini-callout anim" data-delay="390" style="text-align:center; background:var(--pink-lt); color:#231942; margin-top:6px;">
+          <span class="bulb">📝</span> Tip: Keep a food and flare-up journal to track patterns!
         </div>
       </div>
     </section>
 
-    <!-- ══ SLIDE 13 — Quiz Q3 ════════════════════════════════ -->
-    <section class="slide" id="slide-13" data-bg="#1B3068" data-theme="dark" aria-label="Quiz question 3">
-      <img class="deco deco-char" src="Module%205/Copy%20of%20Module%205%20(14).svg" aria-hidden="true"
-           style="right:16px; bottom:16px; width:200px; opacity:0.5;">
+    <!-- ══ SLIDE 13 — Quiz Q3 ══════════════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-13" data-bg="#FBEFD0" data-theme="light" aria-label="Quiz question 3">
+      <img class="deco" src="assets/modules/module-5-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.25;">
+      <img class="qz2-char" src="assets/modules/module-5-magnifier.webp" aria-hidden="true">
 
-      <div class="slide-content" style="max-width:720px;">
-        <h2 class="h2-white anim" data-delay="0">Thinking it Through</h2>
-        <span class="qz-num-badge anim" data-delay="50">Question 3 of 4</span>
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Thinking it Through</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 3 of 5</span>
 
-        <div class="qz-block" id="qz3">
-          <div class="qz-scenario anim" data-delay="100">
-            Your eczema is currently flaring on your arms. You normally do high-intensity interval training three times a week. Which approach is best?
+        <div class="qz-block qz2-card anim" id="qz3">
+          <div class="qz2-scn anim" data-delay="100">
+            To support your eczema through diet, which approach is generally best for overall skin health and reducing inflammation?
           </div>
           <div class="qz-options anim" data-delay="200">
-            <button class="quiz-option" data-qz="qz3" data-correct="false">A) Stop exercising entirely until your eczema resolves completely.</button>
-            <button class="quiz-option" data-qz="qz3" data-correct="true">B) Switch to lower-sweat activities like gentle yoga or walking, shower with lukewarm water immediately after, and apply moisturizer within 3 minutes.</button>
-            <button class="quiz-option" data-qz="qz3" data-correct="false">C) Continue your usual high-intensity workout — sweating helps detoxify the skin.</button>
-            <button class="quiz-option" data-qz="qz3" data-correct="false">D) Apply a thick layer of moisturizer right before exercising to create a protective barrier.</button>
+            <button class="quiz-option" data-qz="qz3" data-correct="false">A) A very strict, self-prescribed elimination diet.</button>
+            <button class="quiz-option" data-qz="qz3" data-correct="true">B) A balanced diet of whole foods (fruits, veggies, omega-3s), good hydration, and discussing any suspected food sensitivities with a doctor.</button>
+            <button class="quiz-option" data-qz="qz3" data-correct="false">C) Relying on processed &ldquo;health foods&rdquo; and sugary drinks.</button>
+            <button class="quiz-option" data-qz="qz3" data-correct="false">D) Eating large amounts of one &ldquo;superfood&rdquo; while ignoring overall balance.</button>
           </div>
-          <div class="qz-feedback" id="qz3-feedback">
-            Exactly. You don't have to stop moving — you just adjust. Lower-sweat activities reduce irritation, lukewarm water is gentler than hot, and the 3-minute moisturizing window applies here just as much as it does to the Soak and Seal method from Module 2.
+          <div class="qz2-fb" id="qz3-feedback">
+            This emphasizes overall nutritional quality and anti-inflammatory patterns, supporting general and skin health. Professional guidance is key for any suspected food sensitivities.
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ══ SLIDE 14 — Quiz Q4 ════════════════════════════════ -->
-    <section class="slide" id="slide-14" data-bg="#1B3068" data-theme="dark" aria-label="Quiz question 4">
-      <img class="deco deco-char" src="Module%205/Copy%20of%20Module%205%20(14).svg" aria-hidden="true"
-           style="right:16px; bottom:16px; width:200px; opacity:0.5;">
+    <!-- ══ SLIDE 14 — Movement / Exercise ══════════════════ -->
+    <section class="slide pdf-slide s1" id="slide-14" data-bg="#5E548E" data-theme="dark" aria-label="Movement for well-being: exercise and your eczema">
+      <img class="deco" src="assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:26%; opacity:0.4;">
 
-      <div class="slide-content" style="max-width:720px;">
-        <h2 class="h2-white anim" data-delay="0">Thinking it Through</h2>
-        <span class="qz-num-badge anim" data-delay="50">Question 4 of 4</span>
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.5rem,3.4vw,2.3rem); margin-bottom:12px;">Movement for Well-being: Exercise &amp; Your Eczema</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.95rem,1.6vw,1.05rem); line-height:1.6; margin:0 0 12px;">Regular physical activity offers many benefits, even with eczema, if managed carefully.</p>
+          <ul class="derm-list" style="gap:11px;">
+            <li class="anim" data-delay="150"><strong>Choose activities wisely:</strong> opt for lower-sweat options if sweat is a major trigger (walking, yoga, swimming).</li>
+            <li class="anim" data-delay="200"><strong>Dress for success:</strong> wear loose, breathable, moisture-wicking fabrics.</li>
+            <li class="anim" data-delay="250"><strong>Post-exercise care:</strong> if sweaty, shower with lukewarm water soon after, pat dry, and moisturize immediately.</li>
+            <li class="anim" data-delay="300"><strong>Listen to your body:</strong> if your skin is flaring badly or painful, gentler movement or rest is OK too.</li>
+          </ul>
+        </div>
+        <div class="char-graphic anim" data-delay="150">
+          <div class="char-circle"></div>
+          <img src="assets/modules/module-5-exercise.webp" alt="A person exercising by walking">
+        </div>
+      </div>
+    </section>
 
-        <div class="qz-block" id="qz4">
-          <div class="qz-scenario anim" data-delay="100">
-            You've been under significant stress for two weeks. From your tracking, you know a flare usually follows two to three days after a stressful period. Right now your skin looks fine. What's the most proactive step?
+    <!-- ══ SLIDE 15 — Quiz Q4 ══════════════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-15" data-bg="#FBEFD0" data-theme="light" aria-label="Quiz question 4">
+      <img class="deco" src="assets/modules/module-5-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.25;">
+      <img class="qz2-char" src="assets/modules/module-5-magnifier.webp" aria-hidden="true">
+
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Thinking it Through</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 4 of 5</span>
+
+        <div class="qz-block qz2-card anim" id="qz4">
+          <div class="qz2-scn anim" data-delay="100">
+            You want to incorporate more exercise for stress relief but are concerned about sweat irritating your eczema. A &ldquo;skin-smart&rdquo; approach would be to:
           </div>
           <div class="qz-options anim" data-delay="200">
-            <button class="quiz-option" data-qz="qz4" data-correct="false">A) Wait until the flare appears before making any changes — don't fix what isn't broken.</button>
-            <button class="quiz-option" data-qz="qz4" data-correct="false">B) Stop exercising this week to give your body a complete rest.</button>
-            <button class="quiz-option" data-qz="qz4" data-correct="true">C) Increase moisturizing proactively and use a calming technique — like PMR or breathing exercises — to help lower cortisol before the flare has a chance to develop.</button>
-            <button class="quiz-option" data-qz="qz4" data-correct="false">D) Start a dairy-free diet this week to reduce inflammation quickly.</button>
+            <button class="quiz-option" data-qz="qz4" data-correct="false">A) Only engage in very high-intensity workouts to sweat out toxins quickly.</button>
+            <button class="quiz-option" data-qz="qz4" data-correct="false">B) Avoid all forms of exercise to prevent any sweating.</button>
+            <button class="quiz-option" data-qz="qz4" data-correct="true">C) Choose moderate activities like brisk walking, wear breathable clothing, and plan to shower and moisturize soon after.</button>
+            <button class="quiz-option" data-qz="qz4" data-correct="false">D) Apply an extra-thick layer of occlusive ointment before exercising to block sweat.</button>
           </div>
-          <div class="qz-feedback" id="qz4-feedback">
-            Great thinking. Proactive care — acting before a flare fully develops — is one of the most important skills in eczema self-management. You're using your tracking data to predict and prevent, not just react. This is exactly what having an Eczema Action Plan with a step-up strategy makes possible.
+          <div class="qz2-fb" id="qz4-feedback">
+            This is a balanced and practical approach! It lets you gain the benefits of exercise while taking proactive steps to minimize potential skin irritation from sweat.
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ══ SLIDE 15 — Key Takeaways ═════════════════════════ -->
-    <section class="slide" id="slide-15" data-bg="#5e548e" data-theme="dark" aria-label="Key takeaways">
-      <img class="deco deco-char" src="Module%205/Copy%20of%20Module%205%20(20).svg" aria-hidden="true"
-           style="left:0; top:50%; transform:translateY(-50%); opacity:0.75;">
-      <img class="deco" src="Module%205/Copy%20of%20Module%205%20(11).svg" aria-hidden="true"
-           style="top:-5%; right:-4%; width:28%; opacity:0.12;">
+    <!-- ══ SLIDE 16 — Quiz Q5 ══════════════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-16" data-bg="#FBEFD0" data-theme="light" aria-label="Quiz question 5">
+      <img class="deco" src="assets/modules/module-5-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.25;">
+      <img class="qz2-char" src="assets/modules/module-5-diary.webp" aria-hidden="true">
 
-      <div class="slide-content" style="max-width:560px; margin-left:auto; margin-right:5%;">
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Thinking it Through</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 5 of 5</span>
+
+        <div class="qz-block qz2-card anim" id="qz5">
+          <div class="qz2-scn anim" data-delay="100">
+            To better manage the stress component of your eczema, you try a multi-pronged approach: a 5-minute mindful breathing exercise at lunch, a &ldquo;How I'm Feeling &amp; My Skin Today&rdquo; diary, and a 20-minute walk after work. This strategy reflects:
+          </div>
+          <div class="qz-options anim" data-delay="200">
+            <button class="quiz-option" data-qz="qz5" data-correct="false">A) An overly complicated approach that is unlikely to be sustainable.</button>
+            <button class="quiz-option" data-qz="qz5" data-correct="false">B) Focusing only on physical triggers for eczema.</button>
+            <button class="quiz-option" data-qz="qz5" data-correct="true">C) An integrated, holistic approach to wellness — combining stress reduction, self-monitoring, and physical activity.</button>
+            <button class="quiz-option" data-qz="qz5" data-correct="false">D) A belief that these techniques will cure eczema without medical treatment.</button>
+          </div>
+          <div class="qz2-fb" id="qz5-feedback">
+            This is an excellent example of holistic self-care! Combining different strategies that address the mind-body connection can be very effective in managing a chronic condition like eczema and improving overall well-being.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 17 — Key Takeaways ════════════════════════ -->
+    <section class="slide pdf-slide s1" id="slide-17" data-bg="#5E548E" data-theme="dark" aria-label="Module summary and key takeaways">
+      <img class="deco deco-char" src="assets/modules/module-5-confident.webp" aria-hidden="true"
+           style="right:-1%; bottom:4%; width:min(26%,230px); opacity:0.95;">
+      <img class="deco" src="assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; right:-4%; width:26%; opacity:0.35;">
+
+      <div class="slide-content" style="max-width:640px; margin-left:0; margin-right:auto;">
         <h2 class="h2-white anim" data-delay="0">Let's Recap! Key Takeaways</h2>
 
         <ul class="takeaway-list">
-          <li class="takeaway anim" data-delay="100">
-            <span class="takeaway-arrow">›</span>
-            A 'good enough' routine beats a perfect routine you can't keep. Simplify during stressful weeks rather than stopping entirely.
-          </li>
-          <li class="takeaway anim" data-delay="175">
-            <span class="takeaway-arrow">›</span>
-            Flare prevention starts with knowing your early warning signs and having a step-up plan ready before a flare fully develops.
-          </li>
-          <li class="takeaway anim" data-delay="250">
-            <span class="takeaway-arrow">›</span>
-            Mindfulness, PMR, and CBT are evidence-based tools that can reduce itch intensity, stress, anxiety, and sleep problems in people with eczema.
-          </li>
-          <li class="takeaway anim" data-delay="325">
-            <span class="takeaway-arrow">›</span>
-            A skin-friendly diet is anti-inflammatory. No single food causes eczema — talk to your doctor before eliminating any food group.
-          </li>
-          <li class="takeaway anim" data-delay="400">
-            <span class="takeaway-arrow">›</span>
-            Regular moderate exercise lowers cortisol, improves sleep, and supports mood.
-          </li>
-          <li class="takeaway anim" data-delay="475">
-            <span class="takeaway-arrow">›</span>
-            During flares, choose lower-sweat activities and shower with lukewarm water. Moisturize within 3 minutes.
-          </li>
-          <li class="takeaway anim" data-delay="550">
-            <span class="takeaway-arrow">›</span>
-            Alberta-based resources: MindShift CBT app, BounceBack Alberta, AHS Mental Health Helpline (1-877-303-2642), and your family doctor for referrals.
-          </li>
+          <li class="takeaway anim" data-delay="100"><span class="takeaway-arrow">›</span>Proactively manage eczema during stressful times by adapting your routine to &ldquo;good enough&rdquo; consistent care.</li>
+          <li class="takeaway anim" data-delay="175"><span class="takeaway-arrow">›</span>Use quick bursts of mindful breathing, body scans, and sensory grounding — plus techniques like PMR or CBT — to calm your system and reduce reactivity to itch.</li>
+          <li class="takeaway anim" data-delay="250"><span class="takeaway-arrow">›</span>Support your skin and overall health with a balanced, anti-inflammatory diet and good hydration.</li>
+          <li class="takeaway anim" data-delay="325"><span class="takeaway-arrow">›</span>Engage in regular, &ldquo;skin-smart&rdquo; physical activity to boost mood, reduce stress, and improve well-being.</li>
+          <li class="takeaway anim" data-delay="400"><span class="takeaway-arrow">›</span>Small, consistent wellness habits are powerful tools for living well with eczema.</li>
         </ul>
 
-        <details class="sources-details anim" data-delay="620">
+        <p class="read-disclaimer anim" data-delay="450" style="font-family:'Poppins',sans-serif; font-size:0.8rem; line-height:1.55; color:rgba(255,255,255,0.68); margin:18px 0 0; border-top:1px solid rgba(255,255,255,0.16); padding-top:14px;">This module is for general education and is not a substitute for medical advice from your doctor or dermatologist. In a crisis or if you are thinking about harming yourself, call 911, or the AHS Mental Health Helpline at <a href="tel:18773032642" style="color:#fff; font-weight:600; text-decoration:underline; text-underline-offset:2px;">1-877-303-2642</a>.</p>
+        <details class="sources-details anim" data-delay="500">
           <summary>Sources</summary>
           <ol>
-            <li>Wollenberg A, et al. Consensus-based European guidelines for treatment of atopic eczema in adults. J Eur Acad Dermatol Venereol. 2018;32(5):657-682.</li>
-            <li>Kabat-Zinn J. Full Catastrophe Living. Bantam Books; 1990.</li>
-            <li>Schut C, et al. Psychological interventions in the treatment of chronic itch. Acta Derm Venereol. 2016;96(2):157-161.</li>
-            <li>Silverberg JI. Comorbidities and the impact of atopic dermatitis. Ann Allergy Asthma Immunol. 2019;123(2):144-151.</li>
-            <li>Hoare C, Li Wan Po A, Williams H. Systematic review of treatments for atopic eczema. Health Technol Assess. 2000;4(37):1-191.</li>
-            <li>Hanifin JM, et al. Atopic dermatitis: a revised nomenclature and classification. J Allergy Clin Immunol. 2004;113(5):832-836.</li>
-            <li>National Eczema Association. Eczema and diet. nationaleczema.org.</li>
+            <li>Mitchell AE. Bidirectional relationships between psychological health and dermatological conditions in children. Psychol Res Behav Manag. 2018;11:289-298.</li>
+            <li>Haykin H, Rolls A. The neuroimmune response during stress: a physiological perspective. Immunity. 2021;54(9):1933-1947.</li>
+            <li>Sidbury R, et al. Guidelines of care for the management of atopic dermatitis: Section 4. J Am Acad Dermatol. 2014;71(6):1218-33.</li>
+            <li>Bae BG, et al. Progressive muscle relaxation therapy for atopic dermatitis. Acta Derm Venereol. 2012;92(1):57-61.</li>
+            <li>Koo J, et al. Cognitive behavior therapy as dermatological treatment. Int J Womens Dermatol. 2022;8(4):e011.</li>
+            <li>Kern D, et al. Self-guided vs clinician-guided online CBT for atopic dermatitis. JAMA Dermatol. 2024;160(2):123-131.</li>
+            <li>Leeuwendaal NK, et al. Fermented foods, health and the gut microbiome. Nutrients. 2022;14(7):1527.</li>
+            <li>Oizumi R, et al. The potential of exercise on lifestyle and skin function: narrative review. JMIR Dermatol. 2024;7:e51962.</li>
           </ol>
         </details>
 
-        <div class="anim" data-delay="700">
+        <div class="anim" data-delay="600">
           <a class="back-pill" href="module-5.html">← Back to module</a>
         </div>
       </div>
     </section>
+
 
   </main>
 
