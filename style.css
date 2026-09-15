@@ -463,6 +463,21 @@ a:focus-visible {
   margin-top: 0.375rem;
 }
 
+.footer-disclaimer {
+  max-width: var(--page-max);
+  margin: 0 auto 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.82);
+}
+.footer-disclaimer a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .footer-links {
   display: flex;
   flex-wrap: wrap;
