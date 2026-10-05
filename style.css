@@ -9,6 +9,7 @@
 :root {
   --navy:       #1B3068;
   --teal:       #2BBFAA;
+  --teal-ink:   #0E7468; /* teal for text/links on light surfaces (5.6:1 on white) */
   --white:      #FFFFFF;
   --text:       #2D2D2D;
   --accent:     #1B3068; /* overridden per page via <body style="--accent: …"> */
@@ -70,13 +71,18 @@ button {
   color: inherit;
 }
 
+::selection {
+  background: #BFEDE5;
+  color: var(--navy);
+}
+
 /* ── Skip link ────────────────────────────────────────── */
 .skip-link {
   position: absolute;
   top: -4rem;
   left: 0.5rem;
   padding: 0.75rem 1rem;
-  background: var(--teal);
+  background: var(--navy);
   color: var(--white);
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
@@ -147,7 +153,7 @@ button {
 }
 
 .site-nav a:focus-visible {
-  outline: 2px solid var(--teal);
+  outline: 2px solid var(--teal-ink);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -158,10 +164,19 @@ button {
   text-underline-offset: 3px;
 }
 
+/* Phones: the nav wraps to two rows, so let it scroll away instead of
+   pinning ~120px over the content on every scroll. */
+@media (max-width: 599px) {
+  .site-header { position: static; }
+  .site-nav { padding: 8px 16px; }
+  .site-nav a:not(.site-logo) { padding: 4px 8px; font-size: 0.875rem; }
+}
+
 /* ── Body links ───────────────────────────────────────── */
 a {
-  color: var(--teal);
+  color: var(--teal-ink);
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 a:hover {
@@ -169,7 +184,7 @@ a:hover {
 }
 
 a:focus-visible {
-  outline: 2px solid var(--teal);
+  outline: 2px solid var(--teal-ink);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -200,7 +215,7 @@ a:focus-visible {
   font-family: 'Poppins', sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
-  color: var(--teal);
+  color: var(--teal-ink);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -346,7 +361,7 @@ a:focus-visible {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 0.875rem;
-  color: var(--teal);
+  color: var(--teal-ink);
   background: none;
   user-select: none;
 }
@@ -455,7 +470,7 @@ a:focus-visible {
 }
 
 .site-footer p {
-  max-width: var(--page-max);
+  max-width: min(var(--page-max), 72ch);
   margin: 0 auto;
 }
 
@@ -583,6 +598,10 @@ a:focus-visible {
   text-decoration: none;
 }
 
+.site-footer a:focus-visible {
+  outline-color: var(--teal);
+}
+
 .footer-links a::after {
   content: " →";
   color: #2BBFAA;
@@ -596,8 +615,8 @@ a:focus-visible {
 
 /* ── Active nav link ──────────────────────────────────── */
 .nav-active {
-  color: var(--teal) !important;
-  border-bottom: 3px solid var(--teal);
+  color: var(--teal-ink) !important;
+  border-bottom: 3px solid var(--teal-ink);
   padding-bottom: 1px;
 }
 
@@ -925,18 +944,6 @@ a:focus-visible {
     transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }
 
-  /* 6 — Scroll fade-in cards ───────────────────────── */
-  .fade-in-card {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-  }
-
-  .fade-in-card.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
   /* 7 — Nav link hover underline slide-in ──────────── */
   .site-nav a:not(.site-logo) {
     position: relative;
@@ -956,14 +963,16 @@ a:focus-visible {
     bottom: 8px;
     left: 10px;
     height: 2px;
-    width: 0;
+    width: calc(100% - 20px);
     background: var(--teal);
-    transition: width 0.2s ease;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .site-nav a:not(.site-logo):not(.nav-active):hover::after,
   .site-nav a[aria-current="page"]:not(.nav-active)::after {
-    width: calc(100% - 20px);
+    transform: scaleX(1);
   }
 
   /* 8 — Button hover lift ──────────────────────────── */
@@ -988,90 +997,43 @@ a:focus-visible {
 
 @media (prefers-reduced-motion: no-preference) {
 
-  /* 1 — Animated gradient hero */
-  @keyframes hero-gradient {
-    0%   { background-position: right center, 0% 50%; }
-    50%  { background-position: right center, 100% 50%; }
-    100% { background-position: right center, 0% 50%; }
-  }
-
-  .landing-hero {
-    animation: hero-gradient 8s ease-in-out infinite;
-  }
-
   /* 3 — Quiz question slide transitions */
   @keyframes quiz-slide-in-right {
-    from { opacity: 0; transform: translateX(60px); }
+    from { opacity: 0; transform: translateX(16px); }
     to   { opacity: 1; transform: translateX(0); }
   }
 
   @keyframes quiz-slide-out-left {
     from { opacity: 1; transform: translateX(0); }
-    to   { opacity: 0; transform: translateX(-60px); }
+    to   { opacity: 0; transform: translateX(-16px); }
   }
 
   @keyframes quiz-slide-in-left {
-    from { opacity: 0; transform: translateX(-60px); }
+    from { opacity: 0; transform: translateX(-16px); }
     to   { opacity: 1; transform: translateX(0); }
   }
 
   @keyframes quiz-slide-out-right {
     from { opacity: 1; transform: translateX(0); }
-    to   { opacity: 0; transform: translateX(60px); }
+    to   { opacity: 0; transform: translateX(16px); }
   }
 
   .quiz-step.slide-in-right {
-    animation: quiz-slide-in-right 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: quiz-slide-in-right 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   .quiz-step.slide-out-left {
-    animation: quiz-slide-out-left 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: quiz-slide-out-left 0.18s cubic-bezier(0.16, 1, 0.3, 1) both;
     pointer-events: none;
   }
 
   .quiz-step.slide-in-left {
-    animation: quiz-slide-in-left 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: quiz-slide-in-left 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   .quiz-step.slide-out-right {
-    animation: quiz-slide-out-right 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: quiz-slide-out-right 0.18s cubic-bezier(0.16, 1, 0.3, 1) both;
     pointer-events: none;
-  }
-
-  /* 6 — Result emoji pop */
-  @keyframes emoji-pop {
-    0%   { transform: scale(0); opacity: 0; }
-    70%  { transform: scale(1.2); opacity: 1; }
-    100% { transform: scale(1); opacity: 1; }
-  }
-
-  .result-emoji.pop {
-    animation: emoji-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-  }
-
-  /* 5 — Confetti fall */
-  @keyframes confetti-fall {
-    to { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-  }
-
-  /* 7 — Scale button ripple */
-  .scale-btn {
-    position: relative;
-    overflow: hidden;
-  }
-
-  @keyframes ripple-expand {
-    from { transform: scale(0); opacity: 0.6; }
-    to   { transform: scale(4); opacity: 0; }
-  }
-
-  .scale-ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    pointer-events: none;
-    transform: scale(0);
-    animation: ripple-expand 0.4s ease-out forwards;
   }
 
 }
