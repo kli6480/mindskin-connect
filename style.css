@@ -478,6 +478,89 @@ a:focus-visible {
   text-underline-offset: 2px;
 }
 
+/* ── About this resource / For clinicians (landing) ── */
+.about-resource {
+  max-width: var(--page-max);
+  margin: 3.5rem auto 0;
+  scroll-margin-top: 110px;
+}
+.about-eyebrow {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--teal);
+  margin: 0 0 0.4rem;
+}
+.about-heading {
+  font-family: 'Lilita One', cursive;
+  font-weight: 400;
+  color: var(--navy);
+  font-size: clamp(1.6rem, 4vw, 2.25rem);
+  margin: 0 0 1.5rem;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 700px) {
+  .about-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+.about-point h3,
+.about-cta h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.0625rem;
+  color: var(--navy);
+  margin: 0 0 0.4rem;
+}
+.about-point p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text);
+  margin: 0;
+}
+.about-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  background: var(--navy);
+  border-radius: 16px;
+  padding: 1.75rem;
+}
+.about-cta > div { flex: 1 1 280px; }
+.about-cta h3 { color: #fff; }
+.about-cta p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+.about-contact-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  background: var(--teal);
+  color: #08312c;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  min-height: 44px;
+  transition: filter 0.2s;
+}
+.about-contact-btn:hover,
+.about-contact-btn:focus-visible { filter: brightness(1.08); }
+
 .footer-links {
   display: flex;
   flex-wrap: wrap;
