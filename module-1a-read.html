@@ -840,6 +840,55 @@
       .char-circle, .s1-circle { width: min(50vw, 250px) !important; }
       .char-graphic > img, .s1-brain { width: min(58vw, 290px) !important; }
     }
+  
+    /* ═══════ Deck polish: graphics + mobile / glitch fixes ═══════ */
+
+    /* Mobile viewport height: dvh stops the mobile address bar from
+       cutting off or jumping slide content (falls back to the 100vh above). */
+    .pdf-slide { min-height: 100dvh; }
+
+    /* Gentler snapping so a tall (mobile) slide never traps the scroll. */
+    html { scroll-snap-type: y proximity; }
+    .slide { scroll-snap-stop: normal; }
+
+    /* Keep every slide fully visible. The old 0.6-visibility momentum could
+       leave a tall slide stuck faded on small screens; motion now comes from
+       the content fade-ins and the gentle float below. */
+    .slide { opacity: 1 !important; transform: none !important; }
+
+    /* Depth: a soft top-right light source on the solid-colour slides. */
+    .s1 { background-image: radial-gradient(115% 80% at 82% 4%, rgba(255,255,255,.10), rgba(255,255,255,0) 55%); }
+
+    /* Motion-safe gentle life — small, slow, GPU-composited. */
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes msc-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+      @keyframes msc-drift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(12px); } }
+      .char-graphic > img    { animation: msc-float 6.5s ease-in-out infinite; }
+      .deco-char             { animation: msc-float 7.5s ease-in-out infinite; }
+      .qz2-char              { animation: msc-float 7s ease-in-out infinite; }
+      .deco:not(.deco-char)  { animation: msc-drift 18s ease-in-out infinite; }
+    }
+
+    /* Interactive polish. */
+    @media (hover: hover) {
+      .obj2, .relief-card, .nutri-card, .handout-cta { transition: transform .25s ease, box-shadow .25s ease; }
+      .obj2:hover, .relief-card:hover, .nutri-card:hover { transform: translateY(-4px); }
+    }
+    .quiz-option { transition: transform .12s ease, background .2s ease, color .2s ease; }
+    .quiz-option:not(.correct):not(.wrong):active { transform: scale(.985); }
+
+    /* Progress-bar glow. */
+    .rd-progress { box-shadow: 0 0 10px rgba(43,191,170,.45); }
+
+  
+    /* ═══ Fluid type scale: single smooth clamp per heading (no breakpoint
+       jump — proportional at every width, capped so it never gets huge). ═══ */
+    .s1-title    { font-size: clamp(1.5rem,  calc(1rem + 2.1vw),  2.75rem) !important; }
+    .s2-h        { font-size: clamp(1.45rem, calc(1rem + 1.9vw),  2.5rem)  !important; }
+    .s3-h        { font-size: clamp(1.4rem,  calc(1rem + 1.85vw), 2.4rem)  !important; }
+    .s3-journey  { font-size: clamp(1.7rem,  calc(1.1rem + 2.4vw), 3rem)   !important; }
+    .qz2-title   { font-size: clamp(1.45rem, calc(1rem + 1.9vw),  2.5rem)  !important; }
+
   </style>
 </head>
 <body>
