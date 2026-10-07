@@ -22,78 +22,140 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.svg">
+  <noscript><style>#quiz-start-btn { display: none; } .quiz-intro-actions { justify-content: flex-start; }</style></noscript>
   <style>
-    /* ── Landing hero ───────────────────────────────────── */
+    /* ── Landing hero: calm, static, program-level navy ── */
     .landing-hero {
-      /* SVG circles on top; animated gradient below */
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='260' viewBox='0 0 400 260'%3E%3Ccircle cx='360' cy='130' r='55' fill='none' stroke='white' stroke-width='1.5' opacity='0.15'/%3E%3Ccircle cx='360' cy='130' r='90' fill='none' stroke='white' stroke-width='1.5' opacity='0.15'/%3E%3Ccircle cx='360' cy='130' r='125' fill='none' stroke='white' stroke-width='1.5' opacity='0.15'/%3E%3Ccircle cx='360' cy='130' r='160' fill='none' stroke='white' stroke-width='1.5' opacity='0.15'/%3E%3Ccircle cx='360' cy='130' r='200' fill='none' stroke='white' stroke-width='1.5' opacity='0.15'/%3E%3C/svg%3E"), linear-gradient(135deg, #1B3068, #7a2a50, #C2607A, #1B3068);
-      background-repeat: no-repeat, no-repeat;
-      background-position: right center, 0% 50%;
-      background-size: auto 100%, 300% 300%;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background-color: var(--navy);
       color: var(--white);
-      padding: 48px 24px;
-      text-align: center;
-      margin-left: calc(-1 * var(--page-h-pad));
-      margin-right: calc(-1 * var(--page-h-pad));
-      margin-bottom: 2.5rem;
+      border-radius: 20px;
+      padding: clamp(28px, 5vw, 52px) clamp(22px, 5vw, 52px);
+      margin: 1.25rem 0 1.75rem;
+    }
+
+    .landing-hero::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 50%;
+      right: -140px;
+      width: 460px;
+      height: 460px;
+      transform: translateY(-50%);
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='white' stroke-width='1.5'%3E%3Ccircle cx='200' cy='200' r='60' opacity='.16'/%3E%3Ccircle cx='200' cy='200' r='100' opacity='.13'/%3E%3Ccircle cx='200' cy='200' r='140' opacity='.1'/%3E%3Ccircle cx='200' cy='200' r='180' opacity='.07'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+      pointer-events: none;
     }
 
     .landing-hero h1 {
       font-family: 'Lilita One', cursive;
       font-weight: 400;
-      font-size: clamp(2.25rem, 6vw, 3.75rem);
-      text-transform: uppercase;
-      line-height: 1.1;
-      letter-spacing: 0.02em;
+      font-size: clamp(2rem, 1.35rem + 2.8vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: 0.005em;
       color: var(--white);
-      margin-bottom: 0.75rem;
+      max-width: 15ch;
+      text-wrap: balance;
+      margin: 0 0 0.9rem;
     }
 
-    .landing-hero .tagline {
+    .hero-lead {
       font-family: 'Poppins', sans-serif;
-      font-size: 1.0625rem;
+      font-size: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
       line-height: 1.6;
-      color: rgba(255,255,255,0.9);
-      max-width: 46ch;
-      margin: 0 auto 1rem;
-      min-height: 1.7em; /* prevent layout shift while typing */
+      color: #DCE3F2;
+      max-width: 44ch;
+      margin: 0 0 1.75rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem 1.25rem;
+    }
+
+    .hero-start {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      min-height: 52px;
+      padding: 0 1.5rem 0 1.65rem;
+      border-radius: 999px;
+      background: var(--teal);
+      color: #08312C;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .hero-start:hover {
+      background: #45CDB9;
+      color: #08312C;
+    }
+
+    .hero-start:focus-visible,
+    .hero-browse:focus-visible {
+      outline: 3px solid var(--white);
+      outline-offset: 3px;
+    }
+
+    .btn-arrow { flex-shrink: 0; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .btn-arrow { transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1); }
+      .hero-start:hover .btn-arrow { transform: translateX(3px); }
+    }
+
+    .hero-meta {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      color: #B9C3DC;
+      margin: 0;
+    }
+
+    .hero-browse {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      margin-top: 0.5rem;
+      color: var(--teal);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9375rem;
+      text-underline-offset: 3px;
+    }
+
+    .hero-browse:hover { color: #6FDCCB; }
+
+    /* ── Below the quiz: library link + audience note ──── */
+    .landing-more {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin: 0 0.25rem;
+    }
+
+    .more-link {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      min-height: 44px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9375rem;
     }
 
     .audience-note {
       font-family: 'Poppins', sans-serif;
-      font-size: 0.8125rem;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.55;
-      max-width: 46ch;
-      margin: 0 auto;
-    }
-
-    .hero-res-link {
-      display: inline-block;
-      margin-top: 1rem;
-      color: var(--teal);
-      font-family: 'Poppins', sans-serif;
       font-size: 0.875rem;
-      font-weight: 600;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-    .hero-res-link:hover { text-decoration: none; color: var(--teal); }
-
-    /* ── Typewriter cursor ──────────────────────────────── */
-    .tagline-cursor {
-      display: inline-block;
-      margin-left: 1px;
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      @keyframes cursor-blink {
-        0%, 100% { opacity: 1; }
-        50%       { opacity: 0; }
-      }
-      .tagline-cursor {
-        animation: cursor-blink 0.7s step-end infinite;
-      }
+      line-height: 1.6;
+      color: #5E6272;
+      max-width: 62ch;
+      margin: 0;
     }
 
     /* ── Quiz card ──────────────────────────────────────── */
@@ -102,16 +164,19 @@
       border-radius: 16px;
       padding: 28px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
+      scroll-margin-top: 96px;
     }
 
     /* ── Quiz intro ─────────────────────────────────────── */
     .quiz-intro-title {
       font-family: 'Poppins', sans-serif;
       font-weight: 600;
-      font-size: 1.125rem;
+      font-size: 1.25rem;
+      line-height: 1.3;
       color: var(--navy);
-      margin-bottom: 0.5rem;
+      margin: 0 0 0.5rem;
+      text-wrap: balance;
     }
 
     .quiz-intro-body {
@@ -120,19 +185,32 @@
       margin-bottom: 0.375rem;
     }
 
-    .quiz-intro-small {
-      font-size: 0.8125rem;
-      color: #666;
-      line-height: 1.55;
-      margin-bottom: 1.25rem;
+    .quiz-intro-body { margin-bottom: 1.5rem; max-width: 58ch; }
+
+    .quiz-intro-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 1.5rem;
     }
 
     .quiz-skip {
-      display: block;
-      text-align: center;
-      font-size: 0.875rem;
-      color: var(--teal);
-      margin-bottom: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 0.9375rem;
+    }
+
+    .quiz-noscript {
+      margin-top: 1rem;
+      font-size: 0.9375rem;
+    }
+
+    .quiz-count {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8125rem;
+      color: #5E6272;
+      margin: -0.75rem 0 1rem;
     }
 
     /* ── Scale questions ────────────────────────────────── */
@@ -142,12 +220,12 @@
     .quiz-prompt-label {
       font-family: 'Poppins', sans-serif;
       font-weight: 600;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-size: 0.8125rem;
       color: var(--navy);
-      margin-bottom: 0.875rem;
+      margin-bottom: 0.75rem;
     }
+
+    .quiz-question-text:focus { outline: none; }
 
     .quiz-question-text {
       font-size: 0.9375rem;
@@ -193,7 +271,7 @@
       justify-content: center;
       width: 100%;
       min-height: 52px;
-      border: 2px solid #ddd;
+      border: 2px solid #8A93AE;
       border-radius: 10px;
       background: var(--white);
       font-family: 'Poppins', sans-serif;
@@ -232,7 +310,7 @@
       align-items: center;
       gap: 0.75rem;
       padding: 14px 16px;
-      border: 2px solid #ddd;
+      border: 2px solid #8A93AE;
       border-radius: 10px;
       background: var(--white);
       cursor: pointer;
@@ -286,7 +364,7 @@
     .quiz-btn-back {
       font-family: 'Poppins', sans-serif;
       font-size: 0.875rem;
-      color: var(--teal);
+      color: var(--teal-ink);
       background: none;
       border: none;
       cursor: pointer;
@@ -313,54 +391,55 @@
     }
 
     .quiz-btn-next:hover    { background: #142554; }
-    .quiz-btn-next:disabled { background: #bbb; cursor: default; }
+    .quiz-btn-next:disabled { background: #E3E6EE; color: #5E6272; cursor: default; }
 
     .quiz-btn-next:focus-visible,
     .quiz-btn-back:focus-visible {
-      outline: 2px solid var(--teal);
+      outline: 2px solid var(--teal-ink);
       outline-offset: 2px;
       border-radius: 4px;
     }
 
     /* ── Result screen ──────────────────────────────────── */
-    #quiz-result { display: none; }
+    #quiz-result { display: none; --result-accent: var(--navy); }
 
-    .result-emoji {
+    .result-swatch {
       display: block;
-      text-align: center;
-      font-size: 64px;
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
+      width: 44px;
+      height: 5px;
+      border-radius: 3px;
+      background: var(--result-accent);
+      margin-bottom: 1rem;
     }
 
     .result-nudge {
-      background: #f0f4fb;
-      border-left: 4px solid var(--navy);
-      border-radius: 8px;
-      padding: 16px 20px;
+      background: #EEF2FA;
+      border-radius: 12px;
+      padding: 14px 18px;
       margin-bottom: 1.25rem;
       font-size: 0.9rem;
       line-height: 1.6;
       color: var(--text);
     }
 
-    .result-primary-label {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--navy);
-      margin-bottom: 0.375rem;
-    }
-
     .result-module-title {
       font-family: 'Poppins', sans-serif;
       font-weight: 600;
-      font-size: 1.375rem;
-      color: var(--text);
-      margin-bottom: 0.75rem;
+      font-size: clamp(1.375rem, 1.2rem + 0.8vw, 1.625rem);
       line-height: 1.25;
+      color: var(--navy);
+      margin: 0 0 0.3rem;
+      text-wrap: balance;
+    }
+
+    .result-module-title:focus { outline: none; }
+    .result-module-title:focus-visible { outline: 2px solid var(--teal-ink); outline-offset: 4px; border-radius: 4px; }
+
+    .result-meta {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      color: #5E6272;
+      margin: 0 0 1rem;
     }
 
     .result-description {
@@ -381,7 +460,7 @@
       font-weight: 600;
       font-size: 1rem;
       text-decoration: none;
-      border-radius: 10px;
+      border-radius: 999px;
       margin-bottom: 2rem;
     }
 
@@ -392,8 +471,8 @@
     }
 
     .result-cta:focus-visible {
-      outline: 2px solid var(--teal);
-      outline-offset: 2px;
+      outline: 2px solid var(--teal-ink);
+      outline-offset: 3px;
     }
 
     .result-secondary-heading {
@@ -406,35 +485,52 @@
 
     .result-secondary-card {
       display: block;
-      background: var(--card-bg);
+      background: var(--white);
+      border: 1px solid #E2DDD3;
       border-radius: 12px;
-      border-left: 4px solid var(--teal);
       padding: 16px 20px;
       text-decoration: none;
       color: var(--text);
       font-size: 0.9rem;
       line-height: 1.5;
       margin-bottom: 1.5rem;
+      transition: border-color 0.2s ease;
     }
 
-    .result-secondary-card:hover { text-decoration: none; }
+    .result-secondary-card:hover { text-decoration: none; border-color: var(--teal-ink); }
 
     .result-secondary-card strong {
       display: block;
       font-family: 'Poppins', sans-serif;
       font-weight: 600;
+      color: var(--navy);
       margin-bottom: 0.2rem;
+    }
+
+    .result-reassure {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: #5E6272;
+      max-width: 60ch;
+      padding-top: 1.25rem;
+      border-top: 1px solid #ECE7DE;
+      margin-bottom: 0.75rem;
     }
 
     .result-links {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
       font-size: 0.875rem;
     }
 
-    .result-links a { color: var(--teal); }
+    .result-links a {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      min-height: 44px;
+    }
   </style>
+
 </head>
 <body>
 
@@ -452,29 +548,33 @@
   <main id="main">
     <div class="page-wrapper">
 
-      <div class="landing-hero">
-        <h1>Mind Skin Health for Atopic Dermatitis</h1>
-        <p class="tagline" id="tagline" data-text="A guide to living well with eczema, from the University of Alberta dermatology team."></p>
-        <p class="audience-note">This platform is for adults and older teens managing their own eczema.
-        If you are a caregiver of a young child, please ask your child's
-        dermatologist for the caregiver materials.</p>
-        <a class="hero-res-link" href="resources.html">Browse the Resource Library →</a>
-      </div>
+      <section class="landing-hero" aria-labelledby="hero-heading">
+        <h1 id="hero-heading">A guide to living well with eczema</h1>
+        <p class="hero-lead">MindSkin Connect brings you five short, free modules from the University of Alberta dermatology team on stress, itch, habits, support and wellness.</p>
+        <div class="hero-actions">
+          <a class="hero-start" id="hero-start" href="#quiz-container">Find my starting point <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13m-5-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <p class="hero-meta">6 quick questions · about a minute · nothing is saved</p>
+        </div>
+        <a class="hero-browse" href="all-modules.html">Or browse all five modules</a>
+      </section>
 
       <!-- Quiz -->
-      <div class="quiz-card fade-in-card" id="quiz-container">
+      <div class="quiz-card" id="quiz-container">
 
         <div id="quiz-intro">
-          <p class="quiz-intro-title">Let's find the right starting point for you.</p>
+          <h2 class="quiz-intro-title">Let's find the right starting point for you.</h2>
           <p class="quiz-intro-body">Answer 6 quick questions — there are no right or wrong answers.
           We'll suggest the module that fits what you're dealing with right now.</p>
-          <p class="quiz-intro-small">You can always explore all five modules on your own — this is just a place to start.</p>
-          <a class="quiz-skip" href="all-modules.html">Skip — show me all modules</a>
-          <button class="quiz-btn-next" id="quiz-start-btn" style="display:block;margin:0 auto;">Start the quiz</button>
+          <div class="quiz-intro-actions">
+            <button class="quiz-btn-next" id="quiz-start-btn" type="button">Start the quiz</button>
+            <a class="quiz-skip" href="all-modules.html">Skip — show me all modules</a>
+          </div>
+          <noscript><p class="quiz-noscript">The quiz needs JavaScript turned on. You can still <a href="all-modules.html">browse all five modules</a>.</p></noscript>
         </div>
 
         <div id="quiz-questions" style="display:none;">
           <div class="quiz-progress" aria-hidden="true" id="quiz-progress"></div>
+          <p class="quiz-count" id="quiz-count" aria-live="polite"></p>
 
           <!-- Q1 -->
           <div class="quiz-step" data-step="0" id="step-0">
@@ -586,9 +686,9 @@
         <!-- Result -->
         <div id="quiz-result">
           <div id="result-nudge-box" class="result-nudge" style="display:none;"></div>
-          <span class="result-emoji" id="result-emoji" aria-hidden="true"></span>
-          <p class="result-primary-label">Your suggested starting point</p>
-          <p class="result-module-title" id="result-title"></p>
+          <span class="result-swatch" aria-hidden="true"></span>
+          <h2 class="result-module-title" id="result-title" tabindex="-1"></h2>
+          <p class="result-meta" id="result-meta"></p>
           <p class="result-description" id="result-desc"></p>
           <a class="result-cta" id="result-cta-link" href="#">Start →</a>
           <p class="result-secondary-heading">You might also find this useful:</p>
@@ -596,12 +696,20 @@
             <strong id="result-secondary-title"></strong>
             <span id="result-secondary-desc"></span>
           </a>
+          <p class="result-reassure">Your answers stayed on this page. Nothing was saved or sent. If something here felt familiar, you're welcome to bring it up at your next dermatology appointment.</p>
           <div class="result-links">
             <a href="#" id="result-retake-link">Want to try again? Retake the quiz.</a>
             <a href="all-modules.html">See all modules instead →</a>
           </div>
         </div>
 
+      </div>
+
+      <div class="landing-more">
+        <a class="more-link" href="resources.html">Browse the Resource Library</a>
+        <p class="audience-note">This platform is for adults and older teens managing their own eczema.
+        If you are a caregiver of a young child, please ask your child's
+        dermatologist for the caregiver materials.</p>
       </div>
 
       <!-- About this resource / For clinicians -->
@@ -680,29 +788,36 @@
         '1a': '#C2607A', '2': '#2E7D5E', '3a': '#40788b', '4': '#cc6a05', '5': '#5e548e'
       };
 
-      var MODULE_EMOJIS = {
-        '1a': '🌱', '2': '🌙', '3a': '⭐', '4': '🤝', '5': '🌿'
-      };
+      var MODULE_LABELS = { '1a': 'Module 1a', '2': 'Module 2', '3a': 'Module 3a', '4': 'Module 4', '5': 'Module 5' };
 
-      var ORDER      = ['1a', '2', '3a', '4', '5'];
-      var SLIDE_MS   = 350;
-      var MOTION_OK  = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+      var ORDER        = ['1a', '2', '3a', '4', '5'];
+      var SLIDE_OUT_MS = 180;
+      var SLIDE_IN_MS  = 220;
+      var MOTION_OK    = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
 
       var currentStep = 0;
       var prevStep    = -1;
       var totalSteps  = 6;
       var answers     = {};
+      var busy        = false;   /* true while the outgoing step fades out */
 
-      var introEl    = document.getElementById('quiz-intro');
+      var cardEl      = document.getElementById('quiz-container');
+      var introEl     = document.getElementById('quiz-intro');
       var questionsEl = document.getElementById('quiz-questions');
-      var resultEl   = document.getElementById('quiz-result');
-      var startBtn   = document.getElementById('quiz-start-btn');
-      var nextBtn    = document.getElementById('quiz-next-btn');
-      var backBtn    = document.getElementById('quiz-back-btn');
-      var progressEl = document.getElementById('quiz-progress');
-      var retakeLink = document.getElementById('result-retake-link');
+      var resultEl    = document.getElementById('quiz-result');
+      var startBtn    = document.getElementById('quiz-start-btn');
+      var heroStart   = document.getElementById('hero-start');
+      var nextBtn     = document.getElementById('quiz-next-btn');
+      var backBtn     = document.getElementById('quiz-back-btn');
+      var progressEl  = document.getElementById('quiz-progress');
+      var countEl     = document.getElementById('quiz-count');
+      var retakeLink  = document.getElementById('result-retake-link');
 
-      /* ── Progress dots ──────────────────────────────── */
+      function scrollToCard() {
+        cardEl.scrollIntoView({ behavior: MOTION_OK ? 'smooth' : 'auto', block: 'start' });
+      }
+
+      /* ── Progress dots + visible count ─────────────── */
       function buildProgress() {
         progressEl.innerHTML = '';
         for (var i = 0; i < totalSteps; i++) {
@@ -711,6 +826,7 @@
             (i < currentStep ? ' done' : (i === currentStep ? ' active' : ''));
           progressEl.appendChild(dot);
         }
+        countEl.textContent = 'Question ' + (currentStep + 1) + ' of ' + totalSteps;
       }
 
       /* ── Step helpers ───────────────────────────────── */
@@ -729,39 +845,41 @@
         el.classList.remove('slide-in-right', 'slide-in-left', 'slide-out-left', 'slide-out-right');
       }
 
-      /* ── Show step (with optional slide animation) ── */
+      function focusStepText(step) {
+        var text = getStepEl(step) && getStepEl(step).querySelector('.quiz-question-text');
+        if (!text) return;
+        text.setAttribute('tabindex', '-1');
+        text.focus({ preventScroll: true });
+      }
+
+      /* ── Show step (gentle slide, guarded against rapid clicks) ── */
       function showStep(step) {
         var oldStep = prevStep;
         prevStep = step;
+        var oldEl = oldStep >= 0 ? getStepEl(oldStep) : null;
 
-        if (MOTION_OK && oldStep >= 0) {
+        if (MOTION_OK && oldEl && oldStep !== step) {
           var fwd    = step > oldStep;
-          var outCls = fwd ? 'slide-out-left'  : 'slide-out-right';
-          var inCls  = fwd ? 'slide-in-right'  : 'slide-in-left';
-          var oldEl  = getStepEl(oldStep);
+          var outCls = fwd ? 'slide-out-left' : 'slide-out-right';
+          var inCls  = fwd ? 'slide-in-right' : 'slide-in-left';
+          busy = true;
+          clearSlideClasses(oldEl);
+          oldEl.classList.add(outCls);
 
-          if (oldEl) {
-            clearSlideClasses(oldEl);
-            oldEl.classList.add(outCls);
-
+          setTimeout(function () {
+            for (var i = 0; i < totalSteps; i++) {
+              var el = getStepEl(i);
+              if (!el) continue;
+              el.classList.remove('active');
+              clearSlideClasses(el);
+              if (i === step) el.classList.add('active', inCls);
+            }
+            busy = false;   /* the swap is done; only the fade-out needs guarding */
             setTimeout(function () {
-              for (var i = 0; i < totalSteps; i++) {
-                var el = getStepEl(i);
-                if (!el) continue;
-                el.classList.remove('active');
-                clearSlideClasses(el);
-                if (i === step) {
-                  el.classList.add('active', inCls);
-                }
-              }
-              setTimeout(function () {
-                var ne = getStepEl(step);
-                if (ne) ne.classList.remove(inCls);
-              }, SLIDE_MS);
-            }, SLIDE_MS);
-          } else {
-            activateStepNow(step);
-          }
+              var ne = getStepEl(step);
+              if (ne) ne.classList.remove(inCls);
+            }, SLIDE_IN_MS);
+          }, SLIDE_OUT_MS);
         } else {
           activateStepNow(step);
         }
@@ -783,50 +901,28 @@
         nextBtn.textContent = currentStep === totalSteps - 1 ? 'See my result' : 'Next';
       }
 
-      /* ── Emoji ──────────────────────────────────────── */
-      function showEmoji(key) {
-        var el = document.getElementById('result-emoji');
-        if (!el) return;
-        el.textContent = MODULE_EMOJIS[key] || '💛';
-        if (MOTION_OK) {
-          el.classList.remove('pop');
-          void el.offsetWidth;
-          el.classList.add('pop');
-        }
+      /* ── Start / reset ──────────────────────────────── */
+      function startQuiz() {
+        introEl.style.display     = 'none';
+        resultEl.style.display    = 'none';
+        questionsEl.style.display = 'block';
+        currentStep = 0;
+        prevStep    = -1;
+        showStep(currentStep);
+        focusStepText(currentStep);
       }
 
-      /* ── Confetti ───────────────────────────────────── */
-      function fireConfetti(accentColor) {
-        if (!MOTION_OK) return;
-        var palette = [accentColor, '#FFFFFF', '#2BBFAA'];
-        for (var i = 0; i < 60; i++) {
-          (function () {
-            var el       = document.createElement('div');
-            var size     = 6 + Math.random() * 6;
-            var color    = palette[Math.floor(Math.random() * palette.length)];
-            var delay    = Math.random() * 0.5;
-            var dur      = 1.5 + Math.random() * 1;
-            var rotation = Math.random() * 360;
-            var round    = Math.random() > 0.5;
-            el.setAttribute('aria-hidden', 'true');
-            el.style.cssText = [
-              'position:fixed',
-              'top:-12px',
-              'left:' + (Math.random() * 100) + 'vw',
-              'width:' + size + 'px',
-              'height:' + size + 'px',
-              'background:' + color,
-              'border-radius:' + (round ? '50%' : '2px'),
-              'transform:rotate(' + rotation + 'deg)',
-              'pointer-events:none',
-              'z-index:9999',
-              'animation:confetti-fall ' + dur + 's ' + delay + 's ease-in forwards'
-            ].join(';');
-            document.body.appendChild(el);
-            setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); },
-              (dur + delay) * 1000 + 100);
-          })();
-        }
+      function resetQuiz() {
+        answers     = {};
+        currentStep = 0;
+        prevStep    = -1;
+        busy        = false;
+        document.querySelectorAll('#quiz-questions input[type="radio"]').forEach(function (r) {
+          r.checked = false;
+        });
+        resultEl.style.display    = 'none';
+        questionsEl.style.display = 'none';
+        introEl.style.display     = 'block';
       }
 
       /* ── Event listeners ────────────────────────────── */
@@ -837,36 +933,18 @@
         }
       });
 
-      /* Ripple on scale button click */
-      questionsEl.addEventListener('click', function (e) {
-        if (!MOTION_OK) return;
-        var btn = e.target.closest ? e.target.closest('.scale-btn') : null;
-        if (!btn) return;
-        var existing = btn.querySelector('.scale-ripple');
-        if (existing) existing.parentNode.removeChild(existing);
-        var rect   = btn.getBoundingClientRect();
-        var s      = Math.max(btn.offsetWidth, btn.offsetHeight);
-        var ripple = document.createElement('span');
-        ripple.className = 'scale-ripple';
-        ripple.style.cssText = [
-          'width:' + s + 'px',
-          'height:' + s + 'px',
-          'left:' + (e.clientX - rect.left - s / 2) + 'px',
-          'top:' + (e.clientY - rect.top  - s / 2) + 'px'
-        ].join(';');
-        btn.appendChild(ripple);
-        setTimeout(function () { if (ripple.parentNode) ripple.parentNode.removeChild(ripple); }, 500);
-      });
+      startBtn.addEventListener('click', startQuiz);
 
-      startBtn.addEventListener('click', function () {
-        introEl.style.display = 'none';
-        questionsEl.style.display = 'block';
-        currentStep = 0;
-        showStep(currentStep);
-      });
+      if (heroStart) {
+        heroStart.addEventListener('click', function (e) {
+          e.preventDefault();
+          startQuiz();
+          scrollToCard();
+        });
+      }
 
       nextBtn.addEventListener('click', function () {
-        if (nextBtn.disabled) return;
+        if (nextBtn.disabled || busy) return;
         if (currentStep < totalSteps - 1) {
           currentStep++;
           showStep(currentStep);
@@ -876,6 +954,7 @@
       });
 
       backBtn.addEventListener('click', function () {
+        if (busy) return;
         if (currentStep > 0) {
           currentStep--;
           showStep(currentStep);
@@ -885,24 +964,73 @@
       retakeLink.addEventListener('click', function (e) {
         e.preventDefault();
         resetQuiz();
+        scrollToCard();
+        startBtn.focus({ preventScroll: true });
       });
 
-      function resetQuiz() {
-        answers     = {};
-        currentStep = 0;
-        prevStep    = -1;
-        document.querySelectorAll('#quiz-questions input[type="radio"]').forEach(function (r) {
-          r.checked = false;
-        });
-        resultEl.style.display    = 'none';
-        questionsEl.style.display = 'none';
-        introEl.style.display     = 'block';
+      /* ── Result rendering ───────────────────────────── */
+      function setResult(r) {
+        var nudgeBox = document.getElementById('result-nudge-box');
+        nudgeBox.style.display = r.nudge ? 'block' : 'none';
+        nudgeBox.textContent   = r.nudge || '';
+
+        resultEl.style.setProperty('--result-accent',
+          (r.accentKey && MODULE_ACCENTS[r.accentKey]) || '#1B3068');
+
+        document.getElementById('result-title').textContent = r.title;
+        var meta = document.getElementById('result-meta');
+        meta.textContent   = r.meta || '';
+        meta.style.display = r.meta ? '' : 'none';
+        document.getElementById('result-desc').textContent = r.desc;
+
+        var cta = document.getElementById('result-cta-link');
+        cta.textContent = r.cta;
+        cta.href        = r.href;
+
+        var secHeading = document.querySelector('.result-secondary-heading');
+        var secLink    = document.getElementById('result-secondary-link');
+        var sec        = r.secondary && MODULES[r.secondary];
+        if (sec) {
+          document.getElementById('result-secondary-title').textContent = sec.title;
+          document.getElementById('result-secondary-desc').textContent  = sec.desc;
+          secLink.href = sec.url;
+        }
+        secHeading.style.display = sec ? '' : 'none';
+        secLink.style.display    = sec ? '' : 'none';
       }
 
-      /* ── Routing logic (unchanged) ──────────────────── */
-      function showResult() {
-        questionsEl.style.display = 'none';
+      function moduleResult(primary, secondary, nudgeText) {
+        var mod = MODULES[primary];
+        setResult({
+          accentKey: primary,
+          title:     mod.title,
+          meta:      'Your suggested starting point · ' + MODULE_LABELS[primary],
+          desc:      mod.desc,
+          cta:       mod.cta,
+          href:      mod.url,
+          nudge:     nudgeText,
+          secondary: secondary !== primary ? secondary : null
+        });
+      }
 
+      function neutralResult(level) {
+        var mod = MODULES['1a'];
+        var desc = level === 'low'
+          ? 'None of these stood out strongly for you right now, which is good to know. If you’d like a gentle place to begin, Module 1a explains how stress and skin are connected. Or browse all five modules and pick whatever catches your eye.'
+          : 'It looks like everything feels relevant right now — or you’re not sure where to start. That’s completely okay. We suggest working through the modules in order, starting with Module 1a. It’s the foundation the others build on.';
+        setResult({
+          accentKey: '1a',
+          title:     mod.title,
+          meta:      'Your suggested starting point · Module 1a',
+          desc:      desc,
+          cta:       'Start with Module 1a →',
+          href:      mod.url,
+          nudge:     null,
+          secondary: null
+        });
+      }
+
+      function computeResult() {
         var scores = {
           '1a': parseInt(answers.q1 || 0, 10),
           '2':  parseInt(answers.q2 || 0, 10),
@@ -910,15 +1038,13 @@
           '4':  parseInt(answers.q4 || 0, 10),
           '5':  parseInt(answers.q5 || 0, 10)
         };
-
         var q6flag = answers.q6 || 'none';
 
         var maxScore = 0;
         ORDER.forEach(function (k) { if (scores[k] > maxScore) maxScore = scores[k]; });
 
         var allEqual = ORDER.every(function (k) { return scores[k] === scores['1a']; });
-
-        if (allEqual) { showNeutralResult(); return; }
+        if (allEqual) { neutralResult(maxScore <= 2 ? 'low' : 'high'); return; }
 
         var topModules = ORDER.filter(function (k) { return scores[k] === maxScore; });
         var primary    = topModules[0];
@@ -936,107 +1062,40 @@
         var nudgeText = null;
         if (q6flag === 'new') {
           nudgeText = 'Since you’re newer to managing eczema, Module 1a is a good foundation — even if something else feels more urgent right now.';
+          /* Lead with the foundation; keep what felt most urgent one tap away. */
+          if (primary !== '1a') { secondary = primary; primary = '1a'; }
         }
         if (q6flag === 'long-term' && primary === '1a') {
           nudgeText = 'Even if you’ve had eczema for years, this one surprises people.';
         }
 
-        renderResult(primary, secondary, nudgeText);
+        moduleResult(primary, secondary, nudgeText);
       }
 
-      function showNeutralResult() {
-        document.getElementById('result-nudge-box').style.display = 'none';
-        document.getElementById('result-title').textContent = '';
-        document.querySelector('.result-primary-label').textContent = '';
-        document.getElementById('result-desc').textContent =
-          'It looks like everything feels relevant right now — or you’re not sure where to start. That’s completely okay. We suggest working through the modules in order, starting with Module 1a. It’s the foundation the others build on.';
-        var ctaLink = document.getElementById('result-cta-link');
-        ctaLink.textContent = 'Start with Module 1a →';
-        ctaLink.href = 'module-1a.html';
-        document.querySelector('.result-secondary-heading').style.display = 'none';
-        document.getElementById('result-secondary-link').style.display   = 'none';
-
-        showEmoji('neutral');
-        fireConfetti('#2BBFAA');
-        resultEl.style.display = 'block';
-      }
-
-      function renderResult(primaryKey, secondaryKey, nudgeText) {
-        var nudgeBox = document.getElementById('result-nudge-box');
-        nudgeBox.style.display = nudgeText ? 'block' : 'none';
-        if (nudgeText) nudgeBox.textContent = nudgeText;
-
-        document.querySelector('.result-primary-label').textContent = 'Your suggested starting point';
-
-        var mod = MODULES[primaryKey];
-        document.getElementById('result-title').textContent = mod.title;
-        document.getElementById('result-desc').textContent  = mod.desc;
-
-        var ctaLink = document.getElementById('result-cta-link');
-        ctaLink.textContent = mod.cta;
-        ctaLink.href        = mod.url;
-
-        document.querySelector('.result-secondary-heading').style.display = '';
-        var secLink = document.getElementById('result-secondary-link');
-        secLink.style.display = '';
-
-        var secMod = MODULES[secondaryKey] || MODULES['1a'];
-        document.getElementById('result-secondary-title').textContent = secMod.title;
-        document.getElementById('result-secondary-desc').textContent  = secMod.desc;
-        secLink.href = secMod.url;
-
-        showEmoji(primaryKey);
-        fireConfetti(MODULE_ACCENTS[primaryKey] || '#2BBFAA');
-        resultEl.style.display = 'block';
-      }
-
-    })();
-  </script>
-
-  <!-- Typewriter tagline -->
-  <script>
-    (function () {
-      var el = document.getElementById('tagline');
-      if (!el) return;
-      var text = el.getAttribute('data-text') || '';
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        el.textContent = text;
-        return;
-      }
-      var cursor = document.createElement('span');
-      cursor.className = 'tagline-cursor';
-      cursor.textContent = '|';
-      cursor.setAttribute('aria-hidden', 'true');
-      el.appendChild(cursor);
-      var i = 0;
-      function typeNext() {
-        if (i < text.length) {
-          el.insertBefore(document.createTextNode(text[i++]), cursor);
-          setTimeout(typeNext, 35);
-        } else {
-          if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
+      function showResult() {
+        questionsEl.style.display = 'none';
+        try {
+          computeResult();
+        } catch (err) {
+          setResult({
+            accentKey: null,
+            title:     'All five modules are ready for you',
+            meta:      '',
+            desc:      'We couldn’t work out a suggestion just now, but every module is free to explore in any order.',
+            cta:       'See all modules',
+            href:      'all-modules.html',
+            nudge:     null,
+            secondary: null
+          });
         }
+        resultEl.style.display = 'block';
+        scrollToCard();
+        document.getElementById('result-title').focus({ preventScroll: true });
       }
-      setTimeout(typeNext, 250);
+
     })();
   </script>
 
-  <!-- Scroll fade-in (IntersectionObserver) -->
-  <script>
-    (function () {
-      var cards = document.querySelectorAll('.fade-in-card');
-      if (!cards.length) return;
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.08 });
-      cards.forEach(function (card) { observer.observe(card); });
-    })();
-  </script>
 
 </body>
 </html>
