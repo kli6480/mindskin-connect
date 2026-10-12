@@ -167,6 +167,7 @@ button {
 /* Phones: the nav wraps to two rows, so let it scroll away instead of
    pinning ~120px over the content on every scroll. */
 @media (max-width: 599px) {
+  html { scroll-padding-top: 0; }
   .site-header { position: static; }
   .site-nav { padding: 8px 16px; }
   .site-nav a:not(.site-logo) { padding: 4px 8px; font-size: 0.875rem; }
@@ -498,15 +499,6 @@ a:focus-visible {
   max-width: var(--page-max);
   margin: 3.5rem auto 0;
   scroll-margin-top: 110px;
-}
-.about-eyebrow {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 0.8125rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--teal);
-  margin: 0 0 0.4rem;
 }
 .about-heading {
   font-family: 'Lilita One', cursive;

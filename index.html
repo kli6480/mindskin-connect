@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.svg">
-  <noscript><style>#quiz-start-btn { display: none; } .quiz-intro-actions { justify-content: flex-start; }</style></noscript>
+  <noscript><style>#quiz-questions { display: none; }</style></noscript>
   <style>
     /* ── Landing hero: calm, static, program-level navy ── */
     .landing-hero {
@@ -122,7 +122,6 @@
       display: inline-flex;
       align-items: center;
       min-height: 44px;
-      margin-top: 0.5rem;
       color: var(--teal);
       font-family: 'Poppins', sans-serif;
       font-size: 0.9375rem;
@@ -131,31 +130,22 @@
 
     .hero-browse:hover { color: #6FDCCB; }
 
-    /* ── Below the quiz: library link + audience note ──── */
-    .landing-more {
+    .hero-links {
       display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      margin: 0 0.25rem;
+      flex-wrap: wrap;
+      gap: 0 1.5rem;
+      margin: 0.5rem 0 0;
     }
 
-    .more-link {
-      display: inline-flex;
-      align-items: center;
-      align-self: flex-start;
-      min-height: 44px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 0.9375rem;
-    }
-
-    .audience-note {
+    .hero-note {
       font-family: 'Poppins', sans-serif;
       font-size: 0.875rem;
       line-height: 1.6;
-      color: #5E6272;
-      max-width: 62ch;
-      margin: 0;
+      color: #B9C3DC;
+      max-width: 60ch;
+      margin: 1.25rem 0 0;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
     }
 
     /* ── Quiz card ──────────────────────────────────────── */
@@ -165,7 +155,7 @@
       padding: 28px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
       margin-bottom: 1.5rem;
-      scroll-margin-top: 96px;
+      scroll-margin-top: 16px;
     }
 
     /* ── Quiz intro ─────────────────────────────────────── */
@@ -187,20 +177,6 @@
 
     .quiz-intro-body { margin-bottom: 1.5rem; max-width: 58ch; }
 
-    .quiz-intro-actions {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.5rem 1.5rem;
-    }
-
-    .quiz-skip {
-      display: inline-flex;
-      align-items: center;
-      min-height: 44px;
-      font-size: 0.9375rem;
-    }
-
     .quiz-noscript {
       margin-top: 1rem;
       font-size: 0.9375rem;
@@ -215,7 +191,6 @@
 
     /* ── Scale questions ────────────────────────────────── */
     .quiz-step { display: none; }
-    .quiz-step.active { display: block; }
 
     .quiz-prompt-label {
       font-family: 'Poppins', sans-serif;
@@ -234,13 +209,33 @@
       max-width: 58ch;
     }
 
+    /* Legend sits under the buttons, each label aligned to its own value. */
+    .quiz-step.active { display: flex; flex-direction: column; }
+    .quiz-step .scale-legend { order: 1; }
+
     .scale-legend {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.75rem;
-      color: #777;
-      margin-bottom: 0.5rem;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+      color: #5E6272;
+      margin: -0.75rem 0 1.5rem;
       font-family: 'Poppins', sans-serif;
+    }
+
+    .scale-legend span { white-space: nowrap; }
+    .scale-legend span:nth-child(1) { grid-column: 1; justify-self: start; }
+    .scale-legend span:nth-child(2) { grid-column: 3; justify-self: center; }
+    .scale-legend span:nth-child(3) { grid-column: 5; justify-self: end; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
     }
 
     .scale-options {
@@ -416,7 +411,8 @@
       background: #EEF2FA;
       border-radius: 12px;
       padding: 14px 18px;
-      margin-bottom: 1.25rem;
+      margin: 0.25rem 0 1.25rem;
+      max-width: 58ch;
       font-size: 0.9rem;
       line-height: 1.6;
       color: var(--text);
@@ -555,7 +551,10 @@
           <a class="hero-start" id="hero-start" href="#quiz-container">Find my starting point <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13m-5-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <p class="hero-meta">6 quick questions · about a minute · nothing is saved</p>
         </div>
-        <a class="hero-browse" href="all-modules.html">Or browse all five modules</a>
+        <p class="hero-links"><a class="hero-browse" href="all-modules.html">Or browse all five modules</a><a class="hero-browse" href="resources.html">Resource Library</a></p>
+        <p class="hero-note">This platform is for adults and older teens managing their own eczema.
+        If you are a caregiver of a young child, please ask your child's
+        dermatologist for the caregiver materials.</p>
       </section>
 
       <!-- Quiz -->
@@ -563,29 +562,24 @@
 
         <div id="quiz-intro">
           <h2 class="quiz-intro-title">Let's find the right starting point for you.</h2>
-          <p class="quiz-intro-body">Answer 6 quick questions — there are no right or wrong answers.
-          We'll suggest the module that fits what you're dealing with right now.</p>
-          <div class="quiz-intro-actions">
-            <button class="quiz-btn-next" id="quiz-start-btn" type="button">Start the quiz</button>
-            <a class="quiz-skip" href="all-modules.html">Skip — show me all modules</a>
-          </div>
+          <p class="quiz-intro-body">There are no right or wrong answers. We'll suggest the module that fits what you're dealing with right now.</p>
           <noscript><p class="quiz-noscript">The quiz needs JavaScript turned on. You can still <a href="all-modules.html">browse all five modules</a>.</p></noscript>
         </div>
 
-        <div id="quiz-questions" style="display:none;">
+        <div id="quiz-questions">
           <div class="quiz-progress" aria-hidden="true" id="quiz-progress"></div>
           <p class="quiz-count" id="quiz-count" aria-live="polite"></p>
 
           <!-- Q1 -->
           <div class="quiz-step" data-step="0" id="step-0">
             <p class="quiz-prompt-label">How much does this sound like you right now?</p>
-            <p class="quiz-question-text">"I find myself wondering why stress or emotions seem to make my eczema worse — I want to understand what's actually happening."</p>
-            <div class="scale-legend">
-              <span>1 = Not at all</span>
-              <span>3 = Somewhat</span>
-              <span>5 = Very much</span>
+            <p class="quiz-question-text" id="q1-text">"I find myself wondering why stress or emotions seem to make my eczema worse — I want to understand what's actually happening."</p>
+            <div class="scale-legend" id="q1-legend">
+              <span><span class="sr-only">1 = </span>Not at all</span>
+              <span><span class="sr-only">3 = </span>Somewhat</span>
+              <span><span class="sr-only">5 = </span>Very much</span>
             </div>
-            <div class="scale-options" role="radiogroup" aria-label="Question 1 rating">
+            <div class="scale-options" role="radiogroup" aria-labelledby="q1-text" aria-describedby="q1-legend">
               <label><input type="radio" name="q1" value="1"><span class="scale-btn">1</span></label>
               <label><input type="radio" name="q1" value="2"><span class="scale-btn">2</span></label>
               <label><input type="radio" name="q1" value="3"><span class="scale-btn">3</span></label>
@@ -597,13 +591,13 @@
           <!-- Q2 -->
           <div class="quiz-step" data-step="1" id="step-1">
             <p class="quiz-prompt-label">How much does this sound like you right now?</p>
-            <p class="quiz-question-text">"The urge to scratch feels automatic — especially at night, or when I'm tired or distracted."</p>
-            <div class="scale-legend">
-              <span>1 = Not at all</span>
-              <span>3 = Somewhat</span>
-              <span>5 = Very much</span>
+            <p class="quiz-question-text" id="q2-text">"The urge to scratch feels automatic — especially at night, or when I'm tired or distracted."</p>
+            <div class="scale-legend" id="q2-legend">
+              <span><span class="sr-only">1 = </span>Not at all</span>
+              <span><span class="sr-only">3 = </span>Somewhat</span>
+              <span><span class="sr-only">5 = </span>Very much</span>
             </div>
-            <div class="scale-options" role="radiogroup" aria-label="Question 2 rating">
+            <div class="scale-options" role="radiogroup" aria-labelledby="q2-text" aria-describedby="q2-legend">
               <label><input type="radio" name="q2" value="1"><span class="scale-btn">1</span></label>
               <label><input type="radio" name="q2" value="2"><span class="scale-btn">2</span></label>
               <label><input type="radio" name="q2" value="3"><span class="scale-btn">3</span></label>
@@ -615,13 +609,13 @@
           <!-- Q3 -->
           <div class="quiz-step" data-step="2" id="step-2">
             <p class="quiz-prompt-label">How much does this sound like you right now?</p>
-            <p class="quiz-question-text">"I know what I should be doing to manage my eczema, but I struggle to stick to it — especially after a bad flare."</p>
-            <div class="scale-legend">
-              <span>1 = Not at all</span>
-              <span>3 = Somewhat</span>
-              <span>5 = Very much</span>
+            <p class="quiz-question-text" id="q3-text">"I know what I should be doing to manage my eczema, but I struggle to stick to it — especially after a bad flare."</p>
+            <div class="scale-legend" id="q3-legend">
+              <span><span class="sr-only">1 = </span>Not at all</span>
+              <span><span class="sr-only">3 = </span>Somewhat</span>
+              <span><span class="sr-only">5 = </span>Very much</span>
             </div>
-            <div class="scale-options" role="radiogroup" aria-label="Question 3 rating">
+            <div class="scale-options" role="radiogroup" aria-labelledby="q3-text" aria-describedby="q3-legend">
               <label><input type="radio" name="q3" value="1"><span class="scale-btn">1</span></label>
               <label><input type="radio" name="q3" value="2"><span class="scale-btn">2</span></label>
               <label><input type="radio" name="q3" value="3"><span class="scale-btn">3</span></label>
@@ -633,13 +627,13 @@
           <!-- Q4 -->
           <div class="quiz-step" data-step="3" id="step-3">
             <p class="quiz-prompt-label">How much does this sound like you right now?</p>
-            <p class="quiz-question-text">"I don't talk much about how eczema affects me emotionally — even with people close to me, or my doctor."</p>
-            <div class="scale-legend">
-              <span>1 = Not at all</span>
-              <span>3 = Somewhat</span>
-              <span>5 = Very much</span>
+            <p class="quiz-question-text" id="q4-text">"I don't talk much about how eczema affects me emotionally — even with people close to me, or my doctor."</p>
+            <div class="scale-legend" id="q4-legend">
+              <span><span class="sr-only">1 = </span>Not at all</span>
+              <span><span class="sr-only">3 = </span>Somewhat</span>
+              <span><span class="sr-only">5 = </span>Very much</span>
             </div>
-            <div class="scale-options" role="radiogroup" aria-label="Question 4 rating">
+            <div class="scale-options" role="radiogroup" aria-labelledby="q4-text" aria-describedby="q4-legend">
               <label><input type="radio" name="q4" value="1"><span class="scale-btn">1</span></label>
               <label><input type="radio" name="q4" value="2"><span class="scale-btn">2</span></label>
               <label><input type="radio" name="q4" value="3"><span class="scale-btn">3</span></label>
@@ -651,13 +645,13 @@
           <!-- Q5 -->
           <div class="quiz-step" data-step="4" id="step-4">
             <p class="quiz-prompt-label">How much does this sound like you right now?</p>
-            <p class="quiz-question-text">"I feel like my lifestyle — sleep, diet, stress, exercise — isn't helping my skin, and I'm not sure where to start."</p>
-            <div class="scale-legend">
-              <span>1 = Not at all</span>
-              <span>3 = Somewhat</span>
-              <span>5 = Very much</span>
+            <p class="quiz-question-text" id="q5-text">"I feel like my lifestyle — sleep, diet, stress, exercise — isn't helping my skin, and I'm not sure where to start."</p>
+            <div class="scale-legend" id="q5-legend">
+              <span><span class="sr-only">1 = </span>Not at all</span>
+              <span><span class="sr-only">3 = </span>Somewhat</span>
+              <span><span class="sr-only">5 = </span>Very much</span>
             </div>
-            <div class="scale-options" role="radiogroup" aria-label="Question 5 rating">
+            <div class="scale-options" role="radiogroup" aria-labelledby="q5-text" aria-describedby="q5-legend">
               <label><input type="radio" name="q5" value="1"><span class="scale-btn">1</span></label>
               <label><input type="radio" name="q5" value="2"><span class="scale-btn">2</span></label>
               <label><input type="radio" name="q5" value="3"><span class="scale-btn">3</span></label>
@@ -669,8 +663,8 @@
           <!-- Q6 -->
           <div class="quiz-step" data-step="5" id="step-5">
             <p class="quiz-prompt-label">One last question</p>
-            <p class="quiz-question-text">"How long have you been living with eczema?"</p>
-            <div class="radio-options" role="radiogroup" aria-label="Duration of eczema">
+            <p class="quiz-question-text" id="q6-text">"How long have you been living with eczema?"</p>
+            <div class="radio-options" role="radiogroup" aria-labelledby="q6-text">
               <label><input type="radio" name="q6" value="new"> Just diagnosed, or within the last year</label>
               <label><input type="radio" name="q6" value="none"> 1–5 years</label>
               <label><input type="radio" name="q6" value="long-term"> More than 5 years</label>
@@ -678,17 +672,17 @@
           </div>
 
           <div class="quiz-nav">
-            <button class="quiz-btn-back" id="quiz-back-btn" disabled>← Back</button>
-            <button class="quiz-btn-next" id="quiz-next-btn" disabled>Next</button>
+            <button class="quiz-btn-back" id="quiz-back-btn" type="button" disabled>← Back</button>
+            <button class="quiz-btn-next" id="quiz-next-btn" type="button" disabled>Next</button>
           </div>
         </div>
 
         <!-- Result -->
         <div id="quiz-result">
-          <div id="result-nudge-box" class="result-nudge" style="display:none;"></div>
           <span class="result-swatch" aria-hidden="true"></span>
           <h2 class="result-module-title" id="result-title" tabindex="-1"></h2>
           <p class="result-meta" id="result-meta"></p>
+          <div id="result-nudge-box" class="result-nudge" style="display:none;"></div>
           <p class="result-description" id="result-desc"></p>
           <a class="result-cta" id="result-cta-link" href="#">Start →</a>
           <p class="result-secondary-heading">You might also find this useful:</p>
@@ -705,17 +699,9 @@
 
       </div>
 
-      <div class="landing-more">
-        <a class="more-link" href="resources.html">Browse the Resource Library</a>
-        <p class="audience-note">This platform is for adults and older teens managing their own eczema.
-        If you are a caregiver of a young child, please ask your child's
-        dermatologist for the caregiver materials.</p>
-      </div>
-
       <!-- About this resource / For clinicians -->
       <section class="about-resource" id="for-clinicians" aria-labelledby="about-heading">
-        <p class="about-eyebrow">For clinicians &amp; educators</p>
-        <h2 class="about-heading" id="about-heading">About this resource</h2>
+        <h2 class="about-heading" id="about-heading">For clinicians: about this resource</h2>
         <div class="about-grid">
           <div class="about-point">
             <h3>A free, evidence-based program</h3>
@@ -788,7 +774,21 @@
         '1a': '#C2607A', '2': '#2E7D5E', '3a': '#40788b', '4': '#cc6a05', '5': '#5e548e'
       };
 
-      var MODULE_LABELS = { '1a': 'Module 1a', '2': 'Module 2', '3a': 'Module 3a', '4': 'Module 4', '5': 'Module 5' };
+      /* Non-breaking space keeps "Module 5" together when the meta line wraps. */
+      var MODULE_LABELS = { '1a': 'Module\u00a01a', '2': 'Module\u00a02', '3a': 'Module\u00a03a', '4': 'Module\u00a04', '5': 'Module\u00a05' };
+
+      /* Neutral one-liners for the "also useful" card: they describe the module,
+         so they never contradict how the person answered. */
+      var SECONDARY_DESC = {
+        '1a': 'How stress, emotions and your skin affect each other.',
+        '2':  'Practical tools for easing the urge to scratch.',
+        '3a': 'Habits, goals and confidence for managing eczema day to day.',
+        '4':  'Building support at home, at work and with your care team.',
+        '5':  'Stress relief, nutrition and movement as part of caring for your skin.'
+      };
+
+      var NEW_NUDGE = 'Since you’re newer to managing eczema, Module 1a is a good foundation — even if something else feels more urgent right now.';
+      var SECONDARY_MIN = 3;   /* only suggest a second module the person rated 3 or higher */
 
       var ORDER        = ['1a', '2', '3a', '4', '5'];
       var SLIDE_OUT_MS = 180;
@@ -805,7 +805,6 @@
       var introEl     = document.getElementById('quiz-intro');
       var questionsEl = document.getElementById('quiz-questions');
       var resultEl    = document.getElementById('quiz-result');
-      var startBtn    = document.getElementById('quiz-start-btn');
       var heroStart   = document.getElementById('hero-start');
       var nextBtn     = document.getElementById('quiz-next-btn');
       var backBtn     = document.getElementById('quiz-back-btn');
@@ -853,7 +852,7 @@
       }
 
       /* ── Show step (gentle slide, guarded against rapid clicks) ── */
-      function showStep(step) {
+      function showStep(step, focus) {
         var oldStep = prevStep;
         prevStep = step;
         var oldEl = oldStep >= 0 ? getStepEl(oldStep) : null;
@@ -875,6 +874,7 @@
               if (i === step) el.classList.add('active', inCls);
             }
             busy = false;   /* the swap is done; only the fade-out needs guarding */
+            if (focus) focusStepText(step);
             setTimeout(function () {
               var ne = getStepEl(step);
               if (ne) ne.classList.remove(inCls);
@@ -882,6 +882,7 @@
           }, SLIDE_OUT_MS);
         } else {
           activateStepNow(step);
+          if (focus) focusStepText(step);
         }
 
         buildProgress();
@@ -902,17 +903,7 @@
       }
 
       /* ── Start / reset ──────────────────────────────── */
-      function startQuiz() {
-        introEl.style.display     = 'none';
-        resultEl.style.display    = 'none';
-        questionsEl.style.display = 'block';
-        currentStep = 0;
-        prevStep    = -1;
-        showStep(currentStep);
-        focusStepText(currentStep);
-      }
-
-      function resetQuiz() {
+      function resetQuiz(focus) {
         answers     = {};
         currentStep = 0;
         prevStep    = -1;
@@ -921,8 +912,9 @@
           r.checked = false;
         });
         resultEl.style.display    = 'none';
-        questionsEl.style.display = 'none';
-        introEl.style.display     = 'block';
+        introEl.style.display     = '';
+        questionsEl.style.display = '';
+        showStep(0, focus);
       }
 
       /* ── Event listeners ────────────────────────────── */
@@ -933,13 +925,23 @@
         }
       });
 
-      startBtn.addEventListener('click', startQuiz);
+      /* Enter on a chosen answer moves on, like pressing Next. */
+      questionsEl.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' && e.target.type === 'radio' && !nextBtn.disabled) {
+          e.preventDefault();
+          nextBtn.click();
+        }
+      });
 
       if (heroStart) {
         heroStart.addEventListener('click', function (e) {
           e.preventDefault();
-          startQuiz();
           scrollToCard();
+          if (resultEl.style.display === 'block') {
+            document.getElementById('result-title').focus({ preventScroll: true });
+          } else {
+            focusStepText(currentStep);
+          }
         });
       }
 
@@ -947,7 +949,7 @@
         if (nextBtn.disabled || busy) return;
         if (currentStep < totalSteps - 1) {
           currentStep++;
-          showStep(currentStep);
+          showStep(currentStep, true);
         } else {
           showResult();
         }
@@ -957,15 +959,14 @@
         if (busy) return;
         if (currentStep > 0) {
           currentStep--;
-          showStep(currentStep);
+          showStep(currentStep, true);
         }
       });
 
       retakeLink.addEventListener('click', function (e) {
         e.preventDefault();
-        resetQuiz();
+        resetQuiz(true);
         scrollToCard();
-        startBtn.focus({ preventScroll: true });
       });
 
       /* ── Result rendering ───────────────────────────── */
@@ -992,7 +993,7 @@
         var sec        = r.secondary && MODULES[r.secondary];
         if (sec) {
           document.getElementById('result-secondary-title').textContent = sec.title;
-          document.getElementById('result-secondary-desc').textContent  = sec.desc;
+          document.getElementById('result-secondary-desc').textContent  = SECONDARY_DESC[r.secondary] || '';
           secLink.href = sec.url;
         }
         secHeading.style.display = sec ? '' : 'none';
@@ -1013,7 +1014,7 @@
         });
       }
 
-      function neutralResult(level) {
+      function neutralResult(level, q6flag) {
         var mod = MODULES['1a'];
         var desc = level === 'low'
           ? 'None of these stood out strongly for you right now, which is good to know. If you’d like a gentle place to begin, Module 1a explains how stress and skin are connected. Or browse all five modules and pick whatever catches your eye.'
@@ -1025,7 +1026,7 @@
           desc:      desc,
           cta:       'Start with Module 1a →',
           href:      mod.url,
-          nudge:     null,
+          nudge:     (level === 'high' && q6flag === 'new') ? NEW_NUDGE : null,
           secondary: null
         });
       }
@@ -1043,8 +1044,11 @@
         var maxScore = 0;
         ORDER.forEach(function (k) { if (scores[k] > maxScore) maxScore = scores[k]; });
 
+        /* Nothing rated above "a little": a gentle starting point, not a confident pitch. */
+        if (maxScore <= 2) { neutralResult('low', q6flag); return; }
+
         var allEqual = ORDER.every(function (k) { return scores[k] === scores['1a']; });
-        if (allEqual) { neutralResult(maxScore <= 2 ? 'low' : 'high'); return; }
+        if (allEqual) { neutralResult('high', q6flag); return; }
 
         var topModules = ORDER.filter(function (k) { return scores[k] === maxScore; });
         var primary    = topModules[0];
@@ -1059,9 +1063,11 @@
           secondary = rest.filter(function (k) { return scores[k] === secondMax; })[0];
         }
 
+        if (secondary && scores[secondary] < SECONDARY_MIN) secondary = null;
+
         var nudgeText = null;
         if (q6flag === 'new') {
-          nudgeText = 'Since you’re newer to managing eczema, Module 1a is a good foundation — even if something else feels more urgent right now.';
+          nudgeText = NEW_NUDGE;
           /* Lead with the foundation; keep what felt most urgent one tap away. */
           if (primary !== '1a') { secondary = primary; primary = '1a'; }
         }
@@ -1074,6 +1080,7 @@
 
       function showResult() {
         questionsEl.style.display = 'none';
+        introEl.style.display     = 'none';
         try {
           computeResult();
         } catch (err) {
@@ -1092,6 +1099,8 @@
         scrollToCard();
         document.getElementById('result-title').focus({ preventScroll: true });
       }
+
+      resetQuiz(false);   /* question 1 is the resting state */
 
     })();
   </script>
