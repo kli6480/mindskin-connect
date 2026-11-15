@@ -1,6 +1,6 @@
 # MindSkin Connect
 
-Static patient-education website for the **MSHAD** program (Mind-Skin Health for
+Static patient-education website for the **MSHAD** program (Mind Skin Health for
 Atopic Dermatitis), University of Alberta Division of Dermatology.
 
 The site is accessed via a QR code in a dermatology clinic and is hosted on

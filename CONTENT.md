@@ -36,7 +36,7 @@ Do not paraphrase or rewrite any string. Use it exactly as written.
 
 ## index.html — Landing page
 
-Title: MindSkin Connect
+Title: Mind Skin Health for Atopic Dermatitis (MSHAD) — MindSkin Connect
 Tagline: A guide to living well with eczema, from the University of Alberta
 dermatology team.
 
@@ -276,7 +276,7 @@ Module list:
 ## clinician.html — For Clinicians
 
 Body:
-MindSkin Connect is a digital home for the Mind-Skin Health for Atopic
+MindSkin Connect is a digital home for the Mind Skin Health for Atopic
 Dermatitis (MSHAD) patient education modules, developed by the University of
 Alberta Division of Dermatology. The platform is designed for adults and older
 teens managing their own eczema, and is shared with patients via QR code at
@@ -310,7 +310,7 @@ Links: All modules · For clinicians · supportg@ualberta.ca
 ## index.html — Quiz and landing page
 
 ### Page title
-MindSkin Connect
+Mind Skin Health for Atopic Dermatitis (MSHAD) — MindSkin Connect
 
 ### Tagline
 A guide to living well with eczema, from the University of Alberta
@@ -702,10 +702,10 @@ Column 4 cells contain: Yes □ / No □ checkboxes
 
 ### Page meta
 - Title: "Resource Library — MindSkin Connect"
-- Description: "Printable handouts and interactive worksheets to support your eczema self-management, from the MindSkin Connect program."
+- Description: "Printable handouts and interactive worksheets to support your eczema self-management, from the Mind Skin Health for Atopic Dermatitis (MSHAD) program."
 
 ### Hero
-- Kicker: "MindSkin Connect · University of Alberta Dermatology"
+- Kicker: "MSHAD · University of Alberta Dermatology"
 - h1: "Resource Library"
 - Intro: "Printable handouts and interactive worksheets to support your eczema self-management."
 - Back link: "← Back to home" → index.html
@@ -729,4 +729,14 @@ Column 4 cells contain: Yes □ / No □ checkboxes
 - all-modules.html secondary row label: "Also available"
 - all-modules.html secondary row pill: "Handouts & worksheets"
 - all-modules.html secondary row title: "Resource Library"
-- all-modules.html secondary row description: "Six printable resources to accompany the modules — worksheets, trackers, and step-by-step guides."
+- all-modules.html secondary row description: "Seven printable resources to accompany the modules — worksheets, trackers, and step-by-step guides."
+
+---
+
+## Mind-Skin Health Index (MSHI)
+
+The MSHI lives on mindskinhealth.ca, not on this site:
+https://mindskinhealth.ca/mind-skin-health-index/
+
+- hub.html (clinician card + search entry) and index.html (For clinicians section) link there, opening in a new tab.
+- Additions to that page and to "Our Research" (development timeline, publications, copyright) are managed in WordPress, not in this repository.

@@ -1,7 +1,7 @@
 # MindSkin Connect — Project Spec
 
 ## What this is
-Static patient education website for the MSHAD (Mind-Skin Health for Atopic
+Static patient education website for the MSHAD (Mind Skin Health for Atopic
 Dermatitis) program, University of Alberta Division of Dermatology.
 Hosted on GitHub Pages. Accessed via QR code in a dermatology clinic.
 No frameworks, no build tools, no analytics. Plain HTML and plain CSS only.
