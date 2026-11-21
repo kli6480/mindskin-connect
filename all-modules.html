@@ -30,12 +30,11 @@
     }
 
     .page-heading-plain {
-      font-family: 'Lilita One', cursive;
-      font-weight: 400;
+      font-family: var(--font-site);
+      font-weight: 800;
       font-size: clamp(2rem, 5vw, 3.5rem);
-      text-transform: uppercase;
       line-height: 1.15;
-      letter-spacing: 0.02em;
+      letter-spacing: -0.015em;
       color: var(--navy);
       margin: 2rem 0 0;
     }
@@ -80,14 +79,14 @@
       color: #fff;
       border-radius: 999px;
       padding: 2px 10px;
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-size: 0.75rem;
       font-weight: 600;
       margin-bottom: 8px;
     }
     .mod-title {
-      font-family: 'Lilita One', serif;
-      font-weight: 400;
+      font-family: var(--font-site);
+      font-weight: 700;
       font-size: 1.2rem;
       color: #1B3068;
       display: block;
@@ -95,13 +94,13 @@
       line-height: 1.25;
     }
     .mod-desc {
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-size: 0.9rem;
       color: #666;
       line-height: 1.55;
     }
     .mod-arrow {
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-size: 1.3rem;
       color: var(--ac, #1B3068);
       flex-shrink: 0;
@@ -128,7 +127,7 @@
     .mod-tool-link {
       display: inline-block;
       margin-top: 8px;
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-size: 0.8125rem;
       font-weight: 600;
       color: var(--ac, #1B3068);
@@ -137,7 +136,7 @@
     .mod-tool-link:hover { text-decoration: underline; }
     .res-library-row { margin-top: 32px; }
     .res-library-label {
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-weight: 600;
       font-size: 0.75rem;
       text-transform: uppercase;
@@ -147,7 +146,7 @@
     }
   </style>
 </head>
-<body>
+<body class="type-site">
 
   <a class="skip-link" href="#main">Skip to main content</a>
 
@@ -242,6 +241,7 @@
     <nav class="footer-links" aria-label="Footer navigation">
       <a href="all-modules.html">All modules</a>
       <a href="index.html#for-clinicians">For clinicians</a>
+      <a href="https://mindskinhealth.ca/mindskin-connect/" target="_blank" rel="noopener noreferrer">Mind Skin Canada<span class="sr-only"> (opens in a new tab)</span></a>
       <a href="mailto:supportg@ualberta.ca">supportg@ualberta.ca</a>
     </nav>
   </footer>

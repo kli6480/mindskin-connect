@@ -21,7 +21,8 @@
     }
 
     .error-code {
-      font-family: 'Lilita One', cursive;
+      font-family: var(--font-site);
+      font-weight: 800;
       font-size: clamp(4rem, 15vw, 8rem);
       color: var(--navy);
       line-height: 1;
@@ -30,7 +31,7 @@
     }
 
     .error-message {
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-weight: 400;
       font-size: 1.125rem;
       line-height: 1.65;
@@ -46,7 +47,7 @@
       padding: 0 1.5rem;
       background-color: var(--navy);
       color: var(--white);
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-weight: 600;
       font-size: 0.9375rem;
       text-decoration: none;
@@ -65,7 +66,7 @@
     }
   </style>
 </head>
-<body>
+<body class="type-site">
 
   <a class="skip-link" href="#main">Skip to main content</a>
 
@@ -93,6 +94,7 @@
     <nav class="footer-links" aria-label="Footer navigation">
       <a href="all-modules.html">All modules</a>
       <a href="index.html#for-clinicians">For clinicians</a>
+      <a href="https://mindskinhealth.ca/mindskin-connect/" target="_blank" rel="noopener noreferrer">Mind Skin Canada<span class="sr-only"> (opens in a new tab)</span></a>
       <a href="mailto:supportg@ualberta.ca">supportg@ualberta.ca</a>
     </nav>
   </footer>
