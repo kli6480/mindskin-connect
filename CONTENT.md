@@ -238,7 +238,7 @@ Key points:
 - Regular moderate exercise lowers cortisol, improves sleep, and supports mood.
 - During flares, choose lower-sweat activities and shower with lukewarm water
   afterward.
-- Alberta-based resources: MindShift CBT app, BounceBack Alberta, AHS Mental
+- Alberta-based resources: MindShift CBT app, BounceBack (CMHA), AHS Mental
   Health Helpline (1-877-303-2642), and your family doctor for referrals.
 
 Bring this to your appointment:

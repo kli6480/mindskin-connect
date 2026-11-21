@@ -34,17 +34,16 @@
       margin-bottom: 2.5rem;
     }
     .hub-hero h1 {
-      font-family: 'Lilita One', cursive;
-      font-weight: 400;
+      font-family: var(--font-site);
+      font-weight: 800;
       font-size: clamp(2.25rem, 6vw, 3.75rem);
-      text-transform: uppercase;
       line-height: 1.1;
-      letter-spacing: 0.02em;
+      letter-spacing: -0.015em;
       color: var(--white);
       margin-bottom: 0.75rem;
     }
     .hub-hero .hub-subtitle {
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-size: 1.0625rem;
       color: rgba(255,255,255,0.9);
       max-width: 48ch;
@@ -60,7 +59,7 @@
     }
 
     .hub-section-label {
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-weight: 600;
       font-size: 0.8125rem;
       text-transform: uppercase;
@@ -112,7 +111,7 @@
       border-radius: 999px;
       padding: 2px 10px;
       font-size: 0.75rem;
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-weight: 600;
       margin-bottom: 14px;
       align-self: flex-start;
@@ -130,22 +129,22 @@
     .condition-tile--soon:hover { transform: none; box-shadow: 0 2px 10px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.04); }
 
     .tile-acronym {
-      font-family: 'Lilita One', cursive;
-      font-weight: 400;
+      font-family: var(--font-site);
+      font-weight: 800;
       font-size: 2rem;
       color: var(--tile-accent, #1B3068);
       line-height: 1.1;
       margin-bottom: 4px;
     }
     .tile-full {
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-size: 0.8125rem;
       font-weight: 600;
       color: var(--text);
       margin: 0 0 10px;
     }
     .tile-desc {
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-size: 0.875rem;
       color: #666;
       line-height: 1.55;
@@ -177,7 +176,7 @@
     .hub-tool-text { flex: 1; min-width: 0; }
     .hub-tool-title {
       display: block;
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-weight: 600;
       font-size: 1.0625rem;
       color: var(--navy);
@@ -217,7 +216,7 @@
       color: #888;
     }
     .hub-search {
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-size: 0.875rem;
       padding: 8px 12px 8px 34px;
       border: 1.5px solid #ddd;
@@ -269,7 +268,7 @@
     }
     .hub-result-meta {
       display: block;
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-size: 0.6875rem;
       font-weight: 600;
       text-transform: uppercase;
@@ -279,7 +278,7 @@
     }
     .hub-result-title {
       display: block;
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-size: 0.875rem;
       font-weight: 600;
       color: var(--navy);
@@ -287,14 +286,14 @@
     }
     .hub-result-desc {
       display: block;
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-size: 0.8125rem;
       color: #666;
       line-height: 1.45;
     }
     .hub-result-empty {
       padding: 20px 16px;
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-size: 0.875rem;
       color: #888;
       text-align: center;
@@ -308,7 +307,7 @@
       margin-bottom: 1rem;
     }
     .hub-filter-btn {
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-size: 0.75rem;
       font-weight: 600;
       padding: 5px 14px;
@@ -328,7 +327,7 @@
     }
   </style>
 </head>
-<body>
+<body class="type-site">
 
   <a class="skip-link" href="#main">Skip to main content</a>
 
@@ -420,6 +419,7 @@
     <p>MindSkin Connect © 2025 University of Alberta Division of Dermatology. Licensed CC BY-NC-ND 4.0.</p>
     <nav class="footer-links" aria-label="Footer navigation">
       <a href="index.html#for-clinicians">For clinicians</a>
+      <a href="https://mindskinhealth.ca/mindskin-connect/" target="_blank" rel="noopener noreferrer">Mind Skin Canada<span class="sr-only"> (opens in a new tab)</span></a>
       <a href="mailto:supportg@ualberta.ca">supportg@ualberta.ca</a>
     </nav>
   </footer>
