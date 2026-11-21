@@ -41,7 +41,7 @@
     .gw-section-label {
       font-family: 'Poppins', sans-serif;
       font-weight: 600;
-      color: #888;
+      color: #666;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       font-size: 0.8rem;
@@ -85,7 +85,7 @@
       line-height: 1.6;
       margin-top: 10px;
     }
-    .gw-option--read .gw-option-desc { color: rgba(255,255,255,0.9); }
+    .gw-option--read .gw-option-desc { color: #fff; }
 
     /* Watch toggle card */
     .watch-card {
@@ -116,6 +116,7 @@
       line-height: 1;
     }
     .watch-card.open .watch-arrow { transform: rotate(90deg); }
+    .watch-card-header:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 8px; }
     .watch-desc {
       font-family: 'Poppins', sans-serif;
       color: #666;
@@ -140,7 +141,7 @@
     }
     .video-fallback {
       font-size: 0.8rem;
-      color: #999;
+      color: #666;
       margin-top: 8px;
       text-align: center;
     }
@@ -214,7 +215,7 @@
 
   <header class="site-header">
     <nav class="site-nav" aria-label="Site navigation">
-      <a class="site-logo" href="index.html">MindSkin Connect</a>
+      <a class="site-logo" href="hub.html">MindSkin Connect</a>
       <a href="index.html">Home</a>
       <a href="all-modules.html">All modules</a>
       <a href="index.html#for-clinicians">For clinicians</a>
@@ -245,8 +246,8 @@
             <p class="gw-option-desc">Work through the module as a scrollable experience — with illustrations, expanded explanations, and four interactive quiz questions. Takes about 10–15 minutes.</p>
           </a>
 
-          <div class="watch-card" id="watch-toggle" role="button" tabindex="0" aria-expanded="false" aria-controls="watch-embed">
-            <div class="watch-card-header">
+          <div class="watch-card" id="watch-card">
+            <div class="watch-card-header" id="watch-toggle" role="button" tabindex="0" aria-expanded="false" aria-controls="watch-embed">
               <span class="watch-label">▶ Watch the video</span>
               <span class="watch-arrow" aria-hidden="true">→</span>
             </div>
@@ -264,19 +265,19 @@
         <section class="module-section" aria-labelledby="tools-heading-3">
           <h2 id="tools-heading-3" class="section-bar">Practice tools</h2>
           <div class="section-content">
-            <a class="tool-card" href="handout-pmr.html">
+            <a class="tool-card" href="handout-symptom-diary.html">
               <div class="tool-card-body">
-                <p class="tool-card-label">Step-by-step guide</p>
-                <strong class="tool-card-title">Progressive Muscle Relaxation (PMR)</strong>
-                <p class="tool-card-desc">Tense and release each muscle group in turn to lower stress and ease tension.</p>
+                <p class="tool-card-label">7-day tracker</p>
+                <strong class="tool-card-title">Symptom &amp; Trigger Diary</strong>
+                <p class="tool-card-desc">Track itch, triggers, and stress over 7 days to find your patterns.</p>
               </div>
               <span class="tool-card-arrow">→</span>
             </a>
-            <a class="tool-card" href="handout-stress-relievers.html">
+            <a class="tool-card" href="handout-smart-goal.html">
               <div class="tool-card-body">
-                <p class="tool-card-label">Interactive handout</p>
-                <strong class="tool-card-title">Quick Stress Relievers</strong>
-                <p class="tool-card-desc">Three techniques under five minutes — breathing, body scan, and sensory grounding.</p>
+                <p class="tool-card-label">Goal-setting worksheet</p>
+                <strong class="tool-card-title">My SMART Skin Goal</strong>
+                <p class="tool-card-desc">Build a small, specific goal for one habit you want to change.</p>
               </div>
               <span class="tool-card-arrow">→</span>
             </a>
@@ -308,14 +309,20 @@
   </footer>
 
   <script>
+    var watchCard = document.getElementById('watch-card');
     var watchToggle = document.getElementById('watch-toggle');
     var watchEmbed = document.getElementById('watch-embed');
     function toggleWatch() {
-      var isOpen = watchToggle.classList.toggle('open');
+      var isOpen = watchCard.classList.toggle('open');
       watchEmbed.hidden = !isOpen;
       watchToggle.setAttribute('aria-expanded', isOpen);
     }
-    watchToggle.addEventListener('click', toggleWatch);
+    /* The whole card opens the video, but clicks inside the open video
+       (e.g. the "watch on YouTube" link) must not close it again. */
+    watchCard.addEventListener('click', function (e) {
+      if (watchEmbed.contains(e.target)) return;
+      toggleWatch();
+    });
     watchToggle.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleWatch(); }
     });

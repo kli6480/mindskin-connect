@@ -43,7 +43,10 @@ html {
   height: 100%;
   margin: 0;
   scroll-padding-top: 60px;
-  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
 }
 
 body {
@@ -169,8 +172,23 @@ button {
 @media (max-width: 599px) {
   html { scroll-padding-top: 0; }
   .site-header { position: static; }
-  .site-nav { padding: 8px 16px; }
-  .site-nav a:not(.site-logo) { padding: 4px 8px; font-size: 0.875rem; }
+  .site-nav { padding: 8px 12px 8px 16px; }
+  .site-logo { font-size: 0.9375rem; }
+  .site-nav a:not(.site-logo) { padding: 4px 6px; font-size: 0.8125rem; }
+  /* The current page's own link is redundant here (its h1 says where you are);
+     dropping it lets the nav fit on one row on the landing and All modules pages. */
+  .site-nav a[aria-current="page"] { display: none; }
+}
+
+/* Text for screen readers only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* ── Body links ───────────────────────────────────────── */
@@ -479,8 +497,9 @@ a:focus-visible {
   margin-top: 0.375rem;
 }
 
-.footer-disclaimer {
-  max-width: var(--page-max);
+/* .site-footer prefix outranks `.site-footer p`; 60ch keeps the 13px disclaimer under ~80 characters a line */
+.site-footer .footer-disclaimer {
+  max-width: min(var(--page-max), 60ch);
   margin: 0 auto 0.75rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
@@ -501,10 +520,12 @@ a:focus-visible {
   scroll-margin-top: 110px;
 }
 .about-heading {
-  font-family: 'Lilita One', cursive;
-  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
   color: var(--navy);
-  font-size: clamp(1.6rem, 4vw, 2.25rem);
+  font-size: clamp(1.375rem, 1.1rem + 1.2vw, 1.75rem);
+  line-height: 1.25;
+  text-wrap: balance;
   margin: 0 0 1.5rem;
 }
 .about-grid {
@@ -537,36 +558,52 @@ a:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: 1.25rem;
-  background: var(--navy);
+  background: var(--card-bg);
+  border: 1px solid #E2DDD3;
   border-radius: 16px;
   padding: 1.75rem;
 }
 .about-cta > div { flex: 1 1 280px; }
-.about-cta h3 { color: #fff; }
 .about-cta p {
   font-family: 'Poppins', sans-serif;
   font-size: 0.9375rem;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--text);
   margin: 0;
 }
 .about-contact-btn {
-  flex-shrink: 0;
+  flex-shrink: 1;
+  max-width: 100%;
   display: inline-flex;
   align-items: center;
-  background: var(--teal);
-  color: #08312c;
+  justify-content: center;
+  text-align: center;
+  background: var(--white);
+  color: var(--navy);
+  border: 2px solid var(--navy);
   font-family: 'Poppins', sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.9375rem;
   text-decoration: none;
-  padding: 0.85rem 1.5rem;
+  padding: 0.6rem 1.5rem;
   border-radius: 999px;
-  min-height: 44px;
-  transition: filter 0.2s;
+  min-height: 52px;
+  transition: background-color 0.15s, color 0.15s;
 }
-.about-contact-btn:hover,
-.about-contact-btn:focus-visible { filter: brightness(1.08); }
+.about-contact-btn:hover {
+  background: var(--navy);
+  color: var(--white);
+  text-decoration: none;
+}
+.about-contact-btn:focus-visible { outline: 3px solid var(--teal-ink); outline-offset: 3px; }
+.about-mshi {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text);
+  max-width: 65ch;
+  margin: 1.25rem 0 0;
+}
 
 .footer-links {
   display: flex;
@@ -610,6 +647,7 @@ a:focus-visible {
   color: var(--teal-ink) !important;
   border-bottom: 3px solid var(--teal-ink);
   padding-bottom: 1px;
+  text-decoration: none !important; /* the border is the active marker; no second underline */
 }
 
 /* ── Module completion footer ─────────────────────────── */
