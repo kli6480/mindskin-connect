@@ -7,8 +7,28 @@
   <meta name="description" content="The page you were looking for could not be found.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/favicon.svg">
+  <script>
+    /* Pages moved into program folders (mshad/, msh-hs/, msh-p/). GitHub Pages has no
+       server redirects, so old addresses land here: send them to their new home. */
+    (function () {
+      var path = location.pathname, to = null, m;
+      var moved = {
+        '/hub.html': '/',
+        '/hs-landing.html': '/msh-hs/', '/hs-module-1.html': '/msh-hs/module-1.html',
+        '/p-landing.html': '/msh-p/', '/p-module-1.html': '/msh-p/module-1.html'
+      };
+      if (moved[path]) {
+        to = moved[path];
+      } else if (/^\/(all-modules|resources|module-[\w-]+|handout-[\w-]+)\.html$/.test(path)) {
+        to = '/mshad' + path;
+      } else if ((m = path.match(/^\/(mshad|msh-hs|msh-p)(\/.*)?$/i)) && m[1] !== m[1].toLowerCase()) {
+        to = '/' + m[1].toLowerCase() + (m[2] || '/');
+      }
+      if (to) location.replace(to + location.search + location.hash);
+    })();
+  </script>
   <style>
     .error-page {
       display: flex;
@@ -72,10 +92,10 @@
 
   <header class="site-header">
     <nav class="site-nav" aria-label="Site navigation">
-      <a class="site-logo" href="hub.html">MindSkin Connect</a>
-      <a href="index.html">Home</a>
-      <a href="all-modules.html">All modules</a>
-      <a href="index.html#for-clinicians">For clinicians</a>
+      <a class="site-logo" href="/">MindSkin Connect</a>
+      <a href="/mshad/">Home</a>
+      <a href="/mshad/all-modules.html">All modules</a>
+      <a href="/mshad/#for-clinicians">For clinicians</a>
     </nav>
   </header>
 
@@ -83,7 +103,7 @@
     <div class="error-page">
       <div class="error-code" aria-hidden="true">404</div>
       <h1 class="error-message">Page not found. Let's start from the home page.</h1>
-      <a class="error-home-link" href="index.html">Go to home page</a>
+      <a class="error-home-link" href="/">Go to home page</a>
     </div>
   </main>
 
@@ -92,8 +112,8 @@
     <p>This site does not collect personal information.</p>
     <p>Mind Skin Health for Atopic Dermatitis (MSHAD) © 2025 University of Alberta Division of Dermatology. Licensed CC BY-NC-ND 4.0.</p>
     <nav class="footer-links" aria-label="Footer navigation">
-      <a href="all-modules.html">All modules</a>
-      <a href="index.html#for-clinicians">For clinicians</a>
+      <a href="/mshad/all-modules.html">All modules</a>
+      <a href="/mshad/#for-clinicians">For clinicians</a>
       <a href="https://mindskinhealth.ca/mindskin-connect/" target="_blank" rel="noopener noreferrer">Mind Skin Canada<span class="sr-only"> (opens in a new tab)</span></a>
       <a href="mailto:supportg@ualberta.ca">supportg@ualberta.ca</a>
     </nav>

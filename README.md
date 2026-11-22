@@ -10,8 +10,7 @@ JavaScript limited to the YouTube embeds and the starting-point quiz.
 
 ## Live site
 
-- Temporary: https://kli6480.github.io/mindskin-connect
-- Custom domain (planned): connect.mindskinhealth.ca
+- https://connect.mindskinhealth.ca (MSHAD: https://connect.mindskinhealth.ca/mshad/)
 
 ## Local preview
 
@@ -25,19 +24,20 @@ Then open http://localhost:8000
 
 ## Project structure
 
+Each program lives in its own folder, so new programs can be added beside MSHAD.
+
 | Path | Purpose |
 | --- | --- |
-| `hub.html` | Program picker (MSHAD / MSH-HS / MSH-P) |
-| `index.html` | MSHAD landing page + "find your starting point" quiz |
-| `all-modules.html` | List of the five MSHAD modules |
-| `module-1a.html` … `module-5.html` | The five module pages (video + key points + appointment prompts) |
-| `module-*-read.html` | Text-only ("read") alternative for each module |
-| `resources.html` | Printable handouts & worksheets library |
-| `handout-*.html` | Individual printable patient handouts |
-| `clinician.html` | Information for clinicians |
-| `p-*.html`, `hs-*.html` | Placeholder scaffolding for the MSH-P and MSH-HS programs (in development) |
-| `404.html` | Not-found page |
-| `style.css` | Shared site styles |
+| `index.html` | MindSkin Connect home: program picker (MSHAD / MSH-HS / MSH-P) |
+| `mshad/index.html` | MSHAD landing page + "find your starting point" quiz + For clinicians |
+| `mshad/all-modules.html` | List of the five MSHAD modules |
+| `mshad/module-1a.html` … `mshad/module-5.html` | The five module pages (video + key points + appointment prompts) |
+| `mshad/module-*-read.html` | Text-only ("read") alternative for each module |
+| `mshad/resources.html` | Printable handouts & worksheets library |
+| `mshad/handout-*.html` | Individual printable patient handouts |
+| `msh-hs/`, `msh-p/` | Placeholder scaffolding for the MSH-HS and MSH-P programs (in development) |
+| `404.html` | Not-found page; also forwards the old pre-folder addresses (e.g. `/module-2.html`) to their new place |
+| `style.css`, `favicon.svg`, `assets/` | Shared by every program (pages in a folder reference them with `../`) |
 | `favicon.svg` | Site icon |
 | `CONTENT.md` | **Source of truth for all page copy** — do not paraphrase content into pages by hand |
 | `CLAUDE.md` | Project spec, guardrails, and build order |

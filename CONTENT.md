@@ -738,5 +738,5 @@ Column 4 cells contain: Yes □ / No □ checkboxes
 The MSHI lives on mindskinhealth.ca, not on this site:
 https://mindskinhealth.ca/mind-skin-health-index/
 
-- hub.html (clinician card + search entry) and index.html (For clinicians section) link there, opening in a new tab.
+- The home page index.html (clinician card + search entry) and mshad/index.html (For clinicians section) link there, opening in a new tab.
 - Additions to that page and to "Our Research" (development timeline, publications, copyright) are managed in WordPress, not in this repository.
