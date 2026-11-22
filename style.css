@@ -1315,3 +1315,13 @@ a:focus-visible {
   }
   .site-footer .footer-links a { color: #000; }
 }
+/* Read pages (English and French): language + back links grouped on the right of the fixed read-nav */
+.read-nav-links { display: flex; align-items: center; gap: 20px; }
+.read-nav .read-nav-brand,
+.read-nav .read-nav-back { white-space: nowrap; }
+@media (max-width: 420px) {
+  .read-nav.read-nav { padding: 0 16px; }
+  .read-nav .read-nav-links { gap: 12px; }
+  .read-nav .read-nav-brand { font-size: 1rem; }
+  .read-nav .read-nav-back { font-size: 0.8125rem; }
+}

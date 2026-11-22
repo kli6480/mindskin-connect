@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comprendre votre connexion peau-esprit — SPEDA — MindSkin Connect</title>
+  <meta name="description" content="Module 1a de SPEDA : le lien entre la peau et l’esprit, comment le stress aggrave l’eczéma et comment votre dermatologue peut vous aider.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MindSkin Connect">
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:title" content="Comprendre votre connexion peau-esprit — SPEDA — MindSkin Connect">
+  <meta property="og:description" content="Module 1a de SPEDA : le lien entre la peau et l’esprit, comment le stress aggrave l’eczéma et comment votre dermatologue peut vous aider.">
+  <meta property="og:url" content="https://connect.mindskinhealth.ca/mshad/fr/module-1a.html">
+  <meta property="og:image" content="https://connect.mindskinhealth.ca/assets/social/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Comprendre votre connexion peau-esprit — SPEDA — MindSkin Connect">
+  <meta name="twitter:description" content="Module 1a de SPEDA : le lien entre la peau et l’esprit, comment le stress aggrave l’eczéma et comment votre dermatologue peut vous aider.">
+  <meta name="twitter:image" content="https://connect.mindskinhealth.ca/assets/social/og-image.png">
+  <link rel="canonical" href="https://connect.mindskinhealth.ca/mshad/fr/module-1a.html">
+  <link rel="alternate" hreflang="fr" href="https://connect.mindskinhealth.ca/mshad/fr/module-1a.html">
+  <link rel="alternate" hreflang="en" href="https://connect.mindskinhealth.ca/mshad/module-1a-read.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="icon" href="../../favicon.svg">
+  <style>
+    /* ── Variables ──────────────────────────────────────── */
+    :root {
+      --nav-h: 56px;
+      --bar-h: 4px;
+    }
+
+    /* ── Scroll snap on the viewport ────────────────────── */
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+      scroll-padding-top: calc(var(--nav-h) + var(--bar-h));
+    }
+
+    /* ── Body bg is animated by JS ──────────────────────── */
+    body {
+      background-color: #C17080; /* initial; JS takes over immediately */
+    }
+
+    /* ── Remove layout padding – snap handles alignment ─── */
+    main {
+      padding-top: 0;
+    }
+
+    /* ── Nav ────────────────────────────────────────────── */
+    .read-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-h);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 1000;
+    }
+    .read-nav-brand {
+      font-family: 'Lilita One', serif;
+      color: #1B3068;
+      font-size: 1.1rem;
+      text-decoration: none;
+    }
+    .read-nav-back {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #1B3068;
+      text-decoration: none;
+      padding: 8px 0;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+    .read-nav-back:hover,
+    .read-nav-back:focus { text-decoration: underline; }
+
+    /* ── Progress bar ───────────────────────────────────── */
+    .rd-progress {
+      position: fixed;
+      top: var(--nav-h);
+      left: 0;
+      height: var(--bar-h);
+      width: 0%;
+      background: #2BBFAA;
+      z-index: 999;
+      transition: width 0.1s linear;
+    }
+
+    /* ── Slide base — exact 100vh for snapping ───────────── */
+    .slide {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: transparent; /* body colour shows through */
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 900px;
+      padding: 32px 24px;
+    }
+
+    /* ── Decorative SVGs ────────────────────────────────── */
+    .deco {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+    }
+    /* Large brain characters */
+    .deco-brain {
+      width: min(45%, 380px);
+    }
+
+    /* ── Scroll animations ──────────────────────────────── */
+    @media (prefers-reduced-motion: no-preference) {
+      .anim {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1),
+                    transform 0.6s cubic-bezier(0.16,1,0.3,1);
+      }
+      .anim.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Slide-level momentum scale */
+      .slide {
+        opacity: 0.7;
+        transform: scale(0.97);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .slide.in-view {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      @keyframes gentle-bounce {
+        0%, 100% { transform: translateY(0); }
+        50%       { transform: translateY(8px); }
+      }
+      .scroll-cue { animation: gentle-bounce 2s ease-in-out infinite; }
+    }
+
+    /* ── Type helpers ───────────────────────────────────── */
+    .h1-white {
+      font-family: 'Lilita One', serif;
+      color: #fff;
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    /* Unified h2 — colour driven by data-theme CSS var */
+    .h2-white,
+    .h2-navy {
+      font-family: 'Lilita One', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .h2-white { color: #fff; }
+    .h2-navy  { color: #1B3068; }
+
+    .sub-white,
+    .sub-navy {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+    .sub-white { color: rgba(255,255,255,0.92); }
+    .sub-navy  { color: #1B3068; }
+
+    .body-navy {
+      font-family: 'Poppins', sans-serif;
+      color: #2D2D2D;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    /* ── Slide 1 — hero ─────────────────────────────────── */
+    .hero-badge {
+      display: inline-block;
+      border: 1.5px solid rgba(255,255,255,0.75);
+      color: #fff;
+      border-radius: 999px;
+      padding: 4px 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+    .scroll-cue {
+      display: inline-block;
+      color: rgba(255,255,255,0.78);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      margin-top: 18px;
+    }
+    .hero-orient {
+      font-family: 'Poppins', sans-serif;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      margin-top: 12px;
+      max-width: 420px;
+    }
+
+    /* ── Slide 2 — objective cards ──────────────────────── */
+    .obj-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .obj-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 16px;
+      border-top: 4px solid #C2607A;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #444;
+    }
+    .obj-card strong {
+      display: block;
+      color: #1B3068;
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    /* ── Slide 3 — journey list ─────────────────────────── */
+    .journey-list {
+      list-style: none;
+      margin-top: 12px;
+    }
+    .journey-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+    .journey-item:last-child { border-bottom: none; }
+    .journey-num {
+      font-family: 'Lilita One', serif;
+      font-size: 2rem;
+      color: rgba(255,255,255,0.3);
+      min-width: 52px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .journey-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: #fff;
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    }
+
+    /* ── Slide 4 — icon cards ───────────────────────────── */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .icon-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+    }
+    .icon-card img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      margin: 0 auto 8px;
+    }
+    .icon-card strong {
+      display: block;
+      color: #1B3068;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .icon-card p {
+      color: #555;
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+
+    /* ── Slide 5 — statement blocks ─────────────────────── */
+    .statement {
+      border-left: 4px solid rgba(255,255,255,0.8);
+      padding-left: 20px;
+      margin-bottom: 14px;
+      font-family: 'Poppins', sans-serif;
+      color: rgba(255,255,255,0.92);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.75;
+    }
+    .statement:last-child { margin-bottom: 0; }
+
+    /* ── Slide 6 — rose callout ─────────────────────────── */
+    .rose-callout {
+      background: #C2607A;
+      color: #fff;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-top: 12px;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      line-height: 1.75;
+    }
+
+    /* ── Slide 7 — flow chain ───────────────────────────── */
+    .flow-chain {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 16px;
+    }
+    .flow-pill {
+      background: #fff;
+      border-radius: 999px;
+      padding: 10px 28px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: #1B3068;
+      text-align: center;
+      font-size: 1rem;
+    }
+    .flow-arrow {
+      color: #2BBFAA;
+      font-size: 1.5rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .flow-split {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* ── Slide 8 — flowchart images ─────────────────────── */
+    .flowchart-pair {
+      display: flex;
+      gap: 14px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .flowchart-pair img {
+      width: calc(50% - 10px);
+      min-width: 220px;
+      flex: 1;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    }
+
+    /* ── Slide 9 — impact grid ──────────────────────────── */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .impact-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 14px 18px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.09);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
+    }
+    .impact-card img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .impact-text { flex: 1; }
+    .impact-card strong {
+      display: block;
+      color: #1B3068;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .impact-card p {
+      color: #444;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* ── Slide 10 — mental wellbeing ────────────────────── */
+    .big-callout {
+      background: #C2607A;
+      color: #fff;
+      border-radius: 16px;
+      padding: 20px 24px;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .teal-callout {
+      background: #fff;
+      border-radius: 12px;
+      padding: 14px 18px;
+      border-left: 4px solid #2BBFAA;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+      line-height: 1.75;
+      color: #2D2D2D;
+    }
+
+    /* ── Slide 11 — action cards ────────────────────────── */
+    .action-list {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .action-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 14px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .action-emoji {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      line-height: 1.35;
+    }
+    .action-card p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #2D2D2D;
+    }
+    .action-card strong {
+      display: block;
+      color: #1B3068;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    /* ── Quiz slides ────────────────────────────────────── */
+    .qz-num-badge {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .qz-num-badge--cream {
+      background: rgba(27,48,104,0.1);
+      color: #1B3068;
+    }
+    .qz-num-badge--rose {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+    .qz-scenario {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      border-left: 4px solid #C2607A;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.75;
+      color: #2D2D2D;
+      margin-bottom: 14px;
+    }
+    .qz-scenario--rose {
+      border-left-color: #C2607A;
+    }
+    .qz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    /* Quiz buttons — white on dark navy background */
+    .qz-block .quiz-option {
+      background: #fff;
+      color: #1B3068;
+      border: 1.5px solid rgba(255,255,255,0.3);
+    }
+    .quiz-option.correct {
+      background: #C2607A !important;
+      color: #fff !important;
+      border-color: #C2607A !important;
+    }
+    .quiz-option.wrong {
+      background: transparent !important;
+      color: rgba(255,255,255,0.3) !important;
+      border-color: rgba(255,255,255,0.1) !important;
+      text-decoration: line-through;
+    }
+    /* Override ../style.css quiz-option font-size */
+    .quiz-option { font-size: 1rem; }
+    .qz-feedback {
+      display: none;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+      line-height: 1.6;
+    }
+    .qz-feedback--cream {
+      background: #fff;
+      color: #2D2D2D;
+      border-left: 4px solid #C2607A;
+    }
+    .qz-feedback--rose {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border-left: 4px solid #C2607A;
+    }
+    .qz-feedback.qz-visible { display: block; }
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes fade-in-up {
+        from { opacity: 0; transform: translateY(8px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      .qz-feedback.qz-visible {
+        animation: fade-in-up 0.3s ease forwards;
+      }
+    }
+
+    /* ── Slide 17 — takeaways ───────────────────────────── */
+    .takeaway-list {
+      list-style: none;
+      margin: 12px 0 16px;
+    }
+    .takeaway {
+      display: flex;
+      gap: 14px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      font-family: 'Poppins', sans-serif;
+      color: rgba(255,255,255,0.92);
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      line-height: 1.7;
+    }
+    .takeaway:last-child { border-bottom: none; }
+    .takeaway-arrow {
+      color: #2BBFAA;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .sources-details { margin-top: 24px; }
+    .sources-details > summary {
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.9rem;
+      padding: 8px 0;
+      user-select: none;
+    }
+    .sources-details ol {
+      margin-top: 12px;
+      padding-left: 20px;
+      color: rgba(255,255,255,0.65);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.825rem;
+      line-height: 1.75;
+    }
+    .back-pill {
+      display: inline-block;
+      background: #C2607A;
+      color: #fff;
+      border-radius: 999px;
+      padding: 14px 32px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      margin-top: 28px;
+      min-height: 44px;
+      transition: filter 0.2s;
+    }
+    .back-pill:hover { filter: brightness(1.1); }
+
+    /* ═══ PDF-faithful slides 1–3 (pilot) ══════════════════ */
+    :root {
+      --rose: #CE5C7C;
+      --plum: #3B2138;
+      --cream: #ECE6DE;
+      --pink-lt: #F0A7C2;
+      --rose-card: #CF6A88;
+    }
+    .pdf-slide { height: auto; min-height: 100vh; }
+    .pdf-wrap {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 1120px;
+      margin: 0 auto; padding: 92px 44px 48px;
+      display: grid; gap: 36px; align-items: center;
+    }
+    @media (min-width: 880px) {
+      .pdf-2col          { grid-template-columns: 1.05fr 0.95fr; }
+      .pdf-2col--journey { grid-template-columns: 1fr 1fr; gap: 0; }
+      .s3 .s3-note {
+        border-radius: 50%; aspect-ratio: 1 / 1; max-width: none;
+        width: min(42vw, 430px); padding: 16%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: clamp(.68rem, .8vw, .8rem); line-height: 1.48;
+      }
+    }
+
+    /* Slide 1 — title */
+    .s1 { background: var(--rose); }
+    .s1-badge {
+      display: inline-block; background: #F6CAD9; color: var(--plum);
+      font-family: 'Poppins', sans-serif; font-weight: 600; font-size: .95rem;
+      padding: 9px 24px; border-radius: 999px;
+      box-shadow: 0 5px 0 rgba(59,33,56,.18); margin-bottom: 22px;
+    }
+    .s1-title {
+      font-family: 'Lilita One', serif; color: #fff; text-transform: uppercase;
+      font-size: clamp(2.1rem, 5.4vw, 3.5rem); line-height: 1.06;
+      letter-spacing: .01em; margin: 0 0 24px;
+    }
+    .s1-credits {
+      font-family: 'Poppins', sans-serif; color: rgba(255,255,255,.82);
+      font-size: .88rem; line-height: 1.65; margin: 0;
+    }
+    .s1-graphic {
+      position: relative; display: flex; align-items: center;
+      justify-content: center; min-height: 300px;
+    }
+    .s1-circle {
+      position: absolute; width: min(80%, 380px); aspect-ratio: 1 / 1;
+      background: var(--plum); border-radius: 50%;
+    }
+    .s1-brain { position: relative; width: min(94%, 440px); height: auto; }
+
+    /* Slide 2 — objectives */
+    .s2 { background: var(--cream); }
+    .s2-h {
+      font-family: 'Lilita One', serif; color: var(--plum); text-transform: uppercase;
+      font-size: clamp(1.9rem, 4.6vw, 3rem); line-height: 1.05; margin: 0 0 16px;
+    }
+    .s2-sub {
+      font-family: 'Poppins', sans-serif; color: var(--plum);
+      font-size: clamp(1rem, 1.8vw, 1.15rem); line-height: 1.6; margin: 0;
+    }
+    .obj2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .obj2 {
+      border-radius: 22px; padding: 22px 20px; color: #fff;
+      font-family: 'Poppins', sans-serif; font-size: .92rem; line-height: 1.5;
+      text-align: center; display: flex; flex-direction: column; gap: 12px;
+      min-height: 200px; justify-content: center;
+    }
+    .obj2 b {
+      font-family: 'Lilita One', serif; font-weight: 400;
+      font-size: 1.05rem; letter-spacing: .02em; text-transform: uppercase;
+    }
+    .obj2--1 { background: var(--rose-card); }
+    .obj2--2 { background: var(--pink-lt); color: var(--plum); }
+    .obj2--3 { background: var(--pink-lt); color: var(--plum); }
+    .obj2--4 { background: var(--plum); }
+
+    /* Slide 3 — module outline (PDF-faithful) */
+    .s3 { background: var(--rose); }
+    .s3-bg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      z-index: 0; pointer-events: none;
+    }
+    .s3 .pdf-wrap { position: relative; z-index: 1; align-items: center; }
+    .s3-h {
+      font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--plum);
+      font-size: clamp(1.9rem, 4.4vw, 3rem); margin: 0 0 18px; letter-spacing: -0.01em;
+    }
+    .s3-list { list-style: none; margin: 0; }
+    .s3-item { display: flex; gap: 18px; padding: 7px 0; align-items: baseline; }
+    .s3-num {
+      font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--rose);
+      font-size: 1.5rem; min-width: 42px; flex-shrink: 0;
+    }
+    .s3-label {
+      font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--plum);
+      font-size: 1.02rem; line-height: 1.3;
+    }
+    .s3-sub {
+      font-family: 'Poppins', sans-serif; color: #6a5560;
+      font-size: .88rem; margin-left: 60px; padding: 2px 0;
+    }
+    .s3-right {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; text-align: center; gap: 30px;
+    }
+    .s3-journey {
+      font-family: 'Lilita One', serif; color: #fff; text-transform: uppercase;
+      font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.0; margin: 0;
+    }
+    .s3-note {
+      background: var(--plum); color: #fff; border-radius: 26px;
+      max-width: 440px; padding: 26px 30px; text-align: center;
+      font-family: 'Poppins', sans-serif; font-size: .92rem; line-height: 1.55;
+    }
+    .s3-note strong { font-weight: 700; }
+    @media (max-width: 879px) {
+      .s3 { background: var(--cream); }
+      .s3-bg { display: none; }
+      .s3-right {
+        background: var(--rose); border-radius: 24px;
+        padding: 36px 24px; margin-top: 4px;
+      }
+    }
+
+    /* Generic character graphic (brain on a dark circle) */
+    .char-graphic { position: relative; display: flex; align-items: center; justify-content: center; min-height: 300px; }
+    .char-circle { position: absolute; width: min(82%, 360px); aspect-ratio: 1/1; background: var(--plum); border-radius: 50%; }
+    .char-graphic > img { position: relative; width: min(94%, 420px); height: auto; }
+
+    /* Slide 4 — "what is eczema" icon row */
+    .ez-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 10px; }
+    .ez-item { text-align: center; font-family: 'Poppins', sans-serif; }
+    .ez-circle { width: clamp(74px, 9vw, 118px); aspect-ratio: 1/1; border-radius: 50%; margin: 0 auto 4px; display: flex; align-items: center; justify-content: center; }
+    .ez-circle img { width: 52%; height: 52%; object-fit: contain; }
+    .ez-arrow { color: var(--plum); font-size: 1.4rem; line-height: 1; margin-bottom: 8px; }
+    .ez-item p { color: var(--plum); font-size: .9rem; line-height: 1.5; }
+    .ez-item p strong { font-weight: 700; }
+    .ez-1 .ez-circle { background: #3B2138; } .ez-2 .ez-circle { background: #F0A7C2; }
+    .ez-3 .ez-circle { background: #E389A9; } .ez-4 .ez-circle { background: #CF6A88; }
+
+    /* Slide 7 — stress cycle (triangle) */
+    .cycle { max-width: 660px; margin: 18px auto 0; }
+    .cycle-top { display: flex; justify-content: center; }
+    .cycle-bottom { display: flex; justify-content: space-between; gap: 20px; margin-top: 20px; }
+    .cyc { text-align: center; font-family: 'Poppins', sans-serif; flex: 1; max-width: 220px; }
+    .cyc-circle { width: clamp(90px, 12vw, 148px); aspect-ratio: 1/1; border-radius: 50%; background: #E389A9; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
+    .cyc-circle img { width: 56%; height: 56%; }
+    .cyc h3 { font-family: 'Lilita One', serif; font-weight: 400; color: var(--plum); font-size: 1rem; margin-bottom: 4px; text-transform: uppercase; }
+    .cyc p { color: #4a3540; font-size: .82rem; line-height: 1.45; }
+    .cycle-arrows { text-align: center; color: var(--plum); font-size: 1.5rem; margin: 2px 0; opacity: .8; }
+
+    /* Slide 9 — wider-impact 4 cards */
+    .impact4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 16px; }
+    .impact4 .ic { border-radius: 20px; padding: 22px 16px; font-family: 'Poppins', sans-serif; text-align: center; }
+    .impact4 .ic h3 { font-family: 'Lilita One', serif; font-weight: 400; font-size: 1.02rem; margin-bottom: 10px; }
+    .impact4 .ic p { font-size: .85rem; line-height: 1.45; }
+    .ic-1 { background: #F0A7C2; color: var(--plum); } .ic-2 { background: #CF6A88; color: #fff; }
+    .ic-3 { background: #E389A9; color: var(--plum); } .ic-4 { background: #F0A7C2; color: var(--plum); }
+
+    /* Cream / callout cards */
+    .cream-card { background: #fff; border-radius: 18px; padding: 24px 26px; font-family: 'Poppins', sans-serif; color: var(--plum); font-size: clamp(.98rem, 1.7vw, 1.1rem); line-height: 1.65; }
+    .mini-callout { background: #fff; border-radius: 16px; padding: 20px 22px; font-family: 'Poppins', sans-serif; color: var(--plum); font-size: clamp(.92rem, 1.5vw, 1rem); line-height: 1.6; font-style: italic; }
+    .mini-callout .bulb, .cream-card .bulb { font-style: normal; font-size: 1.4rem; display: block; margin-bottom: 6px; }
+    .derm-list { list-style: none; margin: 8px 0 0; display: flex; flex-direction: column; gap: 14px; }
+    .derm-list li { font-family: 'Poppins', sans-serif; color: #fff; font-size: clamp(.95rem, 1.6vw, 1.05rem); line-height: 1.5; padding-left: 26px; position: relative; }
+    .derm-list li::before { content: "•"; position: absolute; left: 4px; color: #fff; font-size: 1.3rem; line-height: 1; }
+    .derm-list strong { display: block; }
+
+    /* Quiz — faithful cream treatment */
+    .qz2 { background: var(--cream); }
+    .qz2-title { font-family: 'Lilita One', serif; color: var(--plum); text-transform: uppercase; font-size: clamp(1.9rem, 4.4vw, 2.9rem); margin: 0 0 14px; }
+    .qz2-badge { display: inline-block; background: #F6CAD9; color: var(--plum); border-radius: 999px; padding: 6px 20px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: .82rem; margin-bottom: 16px; box-shadow: 0 4px 0 rgba(59,33,56,.15); }
+    .qz2-card { background: #fff; border-radius: 20px; padding: 26px 28px; box-shadow: 0 4px 20px rgba(59,33,56,.08); max-width: 760px; }
+    .qz2-scn { font-family: 'Poppins', sans-serif; color: var(--plum); font-size: clamp(1rem, 1.9vw, 1.12rem); line-height: 1.7; margin-bottom: 18px; }
+    .qz2 .qz-options { gap: 10px; }
+    .qz2 .quiz-option { background: #efe9e3; color: var(--plum); border: none; border-radius: 999px; text-align: center; font-size: .98rem; }
+    .qz2 .quiz-option.correct { background: #CF6A88 !important; color: #fff !important; }
+    .qz2 .quiz-option.wrong { background: #efe9e3 !important; color: rgba(59,33,56,.4) !important; text-decoration: none; }
+    .qz2-fb { display: none; background: #CF6A88; color: #fff; border-radius: 20px; padding: 18px 22px; margin-top: 16px; font-family: 'Poppins', sans-serif; font-size: clamp(.92rem, 1.6vw, 1rem); line-height: 1.55; }
+    .qz2-fb.qz-visible { display: block; }
+    .qz2-brain { position: absolute; right: 3%; bottom: 4%; width: min(24%, 210px); opacity: .95; z-index: 0; }
+
+    @media (max-width: 879px) {
+      .ez-row { grid-template-columns: repeat(2, 1fr); }
+      .impact4 { grid-template-columns: repeat(2, 1fr); }
+      .cycle-bottom { flex-direction: column; align-items: center; }
+      .qz2-brain { display: none; }
+    }
+
+    /* ── Responsive ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .deco-brain { width: 60%; }
+      .obj-grid   { grid-template-columns: 1fr; }
+      .icon-grid  { grid-template-columns: 1fr; }
+      .flow-split   { flex-direction: column; align-items: center; }
+      .flowchart-pair img { width: 100%; }
+      .slide-content { padding: 24px 16px; }
+      .pdf-wrap { padding: 78px 18px 36px; gap: 26px; }
+      .obj2 { min-height: 150px; padding: 18px 14px; }
+      .s3-note { width: min(80vw, 280px); }
+    }
+    /* ── Bounded proportions: keep slide type/art in a comfortable range ── */
+    .s1-title { font-size: clamp(1.8rem, 3.4vw, 2.9rem) !important; }
+    .s2-h     { font-size: clamp(1.6rem, 3.1vw, 2.5rem) !important; }
+    .s3-h     { font-size: clamp(1.55rem, 2.9vw, 2.3rem) !important; }
+    .s3-journey { font-size: clamp(1.85rem, 3.6vw, 2.8rem) !important; }
+    .qz2-title  { font-size: clamp(1.6rem, 3.1vw, 2.4rem) !important; }
+    .char-circle, .s1-circle { width: min(62%, 300px) !important; }
+    .char-graphic > img, .s1-brain { width: min(76%, 340px) !important; }
+    .char-graphic, .s1-graphic { min-height: 260px !important; }
+    @media (max-width: 880px) {
+      .s1-title { font-size: clamp(1.55rem, 6vw, 2.15rem) !important; }
+      .s2-h, .s3-h, .qz2-title { font-size: clamp(1.45rem, 5.4vw, 2rem) !important; }
+      .s3-journey { font-size: clamp(1.7rem, 6.4vw, 2.25rem) !important; }
+      .char-graphic, .s1-graphic { min-height: 190px !important; }
+      .char-circle, .s1-circle { width: min(50vw, 250px) !important; }
+      .char-graphic > img, .s1-brain { width: min(58vw, 290px) !important; }
+    }
+  
+    /* ═══════ Deck polish: graphics + mobile / glitch fixes ═══════ */
+
+    /* Mobile viewport height: dvh stops the mobile address bar from
+       cutting off or jumping slide content (falls back to the 100vh above). */
+    .pdf-slide { min-height: 100dvh; }
+
+    /* Gentler snapping so a tall (mobile) slide never traps the scroll. */
+    html { scroll-snap-type: y proximity; }
+    .slide { scroll-snap-stop: normal; }
+
+    /* Keep every slide fully visible. The old 0.6-visibility momentum could
+       leave a tall slide stuck faded on small screens; motion now comes from
+       the content fade-ins and the gentle float below. */
+    .slide { opacity: 1 !important; transform: none !important; }
+
+    /* Depth: a soft top-right light source on the solid-colour slides. */
+    .s1 { background-image: radial-gradient(115% 80% at 82% 4%, rgba(255,255,255,.10), rgba(255,255,255,0) 55%); }
+
+    /* Motion-safe gentle life — small, slow, GPU-composited. */
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes msc-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+      @keyframes msc-drift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(12px); } }
+      .char-graphic > img    { animation: msc-float 6.5s ease-in-out infinite; }
+      .deco-char             { animation: msc-float 7.5s ease-in-out infinite; }
+      .qz2-char              { animation: msc-float 7s ease-in-out infinite; }
+      .deco:not(.deco-char)  { animation: msc-drift 18s ease-in-out infinite; }
+    }
+
+    /* Interactive polish. */
+    @media (hover: hover) {
+      .obj2, .relief-card, .nutri-card, .handout-cta { transition: transform .25s ease, box-shadow .25s ease; }
+      .obj2:hover, .relief-card:hover, .nutri-card:hover { transform: translateY(-4px); }
+    }
+    .quiz-option { transition: transform .12s ease, background .2s ease, color .2s ease; }
+    .quiz-option:not(.correct):not(.wrong):active { transform: scale(.985); }
+
+    /* Progress-bar glow. */
+    .rd-progress { box-shadow: 0 0 10px rgba(43,191,170,.45); }
+
+  
+    /* ═══ Fluid type scale: single smooth clamp per heading (no breakpoint
+       jump — proportional at every width, capped so it never gets huge). ═══ */
+    .s1-title    { font-size: clamp(1.5rem,  calc(1rem + 2.1vw),  2.75rem) !important; }
+    .s2-h        { font-size: clamp(1.45rem, calc(1rem + 1.9vw),  2.5rem)  !important; }
+    .s3-h        { font-size: clamp(1.4rem,  calc(1rem + 1.85vw), 2.4rem)  !important; }
+    .s3-journey  { font-size: clamp(1.7rem,  calc(1.1rem + 2.4vw), 3rem)   !important; }
+    .qz2-title   { font-size: clamp(1.45rem, calc(1rem + 1.9vw),  2.5rem)  !important; }
+
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Aller au contenu principal</a>
+
+  <!-- Fixed nav -->
+  <nav class="read-nav" aria-label="Navigation du module">
+    <a class="read-nav-brand" href="../../">MindSkin Connect</a>
+    <span class="read-nav-links">
+      <a class="read-nav-back" href="../module-1a-read.html" lang="en" hreflang="en">English</a>
+      <a class="read-nav-back" href="./">← Modules SPEDA</a>
+    </span>
+  </nav>
+
+  <!-- Scroll progress -->
+  <div class="rd-progress" id="rd-progress" role="progressbar"
+       aria-label="Progression de la lecture" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <main id="main">
+
+    <!-- ══ SLIDE 1 — Title ══════════════════ -->
+    <section class="slide pdf-slide s1" id="slide-1" data-bg="#CE5C7C" data-theme="dark" aria-label="Présentation du module">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:34%; opacity:0.55;">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-blob.svg" aria-hidden="true"
+           style="bottom:-8%; left:-5%; width:26%; opacity:0.55;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <span class="s1-badge anim" data-delay="0">Module 1a</span>
+          <h1 class="s1-title anim" data-delay="100">Comprendre votre connexion peau-esprit</h1>
+          <p class="s1-credits anim" data-delay="200">Crédits : Michelle Leung BScN; Kevin Li BSc MSPH<br>
+            Dr. Marlene Dytoc MD PhD FRCPC<br>
+            Conçu par : Danting Zheng BSc Premier cycle<br>
+            Traduction : Cécilia Bernier BSc, Michelle Leung BScN</p>
+          <span class="scroll-cue anim" data-delay="300" style="display:inline-block; margin-top:20px; color:rgba(255,255,255,.8);">↓ Faites défiler pour commencer</span>
+        </div>
+        <div class="s1-graphic anim" data-delay="200">
+          <div class="s1-circle"></div>
+          <img class="s1-brain" src="../../assets/modules/module-1a-brain-hero.webp"
+               alt="Un cerveau souriant portant un masque et une cape de superhéros">
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 2 — Objectives ═════════════ -->
+    <section class="slide pdf-slide s2" id="slide-2" data-bg="#ECE6DE" data-theme="light" aria-label="Objectifs d’apprentissage">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-pink.svg" aria-hidden="true"
+           style="top:-7%; left:-4%; width:26%; opacity:0.35;">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-bold.svg" aria-hidden="true"
+           style="bottom:-9%; right:-5%; width:30%; opacity:0.22;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s2-h anim" data-delay="0">Ce que nous allons explorer ensemble</h2>
+          <p class="s2-sub anim" data-delay="100">À la fin de ce module, vous serez en mesure de :</p>
+        </div>
+
+        <div class="obj2-grid">
+          <div class="obj2 obj2--1 anim" data-delay="150"><b>Objectif #1</b>Comprendre les bases de la psychodermatologie &#8211; le lien entre la peau et l’esprit.</div>
+          <div class="obj2 obj2--2 anim" data-delay="225"><b>Objectif #2</b>Voir comment le stress peut aggraver vos symptômes d’eczéma.</div>
+          <div class="obj2 obj2--3 anim" data-delay="300"><b>Objectif #3</b>Reconnaître comment l’eczéma peut affecter votre vie et votre bien-être.</div>
+          <div class="obj2 obj2--4 anim" data-delay="375"><b>Objectif #4</b>Apprendre comment votre dermatologue peut vous aider à gérer ces aspects.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 3 — Module outline ═════════ -->
+    <section class="slide pdf-slide s3" id="slide-3" data-bg="#CE5C7C" data-theme="light" aria-label="Aperçu du module">
+      <svg class="s3-bg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+        <path d="M -80,-80 L 760,-80 C 880,80 1000,200 970,340 C 945,455 815,480 885,610 C 950,730 770,800 690,980 L -80,980 Z" fill="#ECE6DE"/>
+        <path d="M -80,650 C 120,590 255,655 300,785 C 348,905 150,980 -80,980 Z" fill="#CE5C7C"/>
+        <path d="M 1680,700 C 1560,685 1470,790 1525,980 L 1680,980 Z" fill="#ECE6DE"/>
+        <g fill="none" stroke="#ffffff" stroke-width="3" opacity="0.32">
+          <circle cx="1500" cy="130" r="55"/><circle cx="1500" cy="130" r="115"/><circle cx="1500" cy="130" r="175"/><circle cx="1500" cy="130" r="235"/><circle cx="1500" cy="130" r="295"/>
+        </g>
+        <g fill="none" stroke="#ffffff" stroke-width="3" opacity="0.24">
+          <circle cx="1585" cy="560" r="45"/><circle cx="1585" cy="560" r="100"/><circle cx="1585" cy="560" r="155"/><circle cx="1585" cy="560" r="210"/>
+        </g>
+        <g fill="none" stroke="#ffffff" stroke-width="3" opacity="0.30">
+          <circle cx="1470" cy="885" r="55"/><circle cx="1470" cy="885" r="115"/><circle cx="1470" cy="885" r="175"/><circle cx="1470" cy="885" r="235"/>
+        </g>
+        <g fill="none" stroke="#3B2138" stroke-width="3" opacity="0.09">
+          <circle cx="35" cy="120" r="48"/><circle cx="35" cy="120" r="95"/><circle cx="35" cy="120" r="142"/>
+        </g>
+        <circle cx="1592" cy="695" r="40" fill="#3B2138"/>
+        <circle cx="1290" cy="150" r="26" fill="#3B2138" opacity="0.9"/>
+      </svg>
+
+      <div class="pdf-wrap pdf-2col pdf-2col--journey">
+        <div class="s3-left">
+          <h2 class="s3-h anim" data-delay="0">Aperçu du module</h2>
+          <ol class="s3-list">
+            <li class="s3-item anim" data-delay="80"><span class="s3-num">01</span><span class="s3-label">Qu’est-ce que l’eczéma (dermatite atopique)? Petit rappel</span></li>
+            <li class="s3-item anim" data-delay="130"><span class="s3-num">02</span><span class="s3-label">Le lien peau-esprit : introduction à la psychodermatologie</span></li>
+            <li class="s3-item anim" data-delay="180"><span class="s3-num">03</span><span class="s3-label">Mise au point sur le stress et l’eczéma</span></li>
+            <li class="s3-item anim" data-delay="230"><span class="s3-num">04</span><span class="s3-label">Comment le stress peut intensifier l’eczéma</span></li>
+            <li class="s3-item anim" data-delay="280"><span class="s3-num">05</span><span class="s3-label">Comment est-ce que le stress peut aggraver l’eczéma?</span></li>
+            <li class="s3-sub anim" data-delay="300">a) Sur votre vie quotidienne et votre bien-être émotionnel</li>
+            <li class="s3-item anim" data-delay="340"><span class="s3-num">06</span><span class="s3-label">Faire équipe avec votre dermatologue</span></li>
+            <li class="s3-item anim" data-delay="390"><span class="s3-num">07</span><span class="s3-label">Points clés</span></li>
+          </ol>
+        </div>
+
+        <div class="s3-right anim" data-delay="150">
+          <h2 class="s3-journey">Notre parcours aujourd’hui!</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 4 — What is Eczema ═════════ -->
+    <section class="slide pdf-slide s2" id="slide-4" data-bg="#ECE6DE" data-theme="light" aria-label="Qu’est-ce que l’eczéma">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-pink.svg" aria-hidden="true"
+           style="top:-7%; right:-4%; width:24%; opacity:0.3;">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-bold.svg" aria-hidden="true"
+           style="bottom:-9%; left:-5%; width:26%; opacity:0.2;">
+
+      <div class="pdf-wrap">
+        <h2 class="s2-h anim" data-delay="0">Qu’est-ce que l’eczéma (dermatite atopique)?</h2>
+
+        <div class="ez-row">
+          <div class="ez-item ez-1 anim" data-delay="100">
+            <div class="ez-circle"><img src="../../assets/modules/module-1a-icon-genetics.svg" alt="Brin d’ADN"></div>
+            <div class="ez-arrow">&#8595;</div>
+            <p>La dermatite atopique (DA) est une maladie <strong>inflammatoire</strong> chronique de la peau fréquente. Il s’agit d’une maladie <strong>génétique</strong> complexe influencée par des <strong>facteurs environnementaux</strong>.</p>
+          </div>
+          <div class="ez-item ez-2 anim" data-delay="175">
+            <div class="ez-circle"><img src="../../assets/modules/module-1a-icon-itch.svg" alt="Une main avec une éruption qui démange"></div>
+            <div class="ez-arrow">&#8595;</div>
+            <p>Caractérisée par de fortes <strong>démangeaisons</strong> et de l’<strong>inflammation</strong>.</p>
+          </div>
+          <div class="ez-item ez-3 anim" data-delay="250">
+            <div class="ez-circle"><img src="../../assets/modules/module-1a-icon-age.svg" alt="Un bébé"></div>
+            <div class="ez-arrow">&#8595;</div>
+            <p>Elle commence généralement durant la <strong>petite enfance</strong> (début précoce), mais peut aussi parfois apparaître pour la première fois à l’âge adulte (début tardif).</p>
+          </div>
+          <div class="ez-item ez-4 anim" data-delay="325">
+            <div class="ez-circle"><img src="../../assets/modules/module-1a-icon-quality-of-life.svg" alt="Une personne qui tient un cœur"></div>
+            <div class="ez-arrow">&#8595;</div>
+            <p>Elle peut avoir des <strong>répercussions importantes et négatives</strong> sur la qualité de vie.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 5 — Skin-Mind Link ═════════ -->
+    <section class="slide pdf-slide s1" id="slide-5" data-bg="#CE5C7C" data-theme="dark" aria-label="Le lien peau-esprit">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:30%; opacity:0.5;">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-blob.svg" aria-hidden="true"
+           style="bottom:-8%; left:-5%; width:22%; opacity:0.5;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.6rem,3.8vw,2.6rem); margin-bottom:22px;">Le lien peau-esprit : introduction à la psychodermatologie</h2>
+          <div class="statement anim" data-delay="120">
+            Votre peau et votre cerveau sont étroitement liés par des voies nerveuses, des hormones et des signaux immunitaires communs. La psychodermatologie est la discipline qui étudie et prend en charge ce lien essentiel.
+          </div>
+          <div class="statement anim" data-delay="200">
+            Des facteurs émotionnels comme le stress, l’anxiété et l’humeur peuvent influencer directement des affections cutanées comme l’eczéma, et souvent en déclencher ou en aggraver les symptômes.
+          </div>
+          <div class="statement anim" data-delay="280">
+            Et la relation va dans les deux sens. Vivre avec une affection cutanée visible peut, en retour, avoir un impact sur l’estime de soi, la confiance et le bien-être mental.
+          </div>
+        </div>
+        <div class="char-graphic anim" data-delay="150">
+          <div class="char-circle"></div>
+          <img src="../../assets/modules/module-1a-brain-celebrate.webp" alt="Un cerveau joyeux qui célèbre">
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 6 — Stress: A Closer Look ══ -->
+    <section class="slide pdf-slide s2" id="slide-6" data-bg="#ECE6DE" data-theme="light" aria-label="Le stress et votre eczéma">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-pink.svg" aria-hidden="true"
+           style="top:-7%; right:-4%; width:22%; opacity:0.3;">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-bold.svg" aria-hidden="true"
+           style="bottom:-9%; left:-5%; width:24%; opacity:0.2;">
+
+      <div class="pdf-wrap" style="max-width:820px;">
+        <div class="cream-card anim" data-delay="0">
+          <h2 class="s2-h" style="text-align:center; font-size:clamp(1.5rem,3.4vw,2.3rem); margin:0 0 16px;">Mise au point sur le stress et l’eczéma</h2>
+          <p style="margin:0 0 14px;">Pour de nombreux adultes, <strong>le stress est un facteur déclencheur principal</strong> ou un facteur majeur qui aggrave les poussées d’eczéma.</p>
+          <p style="margin:0;"><strong>Les sources de stress peuvent être variées :</strong> pressions liées au travail, difficultés relationnelles, préoccupations financières, changements importants dans la vie ou encore le fardeau quotidien lié à la gestion d’une maladie chronique.</p>
+        </div>
+        <div class="mini-callout anim" data-delay="150" style="background:#CF6A88; color:#fff; margin-top:16px;">
+          <span class="bulb">&#128161;</span> Reconnaître vos propres <strong>signes de stress</strong> et comprendre comment ils peuvent être liés à votre eczéma est une étape importante de sa prise en charge.
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 7 — Stress cycle ═══════════ -->
+    <section class="slide pdf-slide s2" id="slide-7" data-bg="#ECE6DE" data-theme="light" aria-label="Comment le stress aggrave l’eczéma">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-bold.svg" aria-hidden="true"
+           style="top:-8%; right:-5%; width:26%; opacity:0.22;">
+
+      <div class="pdf-wrap" style="max-width:900px;">
+        <div>
+          <h2 class="s2-h anim" data-delay="0" style="color:var(--rose); margin-bottom:2px;">Comment est-ce que le stress aggrave l’eczéma?</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:var(--rose); font-weight:600; font-size:1.05rem;">(La science, simplifiée!)</p>
+        </div>
+
+        <div class="cycle">
+          <div class="cycle-top">
+            <div class="cyc anim" data-delay="150">
+              <div class="cyc-circle"><img src="../../assets/modules/module-1a-cycle-stress.svg" alt="Une personne stressée"></div>
+              <h3>Stress</h3>
+              <p>Votre cerveau active la réponse «fuite ou lutte» et libère des hormones du stress comme le cortisol et l’adrénaline.</p>
+            </div>
+          </div>
+          <div class="cycle-arrows anim" data-delay="200">&#8595;</div>
+          <div class="cycle-bottom">
+            <div class="cyc anim" data-delay="250">
+              <div class="cyc-circle"><img src="../../assets/modules/module-1a-cycle-skin-barrier.svg" alt="Une main avec une peau affaiblie"></div>
+              <h3>&#8595; Intégrité de la barrière cutanée</h3>
+              <p>Elles affaiblissent la barrière protectrice de votre peau, la rendant plus vulnérable aux irritants et à la perte d’humidité.</p>
+            </div>
+            <div class="cyc anim" data-delay="320">
+              <div class="cyc-circle"><img src="../../assets/modules/module-1a-cycle-scratch.svg" alt="Une main qui gratte la peau"></div>
+              <h3>&#8593; Démangeaisons, grattage et douleur cutanée</h3>
+              <p>Elles stimulent le système immunitaire (inflammation de type allergique), ce qui entraîne plus de démangeaisons, de grattage et de douleur cutanée.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 8 — Want to go deeper ════════════════════ -->
+    <section class="slide pdf-slide s2" id="slide-8" data-bg="#ECE6DE" data-theme="light" aria-label="La science derrière le stress et l’eczéma">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-pink.svg" aria-hidden="true"
+           style="top:-6%; right:-4%; width:20%; opacity:0.3;">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-bold.svg" aria-hidden="true"
+           style="bottom:-8%; left:-5%; width:22%; opacity:0.2;">
+      <div class="pdf-wrap" style="max-width:960px;">
+        <h2 class="s2-h anim" data-delay="0" style="margin-bottom:4px;">Envie d’en savoir plus?</h2>
+        <p class="s2-sub anim" data-delay="100">La science derrière le stress et l’eczéma — pour les curieux.</p>
+
+        <div class="flowchart-pair anim" data-delay="200">
+          <img src="../../assets/modules/fr/module-1a-fr-axe-stress.png"
+               alt="Comment le stress aggrave la DA : le stress est détecté par l’hypothalamus, qui stimule l’hypophyse (hormone ACTH); l’ACTH stimule les glandes surrénales, qui libèrent le cortisol et l’adrénaline. Ces hormones favorisent une inflammation de type allergique qui aggrave la dermatite atopique, ou agissent directement sur la peau en affaiblissant sa barrière, ce qui entraîne des infections et des poussées."
+               onerror="this.style.display='none'">
+          <img src="../../assets/modules/fr/module-1a-fr-stress-demangeaisons.png"
+               alt="Stress et DA, l’impact sur les démangeaisons et le grattage : au début, des taux élevés de cortisol augmentent le besoin de se gratter par habitude et la réactivité du système immunitaire; plus tard, le cerveau perçoit les démangeaisons comme plus intenses, ce qui entretient le cycle démangeaison-grattage et l’inflammation de la peau."
+               onerror="this.style.display='none'">
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 9 — Wider impact ═══════════ -->
+    <section class="slide pdf-slide s2" id="slide-9" data-bg="#ECE6DE" data-theme="light" aria-label="L’impact de l’eczéma sur votre vie">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-pink.svg" aria-hidden="true"
+           style="top:-7%; right:-4%; width:22%; opacity:0.3;">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-bold.svg" aria-hidden="true"
+           style="bottom:-9%; left:-5%; width:24%; opacity:0.2;">
+
+      <div class="pdf-wrap" style="max-width:1040px;">
+        <div style="text-align:center;">
+          <h2 class="s2-h anim" data-delay="0" style="margin-bottom:14px;">Au-delà de la peau : l’impact de l’eczéma sur votre vie</h2>
+          <p class="anim" data-delay="80" style="display:inline-block; background:var(--plum); color:#fff; border-radius:999px; padding:9px 24px; font-family:'Poppins',sans-serif; font-size:.98rem;">L’eczéma ne se limite pas à votre peau. Il peut avoir un impact sur :</p>
+        </div>
+
+        <div class="impact4">
+          <div class="ic ic-1 anim" data-delay="150"><h3>Qualité du sommeil</h3><p>Les démangeaisons nocturnes sont fréquentes et entraînent un sommeil perturbé, de la fatigue et une diminution du fonctionnement durant la journée.</p></div>
+          <div class="ic ic-2 anim" data-delay="220"><h3>Bien-être émotionnel</h3><p>Vivre avec des démangeaisons chroniques et des changements cutanés visibles peut entraîner de la frustration, de l’anxiété et une humeur dépressive.</p></div>
+          <div class="ic ic-3 anim" data-delay="290"><h3>Activités quotidiennes et vie sociale</h3><p>Vous pourriez éviter certaines activités, certains vêtements ou certaines situations sociales en raison de l’inconfort ou de préoccupations liées à l’apparence de votre peau.</p></div>
+          <div class="ic ic-4 anim" data-delay="360"><h3>Performance à l’école et au travail</h3><p>L’inconfort, le manque de sommeil et la détresse émotionnelle peuvent nuire à la concentration et à la productivité.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 10 — Mental Well-being ═════ -->
+    <section class="slide pdf-slide s1" id="slide-10" data-bg="#CE5C7C" data-theme="dark" aria-label="L’eczéma et votre bien-être mental">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:30%; opacity:0.5;">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-blob.svg" aria-hidden="true"
+           style="bottom:-8%; left:-5%; width:20%; opacity:0.5;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.6rem,3.8vw,2.6rem); margin-bottom:22px;">L’eczéma et votre bien-être mental</h2>
+          <p class="anim" data-delay="120" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(1rem,1.9vw,1.12rem); line-height:1.7; margin:0 0 16px;">Il est bien documenté que <strong>les adultes atteints d’eczéma sont plus susceptibles de vivre de l’anxiété et/ou de la dépression</strong> que ceux qui n’en sont pas atteints.</p>
+          <p class="anim" data-delay="200" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(1rem,1.9vw,1.12rem); line-height:1.7; margin:0;"><strong>Ce n’est pas un signe de faiblesse</strong>, mais plutôt une conséquence compréhensible de la gestion d’une maladie chronique souvent difficile.</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:22px; align-items:center;">
+          <div class="mini-callout anim" data-delay="150"><span class="bulb">&#128161;</span> Si vous avez de la difficulté avec votre humeur, votre anxiété ou l’effet de l’eczéma sur votre santé mentale, sachez qu’<strong>un soutien efficace est disponible.</strong></div>
+          <img class="anim" data-delay="220" src="../../assets/modules/module-1a-brain-caged.webp" alt="Un cerveau triste enfermé dans une cage" style="width:min(66%,230px); height:auto;">
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 11 — Partnering w/ Dermatologist ═ -->
+    <section class="slide pdf-slide s1" id="slide-11" data-bg="#CE5C7C" data-theme="dark" aria-label="Faire équipe avec votre dermatologue">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; left:-4%; width:28%; opacity:0.5;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div class="char-graphic anim" data-delay="120">
+          <div class="char-circle"></div>
+          <img src="../../assets/modules/module-1a-brain-crown.webp" alt="Un cerveau qui porte une couronne">
+        </div>
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.55rem,3.5vw,2.5rem); margin-bottom:14px;">Faire équipe avec votre dermatologue</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.95rem,1.7vw,1.05rem); line-height:1.6; margin:0 0 16px;">Votre dermatologue peut être un allié clé dans la gestion des impacts plus larges de votre eczéma. N’hésitez pas à :</p>
+          <ul class="derm-list">
+            <li class="anim" data-delay="150"><strong>Discuter de l’impact global :</strong> Expliquez comment l’eczéma affecte votre sommeil, votre humeur, votre travail et votre vie quotidienne – pas seulement vos symptômes physiques.</li>
+            <li class="anim" data-delay="210"><strong>Aborder l’aspect peau-esprit :</strong> Demandez quelles stratégies ou ressources vos professionnels de la santé recommandent pour gérer les poussées liées au stress.</li>
+            <li class="anim" data-delay="270"><strong>Demander des références :</strong> Si vous éprouvez des difficultés sur le plan émotionnel, demandez s’ils peuvent vous orienter vers des professionnels de la santé mentale ou des groupes de soutien qui connaissent bien les affections cutanées chroniques.</li>
+            <li class="anim" data-delay="330"><strong>Collaborer à votre plan de traitement :</strong> Travaillez ensemble pour trouver un plan qui traite votre peau tout en s’intégrant à votre vie quotidienne.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 12 — Quiz Q1 ═════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-12" data-bg="#ECE6DE" data-theme="light" aria-label="Question 1 du quiz">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-bold.svg" aria-hidden="true" style="top:-7%; right:-5%; width:24%; opacity:0.2;">
+      <img alt="" class="qz2-brain" src="../../assets/modules/module-1a-brain-lightbulb.webp" aria-hidden="true">
+
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Prendre le temps d’y réfléchir</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 1 de 5</span>
+
+        <div class="qz-block qz2-card anim" id="qz1">
+          <div class="qz2-scn anim" data-delay="100">
+            Vous avez remarqué que, durant des périodes de stress élevé au travail ou dans votre vie personnelle, votre eczéma a tendance à s’aggraver et les démangeaisons deviennent presque insupportables. Cette expérience démontre bien :
+          </div>
+          <div class="qz-options anim" data-delay="200">
+            <button class="quiz-option" data-qz="qz1" data-correct="false">A) Que votre eczéma est probablement causé par une allergie non diagnostiquée liée à votre milieu de travail.</button>
+            <button class="quiz-option" data-qz="qz1" data-correct="true">B) Le lien important entre votre état émotionnel (stress) et vos symptômes physiques d’eczéma, un concept clé en psychodermatologie.</button>
+            <button class="quiz-option" data-qz="qz1" data-correct="false">C) Que le stress n’affecte la peau que si vous pensez constamment à votre eczéma.</button>
+            <button class="quiz-option" data-qz="qz1" data-correct="false">D) Que votre traitement actuel contre l’eczéma est complètement inefficace.</button>
+          </div>
+          <div class="qz2-fb" id="qz1-feedback">
+            Exactement! Le stress est un facteur déclencheur ou aggravant bien connu chez de nombreuses personnes atteintes d’eczéma. Comprendre ce lien peau-esprit est essentiel pour élaborer une approche de prise en charge globale.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 13 — Quiz Q2 ══════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-13" data-bg="#ECE6DE" data-theme="light" aria-label="Question 2 du quiz">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-bold.svg" aria-hidden="true" style="top:-7%; right:-5%; width:24%; opacity:0.2;">
+      <img alt="" class="qz2-brain" src="../../assets/modules/module-1a-brain-lightbulb.webp" aria-hidden="true">
+
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Prendre le temps d’y réfléchir</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 2 de 5</span>
+
+        <div class="qz-block qz2-card anim" id="qz2">
+          <div class="qz2-scn anim" data-delay="100">
+            Après un mois particulièrement exigeant de préparation en vue d’une échéance importante pour un projet, vous constatez que votre eczéma, qui était relativement calme, s’est considérablement aggravé. Le facteur en cause le plus probable, en lien avec la relation peau-esprit, est :
+          </div>
+          <div class="qz-options anim" data-delay="200">
+            <button class="quiz-option" data-qz="qz2" data-correct="false">A) Un changement soudain de marque de votre crème hydratante.</button>
+            <button class="quiz-option" data-qz="qz2" data-correct="false">B) Une exposition accrue aux acariens de poussière due aux longues heures passées à votre bureau.</button>
+            <button class="quiz-option" data-qz="qz2" data-correct="true">C) Le stress et la pression accrus liés à l’échéance du projet.</button>
+            <button class="quiz-option" data-qz="qz2" data-correct="false">D) Le fait de consommer davantage de plats à emporter par manque de temps pour cuisiner.</button>
+          </div>
+          <div class="qz2-fb" id="qz2-feedback">
+            C’est exact! Bien que d’autres facteurs puissent jouer un rôle, les périodes de stress intense sont des déclencheurs très fréquents des poussées d’eczéma, en raison de l’effet des hormones du stress sur votre système immunitaire et sur la barrière cutanée.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 14 — Quiz Q3 ═════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-14" data-bg="#ECE6DE" data-theme="light" aria-label="Question 3 du quiz">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-bold.svg" aria-hidden="true" style="top:-7%; right:-5%; width:24%; opacity:0.2;">
+      <img alt="" class="qz2-brain" src="../../assets/modules/module-1a-brain-lightbulb.webp" aria-hidden="true">
+
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Prendre le temps d’y réfléchir</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 3 de 5</span>
+
+        <div class="qz-block qz2-card anim" id="qz3">
+          <div class="qz2-scn anim" data-delay="100">
+            Lorsque vous vivez une période de stress important, vous remarquez que votre eczéma non seulement s’aggrave, mais devient aussi beaucoup plus irritant et enflammé. Cela s’explique souvent par le fait que le stress peut directement :
+          </div>
+          <div class="qz-options anim" data-delay="200">
+            <button class="quiz-option" data-qz="qz3" data-correct="false">A) Amener votre peau à produire un excès d’huiles protectrices, ce qui entraîne de l’irritation.</button>
+            <button class="quiz-option" data-qz="qz3" data-correct="true">B) Déclencher la libération d’hormones (comme le cortisol) qui augmentent l’inflammation et affaiblissent la barrière protectrice de votre peau.</button>
+            <button class="quiz-option" data-qz="qz3" data-correct="false">C) Vous rendre plus vulnérable au rhume, qui affecte ensuite indirectement votre peau.</button>
+            <button class="quiz-option" data-qz="qz3" data-correct="false">D) Rendre votre sueur plus acide, ce qui la rend plus irritante.</button>
+          </div>
+          <div class="qz2-fb" id="qz3-feedback">
+            Exactement! Le stress provoque la libération d’hormones telles que le cortisol, qui peuvent favoriser l’inflammation et compromettre les défenses naturelles de votre peau, aggravant ainsi les symptômes de l’eczéma.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 15 — Quiz Q4 ══════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-15" data-bg="#ECE6DE" data-theme="light" aria-label="Question 4 du quiz">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-bold.svg" aria-hidden="true" style="top:-7%; right:-5%; width:24%; opacity:0.2;">
+      <img alt="" class="qz2-brain" src="../../assets/modules/module-1a-brain-lightbulb.webp" aria-hidden="true">
+
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Prendre le temps d’y réfléchir</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 4 de 5</span>
+
+        <div class="qz-block qz2-card anim" id="qz4">
+          <div class="qz2-scn anim" data-delay="100">
+            Depuis plusieurs semaines, vous vous sentez constamment découragé et anxieux, et vous avez de la difficulté à apprécier les activités que vous aimiez auparavant. Vous soupçonnez que cela est lié au stress continu de la gestion d’une poussée sévère d’eczéma. La prochaine étape la plus appropriée serait :
+          </div>
+          <div class="qz-options anim" data-delay="200">
+            <button class="quiz-option" data-qz="qz4" data-correct="false">A) Supposer que cela passera et tenter d’ignorer ces sentiments.</button>
+            <button class="quiz-option" data-qz="qz4" data-correct="false">B) Se concentrer uniquement sur la recherche d’une crème topique plus forte pour votre peau.</button>
+            <button class="quiz-option" data-qz="qz4" data-correct="true">C) Parler à votre médecin (de famille ou dermatologue) de ce que vous ressentez sur le plan émotionnel et explorer les options de soutien en santé mentale.</button>
+            <button class="quiz-option" data-qz="qz4" data-correct="false">D) Vous isoler davantage pour éviter d’aggraver votre eczéma.</button>
+          </div>
+          <div class="qz2-fb" id="qz4-feedback">
+            Ceci est une démarche proactive et importante. Vos médecins peuvent vous aider à prendre en charge à la fois les aspects physiques et émotionnels de l’eczéma, ou vous orienter vers des spécialistes pouvant offrir un soutien en santé mentale. Vous n’avez pas à gérer ces sentiments seul(e).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 16 — Quiz Q5 ═════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-16" data-bg="#ECE6DE" data-theme="light" aria-label="Question 5 du quiz">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-bold.svg" aria-hidden="true" style="top:-7%; right:-5%; width:24%; opacity:0.2;">
+      <img alt="" class="qz2-brain" src="../../assets/modules/module-1a-brain-lightbulb.webp" aria-hidden="true">
+
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Prendre le temps d’y réfléchir</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 5 de 5</span>
+
+        <div class="qz-block qz2-card anim" id="qz5">
+          <div class="qz2-scn anim" data-delay="100">
+            Lorsque vous discutez de votre eczéma avec votre dermatologue, vous mentionnez que des poussées fréquentes vous causent beaucoup de stress et nuisent à votre sommeil. Un dermatologue aidant est le plus susceptible de :
+          </div>
+          <div class="qz-options anim" data-delay="200">
+            <button class="quiz-option" data-qz="qz5" data-correct="false">A) Vous dire que le stress n’a aucun lien avec l’eczéma et simplement vous prescrire une nouvelle crème.</button>
+            <button class="quiz-option" data-qz="qz5" data-correct="true">B) Reconnaître vos préoccupations, discuter de la façon dont le stress peut influencer l’eczéma et, au besoin, vous offrir des ressources ou des références pour la gestion du stress ou le soutien du sommeil.</button>
+            <button class="quiz-option" data-qz="qz5" data-correct="false">C) Suggérer que vous ne suivez probablement pas correctement votre plan de traitement.</button>
+            <button class="quiz-option" data-qz="qz5" data-correct="false">D) Vous conseiller de quitter votre emploi pour réduire votre stress.</button>
+          </div>
+          <div class="qz2-fb" id="qz5-feedback">
+            Une approche globale est essentielle. De bons soins dermatologiques tiennent compte des divers facteurs qui influencent l’eczéma, y compris le stress et son impact sur la qualité de vie.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 17 — Key Takeaways ═════════ -->
+    <section class="slide pdf-slide s1" id="slide-17" data-bg="#CE5C7C" data-theme="dark" aria-label="Points clés">
+      <img alt="" class="deco deco-brain" src="../../assets/modules/module-1a-brain-graduate.webp" aria-hidden="true"
+           style="right:-1%; bottom:4%; width:min(32%,280px); opacity:0.95;">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; right:-4%; width:28%; opacity:0.5;">
+      <img alt="" class="deco" src="../../assets/modules/module-1a-blob.svg" aria-hidden="true"
+           style="bottom:-8%; left:-5%; width:20%; opacity:0.5;">
+
+      <div class="slide-content" style="max-width:640px; margin-left:0; margin-right:auto;">
+        <h2 class="h2-white anim" data-delay="0">Petit récapitulatif : les points clés</h2>
+
+        <ul class="takeaway-list">
+          <li class="takeaway anim" data-delay="100">
+            <span class="takeaway-arrow">›</span>
+            Votre peau et votre esprit sont étroitement liés; le stress et les émotions peuvent avoir une influence importante sur votre eczéma.
+          </li>
+          <li class="takeaway anim" data-delay="200">
+            <span class="takeaway-arrow">›</span>
+            Reconnaître le stress comme facteur déclencheur est une étape cruciale dans la gestion des poussées.
+          </li>
+          <li class="takeaway anim" data-delay="300">
+            <span class="takeaway-arrow">›</span>
+            L’impact de l’eczéma va au-delà de la peau et peut toucher le sommeil, l’humeur et la vie quotidienne — ce sont des préoccupations légitimes.
+          </li>
+          <li class="takeaway anim" data-delay="400">
+            <span class="takeaway-arrow">›</span>
+            Faites équipe avec votre dermatologue pour aborder à la fois les aspects physiques et émotionnels de votre eczéma.
+          </li>
+        </ul>
+
+        <p class="read-disclaimer anim" data-delay="450" style="font-family:'Poppins',sans-serif; font-size:0.8rem; line-height:1.55; color:rgba(255,255,255,0.68); margin:18px 0 0; border-top:1px solid rgba(255,255,255,0.16); padding-top:14px;">Ce module offre de l’information générale et ne remplace pas les conseils de votre médecin ou de votre dermatologue. En cas de crise ou si vous pensez à vous faire du mal, composez le 911 ou appelez la ligne d’aide en santé mentale de l’AHS au <a href="tel:18773032642" style="color:#fff; font-weight:600; text-decoration:underline; text-underline-offset:2px;">1-877-303-2642</a>.</p>
+        <details class="sources-details anim" data-delay="500">
+          <summary>Sources</summary>
+          <ol>
+            <li>Bolognia JL, Schaffer JV, Cerroni L. Dermatology. 5th ed. Elsevier; 2021:210.</li>
+            <li>Koo J, Lebwohl A. Psychodermatology: the mind and skin connection. Am Fam Physician. 2001;64(11):1873-1879.</li>
+            <li>National Eczema Society. Eczema Unmasked Report. 2020.</li>
+            <li>Arndt J, Smith N, Tausk F. Stress and atopic dermatitis. Curr Allergy Asthma Rep. 2008;8(4):312-317.</li>
+            <li>Nakagawa Y, Yamada S. Alterations in Brain Neural Network and Stress System in Atopic Dermatitis. J Pharmacol Exp Ther. 2023;385(2):78-87.</li>
+            <li>Silverberg JI, et al. Patient burden and quality of life in atopic dermatitis in US adults. Ann Allergy Asthma Immunol. 2018;121(3):340-347.</li>
+            <li>Ring J, et al. Atopic eczema: burden of disease and individual suffering. J Eur Acad Dermatol Venereol. 2019;33(7):1331-1340.</li>
+            <li>Strom MA, et al. Association between atopic dermatitis and ADHD. Br J Dermatol. 2016;175(5):920-929.</li>
+            <li>Silverberg JI, et al. Symptoms and diagnosis of anxiety and depression in atopic dermatitis. Br J Dermatol. 2019;181(3):554-565.</li>
+            <li>Cheng BT, Silverberg JI. Depression and psychological distress in US adults with atopic dermatitis. Ann Allergy Asthma Immunol. 2019;123(2):179-185.</li>
+            <li>Sandhu JK, et al. Association Between Atopic Dermatitis and Suicidality. JAMA Dermatol. 2019;155(2):178-187.</li>
+            <li>Christensen RE, Jafferany M. Psychiatric and psychologic aspects of chronic skin diseases. Clin Dermatol. 2023;41(1):75-81.</li>
+          </ol>
+        </details>
+
+        <div class="anim" data-delay="600">
+          <a class="back-pill" href="module-2.html">Module suivant : 2 →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    /* ── Progress bar ───────────────────────────────────── */
+    (function () {
+      var bar = document.getElementById('rd-progress');
+      function update() {
+        var scrollY = window.scrollY || window.pageYOffset;
+        var docH = document.documentElement.scrollHeight - window.innerHeight;
+        var pct = docH > 0 ? Math.min(100, (scrollY / docH) * 100) : 0;
+        bar.style.width = pct + '%';
+        bar.setAttribute('aria-valuenow', Math.round(pct));
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    }());
+
+    /* ── Continuous background colour shift ─────────────── */
+    (function () {
+      document.body.style.transition = 'background-color 1.2s ease';
+      var slides = document.querySelectorAll('.slide[data-bg]');
+      var bgObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            document.body.style.backgroundColor = entry.target.getAttribute('data-bg');
+          }
+        });
+      }, { threshold: 0.5 });
+      slides.forEach(function (s) { bgObserver.observe(s); });
+    }());
+
+    /* ── Slide scale / momentum effect ─────────────────── */
+    (function () {
+      if (!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+      var slideObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          } else {
+            entry.target.classList.remove('in-view');
+          }
+        });
+      }, { threshold: 0.6 });
+      document.querySelectorAll('.slide').forEach(function (s) { slideObserver.observe(s); });
+    }());
+
+    /* ── Content scroll-in animations ──────────────────── */
+    (function () {
+      if (!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          var delay = parseInt(el.getAttribute('data-delay') || '0', 10);
+          el.style.transitionDelay = delay + 'ms';
+          el.classList.add('visible');
+          observer.unobserve(el);
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.anim').forEach(function (el) { observer.observe(el); });
+    }());
+
+    /* ── Quiz logic ─────────────────────────────────────── */
+    (function () {
+      document.querySelectorAll('.qz-block').forEach(function (block) {
+        var buttons = block.querySelectorAll('.quiz-option');
+        var feedback = document.getElementById(block.id + '-feedback');
+        buttons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            buttons.forEach(function (b) {
+              b.style.pointerEvents = 'none';
+              if (b.getAttribute('data-correct') === 'true') {
+                b.classList.add('correct');
+              } else {
+                b.classList.add('wrong');
+              }
+            });
+            if (feedback) { feedback.classList.add('qz-visible'); }
+          });
+        });
+      });
+    }());
+  </script>
+
+</body>
+</html>
