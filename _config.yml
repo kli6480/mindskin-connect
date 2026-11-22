@@ -1,0 +1,7 @@
+# GitHub Pages (Jekyll) settings.
+# The site itself is plain HTML; this file only keeps project notes
+# in the repository but off the published site.
+exclude:
+  - CLAUDE.md
+  - CONTENT.md
+  - README.md
