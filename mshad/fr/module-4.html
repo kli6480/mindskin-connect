@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bâtir un réseau de soutien — SPEDA — MindSkin Connect</title>
+  <meta name="description" content="Module 4 de SPEDA : l’impact de l’eczéma au-delà de la peau, quand aller chercher du soutien en santé mentale, votre équipe de soutien et des ressources fiables.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MindSkin Connect">
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:title" content="Bâtir un réseau de soutien — SPEDA — MindSkin Connect">
+  <meta property="og:description" content="Module 4 de SPEDA : l’impact de l’eczéma au-delà de la peau, quand aller chercher du soutien en santé mentale, votre équipe de soutien et des ressources fiables.">
+  <meta property="og:url" content="https://connect.mindskinhealth.ca/mshad/fr/module-4.html">
+  <meta property="og:image" content="https://connect.mindskinhealth.ca/assets/social/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bâtir un réseau de soutien — SPEDA — MindSkin Connect">
+  <meta name="twitter:description" content="Module 4 de SPEDA : l’impact de l’eczéma au-delà de la peau, quand aller chercher du soutien en santé mentale, votre équipe de soutien et des ressources fiables.">
+  <meta name="twitter:image" content="https://connect.mindskinhealth.ca/assets/social/og-image.png">
+  <link rel="canonical" href="https://connect.mindskinhealth.ca/mshad/fr/module-4.html">
+  <link rel="alternate" hreflang="fr" href="https://connect.mindskinhealth.ca/mshad/fr/module-4.html">
+  <link rel="alternate" hreflang="en" href="https://connect.mindskinhealth.ca/mshad/module-4-read.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="icon" href="../../favicon.svg">
+  <style>
+    /* ── Variables ──────────────────────────────────────── */
+    :root {
+      --nav-h: 56px;
+      --bar-h: 4px;
+      --blue:  #cc6a05;
+      --blue-dk: #4e000f;
+    }
+
+    /* ── Scroll snap ────────────────────────────────────── */
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+      scroll-padding-top: calc(var(--nav-h) + var(--bar-h));
+    }
+
+    body { background-color: var(--blue); }
+
+    main { padding-top: 0; }
+
+    /* ── Nav ────────────────────────────────────────────── */
+    .read-nav {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: var(--nav-h);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 1000;
+    }
+    .read-nav-brand {
+      font-family: 'Lilita One', serif;
+      color: #1B3068;
+      font-size: 1.1rem;
+      text-decoration: none;
+    }
+    .read-nav-back {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #1B3068;
+      text-decoration: none;
+      padding: 8px 0;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+    .read-nav-back:hover,
+    .read-nav-back:focus { text-decoration: underline; }
+
+    /* ── Progress bar ───────────────────────────────────── */
+    .rd-progress {
+      position: fixed;
+      top: var(--nav-h); left: 0;
+      height: var(--bar-h);
+      width: 0%;
+      background: #2BBFAA;
+      z-index: 999;
+      transition: width 0.1s linear;
+    }
+
+    /* ── Slide base ─────────────────────────────────────── */
+    .slide {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: transparent;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 900px;
+      padding: 32px 24px;
+    }
+
+    /* ── Decorative SVGs ────────────────────────────────── */
+    .deco {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+    }
+    .deco-char { width: min(46%, 420px); }
+
+    /* ── Scroll animations ──────────────────────────────── */
+    @media (prefers-reduced-motion: no-preference) {
+      .anim {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1),
+                    transform 0.6s cubic-bezier(0.16,1,0.3,1);
+      }
+      .anim.visible { opacity: 1; transform: translateY(0); }
+
+      .slide {
+        opacity: 0.7;
+        transform: scale(0.97);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .slide.in-view { opacity: 1; transform: scale(1); }
+
+      @keyframes gentle-bounce {
+        0%, 100% { transform: translateY(0); }
+        50%       { transform: translateY(8px); }
+      }
+      .scroll-cue { animation: gentle-bounce 2s ease-in-out infinite; }
+    }
+
+    /* ── Type helpers ───────────────────────────────────── */
+    .h1-white {
+      font-family: 'Lilita One', serif;
+      color: #fff;
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .h2-white, .h2-navy {
+      font-family: 'Lilita One', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .h2-white { color: #fff; }
+    .h2-navy  { color: #1B3068; }
+
+    .sub-white, .sub-navy {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+    .sub-white { color: rgba(255,255,255,0.92); }
+    .sub-navy  { color: #1B3068; }
+
+    .body-navy {
+      font-family: 'Poppins', sans-serif;
+      color: #2D2D2D;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    /* ── Slide 1 — hero ─────────────────────────────────── */
+    .hero-badge {
+      display: inline-block;
+      border: 1.5px solid rgba(255,255,255,0.75);
+      color: #fff;
+      border-radius: 999px;
+      padding: 4px 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+    .scroll-cue {
+      display: inline-block;
+      color: rgba(255,255,255,0.78);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      margin-top: 18px;
+    }
+    .hero-orient {
+      font-family: 'Poppins', sans-serif;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      margin-top: 12px;
+      max-width: 420px;
+    }
+
+    /* ── Slide 2 — objective cards ──────────────────────── */
+    .obj-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .obj-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 16px;
+      border-top: 4px solid var(--blue);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #444;
+    }
+    .obj-card strong {
+      display: block;
+      color: #1B3068;
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    /* ── Slide 3 — journey list ─────────────────────────── */
+    .journey-list { list-style: none; margin-top: 20px; }
+    .journey-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+    .journey-item:last-child { border-bottom: none; }
+    .journey-num {
+      font-family: 'Lilita One', serif;
+      font-size: 2rem;
+      color: rgba(255,255,255,0.3);
+      min-width: 52px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .journey-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: #fff;
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    }
+
+    /* ── Statement blocks ───────────────────────────────── */
+    .statement {
+      border-left: 4px solid rgba(255,255,255,0.8);
+      padding-left: 20px;
+      margin-bottom: 24px;
+      font-family: 'Poppins', sans-serif;
+      color: rgba(255,255,255,0.92);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.75;
+    }
+    .statement:last-child { margin-bottom: 0; }
+    .statement--navy {
+      border-left: 4px solid var(--blue);
+      padding-left: 20px;
+      margin-bottom: 24px;
+      font-family: 'Poppins', sans-serif;
+      color: #2D2D2D;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.75;
+    }
+    .statement--navy:last-child { margin-bottom: 0; }
+
+    /* ── Trigger grid (tracking slide) ─────────────────── */
+    .trigger-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .trigger-card {
+      background: rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 20px 22px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .trigger-card strong {
+      display: block;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .trigger-card p {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+
+    /* ── App tip callout ────────────────────────────────── */
+    .app-tip {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.92);
+      border-left: 4px solid #2BBFAA;
+    }
+
+    /* ── Step cards (habit building) ───────────────────── */
+    .step-card {
+      background: rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 14px 18px;
+      margin-bottom: 8px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .step-card:last-child { margin-bottom: 0; }
+    .step-num {
+      font-family: 'Lilita One', serif;
+      font-size: 2.5rem;
+      color: rgba(255,255,255,0.3);
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .step-body strong {
+      display: block;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+    .step-body p {
+      color: rgba(255,255,255,0.88);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    /* ── White step cards (light slides) ───────────────── */
+    .step-card--white {
+      background: #fff;
+      border-radius: 16px;
+      padding: 22px 26px;
+      margin-bottom: 14px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    }
+    .step-card--white:last-child { margin-bottom: 0; }
+    .step-num--blue {
+      font-family: 'Lilita One', serif;
+      font-size: 2.25rem;
+      color: var(--blue);
+      flex-shrink: 0;
+      line-height: 1;
+      min-width: 36px;
+    }
+    .step-body--navy strong {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      color: #1B3068;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .step-body--navy p {
+      font-family: 'Poppins', sans-serif;
+      color: #444;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* ── SMART letter cards ─────────────────────────────── */
+    .smart-list { margin-top: 20px; }
+    .smart-row {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .smart-row:last-child { border-bottom: none; }
+    .smart-letter {
+      font-family: 'Lilita One', serif;
+      font-size: 2.5rem;
+      color: #2BBFAA;
+      flex-shrink: 0;
+      min-width: 48px;
+      line-height: 1;
+    }
+    .smart-body { flex: 1; }
+    .smart-body strong {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .smart-body p {
+      font-family: 'Poppins', sans-serif;
+      color: rgba(255,255,255,0.82);
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+
+    /* ── Blue callout (on light slides) ────────────────── */
+    .blue-callout {
+      background: var(--blue);
+      color: #fff;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-top: 20px;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      line-height: 1.75;
+    }
+
+    /* ── Self-talk comparison ───────────────────────────── */
+    .talk-list {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .talk-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 18px 22px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .talk-before {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.875rem;
+      line-height: 1.5;
+      text-decoration: line-through;
+      margin-bottom: 8px;
+    }
+    .talk-after {
+      color: #fff;
+      font-size: 1rem;
+      line-height: 1.6;
+      font-weight: 600;
+    }
+    .talk-arrow {
+      color: #2BBFAA;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    /* ── Action cards (light slides) ───────────────────── */
+    .action-list {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .action-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 14px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .action-emoji { font-size: 1.4rem; flex-shrink: 0; line-height: 1.35; }
+    .action-card p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #2D2D2D;
+    }
+    .action-card strong {
+      display: block;
+      color: #1B3068;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    /* ── Quiz slides ────────────────────────────────────── */
+    .qz-num-badge {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+    .qz-scenario {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      border-left: 4px solid var(--blue);
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.75;
+      color: #2D2D2D;
+      margin-bottom: 14px;
+    }
+    .qz-options { display: flex; flex-direction: column; gap: 10px; }
+    .qz-block .quiz-option {
+      background: #fff;
+      color: #1B3068;
+      border: 1.5px solid rgba(255,255,255,0.3);
+    }
+    .quiz-option.correct {
+      background: var(--blue) !important;
+      color: #fff !important;
+      border-color: var(--blue) !important;
+    }
+    .quiz-option.wrong {
+      background: transparent !important;
+      color: rgba(255,255,255,0.3) !important;
+      border-color: rgba(255,255,255,0.1) !important;
+      text-decoration: line-through;
+    }
+    .quiz-option { font-size: 1rem; }
+    .qz-feedback {
+      display: none;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+      line-height: 1.6;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border-left: 4px solid var(--blue);
+    }
+    .qz-feedback.qz-visible { display: block; }
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes fade-in-up {
+        from { opacity: 0; transform: translateY(8px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      .qz-feedback.qz-visible { animation: fade-in-up 0.3s ease forwards; }
+    }
+
+    /* ── Takeaways ──────────────────────────────────────── */
+    .takeaway-list { list-style: none; margin: 12px 0 16px; }
+    .takeaway {
+      display: flex;
+      gap: 14px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      font-family: 'Poppins', sans-serif;
+      color: rgba(255,255,255,0.92);
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      line-height: 1.7;
+    }
+    .takeaway:last-child { border-bottom: none; }
+    .takeaway-arrow {
+      color: #2BBFAA;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .sources-details { margin-top: 24px; }
+    .sources-details > summary {
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.9rem;
+      padding: 8px 0;
+      user-select: none;
+    }
+    .sources-details ol {
+      margin-top: 12px;
+      padding-left: 20px;
+      color: rgba(255,255,255,0.65);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.825rem;
+      line-height: 1.75;
+    }
+    .back-pill {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      border-radius: 999px;
+      padding: 14px 32px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      margin-top: 28px;
+      min-height: 44px;
+      transition: filter 0.2s;
+    }
+    .back-pill:hover { filter: brightness(1.15); }
+
+    /* ── Resource callout ──────────────────────────────── */
+    .handout-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 14px;
+      padding: 13px 16px;
+      background: rgba(255,255,255,0.11);
+      border-left: 4px solid #2BBFAA;
+      border-radius: 10px;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s;
+    }
+    .handout-cta:hover { background: rgba(255,255,255,0.2); }
+    .handout-cta:focus-visible { outline: 2px solid #2BBFAA; outline-offset: 3px; }
+    .handout-cta-inner { flex: 1; }
+    .handout-cta-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #2BBFAA;
+      margin: 0 0 2px;
+    }
+    .handout-cta-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #fff;
+      line-height: 1.25;
+      margin: 0 0 2px;
+    }
+    .handout-cta-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .handout-cta-arrow {
+      color: #2BBFAA;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      font-family: 'Lilita One', serif;
+    }
+    /* Light variant — for CTAs on cream/light slides (legible dark text) */
+    .handout-cta--light {
+      background: rgba(12,55,77,0.06);
+      border-left-color: #4E000F;
+    }
+    .handout-cta--light:hover { background: rgba(12,55,77,0.12); }
+    .handout-cta--light .handout-cta-label { color: #CC6A05; }
+    .handout-cta--light .handout-cta-title { color: #4E000F; }
+    .handout-cta--light .handout-cta-desc { color: rgba(12,55,77,0.72); }
+    .handout-cta--light .handout-cta-arrow { color: #CC6A05; }
+
+    /* ── Responsive ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .deco-char        { display: none; }
+      .obj-grid         { grid-template-columns: 1fr; }
+      .trigger-grid     { grid-template-columns: 1fr; }
+      .slide-content    { padding: 40px 20px; }
+    }
+    /* ═══ PDF-faithful components (Module 4 — orange) ═══════ */
+    :root {
+      --rose: #CC6A05; --plum: #4E000F; --cream: #F5FFC1;
+      --pink-lt: #C9992E; --rose-card: #A85C0A;
+    }
+    .pdf-slide { height: auto; min-height: 100vh; }
+    .pdf-wrap { position: relative; z-index: 1; width: 100%; max-width: 1120px; margin: 0 auto; padding: 92px 44px 48px; display: grid; gap: 36px; align-items: center; }
+    @media (min-width: 880px) {
+      .pdf-2col { grid-template-columns: 1.05fr 0.95fr; }
+      .pdf-2col--journey { grid-template-columns: 1fr 1fr; gap: 0; }
+      .s3 .s3-note { border-radius: 50%; aspect-ratio: 1/1; max-width: none; width: min(42vw,430px); padding: 16%; display: flex; align-items: center; justify-content: center; font-size: clamp(.68rem,.8vw,.8rem); line-height: 1.48; }
+    }
+    .s1 { background: var(--rose); }
+    .s1-badge { display: inline-block; background: #F7F3C0; color: var(--plum); font-family: 'Poppins',sans-serif; font-weight: 600; font-size: .95rem; padding: 9px 24px; border-radius: 999px; box-shadow: 0 5px 0 rgba(12,55,77,.2); margin-bottom: 22px; }
+    .s1-title { font-family: 'Lilita One',serif; color: #F7F3C0; text-transform: uppercase; font-size: clamp(2.1rem,5.4vw,3.5rem); line-height: 1.06; letter-spacing: .01em; margin: 0 0 24px; }
+    .s1-credits { font-family: 'Poppins',sans-serif; color: rgba(255,255,255,.85); font-size: .88rem; line-height: 1.65; margin: 0; }
+    .char-graphic, .s1-graphic { position: relative; display: flex; align-items: center; justify-content: center; min-height: 300px; }
+    .char-circle, .s1-circle { position: absolute; width: min(82%,370px); aspect-ratio: 1/1; background: #F7F3C0; border-radius: 50%; }
+    .char-graphic > img, .s1-brain { position: relative; width: min(94%,430px); height: auto; }
+    .s2 { background: var(--cream); }
+    .s2-h { font-family: 'Lilita One',serif; color: var(--plum); text-transform: uppercase; font-size: clamp(1.9rem,4.6vw,3rem); line-height: 1.05; margin: 0 0 16px; }
+    .s2-sub { font-family: 'Poppins',sans-serif; color: var(--plum); font-size: clamp(1rem,1.8vw,1.15rem); line-height: 1.6; margin: 0; }
+    .obj2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .obj2 { border-radius: 22px; padding: 22px 20px; color: #fff; font-family: 'Poppins',sans-serif; font-size: .92rem; line-height: 1.5; text-align: center; display: flex; flex-direction: column; gap: 12px; min-height: 200px; justify-content: center; }
+    .obj2 b { font-family: 'Lilita One',serif; font-weight: 400; font-size: 1.05rem; letter-spacing: .02em; text-transform: uppercase; }
+    .obj2--1 { background: var(--rose-card); } .obj2--2 { background: var(--pink-lt); }
+    .obj2--3 { background: var(--plum); } .obj2--4 { background: var(--pink-lt); }
+    .s3 { background: var(--rose); }
+    .s3-bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+    .s3 .pdf-wrap { position: relative; z-index: 1; align-items: center; }
+    .s3-h { font-family: 'Poppins',sans-serif; font-weight: 700; color: var(--plum); font-size: clamp(1.9rem,4.4vw,3rem); margin: 0 0 18px; letter-spacing: -.01em; }
+    .s3-list { list-style: none; margin: 0; }
+    .s3-item { display: flex; gap: 18px; padding: 7px 0; align-items: baseline; }
+    .s3-num { font-family: 'Poppins',sans-serif; font-weight: 700; color: #C9992E; font-size: 1.5rem; min-width: 42px; flex-shrink: 0; }
+    .s3-label { font-family: 'Poppins',sans-serif; font-weight: 700; color: var(--plum); font-size: 1.02rem; line-height: 1.3; }
+    .s3-sub { font-family: 'Poppins',sans-serif; color: #7a5a2a; font-size: .88rem; margin-left: 60px; padding: 2px 0; }
+    .s3-right { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 30px; }
+    .s3-journey { font-family: 'Lilita One',serif; color: #F7F3C0; text-transform: uppercase; font-size: clamp(2.2rem,5vw,3.4rem); line-height: 1; margin: 0; }
+    .s3-note { background: var(--plum); color: #fff; border-radius: 26px; max-width: 440px; padding: 26px 30px; text-align: center; font-family: 'Poppins',sans-serif; font-size: .92rem; line-height: 1.55; }
+    .s3-note strong { font-weight: 700; }
+    .cream-card { background: #F7F3C0; border-radius: 18px; padding: 24px 26px; font-family: 'Poppins',sans-serif; color: var(--plum); font-size: clamp(.98rem,1.7vw,1.1rem); line-height: 1.65; }
+    .mini-callout { background: #F7F3C0; border-radius: 16px; padding: 20px 22px; font-family: 'Poppins',sans-serif; color: var(--plum); font-size: clamp(.92rem,1.5vw,1rem); line-height: 1.6; }
+    .mini-callout .bulb, .cream-card .bulb { font-size: 1.4rem; display: block; margin-bottom: 6px; }
+    .derm-list { list-style: none; margin: 8px 0 0; display: flex; flex-direction: column; gap: 14px; }
+    .derm-list li { font-family: 'Poppins',sans-serif; color: #fff; font-size: clamp(.95rem,1.6vw,1.05rem); line-height: 1.5; padding-left: 26px; position: relative; }
+    .derm-list li::before { content: "•"; position: absolute; left: 4px; color: #fff; font-size: 1.3rem; line-height: 1; }
+    .derm-list strong { display: block; }
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+    .step2 { display: flex; gap: 16px; align-items: flex-start; font-family: 'Poppins',sans-serif; }
+    .step2-n { width: 46px; height: 46px; border-radius: 50%; background: var(--rose); color: #fff; font-family: 'Lilita One',serif; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.15rem; }
+    .step2 h4 { font-weight: 700; font-size: 1rem; margin-bottom: 2px; }
+    .step2 p { font-size: .92rem; line-height: 1.5; }
+    .smart2 { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    .smart2-row { display: grid; grid-template-columns: 130px 1fr; gap: 0; border-radius: 10px; overflow: hidden; }
+    .smart2-k { font-family: 'Poppins',sans-serif; font-weight: 700; color: var(--plum); padding: 12px 16px; display: flex; align-items: center; }
+    .smart2-v { font-family: 'Poppins',sans-serif; color: var(--plum); font-style: italic; padding: 12px 16px; font-size: .95rem; display: flex; align-items: center; }
+    .smart2-row:nth-child(1) .smart2-k, .smart2-row:nth-child(1) .smart2-v { background: #A85C0A; color: #fff; }
+    .smart2-row:nth-child(2) .smart2-k, .smart2-row:nth-child(2) .smart2-v { background: #C9992E; }
+    .smart2-row:nth-child(3) .smart2-k, .smart2-row:nth-child(3) .smart2-v { background: #E0A22B; }
+    .smart2-row:nth-child(4) .smart2-k, .smart2-row:nth-child(4) .smart2-v { background: #EDC66A; }
+    .smart2-row:nth-child(5) .smart2-k, .smart2-row:nth-child(5) .smart2-v { background: #F5E4A8; }
+    .qz2 { background: var(--cream); }
+    .qz2-title { font-family: 'Lilita One',serif; color: var(--plum); text-transform: uppercase; font-size: clamp(1.9rem,4.4vw,2.9rem); margin: 0 0 14px; }
+    .qz2-badge { display: inline-block; background: #F3E7C0; color: var(--plum); border-radius: 999px; padding: 6px 20px; font-family: 'Poppins',sans-serif; font-weight: 600; font-size: .82rem; margin-bottom: 16px; box-shadow: 0 4px 0 rgba(12,55,77,.15); }
+    .qz2-card { background: #F3E7C0; border-radius: 20px; padding: 26px 28px; max-width: 760px; }
+    .qz2-scn { font-family: 'Poppins',sans-serif; color: var(--plum); font-size: clamp(1rem,1.9vw,1.12rem); line-height: 1.7; margin-bottom: 18px; }
+    .qz2 .qz-options { gap: 10px; }
+    .qz2 .quiz-option { background: #FDF6E3; color: var(--plum); border: none; border-radius: 999px; text-align: center; font-size: .98rem; }
+    .qz2 .quiz-option.correct { background: #C9992E !important; color: #fff !important; }
+    .qz2 .quiz-option.wrong { background: #FDF6E3 !important; color: rgba(12,55,77,.4) !important; text-decoration: none; }
+    .qz2-fb { display: none; background: #C9992E; color: #fff; border-radius: 20px; padding: 18px 22px; margin-top: 16px; font-family: 'Poppins',sans-serif; font-size: clamp(.92rem,1.6vw,1rem); line-height: 1.55; }
+    .qz2-fb.qz-visible { display: block; }
+    .qz2-char { position: absolute; right: 2%; bottom: 0; width: min(26%,240px); z-index: 0; }
+    /* Bounded proportions */
+    .s1-title { font-size: clamp(1.8rem,3.4vw,2.9rem) !important; }
+    .s2-h { font-size: clamp(1.6rem,3.1vw,2.5rem) !important; }
+    .s3-h { font-size: clamp(1.55rem,2.9vw,2.3rem) !important; }
+    .s3-journey { font-size: clamp(1.85rem,3.6vw,2.8rem) !important; }
+    .qz2-title { font-size: clamp(1.6rem,3.1vw,2.4rem) !important; }
+    .char-circle, .s1-circle { width: min(62%,300px) !important; }
+    .char-graphic > img, .s1-brain { width: min(76%,340px) !important; }
+    .char-graphic, .s1-graphic { min-height: 260px !important; }
+    @media (max-width: 880px) {
+      .pdf-wrap { padding: 78px 18px 36px; gap: 26px; }
+      .obj2 { min-height: 150px; padding: 18px 14px; }
+      .s3 { background: var(--cream); } .s3-bg { display: none; }
+      .s3-right { background: var(--rose); border-radius: 24px; padding: 36px 24px; margin-top: 4px; }
+      .s3-note { width: min(80vw,280px); }
+      .qz2-char { display: none; }
+      .smart2-row { grid-template-columns: 96px 1fr; }
+      .s1-title { font-size: clamp(1.55rem,6vw,2.15rem) !important; }
+      .s2-h, .s3-h, .qz2-title { font-size: clamp(1.45rem,5.4vw,2rem) !important; }
+      .s3-journey { font-size: clamp(1.7rem,6.4vw,2.25rem) !important; }
+      .char-graphic, .s1-graphic { min-height: 190px !important; }
+      .char-circle, .s1-circle { width: min(50vw,250px) !important; }
+      .char-graphic > img, .s1-brain { width: min(58vw,290px) !important; }
+    }
+
+    /* ── Module 4 additions ─────────────────────────────── */
+    .obj6-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    @media (min-width:980px){ .obj6-grid{ grid-template-columns:repeat(3,1fr);} }
+    .obj6-grid .obj2 { min-height:150px; }
+    .dark-list { list-style:none; margin:6px 0 0; display:flex; flex-direction:column; gap:11px; }
+    .dark-list li { font-family:'Poppins',sans-serif; color:var(--plum); font-size:clamp(.92rem,1.5vw,1.02rem); line-height:1.5; padding-left:24px; position:relative; }
+    .dark-list li::before { content:"•"; position:absolute; left:4px; color:var(--rose); font-size:1.25rem; line-height:1; }
+    .light-list { list-style:none; margin:6px 0 0; display:flex; flex-direction:column; gap:11px; }
+    .light-list li { font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.92rem,1.5vw,1.02rem); line-height:1.5; padding-left:24px; position:relative; }
+    .light-list li::before { content:"•"; position:absolute; left:4px; color:#F7C77A; font-size:1.25rem; line-height:1; }
+    .rlink { color:#fff; text-decoration:underline; text-underline-offset:2px; font-weight:600; }
+    .rlink:hover { color:#F7F3C0; }
+    /* AHS Mental Health Helpline callout — visually distinct */
+    .helpline { display:flex; gap:16px; align-items:center; background:#fff; border:3px solid var(--rose);
+      border-radius:18px; padding:18px 24px; margin-top:20px; box-shadow:0 6px 0 rgba(78,0,15,.15); }
+    .helpline-icon { font-size:2.1rem; line-height:1; flex-shrink:0; }
+    .helpline-label { font-family:'Poppins',sans-serif; font-weight:600; color:var(--plum); font-size:.9rem; margin:0 0 2px; }
+    .helpline-num { font-family:'Lilita One',serif; color:var(--rose); font-size:clamp(1.5rem,3.2vw,2.1rem); letter-spacing:.02em; margin:0 0 3px; }
+    .helpline-num a { color:inherit; text-decoration:none; }
+    .helpline-num a:hover { text-decoration:underline; }
+    .helpline-sub { font-family:'Poppins',sans-serif; color:#7a5a2a; font-size:.8rem; line-height:1.4; margin:0; }
+    .helpline--dark { background:#F7F3C0; border-color:#4E000F; box-shadow:0 6px 0 rgba(78,0,15,.25); margin-top:0; }
+  
+    /* ═══════ Deck polish: graphics + mobile / glitch fixes ═══════ */
+
+    /* Mobile viewport height: dvh stops the mobile address bar from
+       cutting off or jumping slide content (falls back to the 100vh above). */
+    .pdf-slide { min-height: 100dvh; }
+
+    /* Gentler snapping so a tall (mobile) slide never traps the scroll. */
+    html { scroll-snap-type: y proximity; }
+    .slide { scroll-snap-stop: normal; }
+
+    /* Keep every slide fully visible. The old 0.6-visibility momentum could
+       leave a tall slide stuck faded on small screens; motion now comes from
+       the content fade-ins and the gentle float below. */
+    .slide { opacity: 1 !important; transform: none !important; }
+
+    /* Depth: a soft top-right light source on the solid-colour slides. */
+    .s1 { background-image: radial-gradient(115% 80% at 82% 4%, rgba(255,255,255,.10), rgba(255,255,255,0) 55%); }
+
+    /* Motion-safe gentle life — small, slow, GPU-composited. */
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes msc-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+      @keyframes msc-drift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(12px); } }
+      .char-graphic > img    { animation: msc-float 6.5s ease-in-out infinite; }
+      .deco-char             { animation: msc-float 7.5s ease-in-out infinite; }
+      .qz2-char              { animation: msc-float 7s ease-in-out infinite; }
+      .deco:not(.deco-char)  { animation: msc-drift 18s ease-in-out infinite; }
+    }
+
+    /* Interactive polish. */
+    @media (hover: hover) {
+      .obj2, .relief-card, .nutri-card, .handout-cta { transition: transform .25s ease, box-shadow .25s ease; }
+      .obj2:hover, .relief-card:hover, .nutri-card:hover { transform: translateY(-4px); }
+    }
+    .quiz-option { transition: transform .12s ease, background .2s ease, color .2s ease; }
+    .quiz-option:not(.correct):not(.wrong):active { transform: scale(.985); }
+
+    /* Progress-bar glow. */
+    .rd-progress { box-shadow: 0 0 10px rgba(43,191,170,.45); }
+
+  
+    /* ═══ Fluid type scale: single smooth clamp per heading (no breakpoint
+       jump — proportional at every width, capped so it never gets huge). ═══ */
+    .s1-title    { font-size: clamp(1.5rem,  calc(1rem + 2.1vw),  2.75rem) !important; }
+    .s2-h        { font-size: clamp(1.45rem, calc(1rem + 1.9vw),  2.5rem)  !important; }
+    .s3-h        { font-size: clamp(1.4rem,  calc(1rem + 1.85vw), 2.4rem)  !important; }
+    .s3-journey  { font-size: clamp(1.7rem,  calc(1.1rem + 2.4vw), 3rem)   !important; }
+    .qz2-title   { font-size: clamp(1.45rem, calc(1rem + 1.9vw),  2.5rem)  !important; }
+
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Aller au contenu principal</a>
+
+  <nav class="read-nav" aria-label="Navigation du module">
+    <a class="read-nav-brand" href="../../">MindSkin Connect</a>
+    <span class="read-nav-links">
+      <a class="read-nav-back" href="../module-4-read.html" lang="en" hreflang="en">English</a>
+      <a class="read-nav-back" href="./">← Modules SPEDA</a>
+    </span>
+  </nav>
+
+  <div class="rd-progress" id="rd-progress" role="progressbar"
+       aria-label="Progression de la lecture" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <main id="main">
+
+    <!-- ══ SLIDE 1 — Title ══════════════════ -->
+    <section class="slide pdf-slide s1" id="slide-1" data-bg="#CC6A05" data-theme="dark" aria-label="Présentation du module">
+      <img alt="" class="deco" src="../../assets/modules/module-4-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:34%; opacity:0.45;">
+      <img alt="" class="deco" src="../../assets/modules/module-4-blob-cream.svg" aria-hidden="true"
+           style="bottom:-8%; left:-5%; width:24%; opacity:0.4;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <span class="s1-badge anim" data-delay="0">Module 4</span>
+          <h1 class="s1-title anim" data-delay="100">Bâtir un réseau de soutien</h1>
+          <p class="s1-credits anim" data-delay="200">Crédits : Adam Yu, BMLSc, MSc; Kevin Li BSc MSPH<br>
+            Dr. Marlene Dytoc MD PhD FRCPC<br>
+            Conçu par : Danting Zheng BSc Premier cycle<br>
+            Traduction : Cécilia Bernier BSc, Michelle Leung BScN</p>
+          <span class="scroll-cue anim" data-delay="300" style="display:inline-block; margin-top:20px; color:rgba(255,255,255,.9);">↓ Faites défiler pour commencer</span>
+        </div>
+        <div class="char-graphic anim" data-delay="200">
+          <div class="char-circle"></div>
+          <img src="../../assets/modules/module-4-hero-support.svg" alt="Deux personnages amicaux qui se tiennent la main, symbole de soutien et de solidarité">
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 2 — Objectives ═════════════ -->
+    <section class="slide pdf-slide s2" id="slide-2" data-bg="#F5FFC1" data-theme="light" aria-label="Objectifs d’apprentissage">
+      <img alt="" class="deco" src="../../assets/modules/module-4-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; left:-4%; width:26%; opacity:0.25;">
+      <img alt="" class="deco" src="../../assets/modules/module-4-blob-gold.svg" aria-hidden="true"
+           style="bottom:-9%; right:-5%; width:26%; opacity:0.3;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s2-h anim" data-delay="0">Ce qu’on va explorer au sujet du soutien</h2>
+          <p class="s2-sub anim" data-delay="100">À la fin de ce module, vous serez en mesure de :</p>
+        </div>
+        <div class="obj6-grid">
+          <div class="obj2 anim" data-delay="150" style="background:#A85C0A;"><b>Objectif #1</b>Reconnaître comment l’eczéma peut avoir un impact sur votre bien-être émotionnel, votre vie sociale et votre estime de soi.</div>
+          <div class="obj2 anim" data-delay="200" style="background:#C99A2E;"><b>Objectif #2</b>Reconnaître quand il pourrait être nécessaire de demander un soutien supplémentaire pour votre bien-être émotionnel.</div>
+          <div class="obj2 anim" data-delay="250" style="background:#C97A16;"><b>Objectif #3</b>Identifier qui peut faire partie de votre réseau personnel de soutien, ou de celui de votre enfant.</div>
+          <div class="obj2 anim" data-delay="300" style="background:#C97A16;"><b>Objectif #4</b>Apprendre des façons de faire face aux défis quotidiens de l’eczéma.</div>
+          <div class="obj2 anim" data-delay="350" style="background:#8A3B12;"><b>Objectif #5</b>Vous sentir plus en confiance pour parler aux médecins afin d’obtenir des soins qui répondent autant à vos besoins de santé de la peau qu’à votre bien-être mental.</div>
+          <div class="obj2 anim" data-delay="400" style="background:#4E000F;"><b>Objectif #6</b>Trouver des ressources fiables en ligne et dans la communauté pour obtenir un soutien continu.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 3 — Module outline ═════════ -->
+    <section class="slide pdf-slide s3" id="slide-3" data-bg="#CC6A05" data-theme="light" aria-label="Aperçu du module">
+      <svg class="s3-bg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+        <path d="M -80,-80 L 760,-80 C 880,80 1000,200 970,340 C 945,455 815,480 885,610 C 950,730 770,800 690,980 L -80,980 Z" fill="#F5FFC1"/>
+        <path d="M -80,650 C 120,590 255,655 300,785 C 348,905 150,980 -80,980 Z" fill="#CC6A05"/>
+        <path d="M 1680,700 C 1560,685 1470,790 1525,980 L 1680,980 Z" fill="#F5FFC1"/>
+        <g fill="none" stroke="#F7F3C0" stroke-width="3" opacity="0.32"><circle cx="1500" cy="130" r="55"/><circle cx="1500" cy="130" r="115"/><circle cx="1500" cy="130" r="175"/><circle cx="1500" cy="130" r="235"/><circle cx="1500" cy="130" r="295"/></g>
+        <g fill="none" stroke="#F7F3C0" stroke-width="3" opacity="0.24"><circle cx="1585" cy="560" r="45"/><circle cx="1585" cy="560" r="100"/><circle cx="1585" cy="560" r="155"/><circle cx="1585" cy="560" r="210"/></g>
+        <g fill="none" stroke="#F7F3C0" stroke-width="3" opacity="0.3"><circle cx="1470" cy="885" r="55"/><circle cx="1470" cy="885" r="115"/><circle cx="1470" cy="885" r="175"/><circle cx="1470" cy="885" r="235"/></g>
+        <g fill="none" stroke="#4E000F" stroke-width="3" opacity="0.08"><circle cx="35" cy="120" r="48"/><circle cx="35" cy="120" r="95"/><circle cx="35" cy="120" r="142"/></g>
+        <circle cx="1592" cy="695" r="40" fill="#4E000F"/>
+        <circle cx="1290" cy="150" r="26" fill="#4E000F" opacity="0.9"/>
+      </svg>
+
+      <div class="pdf-wrap pdf-2col pdf-2col--journey">
+        <div class="s3-left">
+          <h2 class="s3-h anim" data-delay="0">Aperçu du module</h2>
+          <ol class="s3-list">
+            <li class="s3-item anim" data-delay="80"><span class="s3-num">01</span><span class="s3-label">Impact de l’eczéma au-delà de la peau</span></li>
+            <li class="s3-item anim" data-delay="130"><span class="s3-num">02</span><span class="s3-label">Quand et comment obtenir du soutien en santé mentale</span></li>
+            <li class="s3-sub anim" data-delay="155">a) Signes qu’il est temps d’aller chercher plus de soutien</li>
+            <li class="s3-sub anim" data-delay="175">b) Parler de vos émotions avec votre médecin</li>
+            <li class="s3-item anim" data-delay="210"><span class="s3-num">03</span><span class="s3-label">Briser le cycle</span></li>
+            <li class="s3-sub anim" data-delay="235">a) Qui fait partie de votre équipe?</li>
+            <li class="s3-sub anim" data-delay="255">b) Obtenir du soutien à la maison et à l’école</li>
+            <li class="s3-sub anim" data-delay="275">c) Faire face à la stigmatisation et renforcer la confiance en soi</li>
+            <li class="s3-sub anim" data-delay="295">d) Aider votre enfant à faire face à la situation</li>
+            <li class="s3-item anim" data-delay="330"><span class="s3-num">04</span><span class="s3-label">Où trouver des ressources fiables</span></li>
+          </ol>
+        </div>
+        <div class="s3-right anim" data-delay="150">
+          <h2 class="s3-journey">Bâtir votre équipe</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 4 — More Than Just Skin ════ -->
+    <section class="slide pdf-slide s1" id="slide-4" data-bg="#CC6A05" data-theme="dark" aria-label="L’eczéma, c’est plus qu’une question de peau">
+      <img alt="" class="deco" src="../../assets/modules/module-4-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:26%; opacity:0.4;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.55rem,3.5vw,2.4rem); margin-bottom:14px;">L’eczéma, c’est plus qu’une question de peau</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.98rem,1.7vw,1.08rem); line-height:1.6; margin:0 0 14px;">Vivre avec l’eczéma présente des défis uniques. Vous ou votre enfant pourriez :</p>
+          <ul class="derm-list">
+            <li class="anim" data-delay="150">Vous sentir <strong>frustré, dépassé ou gêné</strong>.</li>
+            <li class="anim" data-delay="200"><strong>Éviter certaines activités sociales</strong>, être hésitant dans vos relations intimes ou avoir de la difficulté à expliquer votre condition aux autres.</li>
+            <li class="anim" data-delay="250">Avoir des problèmes de <strong>concentration, de productivité ou de participation à vos passe-temps</strong>.</li>
+            <li class="anim" data-delay="300">Vivre une <strong>faible estime de soi ou une image corporelle négative</strong>.</li>
+          </ul>
+          <p class="anim" data-delay="360" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.95rem,1.6vw,1.05rem); line-height:1.6; margin:16px 0 0; font-style:italic;">Rappelez-vous, vous n’êtes pas seul dans cette situation. Ce module est là pour vous aider à trouver le soutien que vous méritez.</p>
+        </div>
+        <div class="char-graphic anim" data-delay="200">
+          <div class="char-circle"></div>
+          <img src="../../assets/modules/module-4-stressed.svg" alt="Un personnage dépassé, qui représente l’impact émotionnel de l’eczéma">
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 5 — When to Get Extra Help (+ Helpline) ═══ -->
+    <section class="slide pdf-slide s2" id="slide-5" data-bg="#F5FFC1" data-theme="light" aria-label="Santé mentale et eczéma : quand aller chercher plus de soutien">
+      <img alt="" class="deco" src="../../assets/modules/module-4-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; right:-4%; width:22%; opacity:0.25;">
+
+      <div class="pdf-wrap" style="max-width:1020px;">
+        <div style="text-align:center;">
+          <h2 class="s2-h anim" data-delay="0" style="margin-bottom:6px;">Santé mentale et eczéma : quand aller chercher plus de soutien</h2>
+        </div>
+        <div class="pdf-2col" style="display:grid; gap:20px; align-items:stretch;">
+          <div class="anim" data-delay="120" style="background:#fff; border-radius:20px; padding:24px 26px; box-shadow:0 3px 12px rgba(78,0,15,.08);">
+            <h3 style="font-family:'Lilita One',serif; text-transform:uppercase; color:var(--rose); font-size:1.15rem; margin:0 0 12px;">C’est normal de se sentir</h3>
+            <ul class="dark-list">
+              <li><strong>Gêné</strong> par votre peau</li>
+              <li><strong>Stressé</strong> par la gestion du traitement</li>
+              <li><strong>Triste ou anxieux</strong> lors des poussées</li>
+            </ul>
+          </div>
+          <div class="anim" data-delay="190" style="background:var(--plum); border-radius:20px; padding:24px 26px;">
+            <h3 style="font-family:'Lilita One',serif; text-transform:uppercase; color:#F7C77A; font-size:1.15rem; margin:0 0 12px;">Quand demander de l’aide</h3>
+            <ul class="light-list">
+              <li>Vous sentir découragé la plupart des jours</li>
+              <li>Éviter vos amis ou l’école</li>
+              <li>Avoir de la difficulté à dormir ou à manger</li>
+              <li>Vous sentir sans espoir</li>
+              <li>Avoir de la difficulté à suivre le traitement ou vous sentir dépassé comme proche aidant</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="helpline anim" data-delay="260" role="note" aria-label="Ligne d’aide en santé mentale de l’AHS">
+          <span class="helpline-icon" aria-hidden="true">☎</span>
+          <div>
+            <p class="helpline-label">Si vous avez besoin de parler à quelqu’un maintenant — Ligne d’aide en santé mentale de l’AHS</p>
+            <p class="helpline-num"><a href="tel:18773032642">1-877-303-2642</a></p>
+            <p class="helpline-sub">Soutien gratuit et confidentiel, 24 h sur 24, 7 jours sur 7, avec interprètes en français. Votre médecin de famille ou votre dermatologue peut aussi être un excellent premier point de contact pour obtenir une référence.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 6 — Quiz Q1 ═══════════════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-6" data-bg="#F5FFC1" data-theme="light" aria-label="Question 1 du quiz">
+      <img alt="" class="deco" src="../../assets/modules/module-4-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.25;">
+      <img alt="" class="qz2-char" src="../../assets/modules/module-4-child-coping.webp" aria-hidden="true">
+
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Prendre le temps d’y réfléchir</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 1 de 5</span>
+
+        <div class="qz-block qz2-card anim" id="qz1">
+          <div class="qz2-scn anim" data-delay="100">
+            Dernièrement, Émilie, 8 ans, qui vit avec de l’eczéma, dit qu’elle ne veut plus aller à la fête d’anniversaire de sa meilleure amie ni à son cours d’arts hebdomadaire, même si elle adorait ces activités auparavant. Elle semble aussi triste la plupart des soirs. Ces changements pourraient indiquer :
+          </div>
+          <div class="qz-options anim" data-delay="200">
+            <button class="quiz-option" data-qz="qz1" data-correct="false">A) Émilie est simplement un peu timide ce mois-ci.</button>
+            <button class="quiz-option" data-qz="qz1" data-correct="true">B) C’est un bon moment pour ses parents d’envisager d’en parler à son médecin afin d’obtenir du soutien en santé mentale lié à son eczéma.</button>
+            <button class="quiz-option" data-qz="qz1" data-correct="false">C) Ses crèmes pour l’eczéma ne fonctionnent plus.</button>
+            <button class="quiz-option" data-qz="qz1" data-correct="false">D) Elle a besoin de plus de discipline pour participer aux activités.</button>
+          </div>
+          <div class="qz2-fb" id="qz1-feedback">
+            Exactement! Se retirer d’activités qu’elle adorait, avec une tristesse qui persiste, peut être un signe que l’eczéma affecte le bien-être émotionnel d’Émilie. En parler doucement avec son médecin pour obtenir du soutien en santé mentale est une première étape bienveillante et appropriée.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 7 — Talking to Your Doctor ═ -->
+    <section class="slide pdf-slide s1" id="slide-7" data-bg="#CC6A05" data-theme="dark" aria-label="Discuter de vos émotions avec votre médecin">
+      <img alt="" class="deco" src="../../assets/modules/module-4-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; left:-4%; width:24%; opacity:0.4;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div class="char-graphic anim" data-delay="120">
+          <div class="char-circle"></div>
+          <img src="../../assets/modules/module-4-doctor-talk.webp" alt="Une patiente qui parle avec un médecin">
+        </div>
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.55rem,3.5vw,2.4rem); margin-bottom:12px;">Discuter de vos émotions avec votre médecin</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.98rem,1.7vw,1.08rem); line-height:1.6; margin:0 0 14px;">Vos médecins ont besoin d’avoir le <strong>portrait complet</strong> pour mieux vous aider, vous ou votre enfant. Ce que vous ou votre enfant pouvez dire :</p>
+          <ul class="derm-list">
+            <li class="anim" data-delay="150">«Cette poussée me décourage vraiment.»</li>
+            <li class="anim" data-delay="210">«Je suis stressé et je ne dors pas bien.»</li>
+            <li class="anim" data-delay="270">«Est-ce que je peux parler à quelqu’un de ce que je ressens?»</li>
+          </ul>
+          <p class="anim" data-delay="330" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.95rem,1.6vw,1.05rem); line-height:1.6; margin:16px 0 0; font-style:italic;">Cela aide votre médecin à soutenir l’ensemble de votre santé.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 8 — Support Team ═══════════ -->
+    <section class="slide pdf-slide s1" id="slide-8" data-bg="#CC6A05" data-theme="dark" aria-label="Qui peut faire partie de votre équipe de soutien">
+      <img alt="" class="deco" src="../../assets/modules/module-4-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:26%; opacity:0.4;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.55rem,3.5vw,2.4rem); margin-bottom:12px;">Qui peut faire partie de votre équipe de soutien?</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.98rem,1.7vw,1.08rem); line-height:1.6; margin:0 0 12px;">Une bonne équipe de soutien peut inclure :</p>
+          <ul class="derm-list" style="gap:9px;">
+            <li class="anim" data-delay="140">Votre dermatologue ou votre médecin de famille</li>
+            <li class="anim" data-delay="180">Un conseiller en santé mentale ou un thérapeute</li>
+            <li class="anim" data-delay="220">Vos parents ou tuteurs</li>
+            <li class="anim" data-delay="260">Vos frères, sœurs et amis</li>
+            <li class="anim" data-delay="300">Vos enseignants ou le personnel scolaire</li>
+            <li class="anim" data-delay="340">Les communautés en ligne sur l’eczéma et des pairs dans des programmes de groupe</li>
+          </ul>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:18px;">
+          <div class="char-graphic anim" data-delay="150" style="min-height:200px;">
+            <div class="char-circle"></div>
+            <img src="../../assets/modules/module-4-support-team.webp" alt="Un groupe de personnes qui forment une communauté de soutien">
+          </div>
+          <div class="mini-callout anim" data-delay="220" style="text-align:center; font-style:italic;">
+            Les programmes éducatifs multidisciplinaires — qui font appel à différents types d’intervenants — peuvent <strong>réduire la crainte face aux traitements et renforcer la confiance de tous!</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 9 — Home & School ══════════ -->
+    <section class="slide pdf-slide s2" id="slide-9" data-bg="#F5FFC1" data-theme="light" aria-label="Bâtir du soutien à la maison et à l’école">
+      <img alt="" class="deco" src="../../assets/modules/module-4-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; left:-4%; width:22%; opacity:0.25;">
+
+      <div class="pdf-wrap" style="max-width:1020px;">
+        <div style="text-align:center;">
+          <h2 class="s2-h anim" data-delay="0" style="margin-bottom:4px;">Bâtir du soutien à la maison et à l’école</h2>
+        </div>
+        <div class="pdf-2col" style="display:grid; gap:20px; align-items:stretch;">
+          <div class="anim" data-delay="120" style="background:#fff; border-radius:20px; padding:24px 26px; box-shadow:0 3px 12px rgba(78,0,15,.08);">
+            <h3 style="font-family:'Lilita One',serif; text-transform:uppercase; color:var(--rose); font-size:1.15rem; margin:0 0 12px;">À la maison</h3>
+            <ul class="dark-list">
+              <li>Faites savoir à votre famille <strong>comment elle peut vous aider</strong></li>
+              <li>Demandez du soutien pour gérer votre condition, par exemple pour vous rappeler vos traitements ou pour éviter les déclencheurs</li>
+            </ul>
+          </div>
+          <div class="anim" data-delay="190" style="background:#fff; border-radius:20px; padding:24px 26px; box-shadow:0 3px 12px rgba(78,0,15,.08);">
+            <h3 style="font-family:'Lilita One',serif; text-transform:uppercase; color:var(--rose); font-size:1.15rem; margin:0 0 12px;">À l’école ou au travail</h3>
+            <ul class="dark-list">
+              <li>Parler de votre condition à un·e enseignant·e ou à votre patron·ne</li>
+              <li>Demander de l’aide pour gérer les déclencheurs (p. ex. savons agressifs dans les toilettes)</li>
+              <li>Signaler toute intimidation ou moquerie</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mini-callout anim" data-delay="260" style="text-align:center; background:var(--pink-lt); color:var(--plum);">
+          <span class="bulb">💡</span> Les outils de pleine conscience ou de réduction du stress peuvent aussi aider à améliorer la concentration et à réguler les émotions!
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 10 — Stigma & Confidence ═══ -->
+    <section class="slide pdf-slide s1" id="slide-10" data-bg="#CC6A05" data-theme="dark" aria-label="Faire face à la stigmatisation et renforcer la confiance en soi">
+      <img alt="" class="deco" src="../../assets/modules/module-4-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:26%; opacity:0.4;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div class="char-graphic anim" data-delay="120">
+          <div class="char-circle"></div>
+          <img src="../../assets/modules/module-4-teasing.webp" alt="Un enfant qu’on réconforte après des moqueries">
+        </div>
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.5rem,3.4vw,2.3rem); margin-bottom:10px;">Faire face à la stigmatisation et renforcer la confiance en soi</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.95rem,1.6vw,1.05rem); line-height:1.55; margin:0 0 10px;">Parfois, les gens ne comprennent pas l’eczéma. Vous ou votre enfant pourriez être taquiné, vous sentir gêné ou «différent», ou essayer de cacher votre peau. <strong>Ce qui peut aider :</strong></p>
+          <ul class="derm-list" style="gap:10px;">
+            <li class="anim" data-delay="150"><strong>Pratiquer l’autocompassion :</strong> «Je suis plus que ma peau.»</li>
+            <li class="anim" data-delay="200"><strong>Informer les autres (si vous le souhaitez)</strong> — partager de l’information factuelle peut dissiper les idées fausses.</li>
+            <li class="anim" data-delay="250"><strong>Parler à un adulte</strong> si vous êtes victime d’intimidation.</li>
+            <li class="anim" data-delay="300"><strong>Joindre des groupes</strong> où vous vous sentez compris.</li>
+          </ul>
+          <p class="anim" data-delay="360" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.9rem,1.5vw,1rem); line-height:1.55; margin:14px 0 0; font-style:italic;">Participer à des programmes qui encouragent le partage d’expériences peut réduire l’isolement et renforcer la confiance.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 11 — Quiz Q2 ══════════════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-11" data-bg="#F5FFC1" data-theme="light" aria-label="Question 2 du quiz">
+      <img alt="" class="deco" src="../../assets/modules/module-4-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.25;">
+      <img alt="" class="qz2-char" src="../../assets/modules/module-4-confident.webp" aria-hidden="true">
+
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Prendre le temps d’y réfléchir</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 2 de 5</span>
+
+        <div class="qz-block qz2-card anim" id="qz2">
+          <div class="qz2-scn anim" data-delay="100">
+            Vous êtes à un événement de travail et un collègue que vous connaissez peu vous demande : «Qu’est-ce que vous avez aux mains? Est-ce que c’est contagieux?» Une réponse affirmée qui respecte vos limites pourrait être :
+          </div>
+          <div class="qz-options anim" data-delay="200">
+            <button class="quiz-option" data-qz="qz2" data-correct="false">A) Se fâcher et lui dire que ça ne le regarde pas.</button>
+            <button class="quiz-option" data-qz="qz2" data-correct="false">B) Se sentir gêné et cacher rapidement vos mains.</button>
+            <button class="quiz-option" data-qz="qz2" data-correct="true">C) Dire calmement : «C’est seulement de l’eczéma, une condition cutanée courante. Ce n’est pas contagieux, mais je préférerais parler d’autre chose.»</button>
+            <button class="quiz-option" data-qz="qz2" data-correct="false">D) Quitter immédiatement l’événement.</button>
+          </div>
+          <div class="qz2-fb" id="qz2-feedback">
+            Cette réponse est informative, établit une limite claire et vous permet de garder le contrôle de la conversation, tout en maintenant votre calme.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 12 — Quiz Q3 ══════════════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-12" data-bg="#F5FFC1" data-theme="light" aria-label="Question 3 du quiz">
+      <img alt="" class="deco" src="../../assets/modules/module-4-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.25;">
+      <img alt="" class="qz2-char" src="../../assets/modules/module-4-confident.webp" aria-hidden="true">
+
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Prendre le temps d’y réfléchir</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 3 de 5</span>
+
+        <div class="qz-block qz2-card anim" id="qz3">
+          <div class="qz2-scn anim" data-delay="100">
+            Alex, 10 ans, se fait parfois taquiner à l’école à cause des plaques rouges sur ses bras. Sa mère cherche des façons de l’aider. Laquelle des options suivantes serait une première étape constructive?
+          </div>
+          <div class="qz-options anim" data-delay="200">
+            <button class="quiz-option" data-qz="qz3" data-correct="false">A) Dire à Alex d’ignorer les moqueries et qu’elles finiront par cesser.</button>
+            <button class="quiz-option" data-qz="qz3" data-correct="true">B) Pratiquer l’autocompassion avec Alex (p. ex. : «Mon eczéma ne me définit pas») et l’encourager à en parler à son enseignant si cela continue.</button>
+            <button class="quiz-option" data-qz="qz3" data-correct="false">C) Insister pour qu’Alex porte des manches longues tous les jours, même lorsqu’il fait chaud.</button>
+            <button class="quiz-option" data-qz="qz3" data-correct="false">D) Confronter elle-même les enfants qui taquinent Alex pendant la récréation.</button>
+          </div>
+          <div class="qz2-fb" id="qz3-feedback">
+            C’est une excellente approche! Elle donne à Alex des stratégies internes pour composer avec la situation (comme l’autodialogue) et un plan pour demander de l’aide à un adulte de confiance si l’intimidation persiste.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 13 — Helping Your Child Cope ══════════════ -->
+    <section class="slide pdf-slide s2" id="slide-13" data-bg="#F5FFC1" data-theme="light" aria-label="Aider votre enfant à faire face à la situation">
+      <img alt="" class="deco" src="../../assets/modules/module-4-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; right:-4%; width:22%; opacity:0.25;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s2-h anim" data-delay="0" style="margin-bottom:10px;">Aider votre enfant à faire face à la situation</h2>
+          <p class="s2-sub anim" data-delay="80" style="margin-bottom:14px;">Pour les parents et proches aidants :</p>
+          <ul class="dark-list">
+            <li class="anim" data-delay="150"><strong>Encourager les enfants à parler</strong> de leurs émotions</li>
+            <li class="anim" data-delay="200"><strong>Utiliser des outils pour se calmer</strong> (respirations profondes, dessin, pauses)</li>
+            <li class="anim" data-delay="250"><strong>Valoriser leur courage</strong> et leurs efforts</li>
+            <li class="anim" data-delay="300">Les aider à <strong>pratiquer des réponses</strong> aux questions curieuses</li>
+          </ul>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:18px;">
+          <div class="char-graphic anim" data-delay="150" style="min-height:200px;">
+            <div class="char-circle" style="background:#F3E7C0;"></div>
+            <img src="../../assets/modules/module-4-child-coping.webp" alt="Un enfant qui utilise un outil pour se calmer">
+          </div>
+          <div class="mini-callout anim" data-delay="220" style="text-align:center; background:var(--pink-lt); color:var(--plum);">
+            Les programmes éducatifs destinés aux proches aidants aident à <strong>réduire l’anxiété de l’enfant et du parent</strong>, et à améliorer la gestion de l’eczéma.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 14 — Quiz Q4 ══════════════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-14" data-bg="#F5FFC1" data-theme="light" aria-label="Question 4 du quiz">
+      <img alt="" class="deco" src="../../assets/modules/module-4-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.25;">
+      <img alt="" class="qz2-char" src="../../assets/modules/module-4-child-coping.webp" aria-hidden="true">
+
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Prendre le temps d’y réfléchir</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 4 de 5</span>
+
+        <div class="qz-block qz2-card anim" id="qz4">
+          <div class="qz2-scn anim" data-delay="100">
+            Quand son fils de 5 ans devient très frustré à cause d’une poussée de démangeaisons, sa mère l’encourage à prendre trois lentes «respirations de dragon» (inspirer par le nez, expirer par la bouche comme un gentil dragon). Ceci est un exemple de :
+          </div>
+          <div class="qz-options anim" data-delay="200">
+            <button class="quiz-option" data-qz="qz4" data-correct="false">A) Une façon de faire cesser immédiatement les démangeaisons.</button>
+            <button class="quiz-option" data-qz="qz4" data-correct="false">B) Une technique de distraction qui n’apporte aucun réel bénéfice.</button>
+            <button class="quiz-option" data-qz="qz4" data-correct="true">C) Enseigner à un enfant un outil simple pour se calmer et faire face à ses émotions.</button>
+            <button class="quiz-option" data-qz="qz4" data-correct="false">D) Un signe que ses médicaments actuels ne sont pas assez forts.</button>
+          </div>
+          <div class="qz2-fb" id="qz4-feedback">
+            C’est une excellente stratégie! Des techniques simples pour se calmer, comme la respiration profonde, peuvent aider les enfants (et même les adultes!) à gérer la frustration et l’anxiété qui accompagnent souvent une poussée de démangeaisons.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 15 — Where to Find Support ════════════════ -->
+    <section class="slide pdf-slide s1" id="slide-15" data-bg="#CC6A05" data-theme="dark" aria-label="Où trouver du soutien">
+      <img alt="" class="deco" src="../../assets/modules/module-4-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; left:-4%; width:24%; opacity:0.4;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.55rem,3.5vw,2.4rem); margin-bottom:12px;">Où trouver du soutien</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:#F7C77A; font-weight:600; font-size:1rem; margin:0 0 6px;">Aide en personne :</p>
+          <ul class="derm-list" style="gap:7px; margin-bottom:12px;">
+            <li class="anim" data-delay="130">Demandez à votre médecin une référence vers un conseiller ou un groupe de soutien</li>
+            <li class="anim" data-delay="170">Plusieurs hôpitaux offrent des services de soutien aux patients</li>
+          </ul>
+          <p class="anim" data-delay="210" style="font-family:'Poppins',sans-serif; color:#F7C77A; font-weight:600; font-size:1rem; margin:0 0 6px;">Ressources en ligne en français :</p>
+          <ul class="derm-list" style="gap:7px; margin-bottom:12px;">
+            <li class="anim" data-delay="240">Société canadienne de l’eczéma — <a href="https://eczemahelp.ca/fr/" target="_blank" rel="noopener noreferrer" class="rlink">eczemahelp.ca<span class="sr-only"> (s’ouvre dans un nouvel onglet)</span></a></li>
+            <li class="anim" data-delay="270">Centre d’excellence pour la dermatite atopique — <a href="http://muhccoead.com/fr/pour-les-patients" target="_blank" rel="noopener noreferrer" class="rlink">muhccoead.com/fr<span class="sr-only"> (s’ouvre dans un nouvel onglet)</span></a></li>
+            <li class="anim" data-delay="300">Appli EczemaQ — eczemaquebec.com/eczemaq/</li>
+          </ul>
+          <p class="anim" data-delay="320" style="font-family:'Poppins',sans-serif; color:#F7C77A; font-weight:600; font-size:1rem; margin:0 0 6px;">Ressources en ligne en anglais :</p>
+          <ul class="derm-list" style="gap:7px;">
+            <li class="anim" data-delay="340">National Eczema Association — <a href="https://nationaleczema.org" target="_blank" rel="noopener noreferrer" class="rlink" hreflang="en">nationaleczema.org<span class="sr-only"> (s’ouvre dans un nouvel onglet)</span></a></li>
+            <li class="anim" data-delay="370">MyEczemaTeam — soutien par les pairs en ligne</li>
+            <li class="anim" data-delay="400">KidsHealth.org — outils pour les jeunes et les parents</li>
+          </ul>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div class="mini-callout anim" data-delay="180" style="text-align:center;">
+            <span class="bulb">💡</span> Soyez critique face à l’information en ligne. Fiez-vous aux organismes de défense des patient·e·s reconnus, aux établissements médicaux et aux sites Web gouvernementaux de santé.
+          </div>
+          <div class="helpline helpline--dark anim" data-delay="260" role="note" aria-label="Ligne d’aide en santé mentale de l’AHS">
+            <span class="helpline-icon" aria-hidden="true">☎</span>
+            <div>
+              <p class="helpline-label">Ligne d’aide en santé mentale de l’AHS</p>
+              <p class="helpline-num"><a href="tel:18773032642">1-877-303-2642</a></p>
+              <p class="helpline-sub">Gratuit et confidentiel, 24 h sur 24, 7 jours sur 7.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 16 — Quiz Q5 ══════════════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-16" data-bg="#F5FFC1" data-theme="light" aria-label="Question 5 du quiz">
+      <img alt="" class="deco" src="../../assets/modules/module-4-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.25;">
+      <img alt="" class="qz2-char" src="../../assets/modules/module-4-confident.webp" aria-hidden="true">
+
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Prendre le temps d’y réfléchir</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 5 de 5</span>
+
+        <div class="qz-block qz2-card anim" id="qz5">
+          <div class="qz2-scn anim" data-delay="100">
+            Un parent se sent dépassé par la gestion de l’eczéma de son enfant et souhaite entrer en contact avec d’autres parents qui comprennent sa situation. Le dermatologue de son enfant lui mentionne le site Web d’un organisme national réputé sur l’eczéma. Ce type de ressource est précieux, car il offre souvent :
+          </div>
+          <div class="qz-options anim" data-delay="200">
+            <button class="quiz-option" data-qz="qz5" data-correct="false">A) Des guérisons garanties pour l’eczéma.</button>
+            <button class="quiz-option" data-qz="qz5" data-correct="false">B) Un accès uniquement à des opinions personnelles non vérifiées.</button>
+            <button class="quiz-option" data-qz="qz5" data-correct="true">C) De l’information révisée par des professionnels de la santé, des forums communautaires et des liens vers des programmes de soutien.</button>
+            <button class="quiz-option" data-qz="qz5" data-correct="false">D) Un remplacement à toutes les visites médicales.</button>
+          </div>
+          <div class="qz2-fb" id="qz5-feedback">
+            Exactement! Les organismes réputés offrent une mine d’informations fiables, vous mettent en contact avec d’autres personnes qui partagent des expériences semblables et peuvent vous diriger vers des programmes et des ressources utiles.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 17 — Summary / Takeaways ══════════════════ -->
+    <section class="slide pdf-slide s1" id="slide-17" data-bg="#CC6A05" data-theme="dark" aria-label="Résumé et points clés">
+      <img alt="" class="deco deco-char" src="../../assets/modules/module-4-confident.webp" aria-hidden="true"
+           style="right:-1%; bottom:4%; width:min(28%,240px); opacity:0.95;">
+      <img alt="" class="deco" src="../../assets/modules/module-4-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; right:-4%; width:26%; opacity:0.35;">
+
+      <div class="slide-content" style="max-width:640px; margin-left:0; margin-right:auto;">
+        <h2 class="h2-white anim" data-delay="0">Résumé : ensemble, on est capable!</h2>
+
+        <ul class="takeaway-list">
+          <li class="takeaway anim" data-delay="100"><span class="takeaway-arrow">›</span>L’eczéma, ce n’est pas seulement une question de peau. Il peut aussi affecter votre humeur, votre sommeil, votre confiance et votre vie quotidienne.</li>
+          <li class="takeaway anim" data-delay="175"><span class="takeaway-arrow">›</span>Vous n’avez pas à le gérer seul. Le soutien de la famille, des amis, des médecins et de la communauté fait une réelle différence.</li>
+          <li class="takeaway anim" data-delay="250"><span class="takeaway-arrow">›</span>Parler de vos émotions, c’est important. Votre médecin peut vous aider à accéder à des ressources en santé mentale.</li>
+          <li class="takeaway anim" data-delay="325"><span class="takeaway-arrow">›</span>L’éducation aide tout le monde. Quand les familles comprennent mieux l’eczéma, elles se sentent plus en confiance et moins stressées.</li>
+          <li class="takeaway anim" data-delay="400"><span class="takeaway-arrow">›</span>Les programmes de groupe et les outils en ligne, ça fonctionne. Partager vos expériences et apprendre des autres peut améliorer les traitements et réduire l’isolement.</li>
+          <li class="takeaway anim" data-delay="475"><span class="takeaway-arrow">›</span>Commencez tôt et continuez à bâtir votre équipe. Un solide réseau de soutien améliore la qualité de vie — pour vous et pour vos proches.</li>
+        </ul>
+
+        <div class="helpline helpline--dark anim" data-delay="520" role="note" aria-label="Ligne d’aide en santé mentale de l’AHS" style="margin-bottom:6px;">
+          <span class="helpline-icon" aria-hidden="true">☎</span>
+          <div>
+            <p class="helpline-label">Besoin de parler à quelqu’un? Ligne d’aide en santé mentale de l’AHS</p>
+            <p class="helpline-num"><a href="tel:18773032642">1-877-303-2642</a></p>
+            <p class="helpline-sub">Soutien gratuit et confidentiel, 24 h sur 24, 7 jours sur 7.</p>
+          </div>
+        </div>
+
+        <p class="read-disclaimer anim" data-delay="450" style="font-family:'Poppins',sans-serif; font-size:0.8rem; line-height:1.55; color:rgba(255,255,255,0.68); margin:18px 0 0; border-top:1px solid rgba(255,255,255,0.16); padding-top:14px;">Ce module offre de l’information générale et ne remplace pas les conseils de votre médecin ou de votre dermatologue. En cas de crise ou si vous pensez à vous faire du mal, composez le 911 ou appelez la ligne d’aide en santé mentale de l’AHS au <a href="tel:18773032642" style="color:#fff; font-weight:600; text-decoration:underline; text-underline-offset:2px;">1-877-303-2642</a>.</p>
+        <details class="sources-details anim" data-delay="580">
+          <summary>Sources</summary>
+          <ol>
+            <li>Fung YL, Leung HT, Chan CLW. Efficacy of Integrative Body-Mind-Spirit group intervention for parents of children with eczema. Qual Health Res. 2020;30(6).</li>
+            <li>Dufresne H, Bekel L, Compain S, et al. Efficiency of a therapeutic patient education programme in children with severe atopic dermatitis. J Eur Acad Dermatol Venereol. 2020;34(9):2003–2010.</li>
+            <li>Greenwell K, McPherson T. Mental health in people with eczema: a critical priority. Br J Gen Pract. 2024;74(739):112–118.</li>
+            <li>Fung IC, Kremer H, MacDermott A. Talking to doctors about feelings: improving emotional communication in chronic skin disease care. Qual Health Res. 2020;30(8):1201–1213.</li>
+            <li>Andrade C, Helland T, Mørk G. Educational programs improve family quality of life and reduce treatment-related fears in pediatric atopic dermatitis. J Clin Med. 2023;12(6):2130.</li>
+            <li>Hughes N, Tuller D, Griffiths CE. Understanding peer bullying and social challenges in childhood eczema. Behav Cogn Psychother. 2024;52(2):150–163.</li>
+            <li>Greenwell K, Chalmers J, Marshman Z. Psychosocial interventions for parents of children with eczema: a mindfulness-based approach. Br J Gen Pract. 2024;74(739):112–118.</li>
+          </ol>
+        </details>
+
+        <div class="anim" data-delay="650">
+          <a class="back-pill" href="module-5.html">Module suivant : 5 →</a>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <script>
+    /* ── Progress bar ───────────────────────────────────── */
+    (function () {
+      var bar = document.getElementById('rd-progress');
+      function update() {
+        var scrollY = window.scrollY || window.pageYOffset;
+        var docH = document.documentElement.scrollHeight - window.innerHeight;
+        var pct = docH > 0 ? Math.min(100, (scrollY / docH) * 100) : 0;
+        bar.style.width = pct + '%';
+        bar.setAttribute('aria-valuenow', Math.round(pct));
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    }());
+
+    /* ── Continuous background colour shift ─────────────── */
+    (function () {
+      document.body.style.transition = 'background-color 1.2s ease';
+      var slides = document.querySelectorAll('.slide[data-bg]');
+      var bgObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            document.body.style.backgroundColor = entry.target.getAttribute('data-bg');
+          }
+        });
+      }, { threshold: 0.5 });
+      slides.forEach(function (s) { bgObserver.observe(s); });
+    }());
+
+    /* ── Slide scale / momentum effect ─────────────────── */
+    (function () {
+      if (!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+      var slideObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          } else {
+            entry.target.classList.remove('in-view');
+          }
+        });
+      }, { threshold: 0.6 });
+      document.querySelectorAll('.slide').forEach(function (s) { slideObserver.observe(s); });
+    }());
+
+    /* ── Content scroll-in animations ──────────────────── */
+    (function () {
+      if (!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          var delay = parseInt(el.getAttribute('data-delay') || '0', 10);
+          el.style.transitionDelay = delay + 'ms';
+          el.classList.add('visible');
+          observer.unobserve(el);
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.anim').forEach(function (el) { observer.observe(el); });
+    }());
+
+    /* ── Quiz logic ─────────────────────────────────────── */
+    (function () {
+      document.querySelectorAll('.qz-block').forEach(function (block) {
+        var buttons = block.querySelectorAll('.quiz-option');
+        var feedback = document.getElementById(block.id + '-feedback');
+        buttons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            buttons.forEach(function (b) {
+              b.style.pointerEvents = 'none';
+              if (b.getAttribute('data-correct') === 'true') {
+                b.classList.add('correct');
+              } else {
+                b.classList.add('wrong');
+              }
+            });
+            if (feedback) { feedback.classList.add('qz-visible'); }
+          });
+        });
+      });
+    }());
+  </script>
+
+</body>
+</html>

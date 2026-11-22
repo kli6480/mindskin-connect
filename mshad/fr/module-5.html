@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Soin de la peau et bien-être global — SPEDA — MindSkin Connect</title>
+  <meta name="description" content="Module 5 de SPEDA : prévenir les poussées en période de stress, pleine conscience, RMP et TCC, nutrition et exercice pour une peau et un esprit en santé.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MindSkin Connect">
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:title" content="Soin de la peau et bien-être global — SPEDA — MindSkin Connect">
+  <meta property="og:description" content="Module 5 de SPEDA : prévenir les poussées en période de stress, pleine conscience, RMP et TCC, nutrition et exercice pour une peau et un esprit en santé.">
+  <meta property="og:url" content="https://connect.mindskinhealth.ca/mshad/fr/module-5.html">
+  <meta property="og:image" content="https://connect.mindskinhealth.ca/assets/social/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Soin de la peau et bien-être global — SPEDA — MindSkin Connect">
+  <meta name="twitter:description" content="Module 5 de SPEDA : prévenir les poussées en période de stress, pleine conscience, RMP et TCC, nutrition et exercice pour une peau et un esprit en santé.">
+  <meta name="twitter:image" content="https://connect.mindskinhealth.ca/assets/social/og-image.png">
+  <link rel="canonical" href="https://connect.mindskinhealth.ca/mshad/fr/module-5.html">
+  <link rel="alternate" hreflang="fr" href="https://connect.mindskinhealth.ca/mshad/fr/module-5.html">
+  <link rel="alternate" hreflang="en" href="https://connect.mindskinhealth.ca/mshad/module-5-read.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="icon" href="../../favicon.svg">
+  <style>
+    /* ── Variables ──────────────────────────────────────── */
+    :root {
+      --nav-h: 56px;
+      --bar-h: 4px;
+      --blue:  #5e548e;
+      --blue-dk: #231942;
+    }
+
+    /* ── Scroll snap ────────────────────────────────────── */
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+      scroll-padding-top: calc(var(--nav-h) + var(--bar-h));
+    }
+
+    body { background-color: var(--blue); }
+
+    main { padding-top: 0; }
+
+    /* ── Nav ────────────────────────────────────────────── */
+    .read-nav {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: var(--nav-h);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 1000;
+    }
+    .read-nav-brand {
+      font-family: 'Lilita One', serif;
+      color: #1B3068;
+      font-size: 1.1rem;
+      text-decoration: none;
+    }
+    .read-nav-back {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #1B3068;
+      text-decoration: none;
+      padding: 8px 0;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+    .read-nav-back:hover,
+    .read-nav-back:focus { text-decoration: underline; }
+
+    /* ── Progress bar ───────────────────────────────────── */
+    .rd-progress {
+      position: fixed;
+      top: var(--nav-h); left: 0;
+      height: var(--bar-h);
+      width: 0%;
+      background: #2BBFAA;
+      z-index: 999;
+      transition: width 0.1s linear;
+    }
+
+    /* ── Slide base ─────────────────────────────────────── */
+    .slide {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: transparent;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 900px;
+      padding: 32px 24px;
+    }
+
+    /* ── Decorative SVGs ────────────────────────────────── */
+    .deco {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+    }
+    .deco-char { width: min(46%, 420px); }
+
+    /* ── Scroll animations ──────────────────────────────── */
+    @media (prefers-reduced-motion: no-preference) {
+      .anim {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1),
+                    transform 0.6s cubic-bezier(0.16,1,0.3,1);
+      }
+      .anim.visible { opacity: 1; transform: translateY(0); }
+
+      .slide {
+        opacity: 0.7;
+        transform: scale(0.97);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .slide.in-view { opacity: 1; transform: scale(1); }
+
+      @keyframes gentle-bounce {
+        0%, 100% { transform: translateY(0); }
+        50%       { transform: translateY(8px); }
+      }
+      .scroll-cue { animation: gentle-bounce 2s ease-in-out infinite; }
+    }
+
+    /* ── Type helpers ───────────────────────────────────── */
+    .h1-white {
+      font-family: 'Lilita One', serif;
+      color: #fff;
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .h2-white, .h2-navy {
+      font-family: 'Lilita One', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .h2-white { color: #fff; }
+    .h2-navy  { color: #1B3068; }
+
+    .sub-white, .sub-navy {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+    .sub-white { color: rgba(255,255,255,0.92); }
+    .sub-navy  { color: #1B3068; }
+
+    .body-navy {
+      font-family: 'Poppins', sans-serif;
+      color: #2D2D2D;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    /* ── Slide 1 — hero ─────────────────────────────────── */
+    .hero-badge {
+      display: inline-block;
+      border: 1.5px solid rgba(255,255,255,0.75);
+      color: #fff;
+      border-radius: 999px;
+      padding: 4px 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+    .scroll-cue {
+      display: inline-block;
+      color: rgba(255,255,255,0.78);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      margin-top: 18px;
+    }
+    .hero-orient {
+      font-family: 'Poppins', sans-serif;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      margin-top: 12px;
+      max-width: 420px;
+    }
+
+    /* ── Slide 2 — objective cards ──────────────────────── */
+    .obj-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .obj-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 16px;
+      border-top: 4px solid var(--blue);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #444;
+    }
+    .obj-card strong {
+      display: block;
+      color: #1B3068;
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    /* ── Slide 3 — journey list ─────────────────────────── */
+    .journey-list { list-style: none; margin-top: 20px; }
+    .journey-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+    .journey-item:last-child { border-bottom: none; }
+    .journey-num {
+      font-family: 'Lilita One', serif;
+      font-size: 2rem;
+      color: rgba(255,255,255,0.3);
+      min-width: 52px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .journey-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: #fff;
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    }
+
+    /* ── Statement blocks ───────────────────────────────── */
+    .statement {
+      border-left: 4px solid rgba(255,255,255,0.8);
+      padding-left: 20px;
+      margin-bottom: 24px;
+      font-family: 'Poppins', sans-serif;
+      color: rgba(255,255,255,0.92);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.75;
+    }
+    .statement:last-child { margin-bottom: 0; }
+    .statement--navy {
+      border-left: 4px solid var(--blue);
+      padding-left: 20px;
+      margin-bottom: 24px;
+      font-family: 'Poppins', sans-serif;
+      color: #2D2D2D;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.75;
+    }
+    .statement--navy:last-child { margin-bottom: 0; }
+
+    /* ── Trigger grid (tracking slide) ─────────────────── */
+    .trigger-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .trigger-card {
+      background: rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 20px 22px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .trigger-card strong {
+      display: block;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .trigger-card p {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+
+    /* ── App tip callout ────────────────────────────────── */
+    .app-tip {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.92);
+      border-left: 4px solid #2BBFAA;
+    }
+
+    /* ── Step cards (habit building) ───────────────────── */
+    .step-card {
+      background: rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 14px 18px;
+      margin-bottom: 8px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .step-card:last-child { margin-bottom: 0; }
+    .step-num {
+      font-family: 'Lilita One', serif;
+      font-size: 2.5rem;
+      color: rgba(255,255,255,0.3);
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .step-body strong {
+      display: block;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+    .step-body p {
+      color: rgba(255,255,255,0.88);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    /* ── White step cards (light slides) ───────────────── */
+    .step-card--white {
+      background: #fff;
+      border-radius: 16px;
+      padding: 22px 26px;
+      margin-bottom: 14px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    }
+    .step-card--white:last-child { margin-bottom: 0; }
+    .step-num--blue {
+      font-family: 'Lilita One', serif;
+      font-size: 2.25rem;
+      color: var(--blue);
+      flex-shrink: 0;
+      line-height: 1;
+      min-width: 36px;
+    }
+    .step-body--navy strong {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      color: #1B3068;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .step-body--navy p {
+      font-family: 'Poppins', sans-serif;
+      color: #444;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* ── SMART letter cards ─────────────────────────────── */
+    .smart-list { margin-top: 20px; }
+    .smart-row {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .smart-row:last-child { border-bottom: none; }
+    .smart-letter {
+      font-family: 'Lilita One', serif;
+      font-size: 2.5rem;
+      color: #2BBFAA;
+      flex-shrink: 0;
+      min-width: 48px;
+      line-height: 1;
+    }
+    .smart-body { flex: 1; }
+    .smart-body strong {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .smart-body p {
+      font-family: 'Poppins', sans-serif;
+      color: rgba(255,255,255,0.82);
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+
+    /* ── Blue callout (on light slides) ────────────────── */
+    .blue-callout {
+      background: var(--blue);
+      color: #fff;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-top: 20px;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      line-height: 1.75;
+    }
+
+    /* ── Self-talk comparison ───────────────────────────── */
+    .talk-list {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .talk-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 18px 22px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .talk-before {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.875rem;
+      line-height: 1.5;
+      text-decoration: line-through;
+      margin-bottom: 8px;
+    }
+    .talk-after {
+      color: #fff;
+      font-size: 1rem;
+      line-height: 1.6;
+      font-weight: 600;
+    }
+    .talk-arrow {
+      color: #2BBFAA;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    /* ── Action cards (light slides) ───────────────────── */
+    .action-list {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .action-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 14px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .action-emoji { font-size: 1.4rem; flex-shrink: 0; line-height: 1.35; }
+    .action-card p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #2D2D2D;
+    }
+    .action-card strong {
+      display: block;
+      color: #1B3068;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    /* ── Quiz slides ────────────────────────────────────── */
+    .qz-num-badge {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+    .qz-scenario {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      border-left: 4px solid var(--blue);
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.75;
+      color: #2D2D2D;
+      margin-bottom: 14px;
+    }
+    .qz-options { display: flex; flex-direction: column; gap: 10px; }
+    .qz-block .quiz-option {
+      background: #fff;
+      color: #1B3068;
+      border: 1.5px solid rgba(255,255,255,0.3);
+    }
+    .quiz-option.correct {
+      background: var(--blue) !important;
+      color: #fff !important;
+      border-color: var(--blue) !important;
+    }
+    .quiz-option.wrong {
+      background: transparent !important;
+      color: rgba(255,255,255,0.3) !important;
+      border-color: rgba(255,255,255,0.1) !important;
+      text-decoration: line-through;
+    }
+    .quiz-option { font-size: 1rem; }
+    .qz-feedback {
+      display: none;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+      line-height: 1.6;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border-left: 4px solid var(--blue);
+    }
+    .qz-feedback.qz-visible { display: block; }
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes fade-in-up {
+        from { opacity: 0; transform: translateY(8px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      .qz-feedback.qz-visible { animation: fade-in-up 0.3s ease forwards; }
+    }
+
+    /* ── Takeaways ──────────────────────────────────────── */
+    .takeaway-list { list-style: none; margin: 12px 0 16px; }
+    .takeaway {
+      display: flex;
+      gap: 14px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      font-family: 'Poppins', sans-serif;
+      color: rgba(255,255,255,0.92);
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      line-height: 1.7;
+    }
+    .takeaway:last-child { border-bottom: none; }
+    .takeaway-arrow {
+      color: #2BBFAA;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .sources-details { margin-top: 24px; }
+    .sources-details > summary {
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.9rem;
+      padding: 8px 0;
+      user-select: none;
+    }
+    .sources-details ol {
+      margin-top: 12px;
+      padding-left: 20px;
+      color: rgba(255,255,255,0.65);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.825rem;
+      line-height: 1.75;
+    }
+    .back-pill {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      border-radius: 999px;
+      padding: 14px 32px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      margin-top: 28px;
+      min-height: 44px;
+      transition: filter 0.2s;
+    }
+    .back-pill:hover { filter: brightness(1.15); }
+
+    /* ── Resource callout ──────────────────────────────── */
+    .handout-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 14px;
+      padding: 13px 16px;
+      background: rgba(255,255,255,0.11);
+      border-left: 4px solid #2BBFAA;
+      border-radius: 10px;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s;
+    }
+    .handout-cta:hover { background: rgba(255,255,255,0.2); }
+    .handout-cta:focus-visible { outline: 2px solid #2BBFAA; outline-offset: 3px; }
+    .handout-cta-inner { flex: 1; }
+    .handout-cta-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #2BBFAA;
+      margin: 0 0 2px;
+    }
+    .handout-cta-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #fff;
+      line-height: 1.25;
+      margin: 0 0 2px;
+    }
+    .handout-cta-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .handout-cta-arrow {
+      color: #2BBFAA;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      font-family: 'Lilita One', serif;
+    }
+    /* Light variant — for CTAs on cream/light slides (legible dark text) */
+    .handout-cta--light {
+      background: rgba(12,55,77,0.06);
+      border-left-color: #231942;
+    }
+    .handout-cta--light:hover { background: rgba(12,55,77,0.12); }
+    .handout-cta--light .handout-cta-label { color: #5E548E; }
+    .handout-cta--light .handout-cta-title { color: #231942; }
+    .handout-cta--light .handout-cta-desc { color: rgba(12,55,77,0.72); }
+    .handout-cta--light .handout-cta-arrow { color: #5E548E; }
+
+    /* ── Responsive ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .deco-char        { display: none; }
+      .obj-grid         { grid-template-columns: 1fr; }
+      .trigger-grid     { grid-template-columns: 1fr; }
+      .slide-content    { padding: 40px 20px; }
+    }
+    /* ═══ PDF-faithful components (Module 5 — purple) ═══════ */
+    :root {
+      --rose: #5E548E; --plum: #231942; --cream: #FBEFD0;
+      --pink-lt: #B79BC9; --rose-card: #7A6A9C;
+    }
+    .pdf-slide { height: auto; min-height: 100vh; }
+    .pdf-wrap { position: relative; z-index: 1; width: 100%; max-width: 1120px; margin: 0 auto; padding: 92px 44px 48px; display: grid; gap: 36px; align-items: center; }
+    @media (min-width: 880px) {
+      .pdf-2col { grid-template-columns: 1.05fr 0.95fr; }
+      .pdf-2col--journey { grid-template-columns: 1fr 1fr; gap: 0; }
+      .s3 .s3-note { border-radius: 50%; aspect-ratio: 1/1; max-width: none; width: min(42vw,430px); padding: 16%; display: flex; align-items: center; justify-content: center; font-size: clamp(.68rem,.8vw,.8rem); line-height: 1.48; }
+    }
+    .s1 { background: var(--rose); }
+    .s1-badge { display: inline-block; background: #EAD9F0; color: var(--plum); font-family: 'Poppins',sans-serif; font-weight: 600; font-size: .95rem; padding: 9px 24px; border-radius: 999px; box-shadow: 0 5px 0 rgba(12,55,77,.2); margin-bottom: 22px; }
+    .s1-title { font-family: 'Lilita One',serif; color: #F6E9C8; text-transform: uppercase; font-size: clamp(2.1rem,5.4vw,3.5rem); line-height: 1.06; letter-spacing: .01em; margin: 0 0 24px; }
+    .s1-credits { font-family: 'Poppins',sans-serif; color: rgba(255,255,255,.85); font-size: .88rem; line-height: 1.65; margin: 0; }
+    .char-graphic, .s1-graphic { position: relative; display: flex; align-items: center; justify-content: center; min-height: 300px; }
+    .char-circle, .s1-circle { position: absolute; width: min(82%,370px); aspect-ratio: 1/1; background: #F6E9C8; border-radius: 50%; }
+    .char-graphic > img, .s1-brain { position: relative; width: min(94%,430px); height: auto; }
+    .s2 { background: var(--cream); }
+    .s2-h { font-family: 'Lilita One',serif; color: var(--plum); text-transform: uppercase; font-size: clamp(1.9rem,4.6vw,3rem); line-height: 1.05; margin: 0 0 16px; }
+    .s2-sub { font-family: 'Poppins',sans-serif; color: var(--plum); font-size: clamp(1rem,1.8vw,1.15rem); line-height: 1.6; margin: 0; }
+    .obj2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .obj2 { border-radius: 22px; padding: 22px 20px; color: #fff; font-family: 'Poppins',sans-serif; font-size: .92rem; line-height: 1.5; text-align: center; display: flex; flex-direction: column; gap: 12px; min-height: 200px; justify-content: center; }
+    .obj2 b { font-family: 'Lilita One',serif; font-weight: 400; font-size: 1.05rem; letter-spacing: .02em; text-transform: uppercase; }
+    .obj2--1 { background: var(--rose-card); } .obj2--2 { background: var(--pink-lt); }
+    .obj2--3 { background: var(--plum); } .obj2--4 { background: var(--pink-lt); }
+    .s3 { background: var(--rose); }
+    .s3-bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+    .s3 .pdf-wrap { position: relative; z-index: 1; align-items: center; }
+    .s3-h { font-family: 'Poppins',sans-serif; font-weight: 700; color: var(--plum); font-size: clamp(1.9rem,4.4vw,3rem); margin: 0 0 18px; letter-spacing: -.01em; }
+    .s3-list { list-style: none; margin: 0; }
+    .s3-item { display: flex; gap: 18px; padding: 7px 0; align-items: baseline; }
+    .s3-num { font-family: 'Poppins',sans-serif; font-weight: 700; color: #B79BC9; font-size: 1.5rem; min-width: 42px; flex-shrink: 0; }
+    .s3-label { font-family: 'Poppins',sans-serif; font-weight: 700; color: var(--plum); font-size: 1.02rem; line-height: 1.3; }
+    .s3-sub { font-family: 'Poppins',sans-serif; color: #6a5a7a; font-size: .88rem; margin-left: 60px; padding: 2px 0; }
+    .s3-right { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 30px; }
+    .s3-journey { font-family: 'Lilita One',serif; color: #F6E9C8; text-transform: uppercase; font-size: clamp(2.2rem,5vw,3.4rem); line-height: 1; margin: 0; }
+    .s3-note { background: var(--plum); color: #fff; border-radius: 26px; max-width: 440px; padding: 26px 30px; text-align: center; font-family: 'Poppins',sans-serif; font-size: .92rem; line-height: 1.55; }
+    .s3-note strong { font-weight: 700; }
+    .cream-card { background: #F6E9C8; border-radius: 18px; padding: 24px 26px; font-family: 'Poppins',sans-serif; color: var(--plum); font-size: clamp(.98rem,1.7vw,1.1rem); line-height: 1.65; }
+    .mini-callout { background: #F6E9C8; border-radius: 16px; padding: 20px 22px; font-family: 'Poppins',sans-serif; color: var(--plum); font-size: clamp(.92rem,1.5vw,1rem); line-height: 1.6; }
+    .mini-callout .bulb, .cream-card .bulb { font-size: 1.4rem; display: block; margin-bottom: 6px; }
+    .derm-list { list-style: none; margin: 8px 0 0; display: flex; flex-direction: column; gap: 14px; }
+    .derm-list li { font-family: 'Poppins',sans-serif; color: #fff; font-size: clamp(.95rem,1.6vw,1.05rem); line-height: 1.5; padding-left: 26px; position: relative; }
+    .derm-list li::before { content: "•"; position: absolute; left: 4px; color: #fff; font-size: 1.3rem; line-height: 1; }
+    .derm-list strong { display: block; }
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+    .step2 { display: flex; gap: 16px; align-items: flex-start; font-family: 'Poppins',sans-serif; }
+    .step2-n { width: 46px; height: 46px; border-radius: 50%; background: var(--rose); color: #fff; font-family: 'Lilita One',serif; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.15rem; }
+    .step2 h4 { font-weight: 700; font-size: 1rem; margin-bottom: 2px; }
+    .step2 p { font-size: .92rem; line-height: 1.5; }
+    .smart2 { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    .smart2-row { display: grid; grid-template-columns: 130px 1fr; gap: 0; border-radius: 10px; overflow: hidden; }
+    .smart2-k { font-family: 'Poppins',sans-serif; font-weight: 700; color: var(--plum); padding: 12px 16px; display: flex; align-items: center; }
+    .smart2-v { font-family: 'Poppins',sans-serif; color: var(--plum); font-style: italic; padding: 12px 16px; font-size: .95rem; display: flex; align-items: center; }
+    .smart2-row:nth-child(1) .smart2-k, .smart2-row:nth-child(1) .smart2-v { background: #7A6A9C; color: #fff; }
+    .smart2-row:nth-child(2) .smart2-k, .smart2-row:nth-child(2) .smart2-v { background: #B79BC9; }
+    .smart2-row:nth-child(3) .smart2-k, .smart2-row:nth-child(3) .smart2-v { background: #C9B3D8; }
+    .smart2-row:nth-child(4) .smart2-k, .smart2-row:nth-child(4) .smart2-v { background: #E3D4EC; }
+    .smart2-row:nth-child(5) .smart2-k, .smart2-row:nth-child(5) .smart2-v { background: #F0E6D0; }
+    .qz2 { background: var(--cream); }
+    .qz2-title { font-family: 'Lilita One',serif; color: var(--plum); text-transform: uppercase; font-size: clamp(1.9rem,4.4vw,2.9rem); margin: 0 0 14px; }
+    .qz2-badge { display: inline-block; background: #E8DDF0; color: var(--plum); border-radius: 999px; padding: 6px 20px; font-family: 'Poppins',sans-serif; font-weight: 600; font-size: .82rem; margin-bottom: 16px; box-shadow: 0 4px 0 rgba(12,55,77,.15); }
+    .qz2-card { background: #E8DDF0; border-radius: 20px; padding: 26px 28px; max-width: 760px; }
+    .qz2-scn { font-family: 'Poppins',sans-serif; color: var(--plum); font-size: clamp(1rem,1.9vw,1.12rem); line-height: 1.7; margin-bottom: 18px; }
+    .qz2 .qz-options { gap: 10px; }
+    .qz2 .quiz-option { background: #FCF6EA; color: var(--plum); border: none; border-radius: 999px; text-align: center; font-size: .98rem; }
+    .qz2 .quiz-option.correct { background: #B79BC9 !important; color: #fff !important; }
+    .qz2 .quiz-option.wrong { background: #FCF6EA !important; color: rgba(12,55,77,.4) !important; text-decoration: none; }
+    .qz2-fb { display: none; background: #B79BC9; color: #fff; border-radius: 20px; padding: 18px 22px; margin-top: 16px; font-family: 'Poppins',sans-serif; font-size: clamp(.92rem,1.6vw,1rem); line-height: 1.55; }
+    .qz2-fb.qz-visible { display: block; }
+    .qz2-char { position: absolute; right: 2%; bottom: 0; width: min(26%,240px); z-index: 0; }
+    /* Bounded proportions */
+    .s1-title { font-size: clamp(1.8rem,3.4vw,2.9rem) !important; }
+    .s2-h { font-size: clamp(1.6rem,3.1vw,2.5rem) !important; }
+    .s3-h { font-size: clamp(1.55rem,2.9vw,2.3rem) !important; }
+    .s3-journey { font-size: clamp(1.85rem,3.6vw,2.8rem) !important; }
+    .qz2-title { font-size: clamp(1.6rem,3.1vw,2.4rem) !important; }
+    .char-circle, .s1-circle { width: min(62%,300px) !important; }
+    .char-graphic > img, .s1-brain { width: min(76%,340px) !important; }
+    .char-graphic, .s1-graphic { min-height: 260px !important; }
+    @media (max-width: 880px) {
+      .pdf-wrap { padding: 78px 18px 36px; gap: 26px; }
+      .obj2 { min-height: 150px; padding: 18px 14px; }
+      .s3 { background: var(--cream); } .s3-bg { display: none; }
+      .s3-right { background: var(--rose); border-radius: 24px; padding: 36px 24px; margin-top: 4px; }
+      .s3-note { width: min(80vw,280px); }
+      .qz2-char { display: none; }
+      .smart2-row { grid-template-columns: 96px 1fr; }
+      .s1-title { font-size: clamp(1.55rem,6vw,2.15rem) !important; }
+      .s2-h, .s3-h, .qz2-title { font-size: clamp(1.45rem,5.4vw,2rem) !important; }
+      .s3-journey { font-size: clamp(1.7rem,6.4vw,2.25rem) !important; }
+      .char-graphic, .s1-graphic { min-height: 190px !important; }
+      .char-circle, .s1-circle { width: min(50vw,250px) !important; }
+      .char-graphic > img, .s1-brain { width: min(58vw,290px) !important; }
+    }
+
+    /* ── Module 5 additions ─────────────────────────────── */
+    .obj2-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .dark-list { list-style:none; margin:6px 0 0; display:flex; flex-direction:column; gap:11px; }
+    .dark-list li { font-family:'Poppins',sans-serif; color:var(--plum); font-size:clamp(.9rem,1.5vw,1rem); line-height:1.5; padding-left:22px; position:relative; }
+    .dark-list li::before { content:"\2022"; position:absolute; left:3px; color:var(--rose); font-size:1.2rem; line-height:1; }
+    .dlink { color:var(--rose); text-decoration:underline; text-underline-offset:2px; font-weight:600; }
+    .rlink { color:#fff; text-decoration:underline; text-underline-offset:2px; font-weight:600; }
+    .rlink:hover { color:#F6E9C8; }
+    /* Quick stress-reliever cards */
+    .relief-grid { display:grid; grid-template-columns:1fr; gap:16px; }
+    @media (min-width:820px){ .relief-grid{ grid-template-columns:repeat(3,1fr);} }
+    .relief-card { background:#fff; border-radius:18px; padding:20px 22px; box-shadow:0 3px 12px rgba(35,25,66,.08); border-top:5px solid var(--rose); }
+    .relief-card h3 { font-family:'Lilita One',serif; color:var(--plum); font-size:1.1rem; margin:0 0 10px; display:flex; justify-content:space-between; align-items:baseline; gap:8px; }
+    .relief-card h3 span { font-family:'Poppins',sans-serif; font-weight:700; font-size:.72rem; color:#fff; background:var(--rose); border-radius:999px; padding:3px 10px; white-space:nowrap; }
+    .relief-card p { font-family:'Poppins',sans-serif; color:#3A2E4A; font-size:.86rem; line-height:1.5; margin:0 0 8px; }
+    .relief-card p:last-child { margin-bottom:0; }
+    /* Nutrition pillars */
+    .nutri-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    @media (min-width:900px){ .nutri-grid{ grid-template-columns:repeat(4,1fr);} }
+    .nutri-card { background:#fff; border-radius:16px; padding:18px 18px; box-shadow:0 3px 12px rgba(35,25,66,.08); text-align:center; }
+    .nutri-card h3 { font-family:'Poppins',sans-serif; font-weight:700; color:var(--rose); font-size:.98rem; margin:0 0 8px; }
+    .nutri-card p { font-family:'Poppins',sans-serif; color:#3A2E4A; font-size:.84rem; line-height:1.5; margin:0; }
+    /* AHS Mental Health Helpline callout — visually distinct */
+    .helpline { display:flex; gap:16px; align-items:center; background:#fff; border:3px solid var(--rose);
+      border-radius:18px; padding:18px 24px; margin-top:20px; box-shadow:0 6px 0 rgba(35,25,66,.15); }
+    .helpline-icon { font-size:2.1rem; line-height:1; flex-shrink:0; }
+    .helpline-label { font-family:'Poppins',sans-serif; font-weight:600; color:var(--plum); font-size:.9rem; margin:0 0 2px; }
+    .helpline-num { font-family:'Lilita One',serif; color:var(--rose); font-size:clamp(1.5rem,3.2vw,2.1rem); letter-spacing:.02em; margin:0 0 3px; }
+    .helpline-num a { color:inherit; text-decoration:none; }
+    .helpline-num a:hover { text-decoration:underline; }
+    .helpline-sub { font-family:'Poppins',sans-serif; color:#6a5a7a; font-size:.8rem; line-height:1.4; margin:0; }
+  
+    /* ═══════ Deck polish: graphics + mobile / glitch fixes ═══════ */
+
+    /* Mobile viewport height: dvh stops the mobile address bar from
+       cutting off or jumping slide content (falls back to the 100vh above). */
+    .pdf-slide { min-height: 100dvh; }
+
+    /* Gentler snapping so a tall (mobile) slide never traps the scroll. */
+    html { scroll-snap-type: y proximity; }
+    .slide { scroll-snap-stop: normal; }
+
+    /* Keep every slide fully visible. The old 0.6-visibility momentum could
+       leave a tall slide stuck faded on small screens; motion now comes from
+       the content fade-ins and the gentle float below. */
+    .slide { opacity: 1 !important; transform: none !important; }
+
+    /* Depth: a soft top-right light source on the solid-colour slides. */
+    .s1 { background-image: radial-gradient(115% 80% at 82% 4%, rgba(255,255,255,.10), rgba(255,255,255,0) 55%); }
+
+    /* Motion-safe gentle life — small, slow, GPU-composited. */
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes msc-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+      @keyframes msc-drift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(12px); } }
+      .char-graphic > img    { animation: msc-float 6.5s ease-in-out infinite; }
+      .deco-char             { animation: msc-float 7.5s ease-in-out infinite; }
+      .qz2-char              { animation: msc-float 7s ease-in-out infinite; }
+      .deco:not(.deco-char)  { animation: msc-drift 18s ease-in-out infinite; }
+    }
+
+    /* Interactive polish. */
+    @media (hover: hover) {
+      .obj2, .relief-card, .nutri-card, .handout-cta { transition: transform .25s ease, box-shadow .25s ease; }
+      .obj2:hover, .relief-card:hover, .nutri-card:hover { transform: translateY(-4px); }
+    }
+    .quiz-option { transition: transform .12s ease, background .2s ease, color .2s ease; }
+    .quiz-option:not(.correct):not(.wrong):active { transform: scale(.985); }
+
+    /* Progress-bar glow. */
+    .rd-progress { box-shadow: 0 0 10px rgba(43,191,170,.45); }
+
+  
+    /* ═══ Fluid type scale: single smooth clamp per heading (no breakpoint
+       jump — proportional at every width, capped so it never gets huge). ═══ */
+    .s1-title    { font-size: clamp(1.5rem,  calc(1rem + 2.1vw),  2.75rem) !important; }
+    .s2-h        { font-size: clamp(1.45rem, calc(1rem + 1.9vw),  2.5rem)  !important; }
+    .s3-h        { font-size: clamp(1.4rem,  calc(1rem + 1.85vw), 2.4rem)  !important; }
+    .s3-journey  { font-size: clamp(1.7rem,  calc(1.1rem + 2.4vw), 3rem)   !important; }
+    .qz2-title   { font-size: clamp(1.45rem, calc(1rem + 1.9vw),  2.5rem)  !important; }
+
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Aller au contenu principal</a>
+
+  <nav class="read-nav" aria-label="Navigation du module">
+    <a class="read-nav-brand" href="../../">MindSkin Connect</a>
+    <span class="read-nav-links">
+      <a class="read-nav-back" href="../module-5-read.html" lang="en" hreflang="en">English</a>
+      <a class="read-nav-back" href="./">← Modules SPEDA</a>
+    </span>
+  </nav>
+
+  <div class="rd-progress" id="rd-progress" role="progressbar"
+       aria-label="Progression de la lecture" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <main id="main">
+
+    <!-- ══ SLIDE 1 — Title ══════════════════ -->
+    <section class="slide pdf-slide s1" id="slide-1" data-bg="#5E548E" data-theme="dark" aria-label="Présentation du module">
+      <img alt="" class="deco" src="../../assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:34%; opacity:0.4;">
+      <img alt="" class="deco" src="../../assets/modules/module-5-blob-cream.svg" aria-hidden="true"
+           style="bottom:-8%; left:-5%; width:24%; opacity:0.35;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <span class="s1-badge anim" data-delay="0">Module 5</span>
+          <h1 class="s1-title anim" data-delay="100">Soin de la peau et bien-être global</h1>
+          <p class="s1-credits anim" data-delay="200">Crédits : Jia Qi Adam Bai BSc, Serena Dienes BSc, Kevin Li BSc MSPH, Sofia Maruschak-Love BHSc<br>
+            Dr. Marlene Dytoc MD PhD FRCPC<br>
+            Conçu par : Danting Zheng BSc Premier cycle<br>
+            Traduction : Cécilia Bernier BSc, Michelle Leung BScN</p>
+          <span class="scroll-cue anim" data-delay="300" style="display:inline-block; margin-top:20px; color:rgba(255,255,255,.9);">↓ Faites défiler pour commencer</span>
+        </div>
+        <div class="char-graphic anim" data-delay="200">
+          <div class="char-circle"></div>
+          <img src="../../assets/modules/module-5-hero-selfcare.svg" alt="Une personne qui serre un cœur dans ses bras, symbole des soins personnels et du bien-être">
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 2 — Objectives ═════════════ -->
+    <section class="slide pdf-slide s2" id="slide-2" data-bg="#FBEFD0" data-theme="light" aria-label="Objectifs d’apprentissage">
+      <img alt="" class="deco" src="../../assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; left:-4%; width:26%; opacity:0.25;">
+      <img alt="" class="deco" src="../../assets/modules/module-5-blob-lavender.svg" aria-hidden="true"
+           style="bottom:-9%; right:-5%; width:26%; opacity:0.3;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s2-h anim" data-delay="0">Notre plan de bien-être : ce que vous allez en retirer</h2>
+          <p class="s2-sub anim" data-delay="100">À la fin de ce module, vous serez outillé pour :</p>
+        </div>
+        <div class="obj2-grid">
+          <div class="obj2 anim" data-delay="150" style="background:#5E548E;"><b>Objectif #1</b>Mettre en place des stratégies proactives pour aider à prévenir les poussées d’eczéma, surtout pendant les périodes stressantes.</div>
+          <div class="obj2 anim" data-delay="225" style="background:#9B85AE;"><b>Objectif #2</b>Intégrer des techniques pratiques de réduction du stress et de l’anxiété, comme la pleine conscience et la relaxation musculaire progressive, dans votre quotidien.</div>
+          <div class="obj2 anim" data-delay="300" style="background:#D3AECB; color:#3A2A45;"><b style="color:#3A2A45;">Objectif #3</b>Comprendre comment utiliser des outils comme les journaux de santé mentale pour suivre et réfléchir au lien entre votre peau et votre esprit.</div>
+          <div class="obj2 anim" data-delay="375" style="background:#231942;"><b>Objectif #4</b>Prendre des décisions éclairées en matière de nutrition et d’activité physique afin de soutenir la santé de votre peau et votre bien-être général.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 3 — Module outline ═════════ -->
+    <section class="slide pdf-slide s3" id="slide-3" data-bg="#5E548E" data-theme="light" aria-label="Aperçu du module">
+      <svg class="s3-bg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+        <path d="M -80,-80 L 760,-80 C 880,80 1000,200 970,340 C 945,455 815,480 885,610 C 950,730 770,800 690,980 L -80,980 Z" fill="#FBEFD0"/>
+        <path d="M -80,650 C 120,590 255,655 300,785 C 348,905 150,980 -80,980 Z" fill="#5E548E"/>
+        <path d="M 1680,700 C 1560,685 1470,790 1525,980 L 1680,980 Z" fill="#FBEFD0"/>
+        <g fill="none" stroke="#F6E9C8" stroke-width="3" opacity="0.30"><circle cx="1500" cy="130" r="55"/><circle cx="1500" cy="130" r="115"/><circle cx="1500" cy="130" r="175"/><circle cx="1500" cy="130" r="235"/><circle cx="1500" cy="130" r="295"/></g>
+        <g fill="none" stroke="#F6E9C8" stroke-width="3" opacity="0.22"><circle cx="1585" cy="560" r="45"/><circle cx="1585" cy="560" r="100"/><circle cx="1585" cy="560" r="155"/><circle cx="1585" cy="560" r="210"/></g>
+        <g fill="none" stroke="#F6E9C8" stroke-width="3" opacity="0.28"><circle cx="1470" cy="885" r="55"/><circle cx="1470" cy="885" r="115"/><circle cx="1470" cy="885" r="175"/><circle cx="1470" cy="885" r="235"/></g>
+        <g fill="none" stroke="#231942" stroke-width="3" opacity="0.08"><circle cx="35" cy="120" r="48"/><circle cx="35" cy="120" r="95"/><circle cx="35" cy="120" r="142"/></g>
+        <circle cx="1592" cy="695" r="40" fill="#231942"/>
+        <circle cx="1290" cy="150" r="26" fill="#231942" opacity="0.9"/>
+      </svg>
+
+      <div class="pdf-wrap pdf-2col pdf-2col--journey">
+        <div class="s3-left">
+          <h2 class="s3-h anim" data-delay="0">Aperçu du module</h2>
+          <ol class="s3-list">
+            <li class="s3-item anim" data-delay="80"><span class="s3-num">01</span><span class="s3-label">Prévenir les poussées 101 : garder une longueur d’avance pendant les périodes stressantes</span></li>
+            <li class="s3-item anim" data-delay="130"><span class="s3-num">02</span><span class="s3-label">Apaiser votre système : stratégies de réduction du stress et de l’anxiété</span></li>
+            <li class="s3-sub anim" data-delay="150">a) La pleine conscience en action : méditation et guides audio</li>
+            <li class="s3-sub anim" data-delay="168">b) Techniques rapides pour soulager le stress en moins de 5 minutes</li>
+            <li class="s3-sub anim" data-delay="186">c) Relaxation profonde : relaxation musculaire progressive (RMP)</li>
+            <li class="s3-sub anim" data-delay="204">d) Thérapie cognitivo-comportementale (TCC)</li>
+            <li class="s3-item anim" data-delay="240"><span class="s3-num">03</span><span class="s3-label">Suivre votre parcours : la puissance des journaux de santé mentale et de symptômes</span></li>
+            <li class="s3-item anim" data-delay="290"><span class="s3-num">04</span><span class="s3-label">Nourrir votre peau et votre esprit : le rôle de la nutrition</span></li>
+            <li class="s3-item anim" data-delay="340"><span class="s3-num">05</span><span class="s3-label">Bouger pour votre bien-être : l’exercice comme outil holistique</span></li>
+            <li class="s3-item anim" data-delay="390"><span class="s3-num">06</span><span class="s3-label">Points clés : bâtir des habitudes de bien-être durables</span></li>
+          </ol>
+        </div>
+        <div class="s3-right anim" data-delay="150">
+          <h2 class="s3-journey">Tracer votre parcours bien-être</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 4 — Flare Prevention 101 ══════════════════ -->
+    <section class="slide pdf-slide s1" id="slide-4" data-bg="#5E548E" data-theme="dark" aria-label="Prévenir les poussées pendant les périodes stressantes">
+      <img alt="" class="deco" src="../../assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:26%; opacity:0.4;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.5rem,3.4vw,2.3rem); margin-bottom:12px;">Prévenir les poussées 101 : garder une longueur d’avance pendant les périodes stressantes</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.95rem,1.6vw,1.05rem); line-height:1.6; margin:0 0 14px;">Le stress est un déclencheur majeur de l’eczéma. Pendant les périodes exigeantes (rentrée scolaire, échéances, défis personnels), votre peau peut être plus vulnérable.</p>
+          <ul class="derm-list">
+            <li class="anim" data-delay="150"><strong>La connexion peau-esprit :</strong> les hormones du stress peuvent affaiblir votre barrière cutanée et augmenter la perception des démangeaisons.</li>
+            <li class="anim" data-delay="210"><strong>Ajuster vos attentes :</strong> il peut être difficile de suivre une routine de soins parfaite en période de stress. Concentrez-vous plutôt sur la constance avec les éléments essentiels.</li>
+          </ul>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:18px; align-items:center;">
+          <div class="char-graphic anim" data-delay="150" style="min-height:200px;">
+            <div class="char-circle"></div>
+            <img src="../../assets/modules/module-5-stressed.webp" alt="Une personne stressée pendant une période exigeante">
+          </div>
+          <div class="mini-callout anim" data-delay="220" style="text-align:center; font-style:italic;">
+            La clé pour prévenir les poussées, c’est d’<strong>ajuster vos attentes</strong>. «Suffisamment bien», c’est mieux que rien!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 5 — Quiz Q1 ═══════════════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-5" data-bg="#FBEFD0" data-theme="light" aria-label="Question 1 du quiz">
+      <img alt="" class="deco" src="../../assets/modules/module-5-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.25;">
+      <img alt="" class="qz2-char" src="../../assets/modules/module-5-magnifier.webp" aria-hidden="true">
+
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Prendre le temps d’y réfléchir</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 1 de 5</span>
+
+        <div class="qz-block qz2-card anim" id="qz1">
+          <div class="qz2-scn anim" data-delay="100">
+            Pendant une semaine très chargée avec plusieurs échéances, vous craignez de ne pas avoir le temps d’appliquer votre crème corporelle habituelle après la douche du matin. Au lieu de sauter complètement l’hydratation, vous choisissez une vaporisation rapide de gelée de pétrole, car c’est rapide à appliquer. Cette approche est un bon exemple de :
+          </div>
+          <div class="qz-options anim" data-delay="200">
+            <button class="quiz-option" data-qz="qz1" data-correct="true">A) Prioriser des soins «suffisamment bons» et constants plutôt que la perfection pendant les périodes stressantes.</button>
+            <button class="quiz-option" data-qz="qz1" data-correct="false">B) Abandonner la gestion efficace de l’eczéma.</button>
+            <button class="quiz-option" data-qz="qz1" data-correct="false">C) Un signe que votre routine habituelle est trop compliquée.</button>
+            <button class="quiz-option" data-qz="qz1" data-correct="false">D) Une méthode qui risque d’aggraver votre eczéma à long terme.</button>
+          </div>
+          <div class="qz2-fb" id="qz1-feedback">
+            Exactement! Quand la vie devient exigeante, adapter votre routine pour que les soins essentiels soient maintenus est une stratégie intelligente. La constance, même simplifiée, est souvent plus bénéfique qu’une approche du tout ou rien.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 6 — Mindfulness & Meditation ══════════════ -->
+    <section class="slide pdf-slide s1" id="slide-6" data-bg="#5E548E" data-theme="dark" aria-label="Apaiser votre système : pleine conscience et méditation">
+      <img alt="" class="deco" src="../../assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; left:-4%; width:24%; opacity:0.4;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div class="char-graphic anim" data-delay="120">
+          <div class="char-circle"></div>
+          <img src="../../assets/modules/module-5-meditating.webp" alt="Une personne qui médite calmement">
+        </div>
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.5rem,3.4vw,2.3rem); margin-bottom:12px;">Apaiser votre système : pleine conscience et méditation</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.95rem,1.6vw,1.05rem); line-height:1.6; margin:0 0 12px;"><strong>Qu’est-ce que la pleine conscience?</strong> C’est porter volontairement attention au moment présent (pensées, émotions, sensations corporelles) sans jugement. Cela aide à créer un espace entre un déclencheur (comme une démangeaison ou une pensée stressante) et votre réaction, afin de mieux composer avec la situation.</p>
+          <div class="mini-callout anim" data-delay="180" style="background:rgba(255,255,255,0.12); color:#fff;">
+            <span class="bulb">🎧</span> <strong>Relaxation guidée par audio :</strong> essayez de courts exercices de respiration de 5 minutes, ou des séances plus longues de 15 à 20 minutes axées sur la conscience du corps et la gestion des démangeaisons. Trouvez un endroit calme, écoutez les instructions et laissez-vous guider pour vous détendre et observer ce qui se passe en vous. (Consultez votre dossier de ressources.)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 7 — Quick Stress Relievers (3 cards) ══════ -->
+    <section class="slide pdf-slide s2" id="slide-7" data-bg="#FBEFD0" data-theme="light" aria-label="Techniques rapides pour soulager le stress">
+      <img alt="" class="deco" src="../../assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; right:-4%; width:22%; opacity:0.25;">
+
+      <div class="pdf-wrap" style="max-width:1060px;">
+        <div style="text-align:center;">
+          <h2 class="s2-h anim" data-delay="0" style="margin-bottom:6px;">Anti-stress rapide — en moins de 5 minutes</h2>
+          <p class="s2-sub anim" data-delay="80">Même de courtes pauses de détente peuvent faire une différence. À essayer partout :</p>
+        </div>
+        <div class="relief-grid">
+          <div class="relief-card anim" data-delay="150">
+            <h3>Respiration en pleine conscience<span>1 à 5 min</span></h3>
+            <p><strong>Comment :</strong> Concentrez-vous simplement sur votre respiration. Portez attention à l’air qui entre et sort de votre corps. Si votre esprit s’évade, ramenez-le doucement vers votre souffle.</p>
+            <p><strong>Quand :</strong> Pendant une pause de travail ou d’étude, en attendant dans une file, avant une rencontre stressante, ou lorsque vous sentez que les démangeaisons augmentent.</p>
+          </div>
+          <div class="relief-card anim" data-delay="220">
+            <h3>Scan corporel rapide<span>2 à 5 min</span></h3>
+            <p><strong>Comment :</strong> Parcourez mentalement votre corps des orteils jusqu’à la tête, en prenant note des tensions sans jugement. Essayez consciemment de les relâcher.</p>
+            <p><strong>Quand :</strong> En transport (si vous ne conduisez pas!), pendant une pause dîner ou avant de dormir.</p>
+          </div>
+          <div class="relief-card anim" data-delay="290">
+            <h3>Ancrage sensoriel<span>5-4-3-2-1</span></h3>
+            <p><strong>Comment :</strong> Nommez 5 choses que vous voyez, 4 que vous pouvez toucher, 3 que vous entendez, 2 que vous sentez et 1 que vous pouvez goûter (ou une pensée positive).</p>
+            <p><strong>Quand :</strong> Lorsque vous vous sentez accablé ou anxieux, afin de vous ramener au moment présent.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 8 — PMR ═══════════════════════════════════ -->
+    <section class="slide pdf-slide s1" id="slide-8" data-bg="#5E548E" data-theme="dark" aria-label="Relaxation profonde : relaxation musculaire progressive">
+      <img alt="" class="deco" src="../../assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:26%; opacity:0.4;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.5rem,3.4vw,2.3rem); margin-bottom:12px;">Relaxation profonde : relaxation musculaire progressive (RMP)</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.95rem,1.6vw,1.05rem); line-height:1.6; margin:0 0 12px;"><strong>Qu’est-ce que la RMP?</strong> C’est une technique où vous contractez puis relâchez, de façon systématique, différents groupes musculaires de votre corps. Elle vous aide à prendre conscience des tensions physiques et à apprendre à les relâcher. Cela peut réduire le stress global et apaiser la tension musculaire.</p>
+          <ul class="derm-list">
+            <li class="anim" data-delay="150"><strong>1.</strong> Trouvez une position confortable (assis ou couché).</li>
+            <li class="anim" data-delay="200"><strong>2.</strong> Commencez par vos pieds : contractez les muscles pendant 5 à 10 secondes, puis relâchez complètement pendant 20 à 30 secondes, en portant attention à la différence.</li>
+            <li class="anim" data-delay="250"><strong>3.</strong> Montez graduellement dans votre corps — mollets, cuisses, abdomen, poitrine, bras, mains, épaules, cou, visage — en contractant et relâchant chaque groupe musculaire.</li>
+          </ul>
+          <p class="anim" data-delay="310" style="font-family:'Poppins',sans-serif; color:rgba(255,255,255,.8); font-size:.85rem; margin:12px 0 0; font-style:italic;">Veuillez vous référer aux pistes audio de RMP fournies dans votre dossier de ressources.</p>
+        </div>
+        <div class="char-graphic anim" data-delay="150">
+          <div class="char-circle"></div>
+          <img src="../../assets/modules/module-5-relaxing.webp" alt="Une personne en état de relaxation profonde">
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 9 — CBT ═══════════════════════════════════ -->
+    <section class="slide pdf-slide s1" id="slide-9" data-bg="#5E548E" data-theme="dark" aria-label="Thérapie cognitivo-comportementale">
+      <img alt="" class="deco" src="../../assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; left:-4%; width:24%; opacity:0.4;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div class="char-graphic anim" data-delay="120">
+          <div class="char-circle"></div>
+          <img src="../../assets/modules/module-5-calm.webp" alt="Une personne calme et réfléchie">
+        </div>
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.5rem,3.4vw,2.3rem); margin-bottom:12px;">Apaiser votre système : TCC</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.95rem,1.6vw,1.05rem); line-height:1.6; margin:0 0 12px;"><strong>Qu’est-ce que la thérapie cognitivo-comportementale (TCC)?</strong> C’est une psychothérapie structurée et de durée limitée qui vise à identifier et à modifier les schémas de pensées et les comportements négatifs.</p>
+          <ul class="derm-list">
+            <li class="anim" data-delay="150">La TCC a démontré son efficacité pour <strong>réduire les symptômes de la dermatite atopique (DA)</strong>, notamment l’intensité des démangeaisons et les problèmes de sommeil. Elle aide aussi à diminuer le stress, l’anxiété et la dépression associés à l’eczéma.</li>
+            <li class="anim" data-delay="210">La TCC offerte en ligne peut mener à des améliorations significatives. <strong>Les versions autoguidées comme celles encadrées par un clinicien se révèlent toutes deux efficaces.</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 10 — CBT Tools & Resources (+ Helpline) ═══ -->
+    <section class="slide pdf-slide s2" id="slide-10" data-bg="#FBEFD0" data-theme="light" aria-label="Outils et ressources pratiques de TCC en Alberta">
+      <img alt="" class="deco" src="../../assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; right:-4%; width:22%; opacity:0.25;">
+
+      <div class="pdf-wrap" style="max-width:1020px;">
+        <div style="text-align:center;">
+          <h2 class="s2-h anim" data-delay="0" style="margin-bottom:4px;">Outils et ressources pratiques de TCC en Alberta</h2>
+        </div>
+        <div class="pdf-2col" style="display:grid; gap:20px; align-items:stretch;">
+          <div class="anim" data-delay="120" style="background:#fff; border-radius:20px; padding:22px 24px; box-shadow:0 3px 12px rgba(35,25,66,.08);">
+            <h3 style="font-family:'Lilita One',serif; text-transform:uppercase; color:var(--rose); font-size:1.1rem; margin:0 0 12px;">Outils TCC autonomes</h3>
+            <ul class="dark-list">
+              <li><strong>MindShift TCC</strong> — appli gratuite d’Anxiété Canada pour gérer l’inquiétude, l’anxiété et la panique (outils TCC, journal de bord, relaxation). Disponible en français sur iOS et Android. <a href="https://www.anxietycanada.com/resources/mindshift-cbt/" target="_blank" rel="noopener noreferrer" class="dlink">anxietycanada.com<span class="sr-only"> (s’ouvre dans un nouvel onglet)</span></a></li>
+              <li><strong>MoodGYM</strong> — modules interactifs de TCC fondés sur des données probantes. Disponible en anglais seulement. <a href="https://moodgym.com.au" target="_blank" rel="noopener noreferrer" class="dlink" hreflang="en">moodgym.com.au<span class="sr-only"> (s’ouvre dans un nouvel onglet)</span></a></li>
+            </ul>
+          </div>
+          <div class="anim" data-delay="190" style="background:#fff; border-radius:20px; padding:22px 24px; box-shadow:0 3px 12px rgba(35,25,66,.08);">
+            <h3 style="font-family:'Lilita One',serif; text-transform:uppercase; color:var(--rose); font-size:1.1rem; margin:0 0 12px;">Ressources en Alberta</h3>
+            <ul class="dark-list">
+              <li><strong>Retrouver son entrain (ACSM)</strong> — programme gratuit d’auto-assistance guidée fondé sur la TCC. <a href="https://cmha.ca/fr/bounce-back/adultes-et-jeunes/" target="_blank" rel="noopener noreferrer" class="dlink">cmha.ca/fr/bounce-back<span class="sr-only"> (s’ouvre dans un nouvel onglet)</span></a></li>
+              <li><strong>Réseau santé Alberta</strong> — ressources sur les soins de santé en français en Alberta. <a href="https://rsa-ab.ca/" target="_blank" rel="noopener noreferrer" class="dlink">rsa-ab.ca<span class="sr-only"> (s’ouvre dans un nouvel onglet)</span></a></li>
+              <li><strong>TAO Tel-Aide</strong> — ligne d’écoute empathique et confidentielle en français, 24 h sur 24, 7 jours sur 7. <a href="tel:18005679699" class="dlink">1-800-567-9699</a></li>
+              <li><strong>Réseaux de soins primaires (PCN)</strong> — ateliers sur la gestion du stress. En anglais, avec option de trouver un médecin en français. <a href="https://albertafindadoctor.ca" target="_blank" rel="noopener noreferrer" class="dlink">albertafindadoctor.ca<span class="sr-only"> (s’ouvre dans un nouvel onglet)</span></a></li>
+              <li><strong>Parlez à votre médecin de famille</strong> — il peut vous orienter vers un psychologue, un travailleur social ou un psychiatre couvert par les Services de santé de l’Alberta.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="helpline anim" data-delay="260" role="note" aria-label="Ligne d’aide en santé mentale de l’AHS">
+          <span class="helpline-icon" aria-hidden="true">☎</span>
+          <div>
+            <p class="helpline-label">Ligne d’aide en santé mentale des Services de santé de l’Alberta (AHS)</p>
+            <p class="helpline-num"><a href="tel:18773032642">1-877-303-2642</a></p>
+            <p class="helpline-sub">Soutien et renseignements sur les services de santé mentale, 24 h sur 24, 7 jours sur 7, avec interprètes en français.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 11 — Quiz Q2 ══════════════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-11" data-bg="#FBEFD0" data-theme="light" aria-label="Question 2 du quiz">
+      <img alt="" class="deco" src="../../assets/modules/module-5-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.25;">
+      <img alt="" class="qz2-char" src="../../assets/modules/module-5-magnifier.webp" aria-hidden="true">
+
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Prendre le temps d’y réfléchir</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 2 de 5</span>
+
+        <div class="qz-block qz2-card anim" id="qz2">
+          <div class="qz2-scn anim" data-delay="100">
+            Vous vous sentez accablé par une poussée de démangeaisons et par le stress d’une présentation à venir. Vous décidez de prendre une pause de 10 minutes, de mettre vos écouteurs et d’écouter une méditation guidée axée sur la conscience du corps et l’observation calme des sensations. Cette pratique est un exemple de :
+          </div>
+          <div class="qz-options anim" data-delay="200">
+            <button class="quiz-option" data-qz="qz2" data-correct="false">A) Éviter le problème en vous distrayant.</button>
+            <button class="quiz-option" data-qz="qz2" data-correct="true">B) Utiliser une technique de pleine conscience (méditation guidée audio) pour gérer le stress et votre réaction aux démangeaisons.</button>
+            <button class="quiz-option" data-qz="qz2" data-correct="false">C) Une solution rapide qui ferait disparaître votre eczéma immédiatement.</button>
+            <button class="quiz-option" data-qz="qz2" data-correct="false">D) Une technique qui n’est efficace que si vous avez des heures à y consacrer.</button>
+          </div>
+          <div class="qz2-fb" id="qz2-feedback">
+            Exactement! Les méditations guidées sont une excellente façon de pratiquer la pleine conscience, ce qui peut vous aider à réduire le stress, à être moins réactif aux démangeaisons et à cultiver un sentiment de calme même dans les moments difficiles.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 12 — Nutrition ════════════════════════════ -->
+    <section class="slide pdf-slide s2" id="slide-12" data-bg="#FBEFD0" data-theme="light" aria-label="Nourrir votre peau et votre esprit : le rôle de la nutrition">
+      <img alt="" class="deco" src="../../assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; left:-4%; width:22%; opacity:0.25;">
+
+      <div class="pdf-wrap" style="max-width:1060px;">
+        <div style="text-align:center;">
+          <h2 class="s2-h anim" data-delay="0" style="margin-bottom:6px;">Nourrir votre peau et votre esprit : le rôle de la nutrition</h2>
+          <p class="s2-sub anim" data-delay="80">Bien que l’alimentation ne guérisse pas l’eczéma, une bonne nutrition favorise la santé globale, ce qui peut avoir des bienfaits pour votre peau et votre bien-être!</p>
+        </div>
+        <div class="nutri-grid">
+          <div class="nutri-card anim" data-delay="150"><h3>Aliments anti-inflammatoires</h3><p>Priorisez les légumes-feuilles, les petits fruits, le curcuma et les poissons riches en oméga-3.</p></div>
+          <div class="nutri-card anim" data-delay="210"><h3>Hydratation</h3><p>L’eau aide à garder la peau bien hydratée et à éliminer les toxines.</p></div>
+          <div class="nutri-card anim" data-delay="270"><h3>Lien intestin-peau</h3><p>Les probiotiques (p. ex. yogourt, kimchi) peuvent aider à soutenir votre système immunitaire.</p></div>
+          <div class="nutri-card anim" data-delay="330"><h3>Évitez les déclencheurs</h3><p>Surveillez votre consommation d’aliments transformés, de produits laitiers ou de gluten si une sensibilité est soupçonnée.</p></div>
+        </div>
+        <div class="mini-callout anim" data-delay="390" style="text-align:center; background:var(--pink-lt); color:#231942; margin-top:6px;">
+          <span class="bulb">📝</span> Conseil : tenez un journal alimentaire et de vos poussées afin de suivre les tendances de votre peau!
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 13 — Quiz Q3 ══════════════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-13" data-bg="#FBEFD0" data-theme="light" aria-label="Question 3 du quiz">
+      <img alt="" class="deco" src="../../assets/modules/module-5-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.25;">
+      <img alt="" class="qz2-char" src="../../assets/modules/module-5-magnifier.webp" aria-hidden="true">
+
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Prendre le temps d’y réfléchir</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 3 de 5</span>
+
+        <div class="qz-block qz2-card anim" id="qz3">
+          <div class="qz2-scn anim" data-delay="100">
+            Pour soutenir votre eczéma par l’alimentation, quelle approche est généralement la meilleure pour favoriser la santé globale de la peau et réduire l’inflammation?
+          </div>
+          <div class="qz-options anim" data-delay="200">
+            <button class="quiz-option" data-qz="qz3" data-correct="false">A) Un régime d’élimination très strict, auto-prescrit.</button>
+            <button class="quiz-option" data-qz="qz3" data-correct="true">B) Une alimentation équilibrée à base d’aliments entiers (fruits, légumes, oméga-3), une bonne hydratation et la discussion de toute sensibilité alimentaire soupçonnée avec votre médecin.</button>
+            <button class="quiz-option" data-qz="qz3" data-correct="false">C) Compter sur des «aliments santé» transformés et des boissons sucrées.</button>
+            <button class="quiz-option" data-qz="qz3" data-correct="false">D) Manger de grandes quantités d’un «superaliment» tout en négligeant l’équilibre global.</button>
+          </div>
+          <div class="qz2-fb" id="qz3-feedback">
+            Cela met l’accent sur la qualité nutritionnelle globale et sur des habitudes alimentaires anti-inflammatoires, favorisant la santé générale et celle de la peau. Un accompagnement professionnel est essentiel en cas de soupçon de sensibilités alimentaires.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 14 — Movement / Exercise ══════════════════ -->
+    <section class="slide pdf-slide s1" id="slide-14" data-bg="#5E548E" data-theme="dark" aria-label="Bouger pour votre bien-être : l’exercice et votre eczéma">
+      <img alt="" class="deco" src="../../assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-8%; right:-4%; width:26%; opacity:0.4;">
+
+      <div class="pdf-wrap pdf-2col">
+        <div>
+          <h2 class="s1-title anim" data-delay="0" style="font-size:clamp(1.5rem,3.4vw,2.3rem); margin-bottom:12px;">Bouger pour votre bien-être : l’exercice et votre eczéma</h2>
+          <p class="anim" data-delay="80" style="font-family:'Poppins',sans-serif; color:#fff; font-size:clamp(.95rem,1.6vw,1.05rem); line-height:1.6; margin:0 0 12px;">L’activité physique régulière procure de nombreux bienfaits, même en présence d’eczéma, si elle est pratiquée avec prudence.</p>
+          <ul class="derm-list" style="gap:11px;">
+            <li class="anim" data-delay="150"><strong>Choisissez vos activités avec soin :</strong> privilégiez des activités qui font moins transpirer si la sueur est un déclencheur important (p. ex. la marche, le yoga, la natation).</li>
+            <li class="anim" data-delay="200"><strong>Habillez-vous pour réussir :</strong> portez des vêtements amples, respirants et qui évacuent bien l’humidité.</li>
+            <li class="anim" data-delay="250"><strong>Soins après l’exercice :</strong> si vous suez, prenez une douche à l’eau tiède (jamais chaude) rapidement après, épongez doucement votre peau et appliquez une crème hydratante immédiatement.</li>
+            <li class="anim" data-delay="300"><strong>Écoutez votre corps :</strong> si votre peau est très irritée ou douloureuse, il est tout à fait acceptable d’opter pour des mouvements plus doux ou simplement du repos.</li>
+          </ul>
+        </div>
+        <div class="char-graphic anim" data-delay="150">
+          <div class="char-circle"></div>
+          <img src="../../assets/modules/module-5-exercise.webp" alt="Une personne qui fait de l’exercice en marchant">
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 15 — Quiz Q4 ══════════════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-15" data-bg="#FBEFD0" data-theme="light" aria-label="Question 4 du quiz">
+      <img alt="" class="deco" src="../../assets/modules/module-5-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.25;">
+      <img alt="" class="qz2-char" src="../../assets/modules/module-5-magnifier.webp" aria-hidden="true">
+
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Prendre le temps d’y réfléchir</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 4 de 5</span>
+
+        <div class="qz-block qz2-card anim" id="qz4">
+          <div class="qz2-scn anim" data-delay="100">
+            Vous souhaitez intégrer davantage d’exercice pour réduire votre stress, mais vous craignez que la sueur n’irrite votre eczéma. Une approche «futée pour la peau» consisterait à :
+          </div>
+          <div class="qz-options anim" data-delay="200">
+            <button class="quiz-option" data-qz="qz4" data-correct="false">A) Ne faire que des entraînements très intenses afin d’éliminer rapidement les toxines par la sueur.</button>
+            <button class="quiz-option" data-qz="qz4" data-correct="false">B) Éviter toute forme d’exercice afin de prévenir toute transpiration.</button>
+            <button class="quiz-option" data-qz="qz4" data-correct="true">C) Opter pour des activités modérées comme la marche rapide, porter des vêtements respirants et prévoir de prendre une douche puis de s’hydrater peu après.</button>
+            <button class="quiz-option" data-qz="qz4" data-correct="false">D) Appliquer une couche très épaisse de pommade occlusive avant de faire de l’exercice afin de bloquer la sueur.</button>
+          </div>
+          <div class="qz2-fb" id="qz4-feedback">
+            C’est une approche équilibrée et pratique! Elle vous permet de profiter des bienfaits de l’exercice tout en prenant des mesures proactives pour réduire au minimum l’irritation cutanée possible causée par la sueur.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 16 — Quiz Q5 ══════════════════════════════ -->
+    <section class="slide pdf-slide qz2" id="slide-16" data-bg="#FBEFD0" data-theme="light" aria-label="Question 5 du quiz">
+      <img alt="" class="deco" src="../../assets/modules/module-5-rings-faint.svg" aria-hidden="true" style="top:-7%; right:-5%; width:22%; opacity:0.25;">
+      <img alt="" class="qz2-char" src="../../assets/modules/module-5-diary.webp" aria-hidden="true">
+
+      <div class="pdf-wrap" style="max-width:840px;">
+        <h2 class="qz2-title anim" data-delay="0">Prendre le temps d’y réfléchir</h2>
+        <span class="qz2-badge anim" data-delay="50">Question 5 de 5</span>
+
+        <div class="qz-block qz2-card anim" id="qz5">
+          <div class="qz2-scn anim" data-delay="100">
+            Pour mieux gérer la composante liée au stress de votre eczéma, vous décidez d’adopter une approche à volets multiples : un exercice de respiration consciente de 5 minutes sur l’heure du dîner, un journal «Comment je me sens et l’état de ma peau aujourd’hui» et une marche de 20 minutes après le travail. Cette stratégie reflète :
+          </div>
+          <div class="qz-options anim" data-delay="200">
+            <button class="quiz-option" data-qz="qz5" data-correct="false">A) Une approche trop compliquée qui risque de ne pas être durable.</button>
+            <button class="quiz-option" data-qz="qz5" data-correct="false">B) Se concentrer uniquement sur les déclencheurs physiques de l’eczéma.</button>
+            <button class="quiz-option" data-qz="qz5" data-correct="true">C) Une approche intégrée et holistique du bien-être, en combinant la réduction du stress, l’auto-suivi et l’activité physique.</button>
+            <button class="quiz-option" data-qz="qz5" data-correct="false">D) La croyance que ces techniques guériront l’eczéma sans traitement médical.</button>
+          </div>
+          <div class="qz2-fb" id="qz5-feedback">
+            C’est un excellent exemple d’autosoins holistiques! Combiner différentes stratégies qui tiennent compte du lien entre le corps et l’esprit peut être très efficace pour gérer une condition chronique comme l’eczéma et améliorer le bien-être général.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SLIDE 17 — Key Takeaways ════════════════════════ -->
+    <section class="slide pdf-slide s1" id="slide-17" data-bg="#5E548E" data-theme="dark" aria-label="Résumé et points clés">
+      <img alt="" class="deco deco-char" src="../../assets/modules/module-5-confident.webp" aria-hidden="true"
+           style="right:-1%; bottom:4%; width:min(26%,230px); opacity:0.95;">
+      <img alt="" class="deco" src="../../assets/modules/module-5-rings-faint.svg" aria-hidden="true"
+           style="top:-7%; right:-4%; width:26%; opacity:0.35;">
+
+      <div class="slide-content" style="max-width:640px; margin-left:0; margin-right:auto;">
+        <h2 class="h2-white anim" data-delay="0">Récapitulons les points clés</h2>
+
+        <ul class="takeaway-list">
+          <li class="takeaway anim" data-delay="100"><span class="takeaway-arrow">›</span>Gérez votre eczéma de façon proactive durant les périodes stressantes en adaptant votre routine à des soins «suffisamment bons» et constants.</li>
+          <li class="takeaway anim" data-delay="175"><span class="takeaway-arrow">›</span>Intégrez de courtes pauses de respiration en pleine conscience, des scans corporels rapides et des exercices d’ancrage sensoriel, ainsi que des techniques comme la RMP ou la TCC, pour calmer votre système et réduire la réactivité aux démangeaisons.</li>
+          <li class="takeaway anim" data-delay="250"><span class="takeaway-arrow">›</span>Soutenez votre peau et votre santé globale avec une alimentation équilibrée et anti-inflammatoire, et une bonne hydratation.</li>
+          <li class="takeaway anim" data-delay="325"><span class="takeaway-arrow">›</span>Pratiquez régulièrement une activité physique qui respecte votre peau pour améliorer l’humeur, réduire le stress et favoriser le bien-être.</li>
+          <li class="takeaway anim" data-delay="400"><span class="takeaway-arrow">›</span>Établir de petites habitudes de bien-être constantes est un outil puissant pour bien vivre avec l’eczéma.</li>
+        </ul>
+
+        <p class="read-disclaimer anim" data-delay="450" style="font-family:'Poppins',sans-serif; font-size:0.8rem; line-height:1.55; color:rgba(255,255,255,0.68); margin:18px 0 0; border-top:1px solid rgba(255,255,255,0.16); padding-top:14px;">Ce module offre de l’information générale et ne remplace pas les conseils de votre médecin ou de votre dermatologue. En cas de crise ou si vous pensez à vous faire du mal, composez le 911 ou appelez la ligne d’aide en santé mentale de l’AHS au <a href="tel:18773032642" style="color:#fff; font-weight:600; text-decoration:underline; text-underline-offset:2px;">1-877-303-2642</a>.</p>
+        <details class="sources-details anim" data-delay="500">
+          <summary>Sources</summary>
+          <ol>
+            <li>Mitchell AE. Bidirectional relationships between psychological health and dermatological conditions in children. Psychol Res Behav Manag. 2018;11:289-298.</li>
+            <li>Haykin H, Rolls A. The neuroimmune response during stress: a physiological perspective. Immunity. 2021;54(9):1933-1947.</li>
+            <li>Sidbury R, et al. Guidelines of care for the management of atopic dermatitis: Section 4. J Am Acad Dermatol. 2014;71(6):1218-33.</li>
+            <li>Bae BG, et al. Progressive muscle relaxation therapy for atopic dermatitis. Acta Derm Venereol. 2012;92(1):57-61.</li>
+            <li>Koo J, et al. Cognitive behavior therapy as dermatological treatment. Int J Womens Dermatol. 2022;8(4):e011.</li>
+            <li>Kern D, et al. Self-guided vs clinician-guided online CBT for atopic dermatitis. JAMA Dermatol. 2024;160(2):123-131.</li>
+            <li>Leeuwendaal NK, et al. Fermented foods, health and the gut microbiome. Nutrients. 2022;14(7):1527.</li>
+            <li>Oizumi R, et al. The potential of exercise on lifestyle and skin function: narrative review. JMIR Dermatol. 2024;7:e51962.</li>
+          </ol>
+        </details>
+
+        <div class="anim" data-delay="600">
+          <a class="back-pill" href="./">← Modules SPEDA</a>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <script>
+    /* ── Progress bar ───────────────────────────────────── */
+    (function () {
+      var bar = document.getElementById('rd-progress');
+      function update() {
+        var scrollY = window.scrollY || window.pageYOffset;
+        var docH = document.documentElement.scrollHeight - window.innerHeight;
+        var pct = docH > 0 ? Math.min(100, (scrollY / docH) * 100) : 0;
+        bar.style.width = pct + '%';
+        bar.setAttribute('aria-valuenow', Math.round(pct));
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    }());
+
+    /* ── Continuous background colour shift ─────────────── */
+    (function () {
+      document.body.style.transition = 'background-color 1.2s ease';
+      var slides = document.querySelectorAll('.slide[data-bg]');
+      var bgObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            document.body.style.backgroundColor = entry.target.getAttribute('data-bg');
+          }
+        });
+      }, { threshold: 0.5 });
+      slides.forEach(function (s) { bgObserver.observe(s); });
+    }());
+
+    /* ── Slide scale / momentum effect ─────────────────── */
+    (function () {
+      if (!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+      var slideObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          } else {
+            entry.target.classList.remove('in-view');
+          }
+        });
+      }, { threshold: 0.6 });
+      document.querySelectorAll('.slide').forEach(function (s) { slideObserver.observe(s); });
+    }());
+
+    /* ── Content scroll-in animations ──────────────────── */
+    (function () {
+      if (!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          var delay = parseInt(el.getAttribute('data-delay') || '0', 10);
+          el.style.transitionDelay = delay + 'ms';
+          el.classList.add('visible');
+          observer.unobserve(el);
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.anim').forEach(function (el) { observer.observe(el); });
+    }());
+
+    /* ── Quiz logic ─────────────────────────────────────── */
+    (function () {
+      document.querySelectorAll('.qz-block').forEach(function (block) {
+        var buttons = block.querySelectorAll('.quiz-option');
+        var feedback = document.getElementById(block.id + '-feedback');
+        buttons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            buttons.forEach(function (b) {
+              b.style.pointerEvents = 'none';
+              if (b.getAttribute('data-correct') === 'true') {
+                b.classList.add('correct');
+              } else {
+                b.classList.add('wrong');
+              }
+            });
+            if (feedback) { feedback.classList.add('qz-visible'); }
+          });
+        });
+      });
+    }());
+  </script>
+
+</body>
+</html>
